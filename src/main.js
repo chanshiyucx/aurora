@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import isMobile from 'ismobilejs'
+import FontFaceObserver from 'fontfaceobserver'
 
 // Let's go!
 import App from './App.vue'
@@ -10,16 +11,25 @@ import store from './store'
 import './assets/style/reset.less'
 import './assets/style/layout.less'
 
-// 一些三方库
+// 引入三方库
 import firework from './assets/lib/fireworks'
 
+// 配置全局变量
 Vue.config.productionTip = false
-Vue.config.isMobile = isMobile.phone
+Vue.$isMobile = isMobile.phone
 
 // PC 端启用烟花特效
 if (!isMobile.phone) {
   firework()
 }
+
+// 载入字体
+;(function() {
+  const font = new FontFaceObserver('Noto Serif SC', { weight: '400' })
+  font.load().then(() => {
+    document.documentElement.className += 'fonts-loaded'
+  })
+})()
 
 new Vue({
   router,

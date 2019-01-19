@@ -1,5 +1,21 @@
+body {
+  font-family: 'Helvetica', 'PingFang SC', serif;
+  font-size: 0.16rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// 字体加载之后
+.fonts-loaded {
+  body {
+    font-family: 'Noto Serif SC', 'Helvetica', 'PingFang SC', serif;
+  }
+}
+
+// 烟花特效
 #fireworks {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: -1;
 }

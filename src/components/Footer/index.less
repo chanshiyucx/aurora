@@ -1,0 +1,41 @@
+#footer {
+  .waifu {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 99;
+    font-size: 0;
+    transition: all 0.3s ease-in-out;
+    transform: translateY(3px);
+    canvas {
+      position: relative;
+      left: 0;
+      bottom: 0;
+    }
+    .tips {
+      position: absolute;
+      margin: 0 0.2rem;
+      padding: 0.05rem 0.1rem;
+      width: 2.5rem;
+      min-height: 0.6rem;
+      opacity: 1;
+      font-size: 0.14rem;
+      line-height: 0.22rem;
+      border-radius: 0.08rem;
+      background-color: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0px 2px 2px 0 rgba(0, 0, 0, 0.24);
+      text-overflow: ellipsis;
+      overflow: hidden;
+      animation-name: shake;
+      animation-duration: 50s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+      &.hide {
+        opacity: 0;
+      }
+      &.tia {
+        margin-top: -0.08rem;
+      }
+    }
+  }
+}
