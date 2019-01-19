@@ -1,13 +1,17 @@
 {
   "name": "aurora",
   "version": "0.1.0",
-  "private": true,
+  "description": "An awesome blog theme",
+  "author": "蝉時雨 <me@chanshiyu.com>",
+  "license": "MIT",
   "scripts": {
+    "start": "vue-cli-service serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "ismobilejs": "^0.5.1",
     "vue": "^2.5.21",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
