@@ -15,6 +15,7 @@
     "idle": [
       { "file": "mtn/Breath1.mtn" },
       { "file": "mtn/Breath2.mtn" },
+      { "file": "mtn/Breath3.mtn" },
       { "file": "mtn/Breath5.mtn" },
       { "file": "mtn/Breath7.mtn" },
       { "file": "mtn/Breath8.mtn" }
