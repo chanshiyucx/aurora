@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import isMobile from 'ismobilejs'
+import AV from 'leancloud-storage'
 import FontFaceObserver from 'fontfaceobserver'
 
 // Let's go!
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import config from './config'
 
 // 全局样式与字体图标
 import './assets/style/reset.less'
@@ -19,6 +21,9 @@ import firework from './assets/lib/fireworks'
 // 配置全局变量
 Vue.config.productionTip = false
 Vue.$isMobile = isMobile.phone
+
+// Init Leancloud
+AV.init(config.leancloud)
 
 // PC 端启用烟花特效
 if (!isMobile.phone) {

@@ -1,26 +1,141 @@
-body {
-  font-family: 'Helvetica', 'PingFang SC', serif;
-  font-size: 0.16rem;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 body,
 #app {
   min-height: 100vh;
 }
 
-// 字体加载之后
+body {
+  font-family: 'Helvetica', 'PingFang SC', serif;
+  font-size: 0.16rem;
+  color: #444;
+  letter-spacing: 0.4px;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+  user-select: none;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 字体加载 */
 .fonts-loaded {
   body {
     font-family: 'Noto Serif SC', 'Helvetica', 'PingFang SC', serif;
   }
 }
 
-// 烟花特效
+/* 卡片样式 */
+.card {
+  border-radius: 0.03rem;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
+}
+
+/* 烟花特效 */
 #fireworks {
   position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
+}
+
+/* 轮播背景 */
+.backstretch {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+}
+.backstretch li {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+  color: transparent;
+  opacity: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  animation: imageAnimation 80s linear infinite 0s;
+}
+.backstretch li:nth-child(1) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc0f409d63.jpg);
+}
+.backstretch li:nth-child(2) {
+  background-image: url(https://i.loli.net/2018/12/16/5c164034ac74c.jpg);
+  animation-delay: 8s;
+}
+.backstretch li:nth-child(3) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc1010f9e5.jpg);
+  animation-delay: 16s;
+}
+.backstretch li:nth-child(4) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc108c3b5c.jpg);
+  animation-delay: 24s;
+}
+.backstretch li:nth-child(5) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc10d3d771.jpg);
+  animation-delay: 32s;
+}
+.backstretch li:nth-child(6) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc111f30a3.jpg);
+  animation-delay: 40s;
+}
+.backstretch li:nth-child(7) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc1159ea42.jpg);
+  animation-delay: 48s;
+}
+.backstretch li:nth-child(8) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc11b0691b.jpg);
+  animation-delay: 56s;
+}
+.backstretch li:nth-child(9) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc12115c2e.jpg);
+  animation-delay: 64s;
+}
+.backstretch li:nth-child(10) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc1268cd42.jpg);
+  animation-delay: 72s;
+}
+/* Animation for the slideshow images */
+@keyframes imageAnimation {
+  0% {
+    opacity: 0;
+    animation-timing-function: ease-in;
+  }
+  1.5% {
+    opacity: 1;
+  }
+  12% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  13% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
 }

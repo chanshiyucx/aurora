@@ -13,7 +13,9 @@
   "dependencies": {
     "fontfaceobserver": "^2.1.0",
     "ismobilejs": "^0.5.1",
+    "leancloud-storage": "^3.11.1",
     "marked": "^0.6.0",
+    "timeago.js": "^4.0.0-beta.2",
     "vue": "^2.5.21",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
