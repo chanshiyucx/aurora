@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <div class="main">
-      <article class="card" v-for="post in posts" :key="post.id">
+      <article class="card" v-for="post in posts" :key="post.id" @click="gotoPost(post.number)">
         <div class="post-header">
           <img :src="post.cover" alt="" />
           <h3>{{ post.title }}</h3>
@@ -9,7 +9,7 @@
         <div class="post-body"><MarkDown :content="post.desc" /></div>
         <div class="post-meta">
           <span> <i class="icon icon-calendar"></i> {{ post.created_at }} </span>
-          <span> <i class="icon icon-fire"></i> 热度{{ post.times }}℃ </span>
+          <span> <i class="icon icon-fire"></i> 热度{{ post.times || 1 }}℃ </span>
           <span> <i class="icon icon-bookmark-empty"></i> {{ post.milestone.title }} </span>
           <span>
             <i class="icon icon-tag"></i>
@@ -37,10 +37,17 @@ export default {
     this.queryPosts()
   },
   methods: {
+    // 获取文章列表
     queryPosts() {
-      console.log('queryPosts')
       this.$store.dispatch('queryPosts')
+    },
+    // 跳转文章页
+    gotoPost(number) {
+      this.$router.push({ name: 'post', params: { number } })
     }
+  },
+  beforeDestroy() {
+    this.$store.commit('resetPosts')
   }
 }
 </script>

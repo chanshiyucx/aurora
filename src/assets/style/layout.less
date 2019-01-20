@@ -24,6 +24,20 @@ a {
   text-decoration: none;
 }
 
+/* fade-transform */
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.5s;
+}
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
 /* 字体加载 */
 .fonts-loaded {
   body {
@@ -45,6 +59,29 @@ a {
   top: 0;
   left: 0;
   z-index: -1;
+}
+
+/* 滚动条 */
+&::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: #eee;
+}
+&::-webkit-scrollbar-thumb {
+  background-color: #986db2;
+  background-image: -webkit-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.4) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.4) 75%,
+    transparent 75%,
+    transparent
+  );
+}
+&::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 /* 轮播背景 */

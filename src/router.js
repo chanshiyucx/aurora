@@ -12,6 +12,11 @@ export default new Router({
       component: Home
     },
     {
+      path: '/post/:number',
+      name: 'post',
+      component: () => import('./views/Post')
+    },
+    {
       path: '/about',
       name: 'about',
       component: () => import('./views/About')

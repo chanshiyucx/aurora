@@ -2,6 +2,7 @@ import Vue from 'vue'
 import isMobile from 'ismobilejs'
 import AV from 'leancloud-storage'
 import FontFaceObserver from 'fontfaceobserver'
+import VueProgressBar from 'vue-progressbar'
 
 // Let's go!
 import App from './App.vue'
@@ -24,6 +25,21 @@ Vue.$isMobile = isMobile.phone
 
 // Init Leancloud
 AV.init(config.leancloud)
+
+// 顶部进度条
+const options = {
+  color: '#986DB2',
+  thickness: '4px',
+  transition: {
+    speed: '0.2s',
+    opacity: '0.6s',
+    termination: 300
+  },
+  autoRevert: true,
+  location: 'top',
+  inverse: false
+}
+Vue.use(VueProgressBar, options)
 
 // PC 端启用烟花特效
 if (!isMobile.phone) {
