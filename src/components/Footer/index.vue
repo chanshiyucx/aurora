@@ -1,7 +1,9 @@
 <template>
   <div id="footer">
     <div v-if="showWaifu" class="waifu">
-      <div :class="['tips', this.waifu === 'tia' && 'tia']"><MarkDown :content="tips" /></div>
+      <div v-show="tips" :class="['tips', this.waifu === 'tia' && 'tia']">
+        <MarkDown :content="tips" />
+      </div>
       <canvas id="live2d" width="280" height="250" />
     </div>
     <div class="site-info"></div>
@@ -9,11 +11,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import MarkDown from '../MarkDown'
 import { random } from '@/utils'
 import model from '@/assets/live2d/waifu.json'
 import tips from '@/assets/live2d/tips.json'
 import costume from '@/assets/live2d/costume.json'
+
+const { waifuClick, hoverTips, clickTips, hitokotos } = tips
 
 export default {
   name: 'Footer',
@@ -25,11 +30,16 @@ export default {
       waifu: 'tia',
       showWaifu: true,
       textures: '',
-      tips: ''
+      tipsTimer: ''
     }
   },
+  computed: mapState({
+    tips: state => state.tips,
+    tipsUpdateAt: state => state.tipsUpdateAt
+  }),
   mounted() {
     this.dressup()
+    this.loopTips()
   },
   methods: {
     // 换装
@@ -50,6 +60,15 @@ export default {
       model.textures = [textures]
       window.modelObj = model
       window.loadlive2d('live2d', path, '')
+    },
+    // 一言轮播
+    loopTips() {
+      this.tipsTimer = setTimeout(this.loopTips, 16 * 1000)
+      const now = new Date()
+      if (this.tips || (!!this.tipsUpdateAt && now - this.tipsUpdateAt < 6000)) return
+      const inx = random(0, hitokotos.length - 1)
+      const nextTips = hitokotos[inx].hitokoto
+      this.$store.dispatch('showTips', { tips: nextTips })
     }
   }
 }

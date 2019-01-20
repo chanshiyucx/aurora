@@ -10,6 +10,7 @@ import store from './store'
 // 全局样式
 import './assets/style/reset.less'
 import './assets/style/layout.less'
+import './assets/style/animation.less'
 
 // 引入三方库
 import firework from './assets/lib/fireworks'

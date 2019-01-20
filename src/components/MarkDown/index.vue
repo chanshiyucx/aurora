@@ -16,7 +16,17 @@ export default {
     }
   },
   created() {
-    this.html = marked(this.content, { renderer })
+    this.marked()
+  },
+  watch: {
+    content() {
+      this.marked()
+    }
+  },
+  methods: {
+    marked() {
+      this.html = marked(this.content, { renderer })
+    }
   }
 }
 </script>
