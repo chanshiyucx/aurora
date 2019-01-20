@@ -8,7 +8,6 @@ covers = covers.reverse()
  * 格式化文章
  */
 export const formatPost = (post, index) => {
-  console.log('post', post)
   const { body, created_at } = post
   const desc = body.split('<!-- more -->')[0]
   post.desc = desc
