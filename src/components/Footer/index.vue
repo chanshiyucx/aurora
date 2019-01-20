@@ -61,7 +61,7 @@ export default {
       // 获取模型
       model.model = `moc/${this.waifu || 'tia'}.moc`
       model.textures = [textures]
-      window.modelObj = model
+      window.waifuModel = model
       window.loadlive2d('live2d', path, '')
     },
     // 一言轮播
