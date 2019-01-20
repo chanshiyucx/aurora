@@ -7,10 +7,11 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-// 全局样式
+// 全局样式与字体图标
 import './assets/style/reset.less'
 import './assets/style/layout.less'
 import './assets/style/animation.less'
+import './assets/font/fontello.less'
 
 // 引入三方库
 import firework from './assets/lib/fireworks'

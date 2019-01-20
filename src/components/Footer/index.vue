@@ -6,7 +6,10 @@
       </div>
       <canvas id="live2d" width="280" height="250" />
     </div>
-    <div class="site-info"></div>
+    <div class="site-info">
+      <p><i class="icon icon-copyright"></i>2017-2018 <i class="icon icon-heart"></i> 蝉時雨</p>
+      <p>Theme - Aurora | 蝉鸣如雨 - 花宵道中</p>
+    </div>
   </div>
 </template>
 
