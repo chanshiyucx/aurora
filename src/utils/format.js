@@ -1,18 +1,18 @@
 import { format } from 'timeago.js'
-import config from '../config'
-
-let { covers } = config
-covers = covers.reverse()
 
 /**
  * 格式化文章
  */
-export const formatPost = (post, index) => {
+export const formatPost = post => {
   const { body, created_at } = post
-  const desc = body.split('<!-- more -->')[0]
-  post.desc = desc
-  post.content = body
-  post.cover = covers[index % covers.length]
+  const temp = body.split('\r\n')
+  const regex = /^\[(.+)\].*(http.*(?:jpg|jpeg|png|gif))/g
+  const cover = regex.exec(temp[0])
+  post.cover = {
+    title: cover[1],
+    src: cover[2]
+  }
+  post.desc = temp[2]
   post.created_at = format(created_at, 'zh_CN')
   return post
 }

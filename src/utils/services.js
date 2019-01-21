@@ -16,7 +16,7 @@ const checkStatus = response => {
 }
 
 // 获取文章列表
-export const queryPosts = async (page = 1, pageSize = 10) => {
+export const queryPosts = async ({ page = 1, pageSize = 10 }) => {
   try {
     const url = `${blog}/issues?${open}&page=${page}&per_page=${pageSize}`
     const response = await fetch(url)

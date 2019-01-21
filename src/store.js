@@ -59,8 +59,7 @@ export default new Vuex.Store({
         page: page + 1,
         pageSize
       })
-      const startInx = page * pageSize
-      data.forEach((o, i) => formatPost(o, i + startInx))
+      data.forEach(formatPost)
       data = await queryHot(data)
       commit('setPosts', {
         posts: data

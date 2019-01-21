@@ -3,8 +3,11 @@
     <div class="main">
       <article class="card" v-for="post in posts" :key="post.id" @click="gotoPost(post.number)">
         <div class="post-header">
-          <img :src="post.cover" alt="" />
-          <h3>{{ post.title }}</h3>
+          <img :src="post.cover.src" alt="" />
+          <div>
+            <h3>{{ post.title }}</h3>
+            <span>{{ post.cover.title }}</span>
+          </div>
         </div>
         <div class="post-body"><MarkDown :content="post.desc" /></div>
         <div class="post-meta">
