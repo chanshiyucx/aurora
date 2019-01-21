@@ -43,20 +43,12 @@ export default {
   computed: mapState({
     posts: state => state.posts
   }),
-  watch: {
-    posts(val, oldVal) {
-      if (val.length !== oldVal.length) {
-        console.log('refresh')
-        AOS.refresh()
-      }
-    }
-  },
   created() {
     this.queryPosts()
   },
   mounted() {
     AOS.init({
-      duration: 1500,
+      duration: 2000,
       easing: 'ease-out'
     })
   },
