@@ -1,7 +1,13 @@
 <template>
   <div id="home">
     <div class="main">
-      <article class="card" v-for="post in posts" :key="post.id" @click="gotoPost(post.number)">
+      <article
+        class="card"
+        v-for="post in posts"
+        :key="post.id"
+        @click="gotoPost(post.number)"
+        data-aos="fade-up"
+      >
         <div class="post-header">
           <img :src="post.cover.src" alt="" />
           <div>
@@ -26,6 +32,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import AOS from 'aos'
 import MarkDown from '@/components/MarkDown'
 
 export default {
@@ -36,13 +43,27 @@ export default {
   computed: mapState({
     posts: state => state.posts
   }),
+  watch: {
+    posts(val, oldVal) {
+      if (val.length !== oldVal.length) {
+        console.log('refresh')
+        AOS.refresh()
+      }
+    }
+  },
   created() {
     this.queryPosts()
   },
+  mounted() {
+    AOS.init({
+      duration: 1500,
+      easing: 'ease-out'
+    })
+  },
   methods: {
     // 获取文章列表
-    queryPosts() {
-      this.$store.dispatch('queryPosts')
+    async queryPosts() {
+      await this.$store.dispatch('queryPosts')
     },
     // 跳转文章页
     gotoPost(number) {

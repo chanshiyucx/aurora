@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { queryPosts, queryHot } from './utils/services'
+import { queryPosts, queryPost, queryHot } from './utils/services'
 import { formatPost } from './utils/format'
 
 Vue.use(Vuex)
@@ -66,8 +66,17 @@ export default new Vuex.Store({
       })
     },
     // 获取文章详情
-    async queryPost({ commit }, { number }) {
-      // 获取前篇后篇
+    async queryPost({ state, commit }, { number }) {
+      console.log('1244')
+      // 获取本篇
+      let post = state.posts.find(o => o.number === number)
+      // TODO:获取前篇后篇
+      if (!post) {
+        post = await queryPost(number)
+        post = await queryHot(post)
+        post = formatPost(post)
+      }
+      console.log('post-->', post)
     }
   }
 })

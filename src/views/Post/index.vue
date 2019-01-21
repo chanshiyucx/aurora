@@ -12,10 +12,12 @@ export default {
   },
   created() {
     this.number = this.$route.params.number
+    this.queryPost()
   },
   methods: {
     // 获取文章详情
     queryPost() {
+      console.log('queryPost!!', this.number)
       this.$store.dispatch('queryPost', { number: this.number })
     }
   }

@@ -4,6 +4,9 @@ import AV from 'leancloud-storage'
 import FontFaceObserver from 'fontfaceobserver'
 import VueProgressBar from 'vue-progressbar'
 
+// 滚动动效
+import 'aos/dist/aos.css'
+
 // Let's go!
 import App from './App.vue'
 import router from './router'

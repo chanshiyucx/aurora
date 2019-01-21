@@ -28,6 +28,19 @@ export const queryPosts = async ({ page = 1, pageSize = 10 }) => {
   }
 }
 
+// 获取单篇文章
+export const queryPost = async number => {
+  try {
+    const url = `${blog}/issues/${number}?${open}`
+    const response = await fetch(url)
+    checkStatus(response)
+    const data = await response.json()
+    return data
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 // 文章热度
 export const queryHot = async postList => {
   return new Promise(resolve => {
