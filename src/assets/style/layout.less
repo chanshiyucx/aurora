@@ -85,13 +85,17 @@ a {
 }
 
 /* 轮播背景 */
-.backstretch {
+#bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc0f409d63.jpg);
   &::after {
     content: '';
     position: absolute;
@@ -102,6 +106,7 @@ a {
     background-color: rgba(255, 255, 255, 0.5);
   }
 }
+
 .backstretch li {
   position: absolute;
   top: 0px;
@@ -112,6 +117,7 @@ a {
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
+  opacity: 0;
   animation: imageAnimation 80s linear infinite 0s;
 }
 .backstretch li:nth-child(1) {

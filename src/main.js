@@ -54,6 +54,11 @@ if (!isMobile.phone) {
   })
 })()
 
+// 延时载入背景动画
+setTimeout(() => {
+  document.getElementById('bg').className += 'backstretch'
+}, 5 * 1000)
+
 new Vue({
   router,
   store,

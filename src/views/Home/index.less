@@ -45,9 +45,6 @@
         color: #eee;
       }
       span {
-        // position: absolute;
-        // bottom: 6px;
-        // right: 6px;
         font-size: 0.12rem;
         color: #eee;
         text-transform: capitalize;
@@ -67,14 +64,28 @@
       }
     }
     .post-meta {
+      display: flex;
       padding: 0.12rem 0.14rem;
+      height: 0.5rem;
       font-size: 0.14rem;
       border-top: 1px solid rgba(0, 0, 0, 0.08);
       & > span {
-        margin-right: 4px;
+        display: flex;
+        align-items: center;
+        margin-right: 0.12rem;
         color: #666;
         span {
-          padding-right: 4px;
+          padding-right: 6px;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+        .icon {
+          margin-right: 4px;
+        }
+        .icon-fire {
+          margin-top: -2px;
+          margin-right: 2px;
         }
       }
     }
