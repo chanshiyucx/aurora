@@ -71,7 +71,7 @@ export default {
       // 判断位置，控制滚动到顶部
       const showBackTop = pageYOffset >= 200
       if (showBackTop !== this.showBackTop || this.clientHeight !== clientHeight) {
-        this.showBackTop = pageYOffset >= 200
+        this.showBackTop = showBackTop
         this.topDistance = -950 + (showBackTop ? clientHeight : 0)
         this.clientHeight = clientHeight
       }
