@@ -4,27 +4,29 @@
   article {
     padding: 0.16rem 0;
     line-height: 1.6;
+    font-size: 0.15rem;
     text-align: justify;
-    p,
+    p {
+      margin: 0.22rem 0.16rem 0.1rem;
+      :first-child {
+        margin-top: 0;
+      }
+      :last-child {
+        margin-bottom: 0;
+      }
+    }
+
     h2,
     h3,
-    h4,
-    ol,
-    ul,
-    blockquote {
-      margin: 0.22rem 0.16rem 0.1rem;
+    h4 {
+      margin: 0 0.16rem;
     }
-    p:first-child {
-      margin-top: 0;
-    }
-    p:last-child {
-      margin-bottom: 0;
-    }
+
     ol,
     ul {
-      margin-top: 0;
-      margin-left: 0.36rem;
+      margin: 0 0.16rem 0.1rem 0.36rem;
     }
+
     blockquote {
       position: relative;
       margin: 0.22rem 0 0.1rem;
