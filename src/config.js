@@ -29,7 +29,7 @@ export default {
   leancloud: {
     appId: 'b6DWxsCOWuhurfp4YqbD5cDE-gzGzoHsz',
     appKey: 'h564RR5uVuJV5uSeP7oFTBye'
-  },
+  }
 
   /**
    * ========================================

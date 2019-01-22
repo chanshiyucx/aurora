@@ -49,21 +49,11 @@ export const off = (function() {
 /**
  * @description 函数节流
  */
-export const throttle = (func, delay, tail = false) => {
+export const throttle = (func, delay) => {
   let lastCall = new Date()
-  let timeout
   return function(...args) {
-    clearTimeout(timeout)
     const now = new Date()
-    // 实现尾调用
-    if (tail) {
-      timeout = setTimeout(() => {
-        func.apply(this, args)
-      }, delay)
-    }
-    if (now - lastCall < delay) {
-      return
-    }
+    if (now - lastCall < delay) return
     lastCall = now
     return func.apply(this, args)
   }

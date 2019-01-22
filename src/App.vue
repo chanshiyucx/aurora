@@ -18,9 +18,7 @@
 <script>
 import SmoothScroll from 'smooth-scroll'
 import Footer from '@/components/Footer'
-import { on, off, throttle } from '@/utils'
-
-let handleScroll
+import { on } from '@/utils'
 
 export default {
   name: 'App',
@@ -31,7 +29,9 @@ export default {
     return {
       showBackTop: false,
       topDistance: -950,
-      clientHeight: 0
+      clientHeight: 0,
+      lastScroll: new Date(),
+      scrollTimer: ''
     }
   },
   created() {
@@ -47,7 +47,7 @@ export default {
     })
 
     // 滚动页面
-    handleScroll = throttle(this.handleScroll, 100, true)
+    const handleScroll = () => this.handleScroll()
     on(window, 'scroll', handleScroll)
   },
   methods: {
@@ -63,11 +63,24 @@ export default {
       })
     },
     // 监听页面滚动
-    handleScroll() {
+    handleScroll(forced) {
+      const now = new Date()
+      if (now - this.lastScroll <= 100 && !forced) return
+      if (!forced) {
+        // 尾更新 task
+        clearTimeout(this.scrollTimer)
+        this.scrollTimer = setTimeout(() => {
+          this.handleScroll(true)
+        }, 300)
+      }
+      this.lastScroll = now
+
+      // 更新顶部进度条
       const clientHeight = document.documentElement.clientHeight
       const scrollRange = document.body.clientHeight - clientHeight - 50
       const pageYOffset = window.pageYOffset
       this.$Progress.set((pageYOffset / scrollRange) * 100)
+
       // 判断位置，控制滚动到顶部
       const showBackTop = pageYOffset >= 200
       if (showBackTop !== this.showBackTop || this.clientHeight !== clientHeight) {
@@ -76,9 +89,6 @@ export default {
         this.clientHeight = clientHeight
       }
     }
-  },
-  beforeDestroy() {
-    off(window, 'scroll', handleScroll)
   }
 }
 </script>
