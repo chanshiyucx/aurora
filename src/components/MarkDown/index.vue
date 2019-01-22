@@ -36,6 +36,9 @@ export default {
   methods: {
     marked() {
       this.html = marked(this.content)
+      this.$nextTick(() => {
+        hljs.initLineNumbersOnLoad()
+      })
     }
   }
 }

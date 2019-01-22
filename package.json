@@ -14,7 +14,6 @@
     "aos": "^3.0.0-beta.6",
     "fontfaceobserver": "^2.1.0",
     "highlight.js": "^9.13.1",
-    "highlightjs-line-numbers.js": "^2.6.0",
     "ismobilejs": "^0.5.1",
     "leancloud-storage": "^3.11.1",
     "marked": "^0.6.0",

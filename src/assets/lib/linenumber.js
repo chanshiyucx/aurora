@@ -1,10 +1,7 @@
-export default function line(hljs) {
-  let w = window,
-    d = document
-  ;('use strict')
-  w.hljs = hljs
-
-  var TABLE_NAME = 'hljs-ln',
+export default function linenumber(hljs) {
+  const w = window
+  const d = document
+  const TABLE_NAME = 'hljs-ln',
     LINE_NAME = 'hljs-ln-line',
     CODE_BLOCK_NAME = 'hljs-ln-code',
     NUMBERS_BLOCK_NAME = 'hljs-ln-numbers',
@@ -12,18 +9,15 @@ export default function line(hljs) {
     DATA_ATTR_NAME = 'data-line-number',
     BREAK_LINE_REGEXP = /\r\n|\r|\n/g
 
-  if (w.hljs) {
-    w.hljs.initLineNumbersOnLoad = initLineNumbersOnLoad
-    w.hljs.lineNumbersBlock = lineNumbersBlock
-    w.hljs.lineNumbersValue = lineNumbersValue
+  w.hljs = hljs
+  w.hljs.initLineNumbersOnLoad = initLineNumbersOnLoad
+  w.hljs.lineNumbersBlock = lineNumbersBlock
+  w.hljs.lineNumbersValue = lineNumbersValue
 
-    addStyles()
-  } else {
-    w.console.error('highlight.js not detected!')
-  }
+  addStyles()
 
   function addStyles() {
-    var css = d.createElement('style')
+    const css = d.createElement('style')
     css.type = 'text/css'
     css.innerHTML = format(
       '.{0}{border-collapse:collapse}' + '.{0} td{padding:0}' + '.{1}:before{content:attr({2})}',
@@ -33,20 +27,9 @@ export default function line(hljs) {
   }
 
   function initLineNumbersOnLoad(options) {
-    if (d.readyState === 'interactive' || d.readyState === 'complete') {
-      documentReady(options)
-    } else {
-      w.addEventListener('DOMContentLoaded', function() {
-        documentReady(options)
-      })
-    }
-  }
-
-  function documentReady(options) {
     try {
-      var blocks = d.querySelectorAll('code.hljs,code.nohighlight')
-
-      for (var i in blocks) {
+      const blocks = d.querySelectorAll('code[class*="language-"]')
+      for (let i in blocks) {
         if (blocks.hasOwnProperty(i)) {
           lineNumbersBlock(blocks[i], options)
         }
@@ -67,7 +50,7 @@ export default function line(hljs) {
   function lineNumbersValue(value, options) {
     if (typeof value !== 'string') return
 
-    var element = document.createElement('code')
+    const element = document.createElement('code')
     element.innerHTML = value
 
     return lineNumbersInternal(element, options)
@@ -80,7 +63,7 @@ export default function line(hljs) {
     }
 
     // convert options
-    var firstLineIndex = options.singleLine ? 0 : 1
+    const firstLineIndex = options.singleLine ? 0 : 1
 
     duplicateMultilineNodes(element)
 
@@ -88,7 +71,7 @@ export default function line(hljs) {
   }
 
   function addLineNumbersBlockFor(inputHtml, firstLineIndex) {
-    var lines = getLines(inputHtml)
+    const lines = getLines(inputHtml)
 
     // if last line contains only carriage return remove it
     if (lines[lines.length - 1].trim() === '') {
@@ -96,9 +79,9 @@ export default function line(hljs) {
     }
 
     if (lines.length > firstLineIndex) {
-      var html = ''
+      let html = ''
 
-      for (var i = 0, l = lines.length; i < l; i++) {
+      for (let i = 0, l = lines.length; i < l; i++) {
         html += format(
           '<tr>' +
             '<td class="{0}">' +
@@ -132,10 +115,10 @@ export default function line(hljs) {
    * @param {HTMLElement} element
    */
   function duplicateMultilineNodes(element) {
-    var nodes = element.childNodes
-    for (var node in nodes) {
+    const nodes = element.childNodes
+    for (let node in nodes) {
       if (nodes.hasOwnProperty(node)) {
-        var child = nodes[node]
+        const child = nodes[node]
         if (getLinesCount(child.textContent) > 0) {
           if (child.childNodes.length > 0) {
             duplicateMultilineNodes(child)
@@ -152,14 +135,15 @@ export default function line(hljs) {
    * @param {HTMLElement} element
    */
   function duplicateMultilineNode(element) {
-    var className = element.className
+    const className = element.className
 
     if (!/hljs-/.test(className)) return
 
-    var lines = getLines(element.innerHTML)
+    const lines = getLines(element.innerHTML)
 
-    for (var i = 0, result = ''; i < lines.length; i++) {
-      var lineText = lines[i].length > 0 ? lines[i] : ' '
+    let result = ''
+    for (let i = 0; i < lines.length; i++) {
+      const lineText = lines[i].length > 0 ? lines[i] : ' '
       result += format('<span class="{0}">{1}</span>\n', [className, lineText])
     }
 
