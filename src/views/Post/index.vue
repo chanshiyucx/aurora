@@ -1,6 +1,6 @@
 <template>
   <div id="post">
-    <article class="card"><MarkDown :content="post.body" /></article>
+    <article class="card"><MarkDown :content="post.body" target="#post" /></article>
   </div>
 </template>
 
@@ -25,7 +25,6 @@ export default {
   methods: {
     // 获取文章详情
     async queryPost() {
-      console.log('queryPost!!', this.number)
       this.post = await this.$store.dispatch('queryPost', { number: this.number })
     }
   }

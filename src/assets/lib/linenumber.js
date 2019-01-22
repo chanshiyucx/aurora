@@ -19,16 +19,18 @@ export default function linenumber(hljs) {
   function addStyles() {
     const css = d.createElement('style')
     css.type = 'text/css'
-    css.innerHTML = format(
-      '.{0}{border-collapse:collapse}' + '.{0} td{padding:0}' + '.{1}:before{content:attr({2})}',
-      [TABLE_NAME, NUMBER_LINE_NAME, DATA_ATTR_NAME]
-    )
+    css.innerHTML = format('.{0}{border-collapse:collapse}' + '.{1}:before{content:attr({2})}', [
+      TABLE_NAME,
+      NUMBER_LINE_NAME,
+      DATA_ATTR_NAME
+    ])
     d.getElementsByTagName('head')[0].appendChild(css)
   }
 
   function initLineNumbersOnLoad(options) {
     try {
-      const blocks = d.querySelectorAll('code[class*="language-"]')
+      const targetElement = d.querySelector(options.target)
+      const blocks = targetElement.querySelectorAll('code[class*="language-"]')
       for (let i in blocks) {
         if (blocks.hasOwnProperty(i)) {
           lineNumbersBlock(blocks[i], options)
@@ -41,7 +43,6 @@ export default function linenumber(hljs) {
 
   function lineNumbersBlock(element, options) {
     if (typeof element !== 'object') return
-
     async(function() {
       element.innerHTML = lineNumbersInternal(element, options)
     })

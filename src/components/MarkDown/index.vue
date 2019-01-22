@@ -18,6 +18,10 @@ export default {
     content: {
       type: String,
       default: ''
+    },
+    target: {
+      type: String,
+      default: ''
     }
   },
   data() {
@@ -36,8 +40,12 @@ export default {
   methods: {
     marked() {
       this.html = marked(this.content)
+      // 并不是每个 marked 都需要高亮处理
+      if (!this.target) return
       this.$nextTick(() => {
-        hljs.initLineNumbersOnLoad()
+        hljs.initLineNumbersOnLoad({
+          target: this.target
+        })
       })
     }
   }
