@@ -1,13 +1,21 @@
 <template>
-  <div id="post"><h1>This is an post page</h1></div>
+  <div id="post">
+    <article class="card"><MarkDown :content="post.body" /></article>
+  </div>
 </template>
 
 <script>
+import MarkDown from '@/components/MarkDown'
+
 export default {
   name: 'Post',
+  components: {
+    MarkDown
+  },
   data() {
     return {
-      number: ''
+      number: '',
+      post: {}
     }
   },
   created() {
@@ -16,9 +24,9 @@ export default {
   },
   methods: {
     // 获取文章详情
-    queryPost() {
+    async queryPost() {
       console.log('queryPost!!', this.number)
-      this.$store.dispatch('queryPost', { number: this.number })
+      this.post = await this.$store.dispatch('queryPost', { number: this.number })
     }
   }
 }

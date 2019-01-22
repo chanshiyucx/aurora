@@ -67,7 +67,6 @@ export default new Vuex.Store({
     },
     // 获取文章详情
     async queryPost({ state, commit }, { number }) {
-      console.log('1244')
       // 获取本篇
       let post = state.posts.find(o => o.number === number)
       // TODO:获取前篇后篇
@@ -77,6 +76,7 @@ export default new Vuex.Store({
         post = formatPost(post)
       }
       console.log('post-->', post)
+      return post
     }
   }
 })
