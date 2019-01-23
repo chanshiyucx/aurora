@@ -7,19 +7,26 @@
     font-size: 0.15rem;
     text-align: justify;
     p {
-      margin: 0.22rem 0.16rem 0.1rem;
-      :first-child {
+      margin: 0.1rem 0.16rem 0.22rem;
+      &:first-child {
         margin-top: 0;
       }
-      :last-child {
+      &:last-child {
         margin-bottom: 0;
       }
+    }
+    pre {
+      margin: 0.1rem 0 0.22rem;
     }
 
     h2,
     h3,
     h4 {
-      margin: 0 0.16rem;
+      margin: 0.1rem 0.16rem 0;
+    }
+    h2 {
+      padding-bottom: 0.08rem;
+      border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
     }
 
     ol,
