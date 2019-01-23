@@ -9,6 +9,13 @@ import hljs from '@/assets/lib/highlight'
 
 const renderer = new marked.Renderer()
 
+renderer.heading = function(text, level, raw, slugger) {
+  const icon = ['gift', 'pagelines', 'pilcrow'][level - 2]
+  return `<h${level} id="h-${slugger.slug(
+    raw
+  )}"><i class="icon icon-${icon}"></i>${text}</h${level}>`
+}
+
 renderer.image = function(href, title, text) {
   let clazz = `img-box ${href.endsWith('#full') ? 'full-box' : ''}`
   return `<span class="${clazz}"><a href="${href}" data-caption="${text}">

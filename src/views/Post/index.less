@@ -6,6 +6,7 @@
     line-height: 1.6;
     font-size: 0.15rem;
     text-align: justify;
+    background-color: rgba(255, 255, 255, 0.66);
     p {
       margin: 0 0.16rem 0.16rem;
       &:last-child {
@@ -17,6 +18,17 @@
     h3,
     h4 {
       margin: 0.24rem 0.16rem 0.16rem;
+      transition: all 0.3s ease;
+      i {
+        padding-right: 0.06rem;
+        transition: all 0.3s ease;
+      }
+      &:hover {
+        &,
+        i {
+          color: #b854d4;
+        }
+      }
     }
     h2 {
       padding-bottom: 0.08rem;
@@ -25,6 +37,13 @@
     }
     h3 {
       font-size: 0.2rem;
+      i {
+        font-size: 0.18rem;
+      }
+    }
+    h2 + h3,
+    h3 + h4 {
+      margin-top: 0;
     }
 
     pre,
