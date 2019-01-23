@@ -1,9 +1,7 @@
 <template>
   <div id="footer">
     <div v-if="showWaifu" class="waifu">
-      <div v-show="tips" :class="['tips', this.waifu === 'tia' && 'tia']">
-        <MarkDown :content="tips" />
-      </div>
+      <div v-show="tips" :class="['tips', this.waifu === 'tia' && 'tia']" v-html="tips"></div>
       <canvas id="live2d" width="280" height="250" />
     </div>
     <div class="site-info">
@@ -15,7 +13,6 @@
 
 <script>
 import { mapState } from 'vuex'
-import MarkDown from '../MarkDown'
 import { random } from '@/utils'
 import model from '@/assets/live2d/waifu.json'
 import tips from '@/assets/live2d/tips.json'
@@ -25,9 +22,6 @@ const { waifuClick, hoverTips, clickTips, hitokotos } = tips
 
 export default {
   name: 'Footer',
-  components: {
-    MarkDown
-  },
   data() {
     return {
       waifu: 'tia',
