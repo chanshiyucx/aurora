@@ -12,7 +12,7 @@ export default new Vuex.Store({
     tips: '',
     tipsUpdateAt: '',
     page: 0,
-    pageSize: 10,
+    pageSize: 30,
     posts: [],
     hasMore: true
   },

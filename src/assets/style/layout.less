@@ -210,6 +210,30 @@ pre {
   line-height: 1.5;
   box-shadow: #999 0px 11px 8px -10px inset, #999 0px -11px 8px -10px inset;
   background: rgba(0, 0, 0, 0.08);
+  max-height: 6rem;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: #986db2;
+    background-image: -webkit-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.4) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0.4) 75%,
+      transparent 75%,
+      transparent
+    );
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
 }
 
 td.hljs-ln-numbers {

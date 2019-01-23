@@ -7,6 +7,7 @@ import less from 'highlight.js/lib/languages/less'
 import css from 'highlight.js/lib/languages/css'
 import java from 'highlight.js/lib/languages/java'
 import python from 'highlight.js/lib/languages/python'
+import objectivec from 'highlight.js/lib/languages/objectivec'
 import markdown from 'highlight.js/lib/languages/markdown'
 import bash from 'highlight.js/lib/languages/bash'
 import json from 'highlight.js/lib/languages/json'
@@ -23,6 +24,7 @@ hljs.registerLanguage('less', less)
 hljs.registerLanguage('css', css)
 hljs.registerLanguage('java', java)
 hljs.registerLanguage('python', python)
+hljs.registerLanguage('objectivec', objectivec)
 hljs.registerLanguage('markdown', markdown)
 hljs.registerLanguage('bash', bash)
 hljs.registerLanguage('json', json)
