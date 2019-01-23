@@ -11,6 +11,7 @@ import objectivec from 'highlight.js/lib/languages/objectivec'
 import markdown from 'highlight.js/lib/languages/markdown'
 import bash from 'highlight.js/lib/languages/bash'
 import json from 'highlight.js/lib/languages/json'
+import http from 'highlight.js/lib/languages/http'
 
 import linenumber from './linenumber'
 
@@ -28,6 +29,7 @@ hljs.registerLanguage('objectivec', objectivec)
 hljs.registerLanguage('markdown', markdown)
 hljs.registerLanguage('bash', bash)
 hljs.registerLanguage('json', json)
+hljs.registerLanguage('http', http)
 
 hljs.initHighlightingOnLoad()
 

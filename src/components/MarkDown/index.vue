@@ -22,6 +22,14 @@ renderer.image = function(href, title, text) {
     <img src="${href}" alt="${text}" /></a>${text ? `<span>◭ ${text}</span>` : ''}</span>`
 }
 
+renderer.link = function(href, title, text) {
+  // 只显示一个图标
+  if (text.includes('icon')) {
+    return `<a href="${href}" target="_blank">${text}</a>`
+  }
+  return `<a href="${href}" target="_blank"><i class="icon icon-link"></i>${text}</a>`
+}
+
 marked.setOptions({
   renderer,
   highlight: code => hljs.highlightAuto(code).value
