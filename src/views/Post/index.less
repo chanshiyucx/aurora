@@ -7,36 +7,45 @@
     font-size: 0.15rem;
     text-align: justify;
     p {
-      margin: 0.1rem 0.16rem 0.22rem;
-      &:first-child {
-        margin-top: 0;
-      }
+      margin: 0 0.16rem 0.16rem;
       &:last-child {
         margin-bottom: 0;
       }
-    }
-    pre {
-      margin: 0.1rem 0 0.22rem;
+      code {
+        padding: 2px 5px;
+        color: #b854d4;
+        font-weight: bold;
+        border-radius: 3px;
+        background: rgba(0, 0, 0, 0.1);
+      }
     }
 
     h2,
     h3,
     h4 {
-      margin: 0.1rem 0.16rem 0;
+      margin: 0.24rem 0.16rem 0.16rem;
     }
     h2 {
       padding-bottom: 0.08rem;
+      font-size: 0.24rem;
       border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+    }
+    h3 {
+      font-size: 0.2rem;
+    }
+
+    pre,
+    blockquote {
+      margin-bottom: 0.16rem;
     }
 
     ol,
     ul {
-      margin: 0 0.16rem 0.1rem 0.36rem;
+      margin: 0 0.16rem 0.16rem 0.36rem;
     }
 
     blockquote {
       position: relative;
-      margin: 0.22rem 0 0.1rem;
       padding: 0.36rem 0;
       font-style: italic;
       box-shadow: #999 0px 11px 8px -10px inset, #999 0px -11px 8px -10px inset;
