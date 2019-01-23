@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "aos": "^3.0.0-beta.6",
+    "baguettebox.js": "^1.11.0",
     "fontfaceobserver": "^2.1.0",
     "highlight.js": "^9.13.1",
     "ismobilejs": "^0.5.1",

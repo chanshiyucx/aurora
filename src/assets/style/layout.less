@@ -216,3 +216,38 @@ td.hljs-ln-numbers {
   padding-right: 0.16rem;
   text-align: center;
 }
+
+/* 灯箱 */
+#baguetteBox-overlay {
+  animation: elastic 0.5s;
+}
+#baguetteBox-overlay .full-image {
+  img {
+    max-height: 80%;
+    max-width: 80%;
+    box-shadow: 0 0 1.6rem #eee;
+  }
+  figcaption {
+    line-height: 3;
+  }
+}
+.baguetteBox-button {
+  background: transparent;
+  &:hover {
+    background: transparent;
+  }
+}
+@keyframes elastic {
+  0% {
+    transform: scale(0);
+  }
+  55% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
