@@ -25,7 +25,8 @@ import firework from './assets/lib/fireworks'
 
 // 配置全局变量
 Vue.config.productionTip = false
-Vue.$isMobile = isMobile.phone
+Vue.prototype.$config = config
+Vue.prototype.$isMobile = isMobile.phone
 
 // Init Leancloud
 AV.init(config.leancloud)

@@ -43,7 +43,10 @@ export default {
 
     // 滚动到顶部
     new SmoothScroll('a[href*="#"]', {
-      updateURL: false
+      updateURL: false,
+      speed: 1200,
+      speedAsDuration: true,
+      easing: 'easeOutQuint'
     })
 
     // 滚动页面
@@ -95,6 +98,8 @@ export default {
 
 <style lang="less" scope>
 #app {
+  position: relative;
+  padding-bottom: 1rem;
   text-align: center;
   .back-to-top {
     position: fixed;

@@ -3,7 +3,7 @@ export default {
    * ========================================
    *               站点功能【必需】
    * ========================================
-   */
+   **/
 
   /**
    * 站点标题
@@ -14,7 +14,7 @@ export default {
   /**
    * Github Issues 配置【文章、说说、书单、友链】
    * Github Issues api: https://developer.github.com/v3/issues/
-   */
+   **/
   // 博客仓库
   blog: 'https://api.github.com/repos/chanshiyucx/Blog',
   // token 从中间任意位置拆开成两部分，避免 github 代码检测失效
@@ -29,11 +29,16 @@ export default {
   leancloud: {
     appId: 'b6DWxsCOWuhurfp4YqbD5cDE-gzGzoHsz',
     appKey: 'h564RR5uVuJV5uSeP7oFTBye'
-  }
+  },
 
   /**
    * ========================================
    *                主题自定义
    * ========================================
    */
+
+  /**
+   * 加载动画
+   */
+  loadingImg: 'https://i.loli.net/2018/12/15/5c14be28964d2.gif'
 }

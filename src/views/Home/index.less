@@ -100,7 +100,6 @@
       align-items: center;
       padding: 0 0.2rem;
       height: 0.5rem;
-      color: #986db2;
       font-size: 0.16rem;
       line-height: 0.5rem;
       background-color: rgba(255, 2555, 255, 0.66);
@@ -108,6 +107,9 @@
       transition: all 0.25s ease-in-out;
       overflow: hidden;
       text-shadow: 0 1px 1px #b854d4;
+      span {
+        color: #986db2;
+      }
       &::before {
         content: '';
         display: block;
@@ -146,21 +148,23 @@
       &::before {
         top: 0;
         right: 0;
-        width: 7px;
+        width: 6px;
         height: 2px;
       }
       &::after {
         bottom: 0;
         left: 0;
         width: 3px;
-        height: 7px;
+        height: 6px;
       }
     }
 
     &:hover {
       .previous {
-        color: #eee;
         transform: translate(2px, 2px);
+        span {
+          color: #eee;
+        }
         &::before {
           transform: scaleX(1);
         }
