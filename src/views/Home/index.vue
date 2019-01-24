@@ -27,7 +27,7 @@
         </div>
       </article>
     </div>
-    <div class="pagination">
+    <div v-if="hasMore" class="pagination" @click="queryPosts">
       <div class="previous">Previous</div>
       <div class="rect"></div>
     </div>
@@ -45,7 +45,8 @@ export default {
     MarkDown
   },
   computed: mapState({
-    posts: state => state.posts
+    posts: state => state.posts,
+    hasMore: state => state.hasMore
   }),
   created() {
     this.queryPosts()

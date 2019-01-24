@@ -26,7 +26,7 @@ export default new Vuex.Store({
     setPosts(state, { posts }) {
       state.page += 1
       state.posts = state.posts.concat(posts)
-      state.hasMore = posts.length <= state.pageSize
+      state.hasMore = posts.length >= state.pageSize
     },
     // 重置文章列表
     resetPosts(state) {
