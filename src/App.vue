@@ -44,8 +44,9 @@ export default {
     // 滚动到顶部
     new SmoothScroll('a[href*="#"]', {
       updateURL: false,
-      speed: 1200,
-      speedAsDuration: true,
+      emitEvents: false,
+      durationMin: 600,
+      durationMax: 1200,
       easing: 'easeOutQuint'
     })
 

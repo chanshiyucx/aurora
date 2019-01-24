@@ -10,7 +10,8 @@
           data-aos="fade-up"
         >
           <div class="post-header">
-            <img :src="post.cover.src" alt />
+            <!-- <img :src="post.cover.src" alt /> -->
+            <Lazyload :src="post.cover.src" />
             <div>
               <h3>{{ post.title }}</h3>
               <span>{{ post.cover.title }}</span>
@@ -48,13 +49,15 @@ import AOS from 'aos'
 import MarkDown from '@/components/MarkDown'
 import Loading from '@/components/Loading'
 import Spinner from '@/components/Spinner'
+import Lazyload from '@/components/Lazyload'
 
 export default {
   name: 'Home',
   components: {
     MarkDown,
     Loading,
-    Spinner
+    Spinner,
+    Lazyload
   },
   data() {
     return {
@@ -71,7 +74,8 @@ export default {
   mounted() {
     AOS.init({
       duration: 2000,
-      easing: 'ease-out'
+      easing: 'ease-out',
+      debounceDelay: 200
     })
   },
   methods: {
