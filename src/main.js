@@ -14,11 +14,11 @@ import store from './store'
 import config from './config'
 
 // 全局样式与字体图标
+import 'viewerjs/dist/viewer.min.css'
 import './assets/style/reset.less'
 import './assets/style/layout.less'
 import './assets/style/animation.less'
 import './assets/font/fontello.less'
-import 'baguettebox.js/dist/baguetteBox.min.css'
 
 // 引入三方库
 import firework from './assets/lib/fireworks'

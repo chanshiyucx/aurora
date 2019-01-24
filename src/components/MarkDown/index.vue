@@ -4,7 +4,7 @@
 
 <script>
 import marked from 'marked'
-import baguetteBox from 'baguettebox.js'
+import Viewer from 'viewerjs'
 import hljs from '@/assets/lib/highlight'
 
 const renderer = new marked.Renderer()
@@ -18,8 +18,9 @@ renderer.heading = function(text, level, raw, slugger) {
 
 renderer.image = function(href, title, text) {
   let clazz = `img-box ${href.endsWith('#full') ? 'full-box' : ''}`
-  return `<span class="${clazz}"><a href="${href}" data-caption="${text}">
-    <img src="${href}" alt="${text}" /></a>${text ? `<span>◭ ${text}</span>` : ''}</span>`
+  return `<span class="${clazz}"><img src="${href}" alt="${text}" />${
+    text ? `<span>◭ ${text}</span>` : ''
+  }</span>`
 }
 
 renderer.link = function(href, title, text) {
@@ -71,10 +72,12 @@ export default {
       // 对于只是纯解析文字不需要代码高亮和灯箱
       if (this.onlyRender) return
       this.$nextTick(() => {
-        baguetteBox.run('.markdown')
-
         // 并不是每个 marked 都需要高亮处理
         if (this.target) {
+          new Viewer(document.getElementById('post'), {
+            toolbar: 4
+          })
+
           hljs.initLineNumbersOnLoad({
             target: this.target
           })

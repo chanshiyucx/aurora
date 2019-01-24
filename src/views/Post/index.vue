@@ -3,7 +3,7 @@
     <Transition name="fade-transform" mode="out-in">
       <article v-if="post" class="card">
         <div class="post-header">
-          <img alt :src="post.cover.src" />
+          <img :alt="post.cover.title" :src="post.cover.src" />
           <div>
             <div class="title">
               <h1>{{ post.title }}</h1>
