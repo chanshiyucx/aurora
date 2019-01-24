@@ -28,7 +28,10 @@
       </article>
     </div>
     <div v-if="hasMore" class="pagination" @click="queryPosts">
-      <div class="previous">Previous</div>
+      <div class="previous">
+        Previous
+        <Spinner v-show="loading"></Spinner>
+      </div>
       <div class="rect"></div>
     </div>
   </div>
@@ -38,11 +41,18 @@
 import { mapState } from 'vuex'
 import AOS from 'aos'
 import MarkDown from '@/components/MarkDown'
+import Spinner from '@/components/Spinner'
 
 export default {
   name: 'Home',
   components: {
-    MarkDown
+    MarkDown,
+    Spinner
+  },
+  data() {
+    return {
+      loading: false
+    }
   },
   computed: mapState({
     posts: state => state.posts,
@@ -60,7 +70,10 @@ export default {
   methods: {
     // 获取文章列表
     async queryPosts() {
+      if (this.loading) return
+      this.loading = true
       await this.$store.dispatch('queryPosts')
+      this.loading = false
     },
     // 跳转文章页
     gotoPost(number) {

@@ -2,7 +2,7 @@
   <div id="app">
     <vue-progress-bar></vue-progress-bar>
     <div id="nav">
-      <RouterLink to="/">Home</RouterLink> |
+      <RouterLink to="/">Home</RouterLink>|
       <RouterLink to="/about">About</RouterLink>
     </div>
     <Transition name="fade-transform" mode="out-in"> <router-view /> </Transition>
@@ -104,8 +104,7 @@ export default {
     z-index: 99;
     opacity: 1;
     transition: all 0.5s ease-in-out;
-    background: url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/scroll.png)
-      no-repeat center;
+    background: url(https://i.loli.net/2019/01/24/5c496f5c617f6.png) no-repeat center;
     background-size: contain;
     &.visible {
       animation: float 3s linear infinite;
