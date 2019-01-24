@@ -64,6 +64,12 @@ setTimeout(() => {
   document.getElementById('bg').className += 'backstretch'
 }, 5 * 1000)
 
+// 预加载文章默认图
+;(function() {
+  const img = new Image()
+  img.src = config.defaultCover
+})()
+
 new Vue({
   router,
   store,

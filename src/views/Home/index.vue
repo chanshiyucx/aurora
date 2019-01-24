@@ -10,14 +10,13 @@
           data-aos="fade-up"
         >
           <div class="post-header">
-            <!-- <img :src="post.cover.src" alt /> -->
             <Lazyload :src="post.cover.src" />
             <div>
               <h3>{{ post.title }}</h3>
               <span>{{ post.cover.title }}</span>
             </div>
           </div>
-          <div class="post-body"><MarkDown :content="post.desc" /></div>
+          <div class="post-body"><MarkDown :content="post.desc" :onlyRender="true" /></div>
           <div class="post-meta">
             <span> <i class="icon icon-calendar"></i> {{ post.created_at }} </span>
             <span> <i class="icon icon-fire"></i> 热度{{ post.times || 1 }}℃ </span>

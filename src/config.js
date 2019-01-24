@@ -40,5 +40,10 @@ export default {
   /**
    * 加载动画
    */
-  loadingImg: 'https://i.loli.net/2018/12/15/5c14be28964d2.gif'
+  loadingImg: 'https://i.loli.net/2018/12/15/5c14be28964d2.gif',
+
+  /**
+   * 文章默认图
+   */
+  defaultCover: 'https://i.loli.net/2019/01/24/5c49bd8dad2f5.jpg'
 }

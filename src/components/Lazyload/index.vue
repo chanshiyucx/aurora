@@ -1,24 +1,22 @@
 <template>
-  <img class="loading" :src="imgSrc" alt />
+  <img :src="imgSrc" alt />
 </template>
 
 <script>
 export default {
   name: 'Lazyload',
-  props: ['src', 'width', 'height'],
+  props: ['src'],
   data() {
     return {
-      imgSrc: this.$config.loadingImg
+      imgSrc: this.$config.defaultCover
     }
   },
-  created() {},
-  methods: {}
+  created() {
+    const img = new Image()
+    img.onload = () => {
+      this.imgSrc = this.src
+    }
+    img.src = this.src
+  }
 }
 </script>
-
-<style lang="less" scoped>
-.loading {
-  width: 1rem !important;
-  // height: 1rem;
-}
-</style>

@@ -45,6 +45,10 @@ export default {
     target: {
       type: String,
       default: ''
+    },
+    onlyRender: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -64,6 +68,8 @@ export default {
     marked() {
       this.html = marked(this.content)
 
+      // 对于只是纯解析文字不需要代码高亮和灯箱
+      if (this.onlyRender) return
       this.$nextTick(() => {
         baguetteBox.run('.markdown')
 
