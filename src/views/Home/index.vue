@@ -9,7 +9,7 @@
         data-aos="fade-up"
       >
         <div class="post-header">
-          <img :src="post.cover.src" alt="" />
+          <img :src="post.cover.src" alt />
           <div>
             <h3>{{ post.title }}</h3>
             <span>{{ post.cover.title }}</span>
@@ -22,10 +22,14 @@
           <span> <i class="icon icon-bookmark-empty"></i> {{ post.milestone.title }} </span>
           <span>
             <i class="icon icon-tag"></i>
-            <span v-for="label in post.labels.slice(0, 2)" :key="label.id"> {{ label.name }}</span>
+            <span v-for="label in post.labels.slice(0, 2)" :key="label.id">{{ label.name }}</span>
           </span>
         </div>
       </article>
+    </div>
+    <div class="pagination">
+      <div class="previous">Previous</div>
+      <div class="rect"></div>
     </div>
   </div>
 </template>
