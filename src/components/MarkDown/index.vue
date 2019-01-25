@@ -17,8 +17,7 @@ renderer.heading = function(text, level, raw, slugger) {
 }
 
 renderer.image = function(href, title, text) {
-  let clazz = `img-box ${href.endsWith('#full') ? 'full-box' : ''}`
-  return `<span class="${clazz}"><img src="${href}" alt="${text}" />${
+  return `<span class="img-box"><img src="${href}" alt="${text}" />${
     text ? `<span>◭ ${text}</span>` : ''
   }</span>`
 }

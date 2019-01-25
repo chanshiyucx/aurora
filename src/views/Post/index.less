@@ -195,10 +195,15 @@
         img {
           margin: 0 auto;
           max-width: 100%;
-          box-shadow: 0 0 10px #999;
           border-radius: 3px;
           border: 6px solid transparent;
+          box-shadow: 0 0 10px #999;
           transition: all 0.25s ease-out;
+        }
+        img[src*='full'] {
+          margin-left: -0.16rem;
+          max-width: calc(~'100% + .32rem');
+          border: none;
         }
         span {
           display: block;
@@ -210,13 +215,6 @@
           img {
             border-color: #b28fce;
           }
-        }
-      }
-      span[class*='full-box'] {
-        img {
-          margin-left: -0.16rem;
-          max-width: calc(~'100% + .32rem');
-          border: none;
         }
       }
 
