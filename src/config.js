@@ -69,15 +69,15 @@ export default {
     // 联系方式
     contact: [
       {
-        icon: 'https://i.loli.net/2018/12/09/5c0cc5147e2e5.png',
+        icon: 'https://i.loli.net/2019/01/25/5c4b2a7558ad7.png',
         link: 'http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=tNnR9Nfc1drH3N3NwZrX29k'
       },
       {
-        icon: 'https://i.loli.net/2018/12/09/5c0cc516d9d5f.png',
+        icon: 'https://i.loli.net/2019/01/25/5c4b2982b5687.png',
         link: 'https://github.com/chanshiyucx'
       },
       {
-        icon: 'https://i.loli.net/2018/12/09/5c0cc518dc4f4.png',
+        icon: 'https://i.loli.net/2019/01/25/5c4b3169de47c.png',
         link: 'https://www.zhihu.com/people/ichanshiyu/activities'
       },
       {

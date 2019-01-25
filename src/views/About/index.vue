@@ -10,10 +10,21 @@
               <span> <i class="icon icon-fort-awesome"></i> {{ $config.title }}</span>
               <span> <i class="icon icon-pagelines"></i> {{ $config.subtitle }}</span>
               <span>
-                <i class="icon icon-graduation-cap"></i> {{ $config.aboutOpts.graduated }}</span
-              >
+                <i class="icon icon-graduation-cap"></i> {{ $config.aboutOpts.graduated }}
+              </span>
               <span> <i class="icon icon-tripadvisor"></i> {{ $config.aboutOpts.college }}</span>
             </div>
+          </div>
+          <div class="contact">
+            <a
+              v-for="(item, i) in $config.aboutOpts.contact"
+              :key="i"
+              :href="item.link"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <img alt="" :src="item.icon" />
+            </a>
           </div>
           <Segment
             v-for="(item, i) in about"
