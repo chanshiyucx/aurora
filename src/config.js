@@ -50,6 +50,14 @@ export default {
    */
 
   /**
+   * 书单页面
+   */
+  bookOpts: {
+    enableGitalk: true,
+    qoute: '吾生也有涯，而知也无涯'
+  },
+
+  /**
    * 友链页面
    */
   friendOpts: {
@@ -77,7 +85,7 @@ export default {
         link: 'https://github.com/chanshiyucx'
       },
       {
-        icon: 'https://i.loli.net/2019/01/25/5c4b3169de47c.png',
+        icon: 'https://i.loli.net/2018/12/09/5c0cc518dc4f4.png',
         link: 'https://www.zhihu.com/people/ichanshiyu/activities'
       },
       {
