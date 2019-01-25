@@ -1,11 +1,19 @@
 <template>
   <div id="friends">
     <Transition name="fade-transform" mode="out-in">
-      <div v-if="friends.length">
-        <Quote :quote="$config.friendsOpts.quote" />
-        <!-- <ul>
-
-        </ul> -->
+      <div class="card" v-if="friends.length">
+        <Quote :quote="$config.friendsOpts.qoute" />
+        <ul class="content">
+          <li v-for="item in friends" :key="item.name">
+            <a :href="item.link" rel="noopener noreferrer" target="_blank">
+              <img class="cover" alt="" :src="item.cover" />
+              <div class="info">
+                <img :src="item.avatar" alt="" /> <span>{{ item.name }}</span>
+              </div>
+            </a>
+          </li>
+          <li v-for="i in 4" :key="i" class="empty"></li>
+        </ul>
       </div>
       <Loading v-else />
     </Transition>

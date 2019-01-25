@@ -19,7 +19,7 @@ export default {
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-bottom: 0.26rem;
+  margin-bottom: 0.32rem;
   padding: 0.32rem 0;
   font-size: 0.16rem;
   span {
@@ -30,7 +30,7 @@ export default {
     font-size: 0.24rem;
   }
   i:first-child {
-    top: 0.16rem;
+    top: 0;
     left: 0.16rem;
   }
   i:last-child {
