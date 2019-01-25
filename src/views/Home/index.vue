@@ -10,7 +10,7 @@
           data-aos="fade-up"
         >
           <div class="post-header">
-            <Lazyload :src="post.cover.src" />
+            <Lazyload :src="post.cover.src" :alt="post.cover.title" />
             <div>
               <h3>{{ post.title }}</h3>
               <span>{{ post.cover.title }}</span>

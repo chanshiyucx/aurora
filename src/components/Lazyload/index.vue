@@ -1,11 +1,11 @@
 <template>
-  <img :src="imgSrc" alt />
+  <img :src="imgSrc" :alt="alt" />
 </template>
 
 <script>
 export default {
   name: 'Lazyload',
-  props: ['src'],
+  props: ['src', 'alt'],
   data() {
     return {
       imgSrc: this.$config.defaultCover

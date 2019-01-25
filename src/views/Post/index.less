@@ -192,34 +192,27 @@
       }
 
       span[class*='img-box'] {
-        display: block;
-        text-align: center;
-        a {
-          display: inline-block;
-          padding: 0.12rem;
-          border: 1px dashed rgba(0, 0, 0, 0.2);
-          border-radius: 0.03rem;
-          &::after {
-            display: none;
-          }
-        }
-        span {
-          display: block;
-          font-style: italic;
-          text-align: center;
-        }
         img {
           margin: 0 auto;
           max-width: 100%;
           box-shadow: 0 0 10px #999;
+          border-radius: 3px;
+          border: 6px solid transparent;
+          transition: all 0.25s ease-out;
+        }
+        span {
+          display: block;
+          padding-top: 4px;
+          font-style: italic;
+          text-align: center;
+        }
+        &:hover {
+          img {
+            border-color: #b28fce;
+          }
         }
       }
       span[class*='full-box'] {
-        a {
-          padding: 0;
-          border: none;
-          border-radius: 0;
-        }
         img {
           margin-left: -0.16rem;
           max-width: calc(~'100% + .32rem');
