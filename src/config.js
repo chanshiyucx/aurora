@@ -8,7 +8,7 @@ export default {
   /**
    * 站点标题
    */
-  title: '蝉時雨',
+  title: '蝉时雨',
   subtitle: '蝉鸣如雨 花宵道中',
 
   /**

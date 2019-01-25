@@ -2,10 +2,6 @@
   <div id="app">
     <vue-progress-bar></vue-progress-bar>
     <Header />
-    <div id="nav">
-      <RouterLink to="/">Home</RouterLink>|
-      <RouterLink to="/about">About</RouterLink>
-    </div>
     <Transition name="fade-transform" mode="out-in"> <router-view /> </Transition>
     <Footer />
     <a
@@ -112,21 +108,11 @@ export default {
     height: 900px;
     z-index: 99;
     opacity: 1;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.6s ease-out;
     background: url(https://i.loli.net/2019/01/24/5c496f5c617f6.png) no-repeat center;
     background-size: contain;
     &.visible {
-      animation: float 3s linear infinite;
-    }
-  }
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+      animation: float 0.25s linear infinite;
     }
   }
 }

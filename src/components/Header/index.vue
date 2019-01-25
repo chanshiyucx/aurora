@@ -1,13 +1,15 @@
 <template>
   <div id="header">
     <div class="inner">
-      <router-link class="title" to="home">{{ $config.title }}</router-link>
+      <!-- <RouterLink to="/">Home</RouterLink>|
+      <RouterLink to="/about">About</RouterLink> -->
+      <RouterLink class="title" to="home">{{ $config.title }}</RouterLink>
       <span class="subtitle">{{ $config.subtitle }}</span>
       <ul>
         <li v-for="menu in menus" :key="menu.name">
-          <router-link :class="['icon', `icon-${menu.icon}`]" :to="menu.name">{{
+          <RouterLink :class="['icon', `icon-${menu.icon}`]" :to="menu.name">{{
             menu.title
-          }}</router-link>
+          }}</RouterLink>
         </li>
       </ul>
     </div>
@@ -19,7 +21,16 @@ export default {
   name: 'Header',
   data() {
     return {
-      menus: [{ name: 'home', icon: 'shop', title: '首页' }]
+      menus: [
+        { name: 'home', icon: 'shop', title: '首页' },
+        { name: 'home', icon: 'shop', title: '归档' },
+        { name: 'home', icon: 'shop', title: '分类' },
+        { name: 'home', icon: 'shop', title: '标签' },
+        { name: 'home', icon: 'heart', title: '心情' },
+        { name: 'home', icon: 'pencil', title: '书单' },
+        { name: 'home', icon: 'shop', title: '友链' },
+        { name: 'home', icon: 'shop', title: '关于' }
+      ]
     }
   },
   methods: {}

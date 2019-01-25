@@ -18,7 +18,7 @@
       font-size: 0.52rem;
       line-height: 0.6rem;
       letter-spacing: 2px;
-      transition: color 0.25s ease-out;
+      transition: color 0.25s ease-in-out;
       &:hover {
         color: #b854d4;
       }
@@ -27,6 +27,37 @@
       font-size: 0.22rem;
       line-height: 0.36rem;
       letter-spacing: 4px;
+    }
+    ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 0.1rem;
+      padding: 0 0.32rem;
+      height: 0.6rem;
+      background: rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) inset;
+      transition: all 0.6s ease-out;
+      animation-name: fadeIn;
+      animation-duration: 0.8s;
+      li {
+        padding-top: 0.04rem;
+        width: 0.5rem;
+        font-size: 0.16rem;
+        list-style: none;
+        height: 86%;
+        transition: color 0.25s ease-in-out;
+        a {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: center;
+          height: 100%;
+        }
+        &:hover {
+          color: #b854d4;
+        }
+      }
     }
   }
 }
