@@ -13,6 +13,7 @@
   "dependencies": {
     "aos": "^3.0.0-beta.6",
     "fontfaceobserver": "^2.1.0",
+    "gitalk": "^1.5.0",
     "highlight.js": "^9.13.1",
     "ismobilejs": "^0.5.1",
     "leancloud-storage": "^3.11.1",

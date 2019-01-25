@@ -22,24 +22,32 @@ export const formatPost = post => {
  */
 export const formatPage = (data, type) => {
   if (!data.body) return
-  let section
+  let section = data.body
+    .trim()
+    .split('## ')
+    .filter(o => o.length)
+
   switch (type) {
     case 'friends':
-      section = data.body
-        .trim()
-        .split('## ')
-        .filter(o => o.length)
-        .map(o => {
-          const content = o.split('\r\n').filter(o => o.length)
-          return {
-            name: content[0],
-            link: content[1].split('link:')[1],
-            cover: content[2].split('cover:')[1],
-            avatar: content[3].split('avatar:')[1]
-          }
-        })
+      section = section.map(o => {
+        const content = o.split('\r\n').filter(o => o.length)
+        return {
+          name: content[0],
+          link: content[1].split('link:')[1],
+          cover: content[2].split('cover:')[1],
+          avatar: content[3].split('avatar:')[1]
+        }
+      })
       break
-
+    case 'about':
+      section = section.map(o => {
+        const title = o.match(/.+?\r\n/)[0]
+        return {
+          title,
+          content: o.slice(title.length)
+        }
+      })
+      break
     default:
       break
   }

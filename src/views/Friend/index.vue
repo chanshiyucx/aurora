@@ -17,10 +17,13 @@
       </div>
       <Loading v-else />
     </Transition>
+
+    <div v-if="$config.friendsOpts.enableGitalk" id="gitalk" />
   </div>
 </template>
 
 <script>
+import Gitalk from 'gitalk'
 import Loading from '@/components/Loading'
 import Quote from '@/components/Quote'
 
@@ -41,6 +44,16 @@ export default {
   methods: {
     async queryFriends() {
       this.friends = await this.$store.dispatch('queryPage', { type: 'friends' })
+      if (this.$config.friendsOpts.enableGitalk) {
+        this.$nextTick(() => {
+          const gitalk = new Gitalk({
+            ...this.$config.gitalk,
+            title: '友链'
+          })
+          gitalk.render('gitalk')
+          console.log('gitalk', gitalk)
+        })
+      }
     }
   }
 }

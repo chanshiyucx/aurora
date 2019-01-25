@@ -32,6 +32,18 @@ export default {
   },
 
   /**
+   * Gittalk 配置【评论功能】，详细文档参见：https://github.com/gitalk/gitalk
+   */
+  gitalk: {
+    clientID: '864b1c2cbc4e4aad9ed8',
+    clientSecret: '6ca16373efa03347e11a96ff92e355c5cea189bb',
+    repo: 'Comment',
+    owner: 'chanshiyucx',
+    admin: ['chanshiyucx'],
+    distractionFreeMode: false // 是否开始无干扰模式【背景遮罩】
+  },
+
+  /**
    * ========================================
    *                页面设置
    * ========================================
@@ -43,6 +55,34 @@ export default {
   friendsOpts: {
     enableGitalk: true,
     qoute: '青青子衿，悠悠我心'
+  },
+
+  /**
+   * 关于页面
+   */
+  aboutOpts: {
+    enableGitalk: true,
+    qoute: '蝉鸣如雨，花宵道中',
+    avatar: 'https://i.loli.net/2018/12/09/5c0cc2b4e0195.png',
+    // 联系方式
+    contact: [
+      {
+        icon: 'https://i.loli.net/2018/12/09/5c0cc5147e2e5.png',
+        link: 'http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=tNnR9Nfc1drH3N3NwZrX29k'
+      },
+      {
+        icon: 'https://i.loli.net/2018/12/09/5c0cc516d9d5f.png',
+        link: 'https://github.com/chanshiyucx'
+      },
+      {
+        icon: 'https://i.loli.net/2018/12/09/5c0cc518dc4f4.png',
+        link: 'https://www.zhihu.com/people/ichanshiyu/activities'
+      },
+      {
+        icon: 'https://i.loli.net/2018/12/09/5c0cc51ae4f0c.png',
+        link: 'https://music.163.com/#/user/home?id=103060582'
+      }
+    ]
   },
 
   /**
