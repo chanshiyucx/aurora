@@ -1,0 +1,32 @@
+#header {
+  .inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0.5rem 0;
+    overflow: hidden;
+    .title,
+    .subtitle {
+      font-family: GuDianMingChaoTi;
+      animation-name: fadeInDown;
+      animation-duration: 0.6s;
+      transform-origin: top center;
+    }
+    .title {
+      font-size: 0.52rem;
+      line-height: 0.6rem;
+      letter-spacing: 2px;
+      transition: color 0.25s ease-out;
+      &:hover {
+        color: #b854d4;
+      }
+    }
+    .subtitle {
+      font-size: 0.22rem;
+      line-height: 0.36rem;
+      letter-spacing: 4px;
+    }
+  }
+}

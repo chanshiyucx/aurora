@@ -4,3 +4,236 @@
   box-sizing: border-box;
   color: #555;
 }
+
+/* fade-transform */
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.5s;
+}
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* 烟花特效 */
+#fireworks {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* 滚动条 */
+&::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: #eee;
+}
+&::-webkit-scrollbar-thumb {
+  background-color: #986db2;
+  background-image: -webkit-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.4) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.4) 75%,
+    transparent 75%,
+    transparent
+  );
+}
+&::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* 轮播背景 */
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-image: url(https://i.loli.net/2018/12/16/5c164034ac74c.jpg);
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+}
+
+.backstretch li {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: imageAnimation 80s linear infinite 0s;
+}
+.backstretch li:nth-child(1) {
+  background-image: url(https://i.loli.net/2018/12/16/5c164034ac74c.jpg); // 1
+}
+.backstretch li:nth-child(2) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc108c3b5c.jpg); // 3
+  animation-delay: 8s;
+}
+.backstretch li:nth-child(3) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc1010f9e5.jpg); // 2
+  animation-delay: 16s;
+}
+.backstretch li:nth-child(4) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc10d3d771.jpg); // 4
+  animation-delay: 24s;
+}
+.backstretch li:nth-child(5) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc111f30a3.jpg); // 5
+  animation-delay: 32s;
+}
+.backstretch li:nth-child(6) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc1159ea42.jpg); // 6
+  animation-delay: 40s;
+}
+.backstretch li:nth-child(7) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc11b0691b.jpg); // 7
+  animation-delay: 48s;
+}
+.backstretch li:nth-child(8) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc12115c2e.jpg); // 8
+  animation-delay: 56s;
+}
+.backstretch li:nth-child(9) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc0f409d63.jpg);
+  animation-delay: 64s;
+}
+.backstretch li:nth-child(10) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc1268cd42.jpg);
+  animation-delay: 72s;
+}
+/* Animation for the slideshow images */
+@keyframes imageAnimation {
+  0% {
+    opacity: 0;
+    animation-timing-function: ease-in;
+  }
+  1.5% {
+    opacity: 1;
+  }
+  12% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  13% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 代码高亮 */
+code[class*='language-'] {
+  width: 100%;
+  font-weight: bold;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+pre {
+  padding: 0.12rem 0.16rem;
+  max-height: 6rem;
+  line-height: 1.5;
+  background: rgba(0, 0, 0, 0.08);
+  box-shadow: #999 0px 10px 8px -10px inset, #999 0px -10px 8px -10px inset;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: #986db2;
+    background-image: -webkit-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.4) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0.4) 75%,
+      transparent 75%,
+      transparent
+    );
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+}
+
+td.hljs-ln-numbers {
+  padding-right: 0.16rem;
+  text-align: center;
+}
+
+/* 灯箱 */
+.viewer-container {
+  animation: elastic 0.5s;
+}
+.viewer-title {
+  font-size: 0.16rem;
+  color: #fff;
+  text-shadow: 0 1px 1px #555;
+  text-transform: capitalize;
+}
+.viewer-hide-md-down {
+  margin-bottom: 0.06rem;
+}
+.viewer-backdrop {
+  background-color: rgba(0, 0, 0, 0.66);
+}
+.viewer-canvas {
+  img {
+    box-shadow: 0 0 1.6rem #eee;
+  }
+}
+@keyframes elastic {
+  0% {
+    transform: scale(0);
+  }
+  55% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(0.94);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

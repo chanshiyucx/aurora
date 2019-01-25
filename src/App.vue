@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <vue-progress-bar></vue-progress-bar>
+    <Header />
     <div id="nav">
       <RouterLink to="/">Home</RouterLink>|
       <RouterLink to="/about">About</RouterLink>
@@ -17,12 +18,14 @@
 
 <script>
 import SmoothScroll from 'smooth-scroll'
+import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { on } from '@/utils'
 
 export default {
   name: 'App',
   components: {
+    Header,
     Footer
   },
   data() {
