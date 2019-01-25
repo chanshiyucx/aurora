@@ -7,13 +7,20 @@
           <div class="header">
             <img :src="$config.aboutOpts.avatar" alt="" />
             <div class="info">
-              <span> <i class="icon icon-heart"></i> {{ $config.title }}</span>
-              <span> <i class="icon icon-heart"></i> {{ $config.subtitle }}</span>
-              <span> <i class="icon icon-heart"></i> {{ $config.aboutOpts.graduated }}</span>
-              <span> <i class="icon icon-heart"></i> {{ $config.aboutOpts.college }}</span>
+              <span> <i class="icon icon-fort-awesome"></i> {{ $config.title }}</span>
+              <span> <i class="icon icon-pagelines"></i> {{ $config.subtitle }}</span>
+              <span>
+                <i class="icon icon-graduation-cap"></i> {{ $config.aboutOpts.graduated }}</span
+              >
+              <span> <i class="icon icon-tripadvisor"></i> {{ $config.aboutOpts.college }}</span>
             </div>
           </div>
-          <Segment v-for="item in about" :key="item.title" :title="item.title" :color="'#f60'">
+          <Segment
+            v-for="(item, i) in about"
+            :key="item.title"
+            :title="item.title"
+            :color="colors[i]"
+          >
             <MarkDown :content="item.content" :onlyRender="true" />
           </Segment>
         </div>
@@ -31,6 +38,7 @@ import MarkDown from '@/components/MarkDown'
 import Loading from '@/components/Loading'
 import Quote from '@/components/Quote'
 import Segment from '@/components/Segment'
+import { shuffle } from '@/utils'
 
 export default {
   name: 'Friend',
@@ -42,7 +50,8 @@ export default {
   },
   data() {
     return {
-      about: ''
+      about: '',
+      colors: shuffle(this.$config.themeColors)
     }
   },
   created() {

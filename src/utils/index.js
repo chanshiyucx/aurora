@@ -78,15 +78,19 @@ export const debounce = (func, wait, immediate = false) => {
 }
 
 /**
- * @description 是否重复操作
- * @param {string} [name='default'] 操作标识符
- * @param {number} [time=300] 间隔时间
- * @returns
+ * Fisher–Yates Shuffle 洗牌算法
  */
-const reData = {}
-export const isRepeat = (name = 'default', time = 300) => {
-  const i = new Date()
-  const re = i - (isNaN(reData[name]) ? 0 : reData[name])
-  reData[name] = i
-  return re <= time
+export const shuffle = array => {
+  let m = array.length
+  let i
+
+  // While there remain elements to shuffle…
+  while (m) {
+    // Pick a remaining element…
+    i = Math.floor(Math.random() * m--)
+    // And swap it with the current element.
+    ;[array[m], array[i]] = [array[i], array[m]]
+  }
+
+  return array
 }

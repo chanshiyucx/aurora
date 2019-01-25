@@ -101,5 +101,21 @@ export default {
   /**
    * 文章默认图
    */
-  defaultCover: 'https://i.loli.net/2019/01/24/5c49bd8dad2f5.jpg'
+  defaultCover: 'https://i.loli.net/2019/01/24/5c49bd8dad2f5.jpg',
+
+  /**
+   * 主题配色，目前主要用于文章、说说、关于等卡片配色，以后可能会有其他用途
+   * 推荐一个好看的取色站，日本の伝統色：http://nipponcolors.com/
+   */
+  themeColors: [
+    '#B28FCE', // 薄
+    '#86C166', // 苗
+    '#F9BF45', // 玉子
+    '#FAD689', // 浅黄
+    '#F596AA', // 桃
+    '#E79460', // 洗柿
+    '#2EA9DF', // 露草
+    '#FFBA84', // 洒落柿
+    '#7DB9DE' // 勿忘草
+  ]
 }

@@ -21,13 +21,13 @@ export default {
     return {
       menus: [
         { name: '/', icon: 'shop', title: '首页' },
-        { name: 'archive', icon: 'shop', title: '归档' },
-        { name: 'categorie', icon: 'shop', title: '分类' },
-        { name: 'tag', icon: 'shop', title: '标签' },
-        { name: 'mood', icon: 'heart', title: '心情' },
-        { name: 'book', icon: 'pencil', title: '书单' },
-        { name: 'friend', icon: 'shop', title: '友链' },
-        { name: 'about', icon: 'shop', title: '关于' }
+        { name: '/archive', icon: 'inbox', title: '归档' },
+        { name: '/categorie', icon: 'bookmark-empty', title: '分类' },
+        { name: '/tag', icon: 'tag', title: '标签' },
+        { name: '/mood', icon: 'comment', title: '心情' },
+        { name: '/book', icon: 'pencil', title: '书单' },
+        { name: '/friend', icon: 'heart', title: '友链' },
+        { name: '/about', icon: 'universal-access', title: '关于' }
       ]
     }
   },

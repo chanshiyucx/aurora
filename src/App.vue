@@ -114,7 +114,7 @@ export default {
     background: url(https://i.loli.net/2019/01/24/5c496f5c617f6.png) no-repeat center;
     background-size: contain;
     &.visible {
-      animation: float 0.25s linear infinite;
+      animation: float 3s linear infinite;
     }
   }
   .page {

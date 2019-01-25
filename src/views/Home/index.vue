@@ -74,7 +74,8 @@ export default {
     AOS.init({
       duration: 2000,
       easing: 'ease-out',
-      debounceDelay: 200
+      debounceDelay: 200,
+      offset: 30
     })
   },
   methods: {
