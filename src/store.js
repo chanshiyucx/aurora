@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { queryPosts, queryPost, queryHot } from './utils/services'
-import { formatPost } from './utils/format'
+import { queryPosts, queryPost, queryHot, queryPage } from './utils/services'
+import { formatPost, formatPage } from './utils/format'
 
 Vue.use(Vuex)
 
@@ -76,6 +76,13 @@ export default new Vuex.Store({
         post = formatPost(post)
       }
       return post
+    },
+    // 获取书单 & 友链 & 关于
+    async queryPage(context, { type }) {
+      let data = await queryPage(type)
+      console.log('type', type, data)
+      data = formatPage(data, type)
+      return data
     }
   }
 })

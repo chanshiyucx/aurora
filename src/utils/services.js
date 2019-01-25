@@ -41,6 +41,20 @@ export const queryPost = async number => {
   }
 }
 
+// 获取书单 & 友链 & 关于
+export const queryPage = async type => {
+  try {
+    const upperType = type.replace(/^\S/, s => s.toUpperCase())
+    const url = `${blog}/issues?${closed}&labels=${upperType}`
+    const response = await fetch(url)
+    checkStatus(response)
+    const data = await response.json()
+    return data[0]
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 // 文章热度
 export const queryHot = async postList => {
   return new Promise(resolve => {

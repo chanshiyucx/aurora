@@ -17,6 +17,11 @@ export default new Router({
       component: () => import('./views/Post')
     },
     {
+      path: '/friend',
+      name: 'friend',
+      component: () => import('./views/Friend')
+    },
+    {
       path: '/about',
       name: 'about',
       component: () => import('./views/About')

@@ -2,7 +2,9 @@
   <div id="app">
     <vue-progress-bar></vue-progress-bar>
     <Header />
-    <Transition name="fade-transform" mode="out-in"> <router-view /> </Transition>
+    <div class="page">
+      <Transition name="fade-transform" mode="out-in"> <RouterView /> </Transition>
+    </div>
     <Footer />
     <a
       href="#"
@@ -114,6 +116,10 @@ export default {
     &.visible {
       animation: float 0.25s linear infinite;
     }
+  }
+  .page {
+    margin: 0 auto;
+    max-width: 900px;
   }
 }
 </style>
