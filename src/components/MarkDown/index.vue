@@ -54,7 +54,8 @@ export default {
   },
   data() {
     return {
-      html: ''
+      html: '',
+      gallery: ''
     }
   },
   created() {
@@ -74,16 +75,25 @@ export default {
       this.$nextTick(() => {
         // 并不是每个 marked 都需要高亮处理
         if (this.target) {
-          new Viewer(document.getElementById('post'), {
-            toolbar: 4
-          })
-
+          // 代码行数
           hljs.initLineNumbersOnLoad({
             target: this.target
           })
+
+          // 灯箱
+          const box = document.getElementById('post')
+          box.addEventListener('hidden', function() {
+            // 清空 title
+            const element = document.querySelector('.viewer-title')
+            element.innerHTML = ''
+          })
+          this.gallery = new Viewer(box)
         }
       })
     }
+  },
+  beforeDestroy() {
+    this.gallery && this.gallery.destroy()
   }
 }
 </script>
