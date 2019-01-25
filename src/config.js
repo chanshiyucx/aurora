@@ -52,7 +52,7 @@ export default {
   /**
    * 友链页面
    */
-  friendsOpts: {
+  friendOpts: {
     enableGitalk: true,
     qoute: '青青子衿，悠悠我心'
   },
@@ -64,6 +64,8 @@ export default {
     enableGitalk: true,
     qoute: '蝉鸣如雨，花宵道中',
     avatar: 'https://i.loli.net/2018/12/09/5c0cc2b4e0195.png',
+    graduated: 'University of Electronic Science and Technology of China (UESTC)',
+    college: 'Communication&Information Engineering',
     // 联系方式
     contact: [
       {

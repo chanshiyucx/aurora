@@ -1,8 +1,8 @@
 <template>
-  <div id="friends">
+  <div id="friend">
     <Transition name="fade-transform" mode="out-in">
       <div class="card" v-if="friends.length">
-        <Quote :quote="$config.friendsOpts.qoute" />
+        <Quote :quote="$config.friendOpts.qoute" />
         <ul class="content">
           <li v-for="item in friends" :key="item.name">
             <a :href="item.link" rel="noopener noreferrer" target="_blank">
@@ -18,7 +18,7 @@
       <Loading v-else />
     </Transition>
 
-    <div v-if="$config.friendsOpts.enableGitalk" id="gitalk" />
+    <div v-if="$config.friendOpts.enableGitalk" id="gitalk" />
   </div>
 </template>
 
@@ -44,14 +44,13 @@ export default {
   methods: {
     async queryFriends() {
       this.friends = await this.$store.dispatch('queryPage', { type: 'friends' })
-      if (this.$config.friendsOpts.enableGitalk) {
+      if (this.$config.friendOpts.enableGitalk) {
         this.$nextTick(() => {
           const gitalk = new Gitalk({
             ...this.$config.gitalk,
             title: '友链'
           })
           gitalk.render('gitalk')
-          console.log('gitalk', gitalk)
         })
       }
     }
