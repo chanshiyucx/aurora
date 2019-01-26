@@ -62,39 +62,7 @@ export default {
    */
   categoryOpts: {
     enableGitalk: false,
-    qoute: '行云流水，落笔生花',
-    list: [
-      {
-        name: '事件簿', // name 和 Milestone 必须一致
-        text: '今天又是和平的一天~',
-        img: 'https://i.loli.net/2018/12/09/5c0cc2e59a322.jpg'
-      },
-      {
-        name: '技术向',
-        text: '技术什么的真是不懂啦',
-        img: 'https://i.loli.net/2018/12/09/5c0cc2e8305b1.jpg'
-      },
-      {
-        name: '笔记本',
-        text: '拾花集',
-        img: 'https://i.loli.net/2018/12/09/5c0cc2eabee8e.jpg'
-      },
-      {
-        name: '代码库',
-        text: 'Life is short, Code is long',
-        img: 'https://i.loli.net/2018/12/09/5c0cc2ed1ef66.jpg'
-      },
-      {
-        name: '分享境',
-        text: '偷偷给你看点东西',
-        img: 'https://i.loli.net/2018/12/09/5c0cc2efb6814.jpg'
-      },
-      {
-        name: '自言语',
-        text: '欲言又止，止言又欲',
-        img: 'https://i.loli.net/2018/12/09/5c0cc2f1f254f.jpg'
-      }
-    ]
+    qoute: '行云流水，落笔生花'
   },
 
   /**

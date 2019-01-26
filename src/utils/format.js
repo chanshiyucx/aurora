@@ -18,6 +18,18 @@ export const formatPost = post => {
 }
 
 /**
+ * 格式化分类
+ */
+export const formatCategory = category => {
+  category.forEach(o => {
+    const desc = o.description.split('\r\n')
+    o.summary = desc[0].split('summary:')[1]
+    o.cover = desc[1].split('cover:')[1]
+  })
+  return category
+}
+
+/**
  * 格式化心情
  */
 export const formatMood = mood => {

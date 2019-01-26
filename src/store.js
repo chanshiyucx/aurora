@@ -9,7 +9,7 @@ import {
   queryMood,
   queryPage
 } from './utils/services'
-import { formatPost, formatMood, formatPage } from './utils/format'
+import { formatPost, formatCategory, formatMood, formatPage } from './utils/format'
 
 Vue.use(Vuex)
 
@@ -95,7 +95,8 @@ export default new Vuex.Store({
     },
     // 获取分类
     async queryCategory() {
-      const data = await queryCategory()
+      let data = await queryCategory()
+      data = formatCategory(data)
       return data
     },
     // 获取标签

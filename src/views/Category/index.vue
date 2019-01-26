@@ -4,9 +4,13 @@
       <div class="card" v-if="category.length">
         <Quote :quote="$config.categoryOpts.qoute" />
         <ul class="content">
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
+          <li v-for="item in category" :key="item.id">
+            <img class="bg" :src="item.cover" alt="" />
+            <div class="meta">
+              <div><img class="avatar" :src="item.cover" alt="" /></div>
+              <p>{{ item.summary }}</p>
+            </div>
+          </li>
         </ul>
       </div>
       <Loading v-else />
