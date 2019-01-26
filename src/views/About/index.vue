@@ -5,14 +5,12 @@
         <Quote :quote="$config.aboutOpts.qoute" />
         <div class="content">
           <div class="header">
-            <img :src="$config.aboutOpts.avatar" alt="" />
+            <img :src="$config.aboutOpts.avatar" alt />
             <div class="info">
-              <span> <i class="icon icon-fort-awesome"></i> {{ $config.title }}</span>
-              <span> <i class="icon icon-pagelines"></i> {{ $config.subtitle }}</span>
-              <span>
-                <i class="icon icon-graduation-cap"></i> {{ $config.aboutOpts.graduated }}
-              </span>
-              <span> <i class="icon icon-tripadvisor"></i> {{ $config.aboutOpts.college }}</span>
+              <span> <i class="icon icon-fort-awesome"></i> {{ $config.title }} </span>
+              <span> <i class="icon icon-pagelines"></i> {{ $config.subtitle }} </span>
+              <span> <i class="icon icon-graduation-cap"></i> {{ $config.aboutOpts.graduated }} </span>
+              <span> <i class="icon icon-tripadvisor"></i> {{ $config.aboutOpts.college }} </span>
             </div>
           </div>
           <div class="contact">
@@ -23,15 +21,10 @@
               rel="noopener noreferrer"
               target="_blank"
             >
-              <img alt="" :src="item.icon" />
+              <img alt :src="item.icon" />
             </a>
           </div>
-          <Segment
-            v-for="(item, i) in about"
-            :key="item.title"
-            :title="item.title"
-            :color="colors[i]"
-          >
+          <Segment v-for="(item, i) in about" :key="item.title" :title="item.title" :color="colors[i]">
             <MarkDown :content="item.content" :onlyRender="true" />
           </Segment>
         </div>

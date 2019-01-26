@@ -29,10 +29,11 @@
         </article>
       </div>
     </Transition>
+
     <Transition name="fade-transform" mode="out-in">
       <div v-if="posts.length === 0"><Loading /></div>
       <div v-else-if="hasMore && posts.length" class="pagination" @click="queryPosts">
-        <div class="previous">
+        <div class="previous cursor">
           <Spinner v-if="loading"></Spinner>
           <span v-else>Previous</span>
         </div>

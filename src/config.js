@@ -50,6 +50,14 @@ export default {
    */
 
   /**
+   * 归档页面
+   */
+  archiveOpts: {
+    enableGitalk: false,
+    qoute: '文章千古事，得失寸心知'
+  },
+
+  /**
    * 书单页面
    */
   bookOpts: {

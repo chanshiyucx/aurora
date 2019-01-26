@@ -8,7 +8,7 @@
             <div class="info">
               <img :src="item.cover" alt />
               <div>
-                <h2>{{ item.name }}</h2>
+                <h3>{{ item.name }}</h3>
                 <p>作者：{{ item.author }}</p>
                 <p>出版时间：{{ item.published }}</p>
                 <p>阅读进度：{{ item.progress }}</p>

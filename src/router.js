@@ -17,6 +17,11 @@ export default new Router({
       component: () => import('./views/Post')
     },
     {
+      path: '/archive',
+      name: 'archive',
+      component: () => import('./views/Archive')
+    },
+    {
       path: '/book',
       name: 'book',
       component: () => import('./views/Book')
