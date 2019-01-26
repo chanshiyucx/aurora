@@ -4,10 +4,13 @@
       <div class="card" v-if="category.length">
         <Quote :quote="$config.categoryOpts.qoute" />
         <ul class="content">
-          <li v-for="item in category" :key="item.id">
+          <li class="card" v-for="item in category" :key="item.id" @click="filterPosts(item)">
             <img class="bg" :src="item.cover" alt="" />
             <div class="meta">
-              <div><img class="avatar" :src="item.cover" alt="" /></div>
+              <div>
+                <img class="avatar" :src="item.cover" alt="" />
+                <span> {{ item.title }} ({{ item.open_issues }}) </span>
+              </div>
               <p>{{ item.summary }}</p>
             </div>
           </li>
@@ -34,8 +37,10 @@ export default {
   },
   data() {
     return {
+      loading: false,
       colors: shuffle(this.$config.themeColors),
-      category: []
+      category: [],
+      posts: []
     }
   },
   async created() {
@@ -58,6 +63,16 @@ export default {
           gitalk.render('gitalk')
         })
       }
+    },
+    // 查找文章
+    async filterPosts(category) {
+      this.loading = true
+      this.posts = await this.$store.dispatch('filterPosts', {
+        type: 'milestone',
+        filter: category.number
+      })
+      console.log('this.posts', this.posts)
+      this.loading = false
     }
   }
 }

@@ -67,6 +67,19 @@ export const queryTag = async () => {
   }
 }
 
+// 筛选文章
+export const queryFilterPosts = async ({ type, filter }) => {
+  try {
+    const url = `${blog}/issues?${type}=${filter}&${token}`
+    const response = await fetch(url)
+    checkStatus(response)
+    const data = await response.json()
+    return data
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 // 获取心情
 export const queryMood = async ({ page = 1, pageSize = 10 }) => {
   try {

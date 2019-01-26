@@ -20,8 +20,8 @@ export default {
   padding: 0.14rem 0.16rem;
   text-align: justify;
   line-height: 1.6;
-  border-top: 2px solid currentColor;
   overflow: unset;
+  border-top: 2px solid currentColor;
   background-color: rgba(255, 255, 255, 0.4);
   transition: all 0.25s ease 0s, transform 0.6s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
   &:hover {

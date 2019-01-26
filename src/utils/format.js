@@ -84,6 +84,5 @@ export const formatPage = (data, type) => {
     default:
       break
   }
-  console.log('section', section)
   return section
 }

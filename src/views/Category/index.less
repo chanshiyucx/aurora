@@ -1,7 +1,6 @@
 #category {
   .card {
     padding-top: 0.16rem;
-    overflow: unset;
   }
   .content {
     display: flex;
@@ -9,18 +8,67 @@
     justify-content: space-between;
     padding: 0.16rem;
     li {
+      position: relative;
+      padding-top: 0;
+      margin-bottom: 0.16rem;
+      width: 32.2%;
+      height: 1.6rem;
       list-style: none;
       overflow: hidden;
-      // margin: 0.1rem 0.12rem;
-      // span {
-      //   padding: 0.04rem 0.1rem 0.06rem;
-      //   border-radius: 3px;
-      //   background: rgba(0, 0, 0, 0.16);
-      //   transition: all 0.25s ease-out;
-      //   &:hover {
-      //     background: rgba(0, 0, 0, 0.3);
-      //   }
-      // }
+      transition: all 0.25s ease 0s, transform 0.6s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.24);
+        .avatar {
+          animation-play-state: paused;
+          transform: rotateZ(360deg);
+        }
+      }
+      .bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .meta {
+        position: relative;
+        padding: 0 0.16rem;
+        width: 100%;
+        height: 100%;
+        text-align: justify;
+        text-shadow: 0 0 1px #666;
+        background-color: rgba(255, 255, 255, 0.66);
+        > div {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          height: 80%;
+        }
+        .avatar {
+          width: 0.8rem;
+          height: 0.8rem;
+          border-radius: 50%;
+          border: 4px solid rgba(255, 255, 255, 0.66);
+          box-shadow: 0 0 10px #999;
+          background-color: rgba(0, 0, 0, 0.1);
+          transition: transform 1s ease-out;
+        }
+        span {
+          padding: 0 0.12rem;
+          height: 0.4rem;
+          line-height: 0.4rem;
+          border-radius: 0.03rem;
+          background: rgba(255, 255, 255, 0.8);
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+        }
+      }
+      p {
+        position: absolute;
+        bottom: 0;
+        padding: 0.12rem 0.16rem;
+      }
     }
   }
 }

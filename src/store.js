@@ -6,6 +6,7 @@ import {
   queryHot,
   queryTag,
   queryCategory,
+  queryFilterPosts,
   queryMood,
   queryPage
 } from './utils/services'
@@ -103,6 +104,10 @@ export default new Vuex.Store({
     async queryTag() {
       let data = await queryTag()
       data = data.filter(o => o.name !== 'Friend' && o.name !== 'Book' && o.name !== 'About')
+      return data
+    },
+    async filterPosts(context, payload) {
+      const data = await queryFilterPosts(payload)
       return data
     },
     // 获取心情

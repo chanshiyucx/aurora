@@ -25,6 +25,7 @@ export default {
     letter-spacing: 1px;
   }
   i {
+    color: #666;
     position: absolute;
     font-size: 0.24rem;
   }
