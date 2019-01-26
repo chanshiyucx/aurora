@@ -22,7 +22,7 @@
             </div>
           </li>
         </ul>
-        <div class="btn-group" v-if="!isDisabledPrev && !isDisabledNext">
+        <div class="btn-group" v-if="!isDisabledPrev || !isDisabledNext">
           <Pagination
             :loading="loading"
             :isDisabledPrev="isDisabledPrev"
@@ -83,9 +83,10 @@ export default {
       if (type === 'prev' && this.isDisabledPrev) return
       if (type === 'next' && this.isDisabledNext) return
       const queryPage = type === 'prev' ? this.page - 1 : this.page + 1
-      this.page = queryPage
+
       if (this.list[queryPage]) {
         this.archives = this.list[queryPage]
+        this.page = queryPage
         return
       }
 
@@ -95,7 +96,12 @@ export default {
         pageSize: this.pageSize
       })
       this.loading = false
+      if (archives.length === 0) {
+        this.maxPage = queryPage - 1
+        return
+      }
 
+      this.page = queryPage
       this.archives = archives
       this.list[queryPage] = archives
       if (archives.length < this.pageSize) {

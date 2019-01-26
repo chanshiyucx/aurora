@@ -8,7 +8,7 @@
             <MarkDown :content="item.body" :onlyRender="true" />
           </Segment>
         </div>
-        <div class="btn-group" v-if="!isDisabledPrev && !isDisabledNext">
+        <div class="btn-group" v-if="!isDisabledPrev || !isDisabledNext">
           <Pagination
             :loading="loading"
             :isDisabledPrev="isDisabledPrev"

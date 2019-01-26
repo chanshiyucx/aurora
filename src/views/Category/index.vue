@@ -1,18 +1,18 @@
 <template>
-  <div id="tag">
+  <div id="category">
     <Transition name="fade-transform" mode="out-in">
-      <div class="card" v-if="tag.length">
-        <Quote :quote="$config.tagOpts.qoute" />
+      <div class="card" v-if="category.length">
+        <Quote :quote="$config.categoryOpts.qoute" />
         <ul class="content">
-          <li v-for="item in tag" :key="item.id">
-            <span :style="{ color: `#${item.color}` }">{{ item.name }}</span>
-          </li>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
         </ul>
       </div>
       <Loading v-else />
     </Transition>
 
-    <div v-if="$config.tagOpts.enableGitalk" id="gitalk" />
+    <div v-if="$config.categoryOpts.enableGitalk" id="gitalk" />
   </div>
 </template>
 
@@ -23,7 +23,7 @@ import Quote from '@/components/Quote'
 import { shuffle } from '@/utils'
 
 export default {
-  name: 'Tag',
+  name: 'Category',
   components: {
     Loading,
     Quote
@@ -31,24 +31,25 @@ export default {
   data() {
     return {
       colors: shuffle(this.$config.themeColors),
-      tag: []
+      category: []
     }
   },
   async created() {
-    await this.queryTag()
+    await this.queryCategory()
     this.renderGitalk()
   },
   methods: {
-    async queryTag() {
-      this.tag = await this.$store.dispatch('queryTag')
+    async queryCategory() {
+      this.category = await this.$store.dispatch('queryCategory')
+      console.log('category', this.category)
     },
     // 加载 Gitalk
     renderGitalk() {
-      if (this.$config.tagOpts.enableGitalk) {
+      if (this.$config.categoryOpts.enableGitalk) {
         this.$nextTick(() => {
           const gitalk = new Gitalk({
             ...this.$config.gitalk,
-            title: '标签'
+            title: '分类'
           })
           gitalk.render('gitalk')
         })

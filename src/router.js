@@ -22,6 +22,11 @@ export default new Router({
       component: () => import('./views/Archive')
     },
     {
+      path: '/category',
+      name: 'category',
+      component: () => import('./views/Category')
+    },
+    {
       path: '/tag',
       name: 'tag',
       component: () => import('./views/Tag')

@@ -1,6 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { queryPosts, queryPost, queryHot, queryTag, queryMood, queryPage } from './utils/services'
+import {
+  queryPosts,
+  queryPost,
+  queryHot,
+  queryTag,
+  queryCategory,
+  queryMood,
+  queryPage
+} from './utils/services'
 import { formatPost, formatMood, formatPage } from './utils/format'
 
 Vue.use(Vuex)
@@ -85,9 +93,15 @@ export default new Vuex.Store({
       }
       return post
     },
+    // 获取分类
+    async queryCategory() {
+      const data = await queryCategory()
+      return data
+    },
     // 获取标签
     async queryTag() {
-      const data = await queryTag()
+      let data = await queryTag()
+      data = data.filter(o => o.name !== 'Friend' && o.name !== 'Book' && o.name !== 'About')
       return data
     },
     // 获取心情
