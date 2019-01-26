@@ -8,8 +8,19 @@
             <MarkDown :content="item.body" :onlyRender="true" />
           </Segment>
         </div>
+        <div class="btn-group" v-if="!isDisabledPrev && !isDisabledNext">
+          <Pagination
+            :loading="loading"
+            :isDisabledPrev="isDisabledPrev"
+            :isDisabledNext="isDisabledNext"
+            @handleClick="queryMood"
+          />
+        </div>
       </div>
-      <Loading v-else />
+    </Transition>
+
+    <Transition name="fade-transform" mode="out-in">
+      <div v-if="mood.length === 0"><Loading /></div>
     </Transition>
 
     <div v-if="$config.moodOpts.enableGitalk" id="gitalk" />
@@ -22,6 +33,7 @@ import MarkDown from '@/components/MarkDown'
 import Loading from '@/components/Loading'
 import Quote from '@/components/Quote'
 import Segment from '@/components/Segment'
+import Pagination from '@/components/Pagination'
 import { shuffle } from '@/utils'
 
 export default {
@@ -30,7 +42,8 @@ export default {
     MarkDown,
     Loading,
     Quote,
-    Segment
+    Segment,
+    Pagination
   },
   data() {
     return {

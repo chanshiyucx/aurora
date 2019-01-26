@@ -33,7 +33,7 @@ export default {
     position: relative;
     left: -0.46rem;
     margin-bottom: 0.1rem;
-    padding: 0 0.14rem 0 0.36rem;
+    padding: 0 0.14rem 0 0.32rem;
     height: 0.32rem;
     line-height: 0.32rem;
     border-radius: 0 3px 3px 0;

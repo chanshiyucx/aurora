@@ -22,17 +22,13 @@
             </div>
           </li>
         </ul>
-        <div class="btn-group">
-          <div class="pagination">
-            <div class="previous">
-              <Spinner v-if="loading"></Spinner>
-              <div v-else class="btn cursor">
-                <span :class="isDisabledPrev && 'disabled'" @click="queryArchives('prev')">Prev</span>
-                <span :class="isDisabledNext && 'disabled'" @click="queryArchives('next')">Next</span>
-              </div>
-            </div>
-            <div class="rect"></div>
-          </div>
+        <div class="btn-group" v-if="!isDisabledPrev && !isDisabledNext">
+          <Pagination
+            :loading="loading"
+            :isDisabledPrev="isDisabledPrev"
+            :isDisabledNext="isDisabledNext"
+            @handleClick="queryArchives"
+          />
         </div>
       </div>
     </Transition>
@@ -49,15 +45,15 @@
 import Gitalk from 'gitalk'
 import Loading from '@/components/Loading'
 import Quote from '@/components/Quote'
-import Spinner from '@/components/Spinner'
+import Pagination from '@/components/Pagination'
 import { shuffle } from '@/utils'
 
 export default {
   name: 'Archive',
   components: {
     Loading,
-    Spinner,
-    Quote
+    Quote,
+    Pagination
   },
   data() {
     return {
