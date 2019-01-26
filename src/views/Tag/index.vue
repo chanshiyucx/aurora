@@ -4,8 +4,8 @@
       <div class="card" v-if="tag.length">
         <Quote :quote="$config.tagOpts.qoute" />
         <ul class="content">
-          <li v-for="(item, i) in tag" :key="item.id">
-            <span :style="{ color: colors[i % colors.length] }">{{ item.name }}</span>
+          <li v-for="item in tag" :key="item.id">
+            <span :style="{ color: `#${item.color}` }">{{ item.name }}</span>
           </li>
         </ul>
       </div>
