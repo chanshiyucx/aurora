@@ -41,6 +41,32 @@ export const queryPost = async number => {
   }
 }
 
+// 获取分类
+export const queryCategory = async () => {
+  try {
+    const url = `${blog}/milestones?${token}`
+    const response = await fetch(url)
+    checkStatus(response)
+    const data = await response.json()
+    return data
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+// 获取标签
+export const queryTag = async () => {
+  try {
+    const url = `${blog}/labels?${token}`
+    const response = await fetch(url)
+    checkStatus(response)
+    const data = await response.json()
+    return data
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 // 获取心情
 export const queryMood = async ({ page = 1, pageSize = 10 }) => {
   try {

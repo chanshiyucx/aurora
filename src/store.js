@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { queryPosts, queryPost, queryHot, queryMood, queryPage } from './utils/services'
+import { queryPosts, queryPost, queryHot, queryTag, queryMood, queryPage } from './utils/services'
 import { formatPost, formatMood, formatPage } from './utils/format'
 
 Vue.use(Vuex)
@@ -84,6 +84,11 @@ export default new Vuex.Store({
         post = formatPost(post)
       }
       return post
+    },
+    // 获取标签
+    async queryTag() {
+      const data = await queryTag()
+      return data
     },
     // 获取心情
     async queryMood(context, { page, pageSize }) {

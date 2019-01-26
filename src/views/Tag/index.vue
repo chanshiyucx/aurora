@@ -3,7 +3,11 @@
     <Transition name="fade-transform" mode="out-in">
       <div class="card" v-if="tag.length">
         <Quote :quote="$config.tagOpts.qoute" />
-        <div class="content">12234</div>
+        <ul class="content">
+          <li v-for="(item, i) in tag" :key="item.id">
+            <span :style="{ color: colors[i % colors.length] }">{{ item.name }}</span>
+          </li>
+        </ul>
       </div>
       <Loading v-else />
     </Transition>
@@ -27,7 +31,7 @@ export default {
   data() {
     return {
       colors: shuffle(this.$config.themeColors),
-      tag: 0
+      tag: []
     }
   },
   async created() {
@@ -35,7 +39,10 @@ export default {
     this.renderGitalk()
   },
   methods: {
-    async queryTag() {},
+    async queryTag() {
+      this.tag = await this.$store.dispatch('queryTag')
+      console.log('tag', this.tag)
+    },
     // 加载 Gitalk
     renderGitalk() {
       if (this.$config.tagOpts.enableGitalk) {
