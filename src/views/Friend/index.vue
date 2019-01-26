@@ -1,10 +1,10 @@
 <template>
   <div id="friend">
     <Transition name="fade-transform" mode="out-in">
-      <div class="card" v-if="friends.length">
+      <div class="card" v-if="friend.length">
         <Quote :quote="$config.friendOpts.qoute" />
         <ul class="content">
-          <li v-for="item in friends" :key="item.name">
+          <li v-for="item in friend" :key="item.name">
             <a :href="item.link" rel="noopener noreferrer" target="_blank">
               <img class="cover" alt :src="item.cover" />
               <div class="info">
@@ -35,7 +35,7 @@ export default {
   },
   data() {
     return {
-      friends: []
+      friend: []
     }
   },
   async created() {
@@ -45,7 +45,7 @@ export default {
   methods: {
     // 获取友链
     async queryFriends() {
-      this.friends = await this.$store.dispatch('queryPage', { type: 'friends' })
+      this.friend = await this.$store.dispatch('queryPage', { type: 'friend' })
     },
     // 加载 Gitalk
     renderGitalk() {

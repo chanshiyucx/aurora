@@ -33,7 +33,7 @@ export const formatPage = (data, type) => {
   let section = data.body.split('## ').filter(o => o.length)
 
   switch (type) {
-    case 'books':
+    case 'book':
       section = section.map(o => {
         const content = o.split('\r\n').filter(o => o.length)
         return {
@@ -49,7 +49,7 @@ export const formatPage = (data, type) => {
         }
       })
       break
-    case 'friends':
+    case 'friend':
       section = section.map(o => {
         const content = o.split('\r\n').filter(o => o.length)
         return {

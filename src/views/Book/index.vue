@@ -1,10 +1,10 @@
 <template>
   <div id="book">
     <Transition name="fade-transform" mode="out-in">
-      <div class="card" v-if="books.length">
+      <div class="card" v-if="book.length">
         <Quote :quote="$config.bookOpts.qoute" />
         <ul class="content">
-          <li v-for="item in books" :key="item.name">
+          <li v-for="item in book" :key="item.name">
             <div class="info">
               <img :src="item.cover" alt />
               <div>
@@ -54,7 +54,7 @@ export default {
   },
   data() {
     return {
-      books: []
+      book: []
     }
   },
   async created() {
@@ -64,7 +64,7 @@ export default {
   methods: {
     // 获取书单
     async queryBooks() {
-      this.books = await this.$store.dispatch('queryPage', { type: 'books' })
+      this.book = await this.$store.dispatch('queryPage', { type: 'book' })
     },
     // 加载 Gitalk
     renderGitalk() {
