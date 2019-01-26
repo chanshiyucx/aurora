@@ -1,6 +1,6 @@
 <template>
   <div id="footer">
-    <div v-if="showWaifu" class="waifu">
+    <div v-if="showWaifu && !$isMobile" class="waifu">
       <div v-show="tips" :class="['tips', this.waifu === 'tia' && 'tia']" v-html="tips"></div>
       <canvas id="live2d" width="280" height="250" />
     </div>

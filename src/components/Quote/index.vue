@@ -1,7 +1,6 @@
 <template>
   <div class="quote">
-    <i class="icon icon-quote-left"></i> <span>{{ quote }}</span>
-    <i class="icon icon-quote-right"></i>
+    <i class="icon icon-quote-left"></i> <span>{{ quote }}</span> <i class="icon icon-quote-right"></i>
   </div>
 </template>
 
@@ -19,7 +18,7 @@ export default {
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-bottom: 0.32rem;
+  margin-bottom: 0.16rem;
   padding: 0.32rem 0;
   font-size: 0.16rem;
   span {

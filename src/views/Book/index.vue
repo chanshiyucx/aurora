@@ -1,7 +1,39 @@
 <template>
   <div id="book">
     <Transition name="fade-transform" mode="out-in">
-      <div class="card" v-if="books.length"><Quote :quote="$config.bookOpts.qoute" /></div>
+      <div class="card" v-if="books.length">
+        <Quote :quote="$config.bookOpts.qoute" />
+        <ul class="content">
+          <li v-for="item in books" :key="item.name">
+            <div class="info">
+              <img :src="item.cover" alt />
+              <div>
+                <h2>{{ item.name }}</h2>
+                <p>作者：{{ item.author }}</p>
+                <p>出版时间：{{ item.published }}</p>
+                <p>阅读进度：{{ item.progress }}</p>
+                <p>
+                  读书笔记：
+                  <a v-if="item.postLink" :href="item.postLink" rel="noopener noreferrer" target="_blank">
+                    {{ item.postTitle }}
+                  </a>
+                  <span v-else>暂无</span>
+                </p>
+                <p>
+                  推荐指数：
+                  <i class="icon icon-star" v-for="i in parseInt(item.rating)" :key="`star-${i}`"></i>
+                  <i
+                    class="icon icon-star unstar"
+                    v-for="i in 5 - parseInt(item.rating)"
+                    :key="`unstar-${i}`"
+                  ></i>
+                </p>
+              </div>
+            </div>
+            <div class="desc">{{ item.desc }}</div>
+          </li>
+        </ul>
+      </div>
       <Loading v-else />
     </Transition>
 
