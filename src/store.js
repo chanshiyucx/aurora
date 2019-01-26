@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { queryPosts, queryPost, queryHot, queryPage } from './utils/services'
-import { formatPost, formatPage } from './utils/format'
+import { queryPosts, queryPost, queryHot, queryMood, queryPage } from './utils/services'
+import { formatPost, formatMood, formatPage } from './utils/format'
 
 Vue.use(Vuex)
 
@@ -13,7 +13,6 @@ export default new Vuex.Store({
     tipsUpdateAt: '',
     page: 0,
     pageSize: 10,
-    maxPage: 0,
     posts: [],
     hasMore: true
   },
@@ -23,13 +22,9 @@ export default new Vuex.Store({
       state.tips = tips
       state.tipsUpdateAt = tipsUpdateAt
     },
-    // 设置当前页
-    setPage(state, { page }) {
-      state.page = page
-      if (!state.hasMore && !state.maxPage) state.maxPage = page
-    },
     // 设置文章列表
-    setPosts(state, { posts }) {
+    setPosts(state, { posts, page }) {
+      state.page = page
       state.posts = state.posts.concat(posts)
       state.hasMore = posts.length === state.pageSize
     },
@@ -66,27 +61,16 @@ export default new Vuex.Store({
       })
       data.forEach(formatPost)
       data = await queryHot(data)
-      commit('setPage', { page: page + 1 })
-      commit('setPosts', { posts: data })
+      commit('setPosts', { posts: data, page: page + 1 })
     },
     // 获取归档
-    async queryArchive({ commit, state }, { type = 'next' }) {
-      const { page, pageSize } = state
-      // 先查询在 posts 列表是否存在
-      const start = type === 'prev' ? page - 2 : page
-      const end = type === 'prev' ? page - 1 : page + 1
-      let data = state.posts.slice(start * pageSize, end * pageSize)
-      const queryPage = start + 1
-      if (!data.length) {
-        data = await queryPosts({
-          page: queryPage,
-          pageSize
-        })
-        data.forEach(formatPost)
-        data = await queryHot(data)
-        commit('setPosts', { posts: data })
-      }
-      commit('setPage', { page: queryPage })
+    async queryArchive(context, { page, pageSize }) {
+      let data = await queryPosts({
+        page,
+        pageSize
+      })
+      data.forEach(formatPost)
+      data = await queryHot(data)
       return data
     },
     // 获取文章详情
@@ -100,6 +84,15 @@ export default new Vuex.Store({
         post = formatPost(post)
       }
       return post
+    },
+    // 获取心情
+    async queryMood(context, { page, pageSize }) {
+      let data = await queryMood({
+        page,
+        pageSize
+      })
+      data = formatMood(data)
+      return data
     },
     // 获取书单 & 友链 & 关于
     async queryPage(context, { type }) {

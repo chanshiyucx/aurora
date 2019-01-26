@@ -46,7 +46,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import Gitalk from 'gitalk'
 import Loading from '@/components/Loading'
 import Quote from '@/components/Quote'
@@ -63,17 +62,15 @@ export default {
   data() {
     return {
       loading: false,
-      renderGitalk: false,
       colors: shuffle(this.$config.themeColors),
-      archives: []
+      page: 0,
+      pageSize: 10,
+      maxPage: 0,
+      archives: [],
+      list: []
     }
   },
   computed: {
-    ...mapState({
-      page: state => state.page,
-      hasMore: state => state.hasMore,
-      maxPage: state => state.maxPage
-    }),
     isDisabledPrev() {
       return this.page <= 1
     },
@@ -82,8 +79,9 @@ export default {
       return this.page >= this.maxPage
     }
   },
-  created() {
-    this.queryArchives()
+  async created() {
+    await this.queryArchives()
+    this.renderGitalk()
   },
   methods: {
     // 获取文章列表
@@ -91,11 +89,29 @@ export default {
       if (this.loading) return
       if (type === 'prev' && this.isDisabledPrev) return
       if (type === 'next' && this.isDisabledNext) return
+      const queryPage = type === 'prev' ? this.page - 1 : this.page + 1
+      this.page = queryPage
+      if (this.list[queryPage]) {
+        this.archives = this.list[queryPage]
+        return
+      }
+
       this.loading = true
-      this.archives = await this.$store.dispatch('queryArchive', { type })
+      const archives = await this.$store.dispatch('queryArchive', {
+        page: queryPage,
+        pageSize: this.pageSize
+      })
       this.loading = false
-      if (this.$config.archiveOpts.enableGitalk && !this.renderGitalk) {
-        this.renderGitalk = true
+
+      this.archives = archives
+      this.list[queryPage] = archives
+      if (archives.length < this.pageSize) {
+        this.maxPage = queryPage
+      }
+    },
+    // 加载 Gitalk
+    renderGitalk() {
+      if (this.$config.archiveOpts.enableGitalk) {
         this.$nextTick(() => {
           const gitalk = new Gitalk({
             ...this.$config.gitalk,
@@ -109,9 +125,6 @@ export default {
     gotoPost(number) {
       this.$router.push({ name: 'post', params: { number } })
     }
-  },
-  beforeDestroy() {
-    this.$store.commit('resetPosts')
   }
 }
 </script>

@@ -41,6 +41,19 @@ export const queryPost = async number => {
   }
 }
 
+// 获取心情
+export const queryMood = async ({ page = 1, pageSize = 10 }) => {
+  try {
+    const url = `${blog}/issues?${closed}&labels=mood&page=${page}&per_page=${pageSize}`
+    const response = await fetch(url)
+    checkStatus(response)
+    const data = await response.json()
+    return data
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 // 获取书单 & 友链 & 关于
 export const queryPage = async type => {
   try {

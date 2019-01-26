@@ -57,12 +57,17 @@ export default {
       books: []
     }
   },
-  created() {
-    this.queryBooks()
+  async created() {
+    await this.queryBooks()
+    this.renderGitalk()
   },
   methods: {
+    // 获取书单
     async queryBooks() {
       this.books = await this.$store.dispatch('queryPage', { type: 'books' })
+    },
+    // 加载 Gitalk
+    renderGitalk() {
       if (this.$config.bookOpts.enableGitalk) {
         this.$nextTick(() => {
           const gitalk = new Gitalk({

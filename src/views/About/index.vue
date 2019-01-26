@@ -58,12 +58,17 @@ export default {
       colors: shuffle(this.$config.themeColors)
     }
   },
-  created() {
-    this.queryAbout()
+  async created() {
+    await this.queryAbout()
+    this.renderGitalk()
   },
   methods: {
+    // 获取关于详情
     async queryAbout() {
       this.about = await this.$store.dispatch('queryPage', { type: 'about' })
+    },
+    // 加载 Gitalk
+    renderGitalk() {
       if (this.$config.aboutOpts.enableGitalk) {
         this.$nextTick(() => {
           const gitalk = new Gitalk({

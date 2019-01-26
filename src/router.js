@@ -22,6 +22,11 @@ export default new Router({
       component: () => import('./views/Archive')
     },
     {
+      path: '/mood',
+      name: 'mood',
+      component: () => import('./views/Mood')
+    },
+    {
       path: '/book',
       name: 'book',
       component: () => import('./views/Book')

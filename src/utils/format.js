@@ -18,6 +18,14 @@ export const formatPost = post => {
 }
 
 /**
+ * 格式化心情
+ */
+export const formatMood = mood => {
+  mood.forEach(o => (o.date = format(o.created_at, 'zh_CN')))
+  return mood
+}
+
+/**
  * 格式化书单 & 友链 & 关于
  */
 export const formatPage = (data, type) => {

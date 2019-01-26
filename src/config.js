@@ -58,6 +58,14 @@ export default {
   },
 
   /**
+   * 心情页面
+   */
+  moodOpts: {
+    enableGitalk: true,
+    qoute: '欲言又止，止言又欲'
+  },
+
+  /**
    * 书单页面
    */
   bookOpts: {

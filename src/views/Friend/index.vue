@@ -6,9 +6,9 @@
         <ul class="content">
           <li v-for="item in friends" :key="item.name">
             <a :href="item.link" rel="noopener noreferrer" target="_blank">
-              <img class="cover" alt="" :src="item.cover" />
+              <img class="cover" alt :src="item.cover" />
               <div class="info">
-                <img :src="item.avatar" alt="" /> <span>{{ item.name }}</span>
+                <img :src="item.avatar" alt /> <span>{{ item.name }}</span>
               </div>
             </a>
           </li>
@@ -38,12 +38,17 @@ export default {
       friends: []
     }
   },
-  created() {
-    this.queryFriends()
+  async created() {
+    await this.queryFriends()
+    this.renderGitalk()
   },
   methods: {
+    // 获取友链
     async queryFriends() {
       this.friends = await this.$store.dispatch('queryPage', { type: 'friends' })
+    },
+    // 加载 Gitalk
+    renderGitalk() {
       if (this.$config.friendOpts.enableGitalk) {
         this.$nextTick(() => {
           const gitalk = new Gitalk({
