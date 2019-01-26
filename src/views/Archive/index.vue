@@ -31,10 +31,7 @@
           />
         </div>
       </div>
-    </Transition>
-
-    <Transition name="fade-transform" mode="out-in">
-      <div v-if="archives.length === 0"><Loading /></div>
+      <Loading v-else />
     </Transition>
 
     <div v-if="$config.archiveOpts.enableGitalk" id="gitalk" />

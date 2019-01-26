@@ -54,8 +54,8 @@ export default {
   },
   data() {
     return {
-      about: '',
-      colors: shuffle(this.$config.themeColors)
+      colors: shuffle(this.$config.themeColors),
+      about: ''
     }
   },
   async created() {

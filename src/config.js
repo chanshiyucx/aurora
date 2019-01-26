@@ -58,6 +58,14 @@ export default {
   },
 
   /**
+   * 标签配置
+   */
+  tagOpts: {
+    enableGitalk: false,
+    qoute: '列卒周匝，星罗云布'
+  },
+
+  /**
    * 心情页面
    */
   moodOpts: {

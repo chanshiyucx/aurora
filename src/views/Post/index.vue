@@ -24,10 +24,13 @@
       </article>
       <Loading v-else />
     </Transition>
+
+    <div id="gitalk" />
   </div>
 </template>
 
 <script>
+import Gitalk from 'gitalk'
 import MarkDown from '@/components/MarkDown'
 import Loading from '@/components/Loading'
 import Lazyload from '@/components/Lazyload'
@@ -45,14 +48,25 @@ export default {
       post: ''
     }
   },
-  created() {
+  async created() {
     this.number = this.$route.params.number
-    this.queryPost()
+    await this.queryPost()
+    this.renderGitalk()
   },
   methods: {
     // 获取文章详情
     async queryPost() {
       this.post = await this.$store.dispatch('queryPost', { number: this.number })
+    },
+    // 加载 Gitalk
+    renderGitalk() {
+      this.$nextTick(() => {
+        const gitalk = new Gitalk({
+          ...this.$config.gitalk,
+          title: this.post.title
+        })
+        gitalk.render('gitalk')
+      })
     }
   }
 }

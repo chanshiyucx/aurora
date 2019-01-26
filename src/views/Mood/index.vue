@@ -17,10 +17,7 @@
           />
         </div>
       </div>
-    </Transition>
-
-    <Transition name="fade-transform" mode="out-in">
-      <div v-if="mood.length === 0"><Loading /></div>
+      <Loading v-else />
     </Transition>
 
     <div v-if="$config.moodOpts.enableGitalk" id="gitalk" />
