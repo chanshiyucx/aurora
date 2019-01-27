@@ -45,9 +45,18 @@ span[class*='img-box'],
 }
 
 /* 字体加载 */
+.fonts {
+  font-family: 'Noto Serif SC', 'Helvetica', 'PingFang SC', serif;
+}
 .fonts-loaded {
   body {
-    font-family: 'Noto Serif SC', 'Helvetica', 'PingFang SC', serif;
+    .fonts;
+  }
+  #gitalk {
+    .gt-comment-body,
+    .gt-btn-text {
+      .fonts;
+    }
   }
 }
 

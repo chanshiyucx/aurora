@@ -87,7 +87,8 @@ export default new Vuex.Store({
       // TODO:获取前篇后篇
       if (!post) {
         post = await queryPost(number)
-        post = await queryHot(post)
+        let list = await queryHot([post])
+        post = list[0]
         post = formatPost(post)
       }
       return post

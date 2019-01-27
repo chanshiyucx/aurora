@@ -254,3 +254,74 @@ td.hljs-ln-numbers {
     }
   }
 }
+
+/* Gitalk */
+#gitalk {
+  text-align: left;
+  a {
+    color: #b854d4;
+    border-bottom: 1px dotted #b854d4;
+  }
+  .gt-container {
+    .gt-svg svg {
+      fill: #b854d4;
+    }
+    .gt-comment-date,
+    .gt-container .gt-comment-text {
+      color: #666;
+    }
+  }
+  .gt-meta {
+    .gt-counts {
+      float: left;
+    }
+    .gt-popup {
+      margin-top: 0.1rem;
+      .is--active::before {
+        background: #b854d4;
+      }
+      a {
+        border: none;
+      }
+    }
+  }
+  .gt-header {
+    textarea {
+      border: none;
+      background-color: rgba(255, 255, 255, 0.66);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
+    }
+    .gt-header-controls-tip {
+      float: left;
+    }
+    .gt-btn {
+      border: none;
+      background-color: rgba(255, 255, 255, 0.66);
+    }
+    .gt-btn-public {
+      background-color: #986db2;
+      span {
+        color: #fff;
+      }
+    }
+  }
+  .gt-comments {
+    .gt-comment-content {
+      border-radius: 3px;
+      background-color: rgba(255, 255, 255, 0.66);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
+      transition: all 0.25s ease 0s, transform 0.6s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.24);
+      }
+    }
+    .gt-btn-loadmore {
+      border: none;
+      background-color: #986db2;
+      span {
+        color: #fff;
+      }
+    }
+  }
+}
