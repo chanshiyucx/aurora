@@ -76,82 +76,136 @@
         position: absolute;
         top: 50%;
         right: 0;
+        width: 15px;
         transform: translateY(-50%) scaleY(2);
         .icon {
-          color: #666;
-        }
-      }
-    }
-    .aplayer {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      margin: 0;
-      background-color: rgba(255, 255, 255, 0.88);
-      overflow: unset;
-      transition: all 0.4s ease-out;
-      transform: translateX(-101%) !important;
-      &:hover {
-        transform: translateX(0) !important;
-      }
-      .arrow {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        position: absolute;
-        right: 0;
-        top: 0;
-        height: 100%;
-        z-index: 99;
-        background: #b28fce;
-        border-top-right-radius: 3px;
-        border-bottom-right-radius: 3px;
-        transform: translateX(15px);
-        .icon {
-          transition: transform 0.25s ease-out;
-          color: #fff;
-        }
-      }
-      .aplayer-list {
-        background-image: url(https://i.loli.net/2018/12/09/5c0cc2b905841.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-      }
-      .aplayer-body {
-        max-height: 66px;
-        .aplayer-pic {
-          max-width: 66px;
-          max-height: 66px;
-        }
-        .aplayer-info {
-          display: inherit !important;
-          max-height: 66px;
-        }
-        .aplayer-controller {
-          display: none;
-        }
-      }
-      li {
-        border: none;
-        transition: all 0.25s ease-out;
-        &:hover {
-          background: rgba(178, 143, 206, 0.66);
-          span {
-            color: #fff;
+          color: #b854d4;
+          &::before {
+            font-size: 0.12rem;
+            transform: rotate(-90deg);
           }
         }
       }
     }
-    .player {
-      width: 3.1rem;
-      transform: translateX(0) !important;
-      .arrow {
-        .icon {
-          transform: scaleX(-1);
+    .aplayer {
+      margin: 0;
+      max-width: 3.1rem;
+      background-color: transparent;
+      // transform: translateX(-100%);
+      transition: all 0.3s ease-out;
+      &:hover {
+        transform: translateX(0);
+      }
+      .aplayer-body {
+        padding-right: 15px;
+        width: 3.1rem;
+        border-radius: 0 3px 3px 0;
+        background-color: rgba(255, 255, 255, 0.88);
+      }
+      .aplayer-list {
+        border: none;
+        background-color: rgba(255, 255, 255, 0.88);
+        background-image: url(https://i.loli.net/2018/12/09/5c0cc2b905841.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        li {
+          text-align: left;
+          border: none;
+          &:hover,
+          &.aplayer-list-light {
+            background: rgba(178, 143, 206, 0.66);
+            span {
+              color: #fff;
+            }
+          }
+          .aplayer-list-cur {
+            background-color: #b28fce !important;
+          }
+        }
+      }
+      .aplayer-miniswitcher {
+        width: 15px;
+        background-color: #b28fce;
+        svg,
+        path {
+          fill: #fff;
         }
       }
     }
+    .mini {
+      transform: translateX(-100%);
+    }
+    // .aplayer {
+    //   position: absolute;
+    //   bottom: 0;
+    //   left: 0;
+    //   margin: 0;
+    //   background-color: rgba(255, 255, 255, 0.88);
+    //   overflow: unset;
+    //   transition: all 0.4s ease-out;
+    //   transform: translateX(-101%) !important;
+    //   &:hover {
+    //     transform: translateX(0) !important;
+    //   }
+    //   .arrow {
+    //     display: flex;
+    //     flex-direction: column;
+    //     justify-content: center;
+    //     position: absolute;
+    //     right: 0;
+    //     top: 0;
+    //     height: 100%;
+    //     z-index: 99;
+    //     background: #b28fce;
+    //     border-top-right-radius: 3px;
+    //     border-bottom-right-radius: 3px;
+    //     transform: translateX(15px);
+    //     .icon {
+    //       transition: transform 0.25s ease-out;
+    //       color: #fff;
+    //     }
+    //   }
+    //   .aplayer-list {
+    //     background-image: url(https://i.loli.net/2018/12/09/5c0cc2b905841.png);
+    //     background-size: contain;
+    //     background-repeat: no-repeat;
+    //     background-position: center center;
+    //   }
+    //   .aplayer-body {
+    //     max-height: 66px;
+    //     .aplayer-pic {
+    //       max-width: 66px;
+    //       max-height: 66px;
+    //     }
+    //     .aplayer-info {
+    //       display: inherit !important;
+    //       max-height: 66px;
+    //     }
+    //     .aplayer-controller {
+    //       display: none;
+    //     }
+    //   }
+    //   li {
+    //     border: none;
+    //     transition: all 0.25s ease-out;
+    //     &:hover {
+    //       background: rgba(178, 143, 206, 0.66);
+    //       span {
+    //         color: #fff;
+    //       }
+    //     }
+    //   }
+    // }
+    // .player {
+    //   width: 3.1rem;
+    //   transform: translateX(0) !important;
+    //   .arrow {
+    //     .icon {
+    //       transform: scaleX(-1);
+    //     }
+    //   }
+    // }
   }
 
   .site-info {

@@ -17,26 +17,9 @@
             <i :class="['icon', `icon-${item.icon}`]"></i>
           </li>
         </ul>
-        <div class="arrow"><i class="icon icon-angle-double-right"></i></div>
+        <div class="arrow"><i class="icon icon-emo-devil"></i></div>
       </div>
-
-      <aplayer
-        autoplay
-        theme="#b28fce"
-        :class="!isMini && 'player'"
-        :mini="isMini"
-        :list="musicList"
-        :music="{
-          title: 'うたかたの风と蝉时雨',
-          artist: 'Silent Siren',
-          src: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.mp3',
-          pic: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.jpg'
-        }"
-      >
-        <div slot="display" class="arrow cursor" @click="handlePlayer">
-          <i class="icon icon-angle-double-right"></i>
-        </div>
-      </aplayer>
+      <APlayer :class="isMini && 'mini'" :audio="audio" fixed mini @update:mini="handleUpdate" />
     </div>
     <div class="site-info">
       <p><i class="icon icon-copyright"></i>2017-2018 <i class="icon icon-heart"></i> 蝉時雨</p>
@@ -55,20 +38,15 @@
 
 <script>
 import { mapState } from 'vuex'
-import Aplayer from 'vue-aplayer'
 import { random } from '@/utils'
 import model from '@/assets/live2d/waifu.json'
 import tips from '@/assets/live2d/tips.json'
 import costume from '@/assets/live2d/costume.json'
 
-Aplayer.disableVersionBadge = true
 const { waifuClick, hoverTips, clickTips, hitokotos } = tips
 
 export default {
   name: 'Footer',
-  components: {
-    Aplayer
-  },
   data() {
     return {
       waifu: 'tia',
@@ -84,39 +62,8 @@ export default {
       ],
       isLikeSite: window.localStorage.getItem('isLikeSite', true),
       likeTimes: 0,
-      isMini: true,
-      musicList: [
-        {
-          title: 'うたかたの风と蝉时雨',
-          artist: 'Little Planet',
-          src: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.mp3',
-          pic: 'https://i.loli.net/2018/12/09/5c0cc3ca1081b.jpg'
-        },
-        {
-          title: '春の凑に',
-          artist: 'TUMENECO',
-          src: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.mp3',
-          pic: 'https://i.loli.net/2018/12/11/5c0f196d01a3a.jpg'
-        },
-        {
-          title: '夏阳炎',
-          artist: '天威梦方',
-          src: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.mp3',
-          pic: 'https://i.loli.net/2018/12/09/5c0cc3cee372a.jpg'
-        },
-        {
-          title: '秋风のとおり道',
-          artist: '风神华伝',
-          src: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.mp3',
-          pic: 'https://i.loli.net/2018/12/09/5c0cc3d13844a.jpg'
-        },
-        {
-          title: '冬のわすれもの',
-          artist: 'ハルノカゼ',
-          src: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.mp3',
-          pic: 'https://i.loli.net/2018/12/09/5c0cc3d36349c.jpg'
-        }
-      ]
+      audio: this.$config.APlayer,
+      isMini: true
     }
   },
   computed: mapState({
@@ -222,9 +169,8 @@ export default {
           return
       }
     },
-    // 切换模式
-    handlePlayer() {
-      this.isMini = !this.isMini
+    handleUpdate(isMini) {
+      this.isMini = isMini
     }
   }
 }

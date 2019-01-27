@@ -158,5 +158,41 @@ export default {
     '#FFBA84', // 洒落柿
     '#7DB9DE', // 勿忘草
     '#FF99FF'
+  ],
+
+  /**
+   * 音乐播放器,
+   */
+  APlayer: [
+    {
+      name: 'うたかたの风と蝉时雨',
+      artist: 'Little Planet',
+      url: 'https://files.catbox.moe/wo7zjt.mp3',
+      cover: 'https://i.loli.net/2018/12/09/5c0cc3ca1081b.jpg'
+    },
+    {
+      name: '春の凑に',
+      artist: 'TUMENECO',
+      url: 'https://files.catbox.moe/3o8ivq.mp3',
+      cover: 'https://i.loli.net/2018/12/11/5c0f196d01a3a.jpg'
+    },
+    {
+      name: '夏阳炎',
+      artist: '天威梦方',
+      url: 'https://files.catbox.moe/dy5d71.mp3',
+      cover: 'https://i.loli.net/2018/12/09/5c0cc3cee372a.jpg'
+    },
+    {
+      name: '秋风のとおり道',
+      artist: '风神华伝',
+      url: 'https://files.catbox.moe/e1t7zh.mp3',
+      cover: 'https://i.loli.net/2018/12/09/5c0cc3d13844a.jpg'
+    },
+    {
+      name: '冬のわすれもの',
+      artist: 'ハルノカゼ',
+      url: 'https://files.catbox.moe/2whj5x.mp3',
+      cover: 'https://i.loli.net/2018/12/09/5c0cc3d36349c.jpg'
+    }
   ]
 }

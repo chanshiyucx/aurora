@@ -3,6 +3,7 @@ import isMobile from 'ismobilejs'
 import AV from 'leancloud-storage'
 import FontFaceObserver from 'fontfaceobserver'
 import VueProgressBar from 'vue-progressbar'
+import APlayer from '@moefe/vue-aplayer'
 
 // 滚动动效
 import 'aos/dist/aos.css'
@@ -70,6 +71,11 @@ setTimeout(() => {
   const img = new Image()
   img.src = config.defaultCover
 })()
+
+// 音乐播放器
+Vue.use(APlayer, {
+  productionTip: false // disable console output
+})
 
 new Vue({
   router,
