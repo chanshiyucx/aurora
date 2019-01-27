@@ -22,7 +22,7 @@
         蝉鸣如雨 - 花宵道中
       </p>
     </div>
-    <div class="like" @mouseenter="handleHover('likeSite')">
+    <div v-if="!$isMobile" class="like" @mouseenter="handleHover('likeSite')">
       <i :class="['icon', 'icon-heart', 'cursor', isLikeSite && 'active']" @click="likeSite"></i>
       <span class="popup">已有 {{ likeTimes }} 人点赞了哦！ </span>
     </div>
@@ -64,9 +64,11 @@ export default {
     tipsUpdateAt: state => state.tipsUpdateAt
   }),
   mounted() {
-    this.dressup()
-    this.loopTips()
-    this.queryLike()
+    if (!this.$isMobile) {
+      this.dressup()
+      this.loopTips()
+      this.queryLike()
+    }
   },
   methods: {
     // 换装

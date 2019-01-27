@@ -7,6 +7,7 @@
     </div>
     <Footer />
     <a
+      v-if="!$isMobile"
       href="#"
       :style="{ top: `${topDistance}px` }"
       :class="['back-to-top', showBackTop && 'visible']"
@@ -36,24 +37,28 @@ export default {
     }
   },
   created() {
-    this.initProgress()
+    if (!this.$isMobile) {
+      this.initProgress()
+    }
   },
   mounted() {
-    // 顶部进度条
-    this.$Progress.finish()
+    if (!this.$isMobile) {
+      // 顶部进度条
+      this.$Progress.finish()
 
-    // 滚动到顶部
-    new SmoothScroll('a[href*="#"]', {
-      updateURL: false,
-      emitEvents: false,
-      durationMin: 600,
-      durationMax: 1200,
-      easing: 'easeOutQuint'
-    })
+      // 滚动到顶部
+      new SmoothScroll('a[href*="#"]', {
+        updateURL: false,
+        emitEvents: false,
+        durationMin: 600,
+        durationMax: 1200,
+        easing: 'easeOutQuint'
+      })
 
-    // 滚动页面
-    const handleScroll = () => this.handleScroll()
-    on(window, 'scroll', handleScroll)
+      // 滚动页面
+      const handleScroll = () => this.handleScroll()
+      on(window, 'scroll', handleScroll)
+    }
   },
   methods: {
     // 注册顶部进度条
@@ -119,6 +124,7 @@ export default {
   }
   .page {
     margin: 0 auto;
+    padding: 0 0.12rem;
     max-width: 900px;
   }
 }
