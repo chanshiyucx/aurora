@@ -1,18 +1,42 @@
 <template>
   <div id="footer">
     <div v-if="showWaifu && !$isMobile" class="waifu">
-      <div v-show="tips" :class="['tips', this.waifu === 'tia' && 'tia']" v-html="tips"></div>
-      <ul class="tool">
-        <li
-          v-for="item in tool"
-          :key="item.type"
-          @click="handleClick(item.type)"
-          @mouseenter="handleHover(item.type)"
-        >
-          <i :class="['icon', `icon-${item.icon}`]"></i>
-        </li>
-      </ul>
+      <div v-show="tips && isMini" :class="['tips', this.waifu === 'tia' && 'tia']" v-html="tips"></div>
       <canvas @click="handleClickWaifu" id="live2d" width="280" height="250" />
+    </div>
+    <div class="menu" v-if="!$isMobile">
+      <div class="tool">
+        <ul>
+          <li
+            class="cursor"
+            v-for="item in tool"
+            :key="item.type"
+            @click="handleClick(item.type)"
+            @mouseenter="handleHover(item.type)"
+          >
+            <i :class="['icon', `icon-${item.icon}`]"></i>
+          </li>
+        </ul>
+        <div class="arrow"><i class="icon icon-angle-double-right"></i></div>
+      </div>
+
+      <aplayer
+        autoplay
+        theme="#b28fce"
+        :class="!isMini && 'player'"
+        :mini="isMini"
+        :list="musicList"
+        :music="{
+          title: 'うたかたの风と蝉时雨',
+          artist: 'Silent Siren',
+          src: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.mp3',
+          pic: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.jpg'
+        }"
+      >
+        <div slot="display" class="arrow cursor" @click="handlePlayer">
+          <i class="icon icon-angle-double-right"></i>
+        </div>
+      </aplayer>
     </div>
     <div class="site-info">
       <p><i class="icon icon-copyright"></i>2017-2018 <i class="icon icon-heart"></i> 蝉時雨</p>
@@ -31,15 +55,20 @@
 
 <script>
 import { mapState } from 'vuex'
+import Aplayer from 'vue-aplayer'
 import { random } from '@/utils'
 import model from '@/assets/live2d/waifu.json'
 import tips from '@/assets/live2d/tips.json'
 import costume from '@/assets/live2d/costume.json'
 
+Aplayer.disableVersionBadge = true
 const { waifuClick, hoverTips, clickTips, hitokotos } = tips
 
 export default {
   name: 'Footer',
+  components: {
+    Aplayer
+  },
   data() {
     return {
       waifu: 'tia',
@@ -47,16 +76,47 @@ export default {
       textures: '',
       tipsTimer: '',
       tool: [
-        { icon: 'shop', type: 'home' },
         { icon: 'venus-double', type: 'switch' },
         { icon: 't-shirt', type: 'dressup' },
         { icon: 'camera', type: 'takephoto' },
         { icon: 'comment', type: 'talk' },
-        { icon: 'universal-access', type: 'about' },
         { icon: 'cancel-outline', type: 'close' }
       ],
       isLikeSite: window.localStorage.getItem('isLikeSite', true),
-      likeTimes: 0
+      likeTimes: 0,
+      isMini: true,
+      musicList: [
+        {
+          title: 'うたかたの风と蝉时雨',
+          artist: 'Little Planet',
+          src: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.mp3',
+          pic: 'https://i.loli.net/2018/12/09/5c0cc3ca1081b.jpg'
+        },
+        {
+          title: '春の凑に',
+          artist: 'TUMENECO',
+          src: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.mp3',
+          pic: 'https://i.loli.net/2018/12/11/5c0f196d01a3a.jpg'
+        },
+        {
+          title: '夏阳炎',
+          artist: '天威梦方',
+          src: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.mp3',
+          pic: 'https://i.loli.net/2018/12/09/5c0cc3cee372a.jpg'
+        },
+        {
+          title: '秋风のとおり道',
+          artist: '风神华伝',
+          src: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.mp3',
+          pic: 'https://i.loli.net/2018/12/09/5c0cc3d13844a.jpg'
+        },
+        {
+          title: '冬のわすれもの',
+          artist: 'ハルノカゼ',
+          src: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.mp3',
+          pic: 'https://i.loli.net/2018/12/09/5c0cc3d36349c.jpg'
+        }
+      ]
     }
   },
   computed: mapState({
@@ -134,9 +194,6 @@ export default {
     },
     handleClick(type) {
       switch (type) {
-        case 'home':
-          this.$router.push({ path: '/' })
-          break
         case 'switch':
           this.dressup(true)
           break
@@ -155,9 +212,6 @@ export default {
             this.$store.dispatch('showTips', { tips })
           }
           break
-        case 'info':
-          this.$router.push({ path: '/about' })
-          break
         case 'close':
           this.$store.dispatch('showTips', { tips: clickTips.close })
           setTimeout(() => {
@@ -167,6 +221,10 @@ export default {
         default:
           return
       }
+    },
+    // 切换模式
+    handlePlayer() {
+      this.isMini = !this.isMini
     }
   }
 }
