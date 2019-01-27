@@ -158,6 +158,7 @@ export const likeSite = async type => {
           const newcounter = new Counter()
           newcounter.set('title', 'site')
           newcounter.set('time', 1)
+          newcounter.set('site', location.href)
           newcounter
             .save()
             .then(counter => resolve(counter.get('time')))

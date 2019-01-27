@@ -5,7 +5,7 @@
   width: 100%;
   .waifu {
     position: fixed;
-    left: 0;
+    left: 0.2rem;
     bottom: 0;
     z-index: 99;
     transition: all 0.25s ease-in-out;
@@ -31,12 +31,40 @@
       opacity: 1;
       animation: shake 50s ease-in-out 0s infinite;
       &.tia {
-        margin-top: -0.16rem;
+        margin-top: -0.12rem;
+      }
+    }
+    .tool {
+      position: absolute;
+      bottom: 0.1rem;
+      left: -0.1rem;
+      width: 0.2rem;
+      z-index: 999;
+      list-style: none;
+      text-align: center;
+      li {
+        margin: 4px 0;
+        width: 0.2rem;
+        height: 0.2rem;
+        border: none;
+        outline: 0;
+        background: transparent;
+        &:hover {
+          .icon {
+            color: #f6f;
+          }
+        }
       }
     }
   }
   .site-info {
     padding-bottom: 0.1rem;
+    a {
+      transition: color 0.25s ease-out;
+      &:hover {
+        color: #b854d4;
+      }
+    }
     .icon-heart {
       margin-left: 5px;
     }

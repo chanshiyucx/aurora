@@ -94,7 +94,7 @@ export default {
     },
     // 看板娘
     showTips(post) {
-      const tips = `要去看看<font style="color: #b854d4"> ${post.title} </font>吗？`
+      const tips = `要去看看<span style="color: #b854d4"> ${post.title} </span>吗？`
       this.$store.dispatch('showTips', { tips })
     }
   },
