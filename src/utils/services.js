@@ -118,6 +118,7 @@ export const queryHot = async postList => {
               newcounter.set('title', title)
               newcounter.set('id', id)
               newcounter.set('time', 1)
+              newcounter.set('site', location.href)
               newcounter
                 .save()
                 .then(() => resolve(o))
