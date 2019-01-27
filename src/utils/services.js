@@ -143,7 +143,7 @@ export const likeSite = async type => {
       .first()
       .then(res => {
         if (res) {
-          if (type && type.type === 'getTimes') {
+          if (type === 'getTimes') {
             resolve(res.get('time'))
           } else {
             res
