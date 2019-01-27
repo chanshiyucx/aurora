@@ -2,10 +2,11 @@
   .card {
     padding-top: 0.16rem;
   }
-  .content {
+  .category {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
     padding: 0.16rem;
     li {
       position: relative;
@@ -68,6 +69,24 @@
         position: absolute;
         bottom: 0;
         padding: 0.12rem 0.16rem;
+      }
+    }
+  }
+  .clean {
+    padding-left: 0.22rem;
+    text-align: left;
+    .clean-btn {
+      margin-left: 0.12rem;
+      padding: 0.04rem 0.12rem 0.06rem;
+      border-radius: 3px;
+      background: rgba(0, 0, 0, 0.16);
+      transition: all 0.25s ease-out;
+      &:hover {
+        background: rgba(0, 0, 0, 0.3);
+      }
+      &,
+      .icon {
+        color: #b854d4;
       }
     }
   }

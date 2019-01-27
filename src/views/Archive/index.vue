@@ -3,33 +3,13 @@
     <Transition name="fade-transform" mode="out-in">
       <div class="card" v-if="archives.length">
         <Quote :quote="$config.archiveOpts.qoute" />
-        <ul class="content">
-          <li
-            v-for="(post, i) in archives"
-            :key="post.id"
-            @click="gotoPost(post.number)"
-            :style="{ borderTopColor: colors[i] }"
-          >
-            <h3>{{ post.title }}</h3>
-            <div class="post-meta">
-              <span> <i class="icon icon-calendar"></i> {{ post.created_at }} </span>
-              <span> <i class="icon icon-fire"></i> 热度{{ post.times || 1 }}℃ </span>
-              <span> <i class="icon icon-bookmark-empty"></i> {{ post.milestone.title }} </span>
-              <span>
-                <i class="icon icon-tag"></i>
-                <span v-for="label in post.labels.slice(0, 2)" :key="label.id">{{ label.name }}</span>
-              </span>
-            </div>
-          </li>
-        </ul>
-        <div class="btn-group" v-if="!isDisabledPrev || !isDisabledNext">
-          <Pagination
-            :loading="loading"
-            :isDisabledPrev="isDisabledPrev"
-            :isDisabledNext="isDisabledNext"
-            @handleClick="queryArchives"
-          />
-        </div>
+        <ArchiveCard
+          :posts="archives"
+          :loading="loading"
+          :isDisabledPrev="isDisabledPrev"
+          :isDisabledNext="isDisabledNext"
+          @handleClick="queryArchives"
+        />
       </div>
       <Loading v-else />
     </Transition>
@@ -42,20 +22,18 @@
 import Gitalk from 'gitalk'
 import Loading from '@/components/Loading'
 import Quote from '@/components/Quote'
-import Pagination from '@/components/Pagination'
-import { shuffle } from '@/utils'
+import ArchiveCard from '@/components/Archive'
 
 export default {
   name: 'Archive',
   components: {
     Loading,
     Quote,
-    Pagination
+    ArchiveCard
   },
   data() {
     return {
       loading: false,
-      colors: shuffle(this.$config.themeColors),
       page: 0,
       pageSize: 10,
       maxPage: 0,
@@ -119,10 +97,6 @@ export default {
           gitalk.render('gitalk')
         })
       }
-    },
-    // 跳转文章页
-    gotoPost(number) {
-      this.$router.push({ name: 'post', params: { number } })
     }
   }
 }

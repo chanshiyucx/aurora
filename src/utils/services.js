@@ -16,9 +16,9 @@ const checkStatus = response => {
 }
 
 // 获取文章列表
-export const queryPosts = async ({ page = 1, pageSize = 10 }) => {
+export const queryPosts = async ({ page = 1, pageSize = 10, filter = '' }) => {
   try {
-    const url = `${blog}/issues?${open}&page=${page}&per_page=${pageSize}`
+    const url = `${blog}/issues?${open}&page=${page}&per_page=${pageSize}${filter}`
     const response = await fetch(url)
     checkStatus(response)
     const data = await response.json()
@@ -58,19 +58,6 @@ export const queryCategory = async () => {
 export const queryTag = async () => {
   try {
     const url = `${blog}/labels?${token}`
-    const response = await fetch(url)
-    checkStatus(response)
-    const data = await response.json()
-    return data
-  } catch (err) {
-    console.log(err)
-  }
-}
-
-// 筛选文章
-export const queryFilterPosts = async ({ type, filter }) => {
-  try {
-    const url = `${blog}/issues?${type}=${filter}&${token}`
     const response = await fetch(url)
     checkStatus(response)
     const data = await response.json()

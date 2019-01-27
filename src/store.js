@@ -73,11 +73,8 @@ export default new Vuex.Store({
       commit('setPosts', { posts: data, page: page + 1 })
     },
     // 获取归档
-    async queryArchive(context, { page, pageSize }) {
-      let data = await queryPosts({
-        page,
-        pageSize
-      })
+    async queryArchive(context, payload) {
+      let data = await queryPosts(payload)
       data.forEach(formatPost)
       data = await queryHot(data)
       return data
