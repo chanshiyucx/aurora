@@ -8,7 +8,8 @@ import {
   queryCategory,
   queryFilterPosts,
   queryMood,
-  queryPage
+  queryPage,
+  likeSite
 } from './utils/services'
 import { formatPost, formatCategory, formatMood, formatPage } from './utils/format'
 
@@ -122,6 +123,11 @@ export default new Vuex.Store({
     async queryPage(context, { type }) {
       let data = await queryPage(type)
       data = formatPage(data, type)
+      return data
+    },
+    // 获取点赞数
+    async queryLike(context, payload) {
+      const data = await likeSite(payload)
       return data
     }
   }

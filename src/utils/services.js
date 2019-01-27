@@ -132,3 +132,37 @@ export const queryHot = async postList => {
       .catch(console.error)
   }).catch(console.error)
 }
+
+// 喜欢小站
+export const likeSite = async type => {
+  return new Promise(resolve => {
+    const query = new AV.Query('Counter')
+    const Counter = AV.Object.extend('Counter')
+    query.equalTo('title', 'site')
+    query
+      .first()
+      .then(res => {
+        if (res) {
+          if (type && type.type === 'getTimes') {
+            resolve(res.get('time'))
+          } else {
+            res
+              .increment('time', 1)
+              .save(null, { fetchWhenSave: true })
+              .then(counter => resolve(counter.get('time')))
+              .catch(console.error)
+          }
+        } else {
+          // 不存在则新建
+          const newcounter = new Counter()
+          newcounter.set('title', 'site')
+          newcounter.set('time', 1)
+          newcounter
+            .save()
+            .then(counter => resolve(counter.get('time')))
+            .catch(console.error)
+        }
+      })
+      .catch(console.error)
+  }).catch(console.error)
+}
