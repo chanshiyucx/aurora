@@ -100,7 +100,9 @@ export default new Vuex.Store({
     // 获取标签
     async queryTag() {
       let data = await queryTag()
-      data = data.filter(o => o.name !== 'Friend' && o.name !== 'Book' && o.name !== 'About')
+      data = data.filter(
+        o => o.name !== 'Mood' && o.name !== 'Friend' && o.name !== 'Book' && o.name !== 'About'
+      )
       return data
     },
     async filterPosts(context, payload) {

@@ -24,6 +24,7 @@
               @handleClick="filterPosts"
             />
           </div>
+          <Loading v-else-if="label && loading" />
         </Transition>
       </div>
       <Loading v-else />

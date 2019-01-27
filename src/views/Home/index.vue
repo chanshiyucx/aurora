@@ -4,10 +4,11 @@
       <div class="main">
         <article
           class="card"
+          data-aos="fade-up"
           v-for="post in posts"
           :key="post.id"
           @click="gotoPost(post.number)"
-          data-aos="fade-up"
+          @mouseenter="showTips(post)"
         >
           <div class="post-header">
             <Lazyload :src="post.cover.src" :alt="post.cover.title" />
@@ -90,6 +91,11 @@ export default {
     // 跳转文章页
     gotoPost(number) {
       this.$router.push({ name: 'post', params: { number } })
+    },
+    // 看板娘
+    showTips(post) {
+      const tips = `要去看看<font style="color: #b854d4"> ${post.title} </font>吗？`
+      this.$store.dispatch('showTips', { tips })
     }
   },
   beforeDestroy() {

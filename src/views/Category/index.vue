@@ -31,6 +31,7 @@
               @handleClick="filterPosts"
             />
           </div>
+          <Loading v-else-if="milestone && loading" />
         </Transition>
       </div>
       <Loading v-else />
@@ -138,8 +139,6 @@ export default {
       if (posts.length < this.pageSize) {
         this.maxPage = queryPage
       }
-
-      console.log('this.posts', this.posts)
     }
   }
 }
