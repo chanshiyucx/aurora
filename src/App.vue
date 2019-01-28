@@ -126,6 +126,7 @@ export default {
     margin: 0 auto;
     padding: 0 0.12rem;
     max-width: 900px;
+    user-select: text;
   }
 }
 </style>

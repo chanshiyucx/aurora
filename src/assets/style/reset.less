@@ -5,6 +5,11 @@
   color: #555;
 }
 
+::selection {
+  color: #fff;
+  background: #b28fce;
+}
+
 /* fade-transform */
 .fade-transform-leave-active,
 .fade-transform-enter-active {
@@ -28,26 +33,33 @@
 }
 
 /* 滚动条 */
-&::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-  background-color: #eee;
+.custom-scroll {
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: #986db2;
+    background-image: -webkit-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.4) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0.4) 75%,
+      transparent 75%,
+      transparent
+    );
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
 }
-&::-webkit-scrollbar-thumb {
-  background-color: #986db2;
-  background-image: -webkit-linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0.4) 25%,
-    transparent 25%,
-    transparent 50%,
-    rgba(255, 255, 255, 0.4) 50%,
-    rgba(255, 255, 255, 0.4) 75%,
-    transparent 75%,
-    transparent
-  );
-}
-&::-webkit-scrollbar-track {
-  background-color: transparent;
+
+& {
+  .custom-scroll;
 }
 
 /* 轮播背景 */
@@ -173,28 +185,7 @@ pre {
   background: rgba(0, 0, 0, 0.08);
   box-shadow: #999 0px 10px 8px -10px inset, #999 0px -10px 8px -10px inset;
   overflow: auto;
-  &::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-    background-color: transparent;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 3px;
-    background-color: #986db2;
-    background-image: -webkit-linear-gradient(
-      45deg,
-      rgba(255, 255, 255, 0.4) 25%,
-      transparent 25%,
-      transparent 50%,
-      rgba(255, 255, 255, 0.4) 50%,
-      rgba(255, 255, 255, 0.4) 75%,
-      transparent 75%,
-      transparent
-    );
-  }
-  &::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
+  .custom-scroll;
 }
 
 td.hljs-ln-numbers {
@@ -288,8 +279,12 @@ td.hljs-ln-numbers {
   .gt-header {
     textarea {
       border: none;
+      min-height: 1rem;
       background-color: rgba(255, 255, 255, 0.66);
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
+      background-image: url(https://i.loli.net/2018/12/09/5c0cc2b905841.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: right;
     }
     .gt-header-controls-tip {
       float: left;
@@ -302,6 +297,13 @@ td.hljs-ln-numbers {
       background-color: #986db2;
       span {
         color: #fff;
+      }
+    }
+    .gt-btn-login {
+      margin-top: 0;
+      span {
+        line-height: 1;
+        color: #b854d4;
       }
     }
   }
@@ -323,5 +325,17 @@ td.hljs-ln-numbers {
         color: #fff;
       }
     }
+    .gt-comment-body {
+      max-height: 6rem;
+      overflow: auto;
+      .custom-scroll;
+    }
+  }
+
+  textarea,
+  .gt-btn-preview,
+  .gt-btn-loadmore,
+  .gt-avatar {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
   }
 }

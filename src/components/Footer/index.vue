@@ -5,7 +5,7 @@
       <canvas @click="handleClickWaifu" id="live2d" width="280" height="250" />
     </div>
     <div class="menu" v-if="!$isMobile">
-      <div class="tool">
+      <div class="tool" v-if="showWaifu">
         <ul>
           <li
             class="cursor"
@@ -31,7 +31,7 @@
     </div>
     <div v-if="!$isMobile" class="like" @mouseenter="handleHover('likeSite')">
       <i :class="['icon', 'icon-heart', 'cursor', isLikeSite && 'active']" @click="likeSite"></i>
-      <span class="popup">已有 {{ likeTimes }} 人点赞了哦！ </span>
+      <span class="popup">已有 {{ likeTimes }} 人点赞了哦！</span>
     </div>
   </div>
 </template>
