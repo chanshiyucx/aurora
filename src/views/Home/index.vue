@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <Transition name="fade-transform" mode="out-in">
-      <div class="main">
+      <div class="main" v-if="posts.length">
         <article
           class="card"
           data-aos="fade-up"
@@ -32,8 +32,8 @@
     </Transition>
 
     <Transition name="fade-transform" mode="out-in">
-      <div v-if="posts.length === 0"><Loading /></div>
-      <div v-else-if="hasMore && posts.length" class="pagination" @click="queryPosts">
+      <div v-if="!posts.length"><Loading /></div>
+      <div v-else-if="hasMore" class="pagination" @click="queryPosts">
         <div class="previous cursor">
           <Spinner v-if="loading"></Spinner>
           <span v-else>Previous</span>
@@ -52,6 +52,13 @@ import Loading from '@/components/Loading'
 import Spinner from '@/components/Spinner'
 import Lazyload from '@/components/Lazyload'
 
+AOS.init({
+  duration: 2000,
+  easing: 'ease-out',
+  debounceDelay: 200,
+  offset: 50
+})
+
 export default {
   name: 'Home',
   components: {
@@ -69,16 +76,11 @@ export default {
     posts: state => state.posts,
     hasMore: state => state.hasMore
   }),
-  created() {
-    this.queryPosts()
-  },
-  mounted() {
-    AOS.init({
-      duration: 2000,
-      easing: 'ease-out',
-      debounceDelay: 200,
-      offset: 30
-    })
+  async created() {
+    await this.queryPosts()
+    setTimeout(() => {
+      AOS.refresh()
+    }, 200)
   },
   methods: {
     // 获取文章列表

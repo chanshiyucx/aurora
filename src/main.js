@@ -64,12 +64,6 @@ if (!isMobile.phone) {
   })
 })()
 
-// 预加载文章默认图
-;(function() {
-  const img = new Image()
-  img.src = config.defaultCover
-})()
-
 // 延时载入背景图片
 setTimeout(() => {
   document.getElementById('bg').className += ' backstretch'
