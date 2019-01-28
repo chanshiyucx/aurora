@@ -31,7 +31,9 @@
     </div>
     <div v-if="!$isMobile" class="like" @mouseenter="handleHover('likeSite')">
       <i :class="['icon', 'icon-heart', 'cursor', isLikeSite && 'active']" @click="likeSite"></i>
-      <span class="popup">已有 {{ likeTimes }} 人点赞了哦！</span>
+      <p class="popup">
+        已有 <span>{{ likeTimes }}</span> 人点赞了哦！
+      </p>
     </div>
   </div>
 </template>
