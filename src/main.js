@@ -5,9 +5,6 @@ import FontFaceObserver from 'fontfaceobserver'
 import VueProgressBar from 'vue-progressbar'
 import APlayer from '@moefe/vue-aplayer'
 
-// 滚动动效
-import 'aos/dist/aos.css'
-
 // Let's go!
 import App from './App.vue'
 import router from './router'
@@ -15,6 +12,7 @@ import store from './store'
 import config from './config'
 
 // 全局样式与字体图标
+import 'aos/dist/aos.css'
 import 'viewerjs/dist/viewer.min.css'
 import 'gitalk/dist/gitalk.css'
 import './assets/style/reset.less'
@@ -48,6 +46,11 @@ const options = {
 }
 Vue.use(VueProgressBar, options)
 
+// 音乐播放器
+Vue.use(APlayer, {
+  productionTip: false // disable console output
+})
+
 // PC 端启用烟花特效
 if (!isMobile.phone) {
   firework()
@@ -57,14 +60,9 @@ if (!isMobile.phone) {
 ;(function() {
   const font = new FontFaceObserver('Noto Serif SC', { weight: '400' })
   font.load().then(() => {
-    document.documentElement.className += 'fonts-loaded'
+    document.documentElement.className += ' fonts-loaded'
   })
 })()
-
-// 延时载入背景动画
-setTimeout(() => {
-  document.getElementById('bg').className += 'backstretch'
-}, 5 * 1000)
 
 // 预加载文章默认图
 ;(function() {
@@ -72,10 +70,10 @@ setTimeout(() => {
   img.src = config.defaultCover
 })()
 
-// 音乐播放器
-Vue.use(APlayer, {
-  productionTip: false // disable console output
-})
+// 延时载入背景图片
+setTimeout(() => {
+  document.getElementById('bg').className += ' backstretch'
+}, 4 * 1000)
 
 new Vue({
   router,

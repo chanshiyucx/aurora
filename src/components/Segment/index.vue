@@ -28,10 +28,41 @@ export default {
     transform: translateY(-4px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.24);
   }
+  /deep/p {
+    margin-bottom: 0.16rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  /deep/a {
+    position: relative;
+    color: #b854d4;
+    i {
+      color: #b854d4;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1.5px;
+      background-color: #b854d4;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+    &:hover {
+      &::after {
+        transform-origin: bottom left;
+        transform: scaleX(1);
+      }
+    }
+  }
   .label {
     display: inline-block;
     position: relative;
-    left: -0.46rem;
+    left: -0.32rem;
     margin-bottom: 0.1rem;
     padding: 0 0.14rem 0 0.32rem;
     height: 0.32rem;
@@ -50,7 +81,7 @@ export default {
       height: 0;
       background-color: transparent;
       border-style: solid;
-      border-width: 0 0.14rem 0.14rem 0;
+      border-width: 0 0.16rem 0.16rem 0;
       border-color: transparent;
       border-right-color: currentColor;
       filter: brightness(120%);

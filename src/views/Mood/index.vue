@@ -47,7 +47,7 @@ export default {
       loading: false,
       colors: shuffle(this.$config.themeColors),
       page: 0,
-      pageSize: 2,
+      pageSize: 10,
       maxPage: 0,
       mood: [],
       list: []

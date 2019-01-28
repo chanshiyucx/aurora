@@ -18,8 +18,7 @@ export default {
   // 博客仓库
   blog: 'https://api.github.com/repos/chanshiyucx/Blog',
   // token 从中间任意位置拆开成两部分，避免 github 代码检测失效
-  pre: '0ad1a0539c5b96fd18fa',
-  suf: 'aaafba9c7d1362a5746c',
+  token: ['0ad1a0539c5b96fd18fa', 'aaafba9c7d1362a5746c'],
   // 发布者
   creator: 'chanshiyucx',
 

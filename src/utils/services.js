@@ -1,10 +1,10 @@
 import AV from 'leancloud-storage'
 import config from '../config'
 
-const { blog, pre, suf, creator } = config
-const token = `access_token=${pre}${suf}`
-const open = `creator=${creator}&state=open&${token}`
-const closed = `creator=${creator}&state=closed&${token}`
+const { blog, token, creator } = config
+const access_token = `access_token=${token.join('')}`
+const open = `creator=${creator}&state=open&${access_token}`
+const closed = `creator=${creator}&state=closed&${access_token}`
 const isDev = window.location.href.includes('localhost')
 
 // 状态检测
@@ -44,7 +44,7 @@ export const queryPost = async number => {
 // 获取分类
 export const queryCategory = async () => {
   try {
-    const url = `${blog}/milestones?${token}`
+    const url = `${blog}/milestones?${access_token}`
     const response = await fetch(url)
     checkStatus(response)
     const data = await response.json()
@@ -57,7 +57,7 @@ export const queryCategory = async () => {
 // 获取标签
 export const queryTag = async () => {
   try {
-    const url = `${blog}/labels?${token}`
+    const url = `${blog}/labels?${access_token}`
     const response = await fetch(url)
     checkStatus(response)
     const data = await response.json()

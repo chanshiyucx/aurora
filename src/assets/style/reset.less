@@ -231,29 +231,12 @@ td.hljs-ln-numbers {
 
 /* Gitalk */
 #gitalk {
-  a {
-    color: #986db2;
-  }
-  .gt-btn-login {
-    margin-top: 4px;
-    border: none;
-    background-color: #986db2;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
-    span {
-      color: #eee;
-      line-height: 0.2rem;
-    }
-  }
-}
-
-/* Gitalk */
-#gitalk {
-  text-align: left;
-  a {
-    color: #b854d4;
-    border-bottom: 1px dotted #b854d4;
-  }
   .gt-container {
+    text-align: left;
+    a {
+      color: #b854d4;
+      border-bottom: none;
+    }
     .gt-svg svg {
       fill: #b854d4;
     }
@@ -261,8 +244,21 @@ td.hljs-ln-numbers {
     .gt-container .gt-comment-text {
       color: #666;
     }
+    .gt-ico-text {
+      color: #b854d4;
+    }
+    .gt-btn-login {
+      margin-top: 0;
+      border: none;
+      background-color: #986db2 !important;
+      span {
+        line-height: 1;
+        color: #fff;
+      }
+    }
   }
   .gt-meta {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     .gt-counts {
       float: left;
     }
@@ -271,20 +267,19 @@ td.hljs-ln-numbers {
       .is--active::before {
         background: #b854d4;
       }
-      a {
-        border: none;
-      }
     }
   }
   .gt-header {
-    textarea {
+    textarea,
+    .gt-header-preview {
       border: none;
       min-height: 1rem;
+      max-height: 2rem;
       background-color: rgba(255, 255, 255, 0.66);
       background-image: url(https://i.loli.net/2018/12/09/5c0cc2b905841.png);
-      background-size: contain;
+      background-size: 1.2rem;
       background-repeat: no-repeat;
-      background-position: right;
+      background-position: 99% bottom;
     }
     .gt-header-controls-tip {
       float: left;
@@ -299,11 +294,9 @@ td.hljs-ln-numbers {
         color: #fff;
       }
     }
-    .gt-btn-login {
-      margin-top: 0;
-      span {
-        line-height: 1;
-        color: #b854d4;
+    .gt-avatar-github {
+      svg {
+        fill: #986db2;
       }
     }
   }
@@ -333,8 +326,10 @@ td.hljs-ln-numbers {
   }
 
   textarea,
+  .gt-btn-login,
   .gt-btn-preview,
   .gt-btn-loadmore,
+  .gt-btn-public,
   .gt-avatar {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
   }

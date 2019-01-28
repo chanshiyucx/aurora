@@ -84,7 +84,6 @@ export default new Vuex.Store({
     async queryPost({ state }, { number }) {
       // 获取本篇
       let post = state.posts.find(o => o.number === number)
-      // TODO:获取前篇后篇
       if (!post) {
         post = await queryPost(number)
         let list = await queryHot([post])

@@ -1,5 +1,5 @@
 #book {
-  .card {
+  > .card {
     padding-top: 0.16rem;
   }
   .content {
@@ -26,13 +26,19 @@
         justify-content: flex-start;
         padding: 0.12rem 0.12rem 0;
         img {
+          margin-right: 0.12rem;
           width: 1.2rem;
           height: 1.6rem;
-          margin-right: 0.12rem;
           box-shadow: 0 0 10px #999;
         }
         h3 {
           font-size: 0.16rem;
+        }
+        a {
+          transition: color 0.25s ease-out;
+          &:hover {
+            color: #b854d4;
+          }
         }
         > div {
           line-height: 1.7;
