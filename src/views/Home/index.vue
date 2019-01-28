@@ -55,7 +55,7 @@ import Lazyload from '@/components/Lazyload'
 AOS.init({
   duration: 2000,
   easing: 'ease-out',
-  debounceDelay: 200,
+  debounceDelay: 100,
   offset: 50
 })
 
@@ -78,9 +78,7 @@ export default {
   }),
   async created() {
     await this.queryPosts()
-    setTimeout(() => {
-      AOS.refresh()
-    }, 200)
+    setTimeout(AOS.refresh, 600)
   },
   methods: {
     // 获取文章列表
