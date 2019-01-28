@@ -52,13 +52,6 @@ import Loading from '@/components/Loading'
 import Spinner from '@/components/Spinner'
 import Lazyload from '@/components/Lazyload'
 
-AOS.init({
-  duration: 2000,
-  easing: 'ease-out',
-  debounceDelay: 100,
-  offset: 50
-})
-
 export default {
   name: 'Home',
   components: {
@@ -78,7 +71,16 @@ export default {
   }),
   async created() {
     await this.queryPosts()
-    setTimeout(AOS.refresh, 600)
+
+    this.$nextTick(() => {
+      AOS.init({
+        duration: 2000,
+        easing: 'ease-out',
+        debounceDelay: 100,
+        offset: 50
+      })
+      setTimeout(AOS.refresh, 600)
+    })
   },
   methods: {
     // 获取文章列表
