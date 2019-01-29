@@ -4,7 +4,6 @@
 
 <script>
 import marked from 'marked'
-import Viewer from 'viewerjs'
 import hljs from '@/assets/lib/highlight'
 
 const renderer = new marked.Renderer()
@@ -15,7 +14,7 @@ renderer.heading = function(text, level, raw, slugger) {
 }
 
 renderer.image = function(href, title, text) {
-  return `<span class="img-box"><img src="${href}" alt="${text}" />${
+  return `<span class="img-box" data-src="${href}" data-sub-html="<h4>${text}</h4>"><img src="${href}" alt="${text}" />${
     text ? `<span>◭ ${text}</span>` : ''
   }</span>`
 }
@@ -76,15 +75,13 @@ export default {
           hljs.initLineNumbersOnLoad({
             target: this.target
           })
-
           // 灯箱
-          const box = document.getElementById('post')
-          box.addEventListener('hidden', function() {
-            // 清空 title
-            const element = document.querySelector('.viewer-title')
-            element.innerHTML = ''
+          window.lightGallery(document.getElementById('post'), {
+            selector: '.img-box',
+            thumbMargin: 6,
+            download: false,
+            subHtmlSelectorRelative: true
           })
-          this.gallery = new Viewer(box)
         }
       })
     }

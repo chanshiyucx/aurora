@@ -24,6 +24,11 @@
   transform: translateY(30px);
 }
 
+/* 顶部进度条 */
+.__cov-progress {
+  z-index: 99;
+}
+
 /* 烟花特效 */
 #fireworks {
   position: fixed;
@@ -194,39 +199,33 @@ td.hljs-ln-numbers {
 }
 
 /* 灯箱 */
-.viewer-container {
-  animation: elastic 0.5s;
-}
-.viewer-title {
-  font-size: 0.16rem;
-  color: #fff;
-  text-shadow: 0 1px 1px #555;
-  text-transform: capitalize;
-}
-.viewer-hide-md-down {
-  margin-bottom: 0.06rem;
-}
-.viewer-backdrop {
+.lg-backdrop {
   background-color: rgba(0, 0, 0, 0.66);
 }
-.viewer-canvas {
-  img {
-    box-shadow: 0 0 1.6rem #eee;
+.lg-image {
+  box-shadow: 0 0 1.6rem #eee;
+}
+#lg-counter {
+  &,
+  span {
+    color: #999;
   }
 }
-@keyframes elastic {
-  0% {
-    transform: scale(0);
+.lg-outer .lg-thumb-outer {
+  padding: 0 5px;
+  background-color: rgba(0, 0, 0, 0.45);
+  .lg-thumb-item {
+    &.active,
+    &:hover {
+      border-color: #b854d4;
+    }
   }
-  55% {
-    transform: scale(1);
-  }
-  70% {
-    transform: scale(0.94);
-  }
-  100% {
-    transform: scale(1);
-  }
+}
+.lg-progress-bar .lg-progress {
+  background-color: #b854d4;
+}
+.lg-sub-html h4 {
+  color: #dfdfdf;
 }
 
 /* Gitalk */

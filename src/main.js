@@ -13,7 +13,6 @@ import config from './config'
 
 // 全局样式与字体图标
 import 'aos/dist/aos.css'
-import 'viewerjs/dist/viewer.min.css'
 import 'gitalk/dist/gitalk.css'
 import './assets/style/reset.less'
 import './assets/style/layout.less'
