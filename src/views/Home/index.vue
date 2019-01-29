@@ -70,7 +70,9 @@ export default {
     hasMore: state => state.hasMore
   }),
   async created() {
-    await this.queryPosts()
+    if (!this.posts.length) {
+      await this.queryPosts()
+    }
 
     this.$nextTick(() => {
       AOS.init({
@@ -99,9 +101,6 @@ export default {
       const tips = `要去看看<span style="color: #b854d4"> ${post.title} </span>吗？`
       this.$store.dispatch('showTips', { tips })
     }
-  },
-  beforeDestroy() {
-    this.$store.commit('resetPosts')
   }
 }
 </script>

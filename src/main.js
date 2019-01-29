@@ -26,6 +26,7 @@ import firework from './assets/lib/fireworks'
 Vue.config.productionTip = false
 Vue.prototype.$config = config
 Vue.prototype.$isMobile = isMobile.phone
+Vue.prototype.$gallery = null
 
 // Init Leancloud
 AV.init(config.leancloud)
@@ -67,6 +68,15 @@ if (!isMobile.phone) {
 setTimeout(() => {
   document.getElementById('bg').className += ' backstretch'
 }, 4 * 1000)
+
+// 切换页面销毁所有灯箱
+router.beforeEach((to, from, next) => {
+  Object.keys(window.lgData).forEach(k => {
+    window.lgData[k].destroy && window.lgData[k].destroy(true)
+  })
+  window.lgData = {}
+  next()
+})
 
 new Vue({
   router,

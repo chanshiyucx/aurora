@@ -37,12 +37,6 @@ export default new Vuex.Store({
       state.page = page
       state.posts = state.posts.concat(posts)
       state.hasMore = posts.length === state.pageSize
-    },
-    // 重置文章列表
-    resetPosts(state) {
-      state.page = 0
-      state.posts = []
-      state.hasMore = true
     }
   },
   actions: {
