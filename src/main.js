@@ -83,3 +83,13 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+
+// 自定义控制台
+const labelStyle = 'color:#ffffff;line-height: 22px;'
+console.info('%c 蝉時雨 %c', `${labelStyle}background:#986db2;`, '', 'https://chanshiyu.com')
+console.info('%c Theme %c', `${labelStyle}background:#986db2;`, '', 'https://github.com/chanshiyucx/aurora')
+console.info('~❀~ 发现控制台报错请务必联系博主 ~❀~')
+console.log(
+  '%c ',
+  'background:url(https://i.loli.net/2018/12/09/5c0cc2b905841.png) no-repeat center;background-size:200px;padding-left:200px;padding-bottom:162px;overflow:hidden;border-radius:10px;margin:5px 0'
+)
