@@ -6,7 +6,6 @@ import {
   queryHot,
   queryTag,
   queryCategory,
-  queryFilterPosts,
   queryMood,
   queryPage,
   likeSite
@@ -98,10 +97,6 @@ export default new Vuex.Store({
       data = data.filter(
         o => o.name !== 'Mood' && o.name !== 'Friend' && o.name !== 'Book' && o.name !== 'About'
       )
-      return data
-    },
-    async filterPosts(context, payload) {
-      const data = await queryFilterPosts(payload)
       return data
     },
     // 获取心情
