@@ -14,7 +14,7 @@
             <Lazyload :src="post.cover.src" :alt="post.cover.title" />
             <div>
               <h3>{{ post.title }}</h3>
-              <!-- <span>{{ post.cover.title }}</span> -->
+              <span>{{ post.cover.title }}</span>
             </div>
           </div>
           <div class="post-body"><MarkDown :content="post.desc" :onlyRender="true" /></div>
