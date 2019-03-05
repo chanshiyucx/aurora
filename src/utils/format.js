@@ -1,4 +1,5 @@
 import { format } from 'timeago.js'
+import config from '../config'
 
 /**
  * 格式化文章
@@ -9,10 +10,10 @@ export const formatPost = post => {
   const regex = /^\[(.+)\].*(http.*(?:jpg|jpeg|png|gif))/g
   const cover = regex.exec(temp[0])
   post.cover = {
-    title: cover[1],
-    src: cover[2]
+    title: cover && cover[1] ? cover[1] : '',
+    src: cover && cover[2] ? cover[2] : config.defaultCover
   }
-  post.desc = temp[2]
+  post.desc = temp[2] || temp[0]
   post.created_at = format(created_at, 'zh_CN')
   return post
 }

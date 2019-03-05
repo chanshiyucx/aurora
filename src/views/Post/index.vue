@@ -12,7 +12,10 @@
             <div class="meta">
               <span> <i class="icon icon-calendar"></i> {{ post.created_at }} </span>
               <span> <i class="icon icon-fire"></i> 热度{{ post.times || 1 }}℃ </span>
-              <span> <i class="icon icon-bookmark-empty"></i> {{ post.milestone.title }} </span>
+              <span>
+                <i class="icon icon-bookmark-empty"></i>
+                {{ post.milestone ? post.milestone.title : '未分类' }}
+              </span>
               <span>
                 <i class="icon icon-tag"></i>
                 <span v-for="label in post.labels" :key="label.id">{{ label.name }}</span>
