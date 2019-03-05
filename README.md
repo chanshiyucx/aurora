@@ -12,6 +12,8 @@ Aurora 是一个基于 Vue 开发的 SPA 单页面博客应用程序，后台数
 
 ## Getting Started
 
+主题食用参考：[食用指南](https://github.com/chanshiyucx/blog/issues/41)
+
 ### Installing
 
 ```bash
