@@ -16,11 +16,11 @@ export default {
    * Github Issues api: https://developer.github.com/v3/issues/
    **/
   // 博客仓库
-  blog: 'https://api.github.com/repos/mituyoi/Blog',
+  blog: 'https://api.github.com/repos/chanshiyucx/Blog',
   // token 从中间任意位置拆开成两部分，避免 github 代码检测失效
   token: ['0ad1a0539c5b96fd18fa', 'aaafba9c7d1362a5746c'],
   // 发布者
-  creator: 'mituyoi',
+  creator: 'chanshiyucx',
 
   /**
    * leancloud 配置 【文章浏览次数】
@@ -37,8 +37,8 @@ export default {
     clientID: '864b1c2cbc4e4aad9ed8',
     clientSecret: '6ca16373efa03347e11a96ff92e355c5cea189bb',
     repo: 'Comment',
-    owner: 'mituyoi',
-    admin: ['mituyoi'],
+    owner: 'chanshiyucx',
+    admin: ['chanshiyucx'],
     distractionFreeMode: false // 是否开始无干扰模式【背景遮罩】
   },
 
@@ -113,7 +113,7 @@ export default {
       },
       {
         icon: 'https://i.loli.net/2019/01/25/5c4b2982b5687.png',
-        link: 'https://github.com/mituyoi'
+        link: 'https://github.com/chanshiyucx'
       },
       {
         icon: 'https://i.loli.net/2018/12/09/5c0cc518dc4f4.png',

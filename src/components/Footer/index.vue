@@ -25,7 +25,7 @@
       <p><i class="icon icon-copyright"></i>2017-2018 <i class="icon icon-heart"></i> 蝉時雨</p>
       <p>
         Theme -
-        <a rel="noopener noreferrer" target="_blank" href="https://github.com/mituyoi/aurora">Aurora</a> |
+        <a rel="noopener noreferrer" target="_blank" href="https://github.com/chanshiyucx/aurora">Aurora</a> |
         蝉鸣如雨 - 花宵道中
       </p>
     </div>

@@ -87,7 +87,7 @@ new Vue({
 // 自定义控制台
 const labelStyle = 'color:#ffffff;line-height: 22px;'
 console.info('%c 蝉時雨 %c', `${labelStyle}background:#986db2;`, '', 'https://chanshiyu.com')
-console.info('%c Theme %c', `${labelStyle}background:#986db2;`, '', 'https://github.com/mituyoi/aurora')
+console.info('%c Theme %c', `${labelStyle}background:#986db2;`, '', 'https://github.com/chanshiyucx/aurora')
 console.info('~❀~ 发现控制台报错请务必联系博主 ~❀~')
 console.log(
   '%c ',

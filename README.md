@@ -1,6 +1,6 @@
 # Aurora - An awesome blog theme
 
-[![Author](https://img.shields.io/badge/author-mituyoi-blue.svg?style=flat-square)](https://chanshiyu.com) [![QQ](https://img.shields.io/badge/QQ-1124590931-blue.svg?style=flat-square)](http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes) [![Email](https://img.shields.io/badge/Emali%20me-me@chanshiyu.com-green.svg?style=flat-square)](me@chanshiyu.com)
+[![Author](https://img.shields.io/badge/author-chanshiyucx-blue.svg?style=flat-square)](https://chanshiyu.com) [![QQ](https://img.shields.io/badge/QQ-1124590931-blue.svg?style=flat-square)](http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes) [![Email](https://img.shields.io/badge/Emali%20me-me@chanshiyu.com-green.svg?style=flat-square)](me@chanshiyu.com)
 
 ![蝉時雨](https://i.loli.net/2019/01/28/5c4e7e979e481.png)
 
@@ -12,12 +12,12 @@ Aurora 是一个基于 Vue 开发的 SPA 单页面博客应用程序，后台数
 
 ## Getting Started
 
-主题食用参考：[食用指南](https://github.com/mituyoi/blog/issues/41)
+主题食用参考：[食用指南](https://github.com/chanshiyucx/blog/issues/41)
 
 ### Installing
 
 ```bash
-git@github.com:mituyoi/aurora.git
+git@github.com:chanshiyucx/aurora.git
 cd aurora
 npm install # or yarn
 ```
@@ -26,7 +26,7 @@ npm install # or yarn
 
 修改目录 `src/config.js` 的配置文件，每个配置项都有详细说明。
 
-页面模板参考： [文章、关于、标签、分类、书单等模板](https://github.com/mituyoi/Blog/issues)，第一次食用可以直接 Fork 预览效果。
+页面模板参考： [文章、关于、标签、分类、书单等模板](https://github.com/chanshiyucx/Blog/issues)，第一次食用可以直接 Fork 预览效果。
 
 ### Preview
 
