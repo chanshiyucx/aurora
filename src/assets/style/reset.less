@@ -333,3 +333,60 @@ td.hljs-ln-numbers {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
   }
 }
+
+/* Valine */
+#valine {
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.66);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.24);
+  border: none;
+
+  * {
+    font-size: 0.15rem;
+    color: #555;
+  }
+
+  .vinput {
+    border-bottom-color: #ccc;
+    &:focus {
+      border-bottom-color: #b854d4;
+    }
+  }
+
+  .veditor {
+    min-height: 1.5rem;
+    background-image: url(https://i.loli.net/2018/12/09/5c0cc2b905841.png);
+    background-size: 1.2rem;
+    background-repeat: no-repeat;
+    background-position: 99% bottom;
+  }
+
+  .vbtn {
+    padding: 0;
+    width: 0.8rem;
+    height: 0.36rem;
+    line-height: 0.36rem;
+    text-align: center;
+    color: #fff;
+    border-radius: 3px;
+    border: none;
+    background-color: #986db2;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
+  }
+
+  .vcontrol {
+    display: flex;
+    justify-content: space-between;
+    div:first-child {
+      width: 0.2rem;
+    }
+  }
+
+  .vempty {
+    padding: 0.14rem;
+  }
+
+  .power {
+    display: none;
+  }
+}

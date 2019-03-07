@@ -20,17 +20,17 @@
       <Loading v-else />
     </Transition>
 
-    <div v-if="$config.moodOpts.enableGitalk" id="gitalk" />
+    <Comment v-if="$config.moodOpts.enableGitalk && initComment" title="心情" />
   </div>
 </template>
 
 <script>
-import Gitalk from 'gitalk'
 import MarkDown from '@/components/MarkDown'
 import Loading from '@/components/Loading'
 import Quote from '@/components/Quote'
 import Segment from '@/components/Segment'
 import Pagination from '@/components/Pagination'
+import Comment from '@/components/Comment'
 import { shuffle } from '@/utils'
 
 export default {
@@ -40,11 +40,13 @@ export default {
     Loading,
     Quote,
     Segment,
-    Pagination
+    Pagination,
+    Comment
   },
   data() {
     return {
       loading: false,
+      initComment: false,
       colors: shuffle(this.$config.themeColors),
       page: 0,
       pageSize: 10,
@@ -64,7 +66,7 @@ export default {
   },
   async created() {
     await this.queryMood()
-    this.renderGitalk()
+    this.initComment = true
   },
   methods: {
     async queryMood(type = 'next') {
@@ -89,18 +91,6 @@ export default {
       this.list[queryPage] = mood
       if (mood.length < this.pageSize) {
         this.maxPage = queryPage
-      }
-    },
-    // 加载 Gitalk
-    renderGitalk() {
-      if (this.$config.moodOpts.enableGitalk) {
-        this.$nextTick(() => {
-          const gitalk = new Gitalk({
-            ...this.$config.gitalk,
-            title: '心情'
-          })
-          gitalk.render('gitalk')
-        })
       }
     }
   }

@@ -28,6 +28,9 @@ Vue.prototype.$config = config
 Vue.prototype.$isMobile = isMobile.phone
 Vue.prototype.$gallery = null
 
+// Register AV objects to the global
+window.AV = AV
+
 // Init Leancloud
 AV.init(config.leancloud)
 
