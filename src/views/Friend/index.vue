@@ -18,46 +18,36 @@
       <Loading v-else />
     </Transition>
 
-    <div v-if="$config.friendOpts.enableGitalk" id="gitalk" />
+    <Comment v-if="$config.friendOpts.enableGitalk && initComment" title="友链" />
   </div>
 </template>
 
 <script>
-import Gitalk from 'gitalk'
 import Loading from '@/components/Loading'
 import Quote from '@/components/Quote'
+import Comment from '@/components/Comment'
 
 export default {
   name: 'Friend',
   components: {
     Loading,
-    Quote
+    Quote,
+    Comment
   },
   data() {
     return {
-      friend: []
+      friend: [],
+      initComment: false
     }
   },
   async created() {
     await this.queryFriends()
-    this.renderGitalk()
+    this.initComment = true
   },
   methods: {
     // 获取友链
     async queryFriends() {
       this.friend = await this.$store.dispatch('queryPage', { type: 'friend' })
-    },
-    // 加载 Gitalk
-    renderGitalk() {
-      if (this.$config.friendOpts.enableGitalk) {
-        this.$nextTick(() => {
-          const gitalk = new Gitalk({
-            ...this.$config.gitalk,
-            title: '友链'
-          })
-          gitalk.render('gitalk')
-        })
-      }
     }
   }
 }

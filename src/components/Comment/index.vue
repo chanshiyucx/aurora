@@ -17,7 +17,7 @@ export default {
   props: ['title'],
   data() {
     return {
-      anonymous: true
+      anonymous: false
     }
   },
   mounted() {
@@ -38,13 +38,10 @@ export default {
     },
     // 加载 Valine
     renderValine() {
-      console.log('renderValine')
       new Valine({
         el: '#valine',
         appId: this.$config.leancloud.appId,
         appKey: this.$config.leancloud.appKey,
-        notify: true,
-        verify: true,
         path: window.location.href,
         avatar: 'identicon',
         placeholder: '蝉鸣如雨，花宵道中'

@@ -28,48 +28,40 @@
       <Loading v-else />
     </Transition>
 
-    <div id="gitalk" />
+    <Comment v-if="initComment" :title="post.title" />
   </div>
 </template>
 
 <script>
-import Gitalk from 'gitalk'
 import MarkDown from '@/components/MarkDown'
 import Loading from '@/components/Loading'
 import Lazyload from '@/components/Lazyload'
+import Comment from '@/components/Comment'
 
 export default {
   name: 'Post',
   components: {
     MarkDown,
     Loading,
-    Lazyload
+    Lazyload,
+    Comment
   },
   data() {
     return {
       number: '',
-      post: ''
+      post: '',
+      initComment: false
     }
   },
   async created() {
     this.number = this.$route.params.number
     await this.queryPost()
-    this.renderGitalk()
+    this.$nextTick(() => (this.initComment = true))
   },
   methods: {
     // 获取文章详情
     async queryPost() {
       this.post = await this.$store.dispatch('queryPost', { number: this.number })
-    },
-    // 加载 Gitalk
-    renderGitalk() {
-      this.$nextTick(() => {
-        const gitalk = new Gitalk({
-          ...this.$config.gitalk,
-          title: this.post.title
-        })
-        gitalk.render('gitalk')
-      })
     }
   }
 }

@@ -37,46 +37,36 @@
       <Loading v-else />
     </Transition>
 
-    <div v-if="$config.bookOpts.enableGitalk" id="gitalk" />
+    <Comment v-if="$config.bookOpts.enableGitalk && initComment" title="书单" />
   </div>
 </template>
 
 <script>
-import Gitalk from 'gitalk'
 import Loading from '@/components/Loading'
 import Quote from '@/components/Quote'
+import Comment from '@/components/Comment'
 
 export default {
   name: 'Book',
   components: {
     Loading,
-    Quote
+    Quote,
+    Comment
   },
   data() {
     return {
-      book: []
+      book: [],
+      initComment: false
     }
   },
   async created() {
     await this.queryBooks()
-    this.renderGitalk()
+    this.initComment = true
   },
   methods: {
     // 获取书单
     async queryBooks() {
       this.book = await this.$store.dispatch('queryPage', { type: 'book' })
-    },
-    // 加载 Gitalk
-    renderGitalk() {
-      if (this.$config.bookOpts.enableGitalk) {
-        this.$nextTick(() => {
-          const gitalk = new Gitalk({
-            ...this.$config.gitalk,
-            title: '书单'
-          })
-          gitalk.render('gitalk')
-        })
-      }
     }
   }
 }

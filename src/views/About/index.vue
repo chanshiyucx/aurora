@@ -32,16 +32,16 @@
       <Loading v-else />
     </Transition>
 
-    <div v-if="$config.aboutOpts.enableGitalk" id="gitalk" />
+    <Comment v-if="$config.aboutOpts.enableGitalk && initComment" title="关于" />
   </div>
 </template>
 
 <script>
-import Gitalk from 'gitalk'
 import MarkDown from '@/components/MarkDown'
 import Loading from '@/components/Loading'
 import Quote from '@/components/Quote'
 import Segment from '@/components/Segment'
+import Comment from '@/components/Comment'
 import { shuffle } from '@/utils'
 
 export default {
@@ -50,34 +50,24 @@ export default {
     MarkDown,
     Loading,
     Quote,
-    Segment
+    Segment,
+    Comment
   },
   data() {
     return {
       colors: shuffle(this.$config.themeColors),
-      about: ''
+      about: '',
+      initComment: false
     }
   },
   async created() {
     await this.queryAbout()
-    this.renderGitalk()
+    this.initComment = true
   },
   methods: {
     // 获取关于详情
     async queryAbout() {
       this.about = await this.$store.dispatch('queryPage', { type: 'about' })
-    },
-    // 加载 Gitalk
-    renderGitalk() {
-      if (this.$config.aboutOpts.enableGitalk) {
-        this.$nextTick(() => {
-          const gitalk = new Gitalk({
-            ...this.$config.gitalk,
-            title: '关于'
-          })
-          gitalk.render('gitalk')
-        })
-      }
     }
   }
 }
