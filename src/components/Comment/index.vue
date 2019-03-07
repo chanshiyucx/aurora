@@ -1,6 +1,8 @@
 <template>
   <div id="comment">
-    <div class="modeBtn" @click="switchMode">{{ anonymous ? 'Gitalk 评论' : '匿名评论' }}</div>
+    <div class="modeBtn" v-show="showModeBtn" @click="switchMode">
+      {{ anonymous ? 'Gitalk 评论' : '匿名评论' }}
+    </div>
     <div>
       <div v-show="!anonymous" id="gitalk" />
       <div v-show="anonymous" id="valine" />
@@ -17,12 +19,16 @@ export default {
   props: ['title'],
   data() {
     return {
-      anonymous: false
+      anonymous: false,
+      showModeBtn: false
     }
   },
   mounted() {
     this.renderGitalk()
     this.renderValine()
+    setTimeout(() => {
+      this.showModeBtn = true
+    }, 1000)
   },
   methods: {
     switchMode() {
