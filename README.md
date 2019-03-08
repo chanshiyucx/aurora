@@ -46,6 +46,10 @@ npm run build
 
 Just enjoy it ฅ●ω●ฅ
 
+## Timeline
+
+- 2019/03/08 新增 Valine 匿名评论功能
+
 ## License
 
 This project is licensed under the MIT License.
