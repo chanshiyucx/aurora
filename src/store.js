@@ -79,7 +79,7 @@ export default new Vuex.Store({
       let post = state.posts.find(o => o.number === number)
       if (!post) {
         post = await queryPost(number)
-        let list = await queryHot([post])
+        let list = await queryHot([post], true)
         post = list[0]
         post = formatPost(post)
       }

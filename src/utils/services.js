@@ -95,7 +95,7 @@ export const queryPage = async type => {
 }
 
 // 文章热度
-export const queryHot = async postList => {
+export const queryHot = async (postList, add) => {
   return new Promise(resolve => {
     if (isDev) return resolve(postList)
     const seq = postList.map(o => {
@@ -110,8 +110,20 @@ export const queryHot = async postList => {
             if (res.length > 0) {
               // 已存在则返回热度
               const counter = res[0]
-              o.times = counter.get('time')
-              resolve(o)
+              // 是否增接热度
+              if (add) {
+                counter
+                  .increment('time', 1)
+                  .save(null, { fetchWhenSave: true })
+                  .then(counter => {
+                    o.times = counter.get('time')
+                    resolve(o)
+                  })
+                  .catch(console.error)
+              } else {
+                o.times = counter.get('time')
+                resolve(o)
+              }
             } else {
               // 不存在则新建
               const newcounter = new Counter()
