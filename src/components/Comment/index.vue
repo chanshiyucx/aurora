@@ -50,6 +50,7 @@ export default {
         appKey: this.$config.leancloud.appKey,
         path: window.location.href,
         avatar: 'identicon',
+        notify: true,
         placeholder: '蝉鸣如雨，花宵道中'
       })
     }

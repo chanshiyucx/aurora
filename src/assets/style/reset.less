@@ -338,7 +338,7 @@ td.hljs-ln-numbers {
 /* Valine */
 #valine {
   .vwrap,
-  .vlist {
+  .vlist > .vcard {
     border-radius: 3px;
     background-color: rgba(255, 255, 255, 0.66);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
@@ -420,14 +420,14 @@ td.hljs-ln-numbers {
   }
 
   .vlist {
-    padding: 0 0.12rem;
+    padding: 0;
     .vcard {
-      padding-top: 0.15rem;
+      padding-top: 0.12rem;
       .vimg {
         margin-right: 0.12rem;
         padding: 0;
-        width: 0.5rem;
-        height: 0.5rem;
+        width: 0.54rem;
+        height: 0.54rem;
         border: none;
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
         transition: transform 1s ease-out;
@@ -436,6 +436,7 @@ td.hljs-ln-numbers {
           transform: rotateZ(360deg);
         }
       }
+
       .vhead,
       .vmeta {
         text-align: left;
@@ -443,6 +444,7 @@ td.hljs-ln-numbers {
       .vh {
         margin: 0;
         padding: 0;
+        border-bottom: none;
       }
       .vnick {
         margin-right: 0.12rem;
@@ -450,8 +452,10 @@ td.hljs-ln-numbers {
       }
       .vmeta {
         display: flex;
+        justify-content: space-between;
         .vtime {
           margin-right: 0.14rem;
+          font-size: 0.14rem;
         }
         .vat {
           color: #b854d4;
@@ -459,14 +463,14 @@ td.hljs-ln-numbers {
       }
       .vsys {
         margin-right: 0.12rem;
-        padding: 0.04rem 0.12rem;
+        padding: 0.02rem 0.1rem;
         font-size: 0.12rem;
-        color: #a1a1a1;
-        background: #eee;
+        color: #fff;
+        background-image: linear-gradient(to right, rgba(135, 206, 250, 0.4), rgba(255, 192, 203, 0.8));
       }
       .vcontent {
-        margin-bottom: 0.12rem;
-        padding-top: 0.12rem;
+        margin-bottom: 0;
+        padding-top: 0;
       }
       .vquote {
         margin: 0;
@@ -480,6 +484,38 @@ td.hljs-ln-numbers {
         }
         &::after {
           background: rgba(255, 255, 255, 0.8);
+        }
+      }
+    }
+    > .vcard {
+      margin-bottom: 0.15rem;
+      padding: 0.15rem 0.12rem;
+    }
+  }
+
+  .vmark {
+    .valert {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      height: 100%;
+
+      .vtext {
+        padding: 0;
+        letter-spacing: 2px;
+        color: #fff;
+        .vinput {
+          padding: 0.06rem 0.08rem;
+          width: 1rem;
+          color: #555;
+        }
+      }
+      .vbtns {
+        margin-top: 0.12rem;
+        .vsure {
+          margin-left: 0.2rem;
         }
       }
     }
