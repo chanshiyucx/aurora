@@ -172,25 +172,25 @@ export default {
     {
       name: '春の凑に',
       artist: 'TUMENECO',
-      url: 'https://files.catbox.moe/3o8ivq.mp3',
+      url: 'https://files.catbox.moe/ducy49.mp3',
       cover: 'https://i.loli.net/2018/12/11/5c0f196d01a3a.jpg'
     },
     {
       name: '夏阳炎',
       artist: '天威梦方',
-      url: 'https://files.catbox.moe/dy5d71.mp3',
+      url: 'https://files.catbox.moe/7migen.mp3',
       cover: 'https://i.loli.net/2018/12/09/5c0cc3cee372a.jpg'
     },
     {
       name: '秋风のとおり道',
       artist: '风神华伝',
-      url: 'https://files.catbox.moe/e1t7zh.mp3',
+      url: 'https://files.catbox.moe/b58fq6.mp3',
       cover: 'https://i.loli.net/2018/12/09/5c0cc3d13844a.jpg'
     },
     {
       name: '冬のわすれもの',
       artist: 'ハルノカゼ',
-      url: 'https://files.catbox.moe/2whj5x.mp3',
+      url: 'https://files.catbox.moe/vwnawp.mp3',
       cover: 'https://i.loli.net/2018/12/09/5c0cc3d36349c.jpg'
     }
   ]
