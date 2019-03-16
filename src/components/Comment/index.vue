@@ -5,7 +5,7 @@
     </div>
     <div>
       <div v-show="!anonymous" id="gitalk" />
-      <div v-show="anonymous" id="valine" />
+      <div v-show="anonymous && showModeBtn" id="valine" />
     </div>
   </div>
 </template>
@@ -63,16 +63,18 @@ export default {
       setTimeout(() => {
         this.showModeBtn = true
         if (this.anonymous && this.tagName) {
-          const comment = document.querySelector('#comment')
-          const anchor = document.getElementById(this.tagName.slice(1))
-          anchor &&
-            new SmoothScroll().animateScroll(anchor, comment, {
-              updateURL: false,
-              emitEvents: false,
-              durationMin: 600,
-              durationMax: 1200,
-              easing: 'easeOutQuint'
-            })
+          this.$nextTick(() => {
+            const comment = document.querySelector('#comment')
+            const anchor = document.getElementById(this.tagName.slice(1))
+            anchor &&
+              new SmoothScroll().animateScroll(anchor, comment, {
+                updateURL: false,
+                emitEvents: false,
+                durationMin: 600,
+                durationMax: 1200,
+                easing: 'easeOutQuint'
+              })
+          })
         }
       }, 1000)
     }
