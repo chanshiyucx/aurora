@@ -68,7 +68,7 @@ export default {
     return {
       loading: false,
       page: 0,
-      pageSize: 10,
+      pageSize: 12,
       maxPage: 0,
       archives: [],
       list: [],
@@ -87,14 +87,11 @@ export default {
   async created() {
     await this.queryArchives()
 
-    this.$nextTick(() => {
-      AOS.init({
-        duration: 2000,
-        easing: 'ease-out',
-        debounceDelay: 200,
-        offset: 50
-      })
-      setTimeout(AOS.refresh, 600)
+    AOS.init({
+      duration: 2000,
+      easing: 'ease-out',
+      debounceDelay: 200,
+      offset: 50
     })
   },
   methods: {
@@ -106,9 +103,10 @@ export default {
       const queryPage = type === 'prev' ? this.page - 1 : this.page + 1
 
       if (this.list[queryPage]) {
-        this.archives = this.list[queryPage]
-        this.page = queryPage
-        this.scrollTop()
+        this.scrollTop(() => {
+          this.page = queryPage
+          this.archives = this.list[queryPage]
+        })
         return
       }
 
@@ -122,19 +120,21 @@ export default {
         this.maxPage = queryPage - 1
         return
       }
-      this.page = queryPage
-      this.archives = archives
-      this.list[queryPage] = archives
-      this.scrollTop()
-      if (archives.length < this.pageSize) {
-        this.maxPage = queryPage
-      }
+      this.scrollTop(() => {
+        this.page = queryPage
+        this.archives = archives
+        this.list[queryPage] = archives
+        if (archives.length < this.pageSize) {
+          this.maxPage = queryPage
+        }
+      })
     },
     // 滚动到顶部
-    scrollTop() {
+    scrollTop(callback) {
       this.$nextTick(() => {
         this.$scroll(0)
-        setTimeout(AOS.refresh, 600)
+        setTimeout(callback, 1000)
+        setTimeout(AOS.refresh, 1500)
       })
     },
     // 跳转文章页
