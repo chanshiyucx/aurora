@@ -6,17 +6,16 @@
       <Transition name="fade-transform" mode="out-in"> <RouterView /> </Transition>
     </div>
     <Footer />
-    <a
+    <div
       v-if="!$isMobile"
-      href="#"
+      @click="scrollTop"
       :style="{ top: `${topDistance}px` }"
       :class="['back-to-top', showBackTop && 'visible']"
-    ></a>
+    ></div>
   </div>
 </template>
 
 <script>
-import SmoothScroll from 'smooth-scroll'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { on } from '@/utils'
@@ -46,15 +45,6 @@ export default {
       // 顶部进度条
       this.$Progress.finish()
 
-      // 滚动到顶部
-      new SmoothScroll('a[href*="#"]', {
-        updateURL: false,
-        emitEvents: false,
-        durationMin: 600,
-        durationMax: 1200,
-        easing: 'easeOutQuint'
-      })
-
       // 滚动页面
       const handleScroll = () => this.handleScroll()
       on(window, 'scroll', handleScroll)
@@ -71,6 +61,10 @@ export default {
       this.$router.afterEach(() => {
         this.$Progress.finish()
       })
+    },
+    // 滚动到顶部
+    scrollTop() {
+      this.$scroll(0)
     },
     // 监听页面滚动
     handleScroll(forced) {

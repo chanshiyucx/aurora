@@ -13,7 +13,6 @@
 <script>
 import Gitalk from 'gitalk'
 import Valine from 'valine'
-import SmoothScroll from 'smooth-scroll'
 
 export default {
   name: 'Comment',
@@ -64,16 +63,9 @@ export default {
         this.showModeBtn = true
         if (this.anonymous && this.tagName) {
           this.$nextTick(() => {
-            const comment = document.querySelector('#comment')
+            const toggle = document.querySelector('#comment')
             const anchor = document.getElementById(this.tagName.slice(1))
-            anchor &&
-              new SmoothScroll().animateScroll(anchor, comment, {
-                updateURL: false,
-                emitEvents: false,
-                durationMin: 600,
-                durationMax: 1200,
-                easing: 'easeOutQuint'
-              })
+            anchor && this.$scroll(anchor, toggle)
           })
         }
       }, 1000)

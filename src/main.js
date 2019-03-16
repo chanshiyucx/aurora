@@ -3,6 +3,7 @@ import isMobile from 'ismobilejs'
 import AV from 'leancloud-storage'
 import FontFaceObserver from 'fontfaceobserver'
 import VueProgressBar from 'vue-progressbar'
+import SmoothScroll from 'smooth-scroll'
 import APlayer from '@moefe/vue-aplayer'
 
 // Let's go!
@@ -27,6 +28,23 @@ Vue.config.productionTip = false
 Vue.prototype.$config = config
 Vue.prototype.$isMobile = isMobile.phone
 Vue.prototype.$gallery = null
+
+// 滚动到锚点
+const scrollOpts = {
+  updateURL: false,
+  emitEvents: false,
+  durationMin: 600,
+  durationMax: 1200,
+  easing: 'easeOutQuint'
+}
+const scroll = new SmoothScroll()
+Vue.prototype.$scroll = (anchor, toggle) => {
+  if (toggle) {
+    scroll.animateScroll(anchor, toggle, scrollOpts)
+  } else {
+    scroll.animateScroll(anchor, scrollOpts)
+  }
+}
 
 // Register AV objects to the global
 window.AV = AV

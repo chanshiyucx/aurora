@@ -1,11 +1,11 @@
 <template>
   <div id="home">
     <Transition name="fade-transform" mode="out-in">
-      <div class="main" v-if="posts.length">
+      <div class="main" v-if="archives.length">
         <article
           class="card"
           data-aos="fade-up"
-          v-for="post in posts"
+          v-for="post in archives"
           :key="post.id"
           @click="gotoPost(post.number)"
           @mouseenter="showTips(post)"
@@ -34,13 +34,14 @@
     </Transition>
 
     <Transition name="fade-transform" mode="out-in">
-      <div v-if="!posts.length"><Loading /></div>
-      <div v-else-if="hasMore" class="pagination" @click="queryPosts">
-        <div class="previous cursor">
-          <Spinner v-if="loading"></Spinner>
-          <span v-else>Previous</span>
-        </div>
-        <div class="rect"></div>
+      <div v-if="!list.length"><Loading /></div>
+      <div class="btn-group" v-if="list.length && (!isDisabledPrev || !isDisabledNext)">
+        <Pagination
+          :loading="loading"
+          :isDisabledPrev="isDisabledPrev"
+          :isDisabledNext="isDisabledNext"
+          @handleClick="queryArchives"
+        />
       </div>
     </Transition>
   </div>
@@ -49,32 +50,42 @@
 <script>
 import { mapState } from 'vuex'
 import AOS from 'aos'
+import SmoothScroll from 'smooth-scroll'
 import MarkDown from '@/components/MarkDown'
 import Loading from '@/components/Loading'
-import Spinner from '@/components/Spinner'
 import Lazyload from '@/components/Lazyload'
+import Pagination from '@/components/Pagination'
 
 export default {
   name: 'Home',
   components: {
     MarkDown,
     Loading,
-    Spinner,
-    Lazyload
+    Lazyload,
+    Pagination
   },
   data() {
     return {
-      loading: false
+      loading: false,
+      page: 0,
+      pageSize: 10,
+      maxPage: 0,
+      archives: [],
+      list: [],
+      scroll: new SmoothScroll()
     }
   },
   computed: mapState({
-    posts: state => state.posts,
-    hasMore: state => state.hasMore
+    isDisabledPrev() {
+      return this.page <= 1
+    },
+    isDisabledNext() {
+      if (!this.maxPage) return false
+      return this.page >= this.maxPage
+    }
   }),
   async created() {
-    if (!this.posts.length) {
-      await this.queryPosts()
-    }
+    await this.queryArchives()
 
     this.$nextTick(() => {
       AOS.init({
@@ -88,11 +99,43 @@ export default {
   },
   methods: {
     // 获取文章列表
-    async queryPosts() {
+    async queryArchives(type = 'next') {
       if (this.loading) return
+      if (type === 'prev' && this.isDisabledPrev) return
+      if (type === 'next' && this.isDisabledNext) return
+      const queryPage = type === 'prev' ? this.page - 1 : this.page + 1
+
+      if (this.list[queryPage]) {
+        this.archives = this.list[queryPage]
+        this.page = queryPage
+        this.scrollTop()
+        return
+      }
+
       this.loading = true
-      await this.$store.dispatch('queryPosts')
+      const archives = await this.$store.dispatch('queryArchive', {
+        page: queryPage,
+        pageSize: this.pageSize
+      })
       this.loading = false
+      if (archives.length === 0) {
+        this.maxPage = queryPage - 1
+        return
+      }
+      this.page = queryPage
+      this.archives = archives
+      this.list[queryPage] = archives
+      this.scrollTop()
+      if (archives.length < this.pageSize) {
+        this.maxPage = queryPage
+      }
+    },
+    // 滚动到顶部
+    scrollTop() {
+      this.$nextTick(() => {
+        this.$scroll(0)
+        setTimeout(AOS.refresh, 600)
+      })
     },
     // 跳转文章页
     gotoPost(number) {

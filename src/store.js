@@ -19,23 +19,13 @@ let tipsTimer = ''
 export default new Vuex.Store({
   state: {
     tips: '',
-    tipsUpdateAt: '',
-    page: 0,
-    pageSize: 10,
-    posts: [],
-    hasMore: true
+    tipsUpdateAt: ''
   },
   mutations: {
     // 设置一言
     setTips(state, { tips, tipsUpdateAt }) {
       state.tips = tips
       state.tipsUpdateAt = tipsUpdateAt
-    },
-    // 设置文章列表
-    setPosts(state, { posts, page }) {
-      state.page = page
-      state.posts = state.posts.concat(posts)
-      state.hasMore = posts.length === state.pageSize
     }
   },
   actions: {
@@ -53,18 +43,6 @@ export default new Vuex.Store({
           tipsUpdateAt: new Date()
         })
       }, 6000)
-    },
-    // 获取文章列表
-    async queryPosts({ commit, state }) {
-      const { page, pageSize, hasMore } = state
-      if (!hasMore) return
-      let data = await queryPosts({
-        page: page + 1,
-        pageSize
-      })
-      data.forEach(formatPost)
-      data = await queryHot(data)
-      commit('setPosts', { posts: data, page: page + 1 })
     },
     // 获取归档
     async queryArchive(context, payload) {
