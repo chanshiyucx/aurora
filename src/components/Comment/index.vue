@@ -13,6 +13,7 @@
 <script>
 import Gitalk from 'gitalk'
 import Valine from 'valine'
+import SmoothScroll from 'smooth-scroll'
 
 export default {
   name: 'Comment',
@@ -20,15 +21,20 @@ export default {
   data() {
     return {
       anonymous: false,
-      showModeBtn: false
+      showModeBtn: false,
+      tagName: this.$route.hash
     }
   },
   mounted() {
+    // 判断切换到 Valine
+    if (this.tagName) {
+      this.anonymous = true
+      const hash = window.location.hash
+      window.location.hash = hash.split(this.tagName)[0]
+    }
+
     this.renderGitalk()
     this.renderValine()
-    setTimeout(() => {
-      this.showModeBtn = true
-    }, 1000)
   },
   methods: {
     switchMode() {
@@ -53,6 +59,22 @@ export default {
         notify: false,
         placeholder: '蝉鸣如雨，花宵道中'
       })
+
+      setTimeout(() => {
+        this.showModeBtn = true
+        if (this.anonymous && this.tagName) {
+          const comment = document.querySelector('#comment')
+          const anchor = document.getElementById(this.tagName.slice(1))
+          anchor &&
+            new SmoothScroll().animateScroll(anchor, comment, {
+              updateURL: false,
+              emitEvents: false,
+              durationMin: 600,
+              durationMax: 1200,
+              easing: 'easeOutQuint'
+            })
+        }
+      }, 1000)
     }
   }
 }
