@@ -133,8 +133,10 @@ export default {
     scrollTop(callback) {
       this.$nextTick(() => {
         this.$scroll(0)
-        setTimeout(callback, 1000)
-        setTimeout(AOS.refresh, 1500)
+        // 对于移动端延长滚动时间
+        const delayTime = this.$isMobile ? 500 : 0
+        setTimeout(callback, 1000 + delayTime)
+        setTimeout(AOS.refresh, 1500 + delayTime)
       })
     },
     // 跳转文章页

@@ -1,7 +1,7 @@
 <template>
   <div id="comment">
     <div class="modeBtn" v-show="showModeBtn" @click="switchMode">
-      {{ anonymous ? 'Gitalk 评论' : '匿名评论' }}
+      {{ anonymous ? 'Gitalk 评论' : '游客评论' }}
     </div>
     <div>
       <div v-show="!anonymous" id="gitalk" />
