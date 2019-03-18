@@ -94,3 +94,11 @@ export const shuffle = array => {
 
   return array
 }
+/**
+ * url 转换
+ */
+export const getLocation = href => {
+  const a = document.createElement('a')
+  a.href = href
+  return a
+}

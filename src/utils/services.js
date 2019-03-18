@@ -180,3 +180,34 @@ export const likeSite = async type => {
       .catch(console.error)
   }).catch(console.error)
 }
+
+// 访问来源
+export const visitor = async referrer => {
+  return new Promise(resolve => {
+    if (isDev) return resolve()
+    const query = new AV.Query('Visitor')
+    const Visitor = AV.Object.extend('Visitor')
+    query.equalTo('referrer', referrer)
+    query
+      .first()
+      .then(res => {
+        if (res) {
+          res
+            .increment('time', 1)
+            .save(null, { fetchWhenSave: true })
+            .then(() => resolve())
+            .catch(console.error)
+        } else {
+          // 不存在则新建
+          const newVisitor = new Visitor()
+          newVisitor.set('referrer', referrer)
+          newVisitor.set('time', 1)
+          newVisitor
+            .save()
+            .then(() => resolve())
+            .catch(console.error)
+        }
+      })
+      .catch(console.error)
+  }).catch(console.error)
+}

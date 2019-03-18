@@ -1,11 +1,13 @@
 <template>
   <div id="app">
     <vue-progress-bar></vue-progress-bar>
-    <Header />
+    <Header/>
     <div class="page">
-      <Transition name="fade-transform" mode="out-in"> <RouterView /> </Transition>
+      <Transition name="fade-transform" mode="out-in">
+        <RouterView/>
+      </Transition>
     </div>
-    <Footer />
+    <Footer/>
     <div
       v-if="!$isMobile"
       @click="scrollTop"
@@ -18,7 +20,7 @@
 <script>
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { on } from '@/utils'
+import { on, getLocation } from '@/utils'
 
 export default {
   name: 'App',
@@ -38,6 +40,13 @@ export default {
   created() {
     if (!this.$isMobile) {
       this.initProgress()
+    }
+
+    // 统计访客来源
+    const referrer = getLocation(document.referrer)
+    const hostname = referrer.hostname || '直接访问'
+    if (!hostname.include('chanshiyu.com')) {
+      this.$store.dispatch('visitorStatistics', hostname || '直接访问')
     }
   },
   mounted() {
