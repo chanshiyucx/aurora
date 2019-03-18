@@ -45,7 +45,7 @@ export default {
     // 统计访客来源
     const referrer = getLocation(document.referrer)
     const hostname = referrer.hostname || '直接访问'
-    if (!hostname.include('chanshiyu.com')) {
+    if (!hostname.includes('chanshiyu.com')) {
       this.$store.dispatch('visitorStatistics', hostname || '直接访问')
     }
   },
