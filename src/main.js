@@ -22,6 +22,7 @@ import './assets/font/fontello.less'
 
 // 引入三方库
 import firework from './assets/lib/fireworks'
+import fairyDustCursor from './assets/lib/fairyDustCursor'
 
 // 配置全局变量
 Vue.config.productionTip = false
@@ -72,9 +73,10 @@ Vue.use(APlayer, {
   productionTip: false // disable console output
 })
 
-// PC 端启用烟花特效
+// PC 端启用烟花特效与鼠标特效
 if (!isMobile.phone) {
   firework()
+  fairyDustCursor()
 }
 
 // 载入字体

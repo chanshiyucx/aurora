@@ -109,6 +109,7 @@ export default {
   position: relative;
   padding-bottom: 1rem;
   text-align: center;
+  will-change: auto;
   .back-to-top {
     position: fixed;
     right: 0.25rem;
