@@ -109,7 +109,7 @@ export default {
   position: relative;
   padding-bottom: 1rem;
   text-align: center;
-  will-change: auto;
+  will-change: 'scroll-position';
   .back-to-top {
     position: fixed;
     right: 0.25rem;
