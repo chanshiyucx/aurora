@@ -1,14 +1,14 @@
 <template>
   <div id="archive">
     <Transition name="fade-transform" mode="out-in">
-      <div class="card" v-if="archives.length">
+      <div class="card" v-if="posts.length">
         <Quote :quote="$config.archiveOpts.qoute" />
         <ArchiveCard
-          :posts="archives"
+          :posts="posts"
           :loading="loading"
           :isDisabledPrev="isDisabledPrev"
           :isDisabledNext="isDisabledNext"
-          @handleClick="queryArchives"
+          @handleClick="queryPosts"
         />
       </div>
       <Loading v-else />
@@ -37,7 +37,7 @@ export default {
       page: 0,
       pageSize: 10,
       maxPage: 0,
-      archives: [],
+      posts: [],
       list: []
     }
   },
@@ -51,40 +51,44 @@ export default {
     }
   },
   async created() {
-    await this.queryArchives()
+    await this.queryPosts()
     this.renderGitalk()
   },
   methods: {
     // 获取文章列表
-    async queryArchives(type = 'next') {
+    async queryPosts(type = 'next') {
       if (this.loading) return
       if (type === 'prev' && this.isDisabledPrev) return
       if (type === 'next' && this.isDisabledNext) return
       const queryPage = type === 'prev' ? this.page - 1 : this.page + 1
 
       if (this.list[queryPage]) {
-        this.archives = this.list[queryPage]
+        this.posts = this.list[queryPage]
         this.page = queryPage
         return
       }
 
       this.loading = true
-      const archives = await this.$store.dispatch('queryArchive', {
+      const posts = await this.$store.dispatch('queryPosts', {
         page: queryPage,
         pageSize: this.pageSize
       })
       this.loading = false
-      if (archives.length === 0) {
+      if (posts.length === 0) {
         this.maxPage = queryPage - 1
         return
       }
 
       this.page = queryPage
-      this.archives = archives
-      this.list[queryPage] = archives
-      if (archives.length < this.pageSize) {
+      this.posts = posts
+      this.list[queryPage] = posts
+      if (posts.length < this.pageSize) {
         this.maxPage = queryPage
       }
+      // 获取文章热度
+      this.$nextTick(async () => {
+        this.posts = await this.$store.dispatch('queryHot', { posts: posts })
+      })
     },
     // 加载 Gitalk
     renderGitalk() {

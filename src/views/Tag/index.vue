@@ -116,7 +116,7 @@ export default {
 
       this.loading = true
       const filter = `&labels=${this.label.name}`
-      const posts = await this.$store.dispatch('queryArchive', {
+      const posts = await this.$store.dispatch('queryPosts', {
         page: queryPage,
         pageSize: this.pageSize,
         filter
@@ -132,6 +132,11 @@ export default {
       if (posts.length < this.pageSize) {
         this.maxPage = queryPage
       }
+
+      // 获取文章热度
+      this.$nextTick(async () => {
+        this.posts = await this.$store.dispatch('queryHot', { posts })
+      })
     }
   }
 }

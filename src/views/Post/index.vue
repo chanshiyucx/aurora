@@ -62,6 +62,10 @@ export default {
     // 获取文章详情
     async queryPost() {
       this.post = await this.$store.dispatch('queryPost', { number: this.number })
+      this.$nextTick(async () => {
+        const posts = await this.$store.dispatch('queryHot', { posts: [{ ...this.post }], isAdd: true })
+        this.post = posts[0]
+      })
     }
   }
 }

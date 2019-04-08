@@ -1,11 +1,11 @@
 <template>
   <div id="home">
     <Transition name="fade-transform" mode="out-in">
-      <div class="main" v-if="archives.length">
+      <div class="main" v-if="posts.length">
         <article
           class="card"
           data-aos="fade-up"
-          v-for="post in archives"
+          v-for="post in posts"
           :key="post.id"
           @click="gotoPost(post.number)"
           @mouseenter="showTips(post)"
@@ -40,7 +40,7 @@
           :loading="loading"
           :isDisabledPrev="isDisabledPrev"
           :isDisabledNext="isDisabledNext"
-          @handleClick="queryArchives"
+          @handleClick="queryPosts"
         />
       </div>
     </Transition>
@@ -70,7 +70,7 @@ export default {
       page: 0,
       pageSize: 12,
       maxPage: 0,
-      archives: [],
+      posts: [],
       list: [],
       scroll: new SmoothScroll()
     }
@@ -85,7 +85,7 @@ export default {
     }
   }),
   async created() {
-    await this.queryArchives()
+    await this.queryPosts()
 
     AOS.init({
       duration: 2000,
@@ -96,7 +96,7 @@ export default {
   },
   methods: {
     // 获取文章列表
-    async queryArchives(type = 'next') {
+    async queryPosts(type = 'next') {
       if (this.loading) return
       if (type === 'prev' && this.isDisabledPrev) return
       if (type === 'next' && this.isDisabledNext) return
@@ -105,28 +105,33 @@ export default {
       if (this.list[queryPage]) {
         this.scrollTop(() => {
           this.page = queryPage
-          this.archives = this.list[queryPage]
+          this.posts = this.list[queryPage]
         })
         return
       }
 
       this.loading = true
-      const archives = await this.$store.dispatch('queryArchive', {
+      const posts = await this.$store.dispatch('queryPosts', {
         page: queryPage,
         pageSize: this.pageSize
       })
       this.loading = false
-      if (archives.length === 0) {
+      if (posts.length === 0) {
         this.maxPage = queryPage - 1
         return
       }
       this.scrollTop(() => {
         this.page = queryPage
-        this.archives = archives
-        this.list[queryPage] = archives
-        if (archives.length < this.pageSize) {
+        this.posts = posts
+        this.list[queryPage] = posts
+        if (posts.length < this.pageSize) {
           this.maxPage = queryPage
         }
+      })
+
+      // 获取文章热度
+      this.$nextTick(async () => {
+        this.posts = await this.$store.dispatch('queryHot', { posts: posts })
       })
     },
     // 滚动到顶部

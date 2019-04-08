@@ -46,17 +46,18 @@ export default new Vuex.Store({
       }, 6000)
     },
     // 获取归档
-    async queryArchive(context, payload) {
+    async queryPosts(context, payload) {
       let data = await queryPosts(payload)
       data.forEach(formatPost)
-      data = await queryHot(data)
       return data
+    },
+    // 获取文章热度
+    async queryHot(context, { posts, isAdd = false }) {
+      return await queryHot(posts, isAdd)
     },
     // 获取文章详情
     async queryPost(context, { number }) {
       let post = await queryPost(number)
-      let list = await queryHot([post], true)
-      post = list[0]
       post = formatPost(post)
       return post
     },
