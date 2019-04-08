@@ -6,7 +6,7 @@
         <ul class="content">
           <li v-for="item in friend" :key="item.name">
             <a :href="item.link" rel="noopener noreferrer" target="_blank">
-              <img class="cover" alt :src="item.cover" />
+              <Lazyload class="cover" :src="item.cover" :alt="item.name" />
               <div class="info">
                 <img :src="item.avatar" alt /> <span>{{ item.name }}</span>
               </div>
@@ -24,6 +24,7 @@
 
 <script>
 import Loading from '@/components/Loading'
+import Lazyload from '@/components/Lazyload'
 import Quote from '@/components/Quote'
 import Comment from '@/components/Comment'
 
@@ -31,6 +32,7 @@ export default {
   name: 'Friend',
   components: {
     Loading,
+    Lazyload,
     Quote,
     Comment
   },

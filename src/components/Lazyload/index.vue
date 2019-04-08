@@ -5,7 +5,7 @@
 <script>
 export default {
   name: 'Lazyload',
-  props: ['src', 'alt'],
+  props: ['src', 'alt', 'temp'],
   data() {
     return {
       imgSrc: require('../../assets/img/cover.jpg')
