@@ -1,13 +1,11 @@
 <template>
   <div id="app">
     <vue-progress-bar></vue-progress-bar>
-    <Header/>
+    <Header />
     <div class="page">
-      <Transition name="fade-transform" mode="out-in">
-        <RouterView/>
-      </Transition>
+      <Transition name="fade-transform" mode="out-in"> <RouterView /> </Transition>
     </div>
-    <Footer/>
+    <Footer />
     <div
       v-if="!$isMobile"
       @click="scrollTop"
