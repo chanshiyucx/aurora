@@ -127,11 +127,10 @@ export default {
         if (posts.length < this.pageSize) {
           this.maxPage = queryPage
         }
-      })
-
-      // 获取文章热度
-      this.$nextTick(async () => {
-        this.posts = await this.$store.dispatch('queryHot', { posts: posts })
+        // 获取文章热度
+        this.$nextTick(async () => {
+          this.posts = await this.$store.dispatch('queryHot', { posts: posts })
+        })
       })
     },
     // 滚动到顶部
