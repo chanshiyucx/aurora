@@ -1,5 +1,5 @@
 <template>
-  <div class="pagination">
+  <div :class="['pagination', hide && 'hide']">
     <div class="previous">
       <Spinner v-if="loading"></Spinner>
       <div v-else class="btn cursor">
@@ -20,6 +20,11 @@ export default {
     Spinner
   },
   props: ['loading', 'isDisabledPrev', 'isDisabledNext'],
+  computed: {
+    hide() {
+      return this.isDisabledPrev && this.isDisabledNext
+    }
+  },
   methods: {
     handleClick(type) {
       this.$emit('handleClick', type)
@@ -35,6 +40,9 @@ export default {
   width: 1.6rem;
   height: 0.4rem;
   z-index: 99;
+  &.hide {
+    display: none;
+  }
   .previous {
     display: flex;
     justify-content: center;

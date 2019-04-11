@@ -15,12 +15,10 @@ export default {
    * Github Issues 配置【文章、说说、书单、友链】
    * Github Issues api: https://developer.github.com/v3/issues/
    **/
-  // 博客仓库
-  blog: 'https://api.github.com/repos/chanshiyucx/Blog',
+  username: 'chanshiyucx', // github 用户名
+  repository: 'blog', // 仓库地址
   // token 从中间任意位置拆开成两部分，避免 github 代码检测失效
   token: ['0ad1a0539c5b96fd18fa', 'aaafba9c7d1362a5746c'],
-  // 发布者
-  creator: 'chanshiyucx',
 
   /**
    * leancloud 配置 【文章浏览次数】

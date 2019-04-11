@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import {
+  queryArchivesCount,
+  queryMoodCount,
   queryPosts,
   queryPost,
   queryHot,
@@ -20,13 +22,23 @@ let tipsTimer = ''
 export default new Vuex.Store({
   state: {
     tips: '',
-    tipsUpdateAt: ''
+    tipsUpdateAt: '',
+    archivesCount: 0,
+    moodCount: 0
   },
   mutations: {
     // 设置一言
     setTips(state, { tips, tipsUpdateAt }) {
       state.tips = tips
       state.tipsUpdateAt = tipsUpdateAt
+    },
+    // 设置文章数量
+    setArchivesCount(state, payload) {
+      state.archivesCount = payload
+    },
+    // 设置心情数量
+    setMoodCount(state, payload) {
+      state.moodCount = payload
     }
   },
   actions: {
@@ -44,6 +56,18 @@ export default new Vuex.Store({
           tipsUpdateAt: new Date()
         })
       }, 6000)
+    },
+    // 获取文章总数
+    async queryArchivesCount({ commit }) {
+      const data = await queryArchivesCount()
+      const count = data.repository.issues.totalCount
+      commit('setArchivesCount', count)
+    },
+    // 获取心情总数
+    async queryMoodCount({ commit }) {
+      const data = await queryMoodCount()
+      const count = data.repository.issues.totalCount
+      commit('setMoodCount', count)
     },
     // 获取归档
     async queryPosts(context, payload) {

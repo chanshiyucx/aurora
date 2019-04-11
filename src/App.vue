@@ -39,11 +39,7 @@ export default {
     if (!this.$isMobile) {
       this.initProgress()
     }
-
-    // 统计访客来源
-    const referrer = getLocation(document.referrer)
-    const hostname = referrer.hostname || '直接访问'
-    this.$store.dispatch('visitorStatistics', hostname)
+    this.init()
   },
   mounted() {
     if (!this.$isMobile) {
@@ -66,6 +62,16 @@ export default {
       this.$router.afterEach(() => {
         this.$Progress.finish()
       })
+    },
+    // 初始化全局数据
+    init() {
+      this.$store.dispatch('queryArchivesCount')
+      this.$store.dispatch('queryMoodCount')
+
+      // 统计访客来源
+      const referrer = getLocation(document.referrer)
+      const hostname = referrer.hostname || '直接访问'
+      this.$store.dispatch('visitorStatistics', hostname)
     },
     // 滚动到顶部
     scrollTop() {
