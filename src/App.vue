@@ -63,12 +63,8 @@ export default {
         this.$Progress.finish()
       })
     },
-    // 初始化全局数据
+    // 统计访客来源
     init() {
-      this.$store.dispatch('queryArchivesCount')
-      this.$store.dispatch('queryMoodCount')
-
-      // 统计访客来源
       const referrer = getLocation(document.referrer)
       const hostname = referrer.hostname || '直接访问'
       this.$store.dispatch('visitorStatistics', hostname)

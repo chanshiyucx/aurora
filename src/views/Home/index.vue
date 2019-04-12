@@ -98,8 +98,6 @@ export default {
     // 获取文章列表
     async queryPosts(type = 'next') {
       if (this.loading) return
-      if (type === 'prev' && this.isDisabledPrev) return
-      if (type === 'next' && this.isDisabledNext) return
       const queryPage = type === 'prev' ? this.page - 1 : this.page + 1
 
       if (this.list[queryPage]) {
@@ -123,7 +121,7 @@ export default {
       this.scrollTop(() => {
         this.page = queryPage
         this.posts = posts
-        this.list[queryPage] = posts
+        this.$set(this.list, queryPage, posts)
         if (posts.length < this.pageSize) {
           this.maxPage = queryPage
         }

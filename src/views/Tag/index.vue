@@ -30,87 +30,87 @@
       <Loading v-else />
     </Transition>
 
-    <div v-if="$config.tagOpts.enableGitalk" id="gitalk" />
+    <Comment v-if="$config.tagOpts.enableGitalk && initComment" title="标签" />
   </div>
 </template>
 
 <script>
-import Gitalk from 'gitalk'
 import Loading from '@/components/Loading'
 import Quote from '@/components/Quote'
 import ArchiveCard from '@/components/Archive'
+import Comment from '@/components/Comment'
 
 export default {
   name: 'Tag',
   components: {
     Loading,
     Quote,
-    ArchiveCard
+    ArchiveCard,
+    Comment
   },
   data() {
     return {
       loading: false,
+      initComment: false,
       tag: [],
       label: '',
+      count: 0,
       page: 0,
       pageSize: 10,
-      maxPage: 0,
       posts: [],
       list: []
     }
   },
   computed: {
+    currentCount() {
+      let count = 0
+      this.list.forEach((o, i) => {
+        if (i <= this.page) {
+          count += o.length
+        }
+      })
+      return count
+    },
     isDisabledPrev() {
       return this.page <= 1
     },
     isDisabledNext() {
-      if (!this.maxPage) return false
-      return this.page >= this.maxPage
+      return this.currentCount >= this.count
     }
   },
   async created() {
     await this.queryTag()
-    this.renderGitalk()
+    this.initComment = true
   },
   methods: {
+    // 获取标签列表
     async queryTag() {
       this.tag = await this.$store.dispatch('queryTag')
     },
-    // 加载 Gitalk
-    renderGitalk() {
-      if (this.$config.tagOpts.enableGitalk) {
-        this.$nextTick(() => {
-          const gitalk = new Gitalk({
-            ...this.$config.gitalk,
-            title: '标签'
-          })
-          gitalk.render('gitalk')
-        })
-      }
-    },
     // 筛选条件
-    handleFilter(label) {
+    async handleFilter(label) {
+      if (this.label.name === label.name) return
       this.reset()
+      this.count = await this.$store.dispatch('queryFilterArchivesCount', { label: label.name })
       this.label = label
       this.filterPosts()
     },
     // 重置
     reset() {
       this.label = ''
+      this.count = 0
       this.page = 0
-      this.maxPage = 0
       this.list = []
       this.posts = []
     },
     // 查找文章
     async filterPosts(type = 'next') {
       if (this.loading) return
-      if (type === 'prev' && this.isDisabledPrev) return
-      if (type === 'next' && this.isDisabledNext) return
       const queryPage = type === 'prev' ? this.page - 1 : this.page + 1
+      this.page = queryPage
+
       if (this.list[queryPage]) {
         this.posts = this.list[queryPage]
-        this.page = queryPage
         return
       }
 
@@ -122,17 +122,9 @@ export default {
         filter
       })
       this.loading = false
-      if (posts.length === 0) {
-        this.maxPage = queryPage - 1
-        return
-      }
-      this.page = queryPage
-      this.posts = posts
-      this.list[queryPage] = posts
-      if (posts.length < this.pageSize) {
-        this.maxPage = queryPage
-      }
 
+      this.posts = posts
+      this.$set(this.list, queryPage, posts)
       // 获取文章热度
       this.$nextTick(async () => {
         this.posts = await this.$store.dispatch('queryHot', { posts })

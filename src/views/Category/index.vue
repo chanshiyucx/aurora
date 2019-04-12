@@ -37,87 +37,87 @@
       <Loading v-else />
     </Transition>
 
-    <div v-if="$config.categoryOpts.enableGitalk" id="gitalk" />
+    <Comment v-if="$config.categoryOpts.enableGitalk && initComment" title="分类" />
   </div>
 </template>
 
 <script>
-import Gitalk from 'gitalk'
 import Loading from '@/components/Loading'
 import Quote from '@/components/Quote'
 import ArchiveCard from '@/components/Archive'
+import Comment from '@/components/Comment'
 
 export default {
   name: 'Category',
   components: {
     Loading,
     Quote,
-    ArchiveCard
+    ArchiveCard,
+    Comment
   },
   data() {
     return {
       loading: false,
+      initComment: false,
       category: [],
       milestone: '',
+      count: 0,
       page: 0,
       pageSize: 10,
-      maxPage: 0,
       posts: [],
       list: []
     }
   },
   computed: {
+    currentCount() {
+      let count = 0
+      this.list.forEach((o, i) => {
+        if (i <= this.page) {
+          count += o.length
+        }
+      })
+      return count
+    },
     isDisabledPrev() {
       return this.page <= 1
     },
     isDisabledNext() {
-      if (!this.maxPage) return false
-      return this.page >= this.maxPage
+      return this.currentCount >= this.count
     }
   },
   async created() {
     await this.queryCategory()
-    this.renderGitalk()
+    this.initComment = true
   },
   methods: {
+    // 获取分类列表
     async queryCategory() {
       this.category = await this.$store.dispatch('queryCategory')
     },
-    // 加载 Gitalk
-    renderGitalk() {
-      if (this.$config.categoryOpts.enableGitalk) {
-        this.$nextTick(() => {
-          const gitalk = new Gitalk({
-            ...this.$config.gitalk,
-            title: '分类'
-          })
-          gitalk.render('gitalk')
-        })
-      }
-    },
     // 筛选条件
-    handleFilter(category) {
+    async handleFilter(category) {
+      if (this.milestone.number === category.number) return
       this.reset()
+      this.count = await this.$store.dispatch('queryFilterArchivesCount', { milestone: category.title })
       this.milestone = category
       this.filterPosts()
     },
     // 重置
     reset() {
       this.milestone = ''
+      this.count = 0
       this.page = 0
-      this.maxPage = 0
       this.list = []
       this.posts = []
     },
     // 查找文章
     async filterPosts(type = 'next') {
       if (this.loading) return
-      if (type === 'prev' && this.isDisabledPrev) return
-      if (type === 'next' && this.isDisabledNext) return
       const queryPage = type === 'prev' ? this.page - 1 : this.page + 1
+      this.page = queryPage
+
       if (this.list[queryPage]) {
         this.posts = this.list[queryPage]
-        this.page = queryPage
         return
       }
 
@@ -129,16 +129,9 @@ export default {
         filter
       })
       this.loading = false
-      if (posts.length === 0) {
-        this.maxPage = queryPage - 1
-        return
-      }
-      this.page = queryPage
+
       this.posts = posts
-      this.list[queryPage] = posts
-      if (posts.length < this.pageSize) {
-        this.maxPage = queryPage
-      }
+      this.$set(this.list, queryPage, posts)
       // 获取文章热度
       this.$nextTick(async () => {
         this.posts = await this.$store.dispatch('queryHot', { posts })

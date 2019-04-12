@@ -45,6 +45,10 @@ export const queryArchivesCount = () => createCall(documents.queryArchivesCount(
 // 获取心情数量
 export const queryMoodCount = () => createCall(documents.queryMoodCount({ username, repository }))
 
+// 按分类 & 标签筛选文章
+export const queryFilterArchivesCount = ({ label, milestone }) =>
+  createCall(documents.queryFilterArchivesCount({ username, repository, label, milestone }))
+
 // 获取文章列表
 export const queryPosts = async ({ page = 1, pageSize = 10, filter = '' }) => {
   try {

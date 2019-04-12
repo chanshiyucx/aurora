@@ -27,6 +27,8 @@ export default {
   },
   methods: {
     handleClick(type) {
+      if (type === 'prev' && this.isDisabledPrev) return
+      if (type === 'next' && this.isDisabledNext) return
       this.$emit('handleClick', type)
     }
   }

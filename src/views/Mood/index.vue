@@ -48,33 +48,41 @@ export default {
       loading: false,
       initComment: false,
       colors: shuffle(this.$config.themeColors),
+      count: 0,
       page: 0,
       pageSize: 10,
-      maxPage: 0,
       mood: [],
       list: []
     }
   },
   computed: {
+    currentCount() {
+      let count = 0
+      this.list.forEach((o, i) => {
+        if (i <= this.page) {
+          count += o.length
+        }
+      })
+      return count
+    },
     isDisabledPrev() {
       return this.page <= 1
     },
     isDisabledNext() {
-      if (!this.maxPage) return false
-      return this.page >= this.maxPage
+      return this.currentCount >= this.count
     }
   },
   async created() {
+    this.count = await this.$store.dispatch('queryMoodCount')
     await this.queryMood()
     this.initComment = true
   },
   methods: {
     async queryMood(type = 'next') {
       if (this.loading) return
-      if (type === 'prev' && this.isDisabledPrev) return
-      if (type === 'next' && this.isDisabledNext) return
       const queryPage = type === 'prev' ? this.page - 1 : this.page + 1
       this.page = queryPage
+
       if (this.list[queryPage]) {
         this.mood = this.list[queryPage]
         return
@@ -88,10 +96,7 @@ export default {
       this.loading = false
 
       this.mood = mood
-      this.list[queryPage] = mood
-      if (mood.length < this.pageSize) {
-        this.maxPage = queryPage
-      }
+      this.$set(this.list, queryPage, mood)
     }
   }
 }
