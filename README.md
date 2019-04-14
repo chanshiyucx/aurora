@@ -4,9 +4,9 @@
 
 ![蝉時雨](https://i.loli.net/2019/01/28/5c4e7e979e481.png)
 
-Aurora 是一个基于 Vue 开发的 SPA 单页面博客应用程序，后台数据源依托于 [Github Issues](https://developer.github.com/v3/issues/)，使用开源项目 [Gitalk](https://github.com/gitalk/gitalk) 作为博客评论系统。该主题基于 Github 全家桶，脱离服务器与数据库，关注内容本身，操作简单，免费食用。
+Aurora 是一个基于 Vue 开发的 SPA 单页面博客应用程序，后台数据源依托于 [Github Issues](https://developer.github.com/v3/issues/)，博客评论系统采用开源项目 [Gitalk](https://github.com/gitalk/gitalk)，[valine](https://valine.js.org/) 作为备用评论系统。该主题基于 Github 全家桶，脱离服务器与数据库，关注内容本身，操作简单，免费食用。
 
-技术栈：Vue + Github Issues + Gitalk
+技术栈：Vue + Github Pages + Github Api + Gitalk
 
 在线演示：[蝉時雨](https://chanshiyu.com)
 
