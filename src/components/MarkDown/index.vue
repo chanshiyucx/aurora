@@ -14,7 +14,7 @@ renderer.heading = function(text, level, raw, slugger) {
 }
 
 renderer.image = function(href, title, text) {
-  return `<span class="img-box" data-src="${href}" data-sub-html="<h4>${text}</h4>"><img src="${href}" alt="${text}" />${
+  return `<span class="img-box" data-src="${href}" data-sub-html="<h4>${text}</h4>"><img src="${href}" loading="lazy" alt="${text}" />${
     text ? `<span>◭ ${text}</span>` : ''
   }</span>`
 }
