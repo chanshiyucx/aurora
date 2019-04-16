@@ -20,7 +20,6 @@
           </span>
         </div>
       </li>
-      <li v-for="i in 2" :key="i" class="empty"></li>
     </ul>
     <div class="btn-group" v-if="!isDisabledPrev || !isDisabledNext">
       <Pagination

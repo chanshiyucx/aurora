@@ -12,7 +12,6 @@
               </div>
             </a>
           </li>
-          <li v-for="i in 4" :key="i" class="empty"></li>
         </ul>
       </div>
       <Loading v-else />
