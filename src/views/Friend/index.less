@@ -5,8 +5,9 @@
   .content {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    padding: 0.16rem;
 
-    @media screen and (min-width: 500px) {
+    @media screen and (min-width: 600px) {
       grid-template-columns: 1fr 1fr 1fr;
     }
 
@@ -14,22 +15,23 @@
       grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
-    padding: 0.16rem;
     li {
       display: flex;
       justify-content: center;
       align-items: center;
       list-style: none;
       position: relative;
-      margin-bottom: 0.16rem;
+      padding-bottom: 0.16rem;
       overflow: hidden;
+      > div {
+        width: 1.96rem;
+        height: 1.1rem;
+        border-radius: 3px;
+        overflow: hidden;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
+      }
     }
     a {
-      width: 1.96rem;
-      height: 1.1rem;
-      overflow: hidden;
-      border-radius: 3px;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
       &:hover {
         .cover {
           transform: scale(1.06);
@@ -52,9 +54,8 @@
         align-items: center;
         position: absolute;
         top: 0;
-        // width: 100%;
         width: 1.96rem;
-        height: 100%;
+        height: 1.1rem;
         background: rgba(255, 255, 255, 0.4);
         transition: transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
         img {

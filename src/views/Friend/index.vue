@@ -5,12 +5,14 @@
         <Quote :quote="$config.friendOpts.qoute" />
         <ul class="content">
           <li v-for="item in friend" :key="item.name">
-            <a :href="item.link" rel="noopener noreferrer" target="_blank">
-              <Lazyload class="cover" :src="item.cover" :alt="item.name" />
-              <div class="info">
-                <img :src="item.avatar" alt /> <span>{{ item.name }}</span>
-              </div>
-            </a>
+            <div>
+              <a :href="item.link" rel="noopener noreferrer" target="_blank">
+                <Lazyload class="cover" :src="item.cover" :alt="item.name" />
+                <div class="info">
+                  <img :src="item.avatar" alt /> <span>{{ item.name }}</span>
+                </div>
+              </a>
+            </div>
           </li>
         </ul>
       </div>
