@@ -134,7 +134,7 @@ export default {
       if (type === 'switch') {
         tips = `要介绍<span style="color: #b854d4">${
           this.waifu === 'pio' ? ' 姐姐 Tia ' : ' 妹妹 Pio '
-        } </span>给你认识么ヾ(●゜▽゜●)♡`
+        } </span>给你认识么(◍˃̶ᗜ˂̶◍)✩`
       } else {
         tips = hoverTips[type]
       }

@@ -9,7 +9,7 @@
     <div
       v-if="!$isMobile"
       @click="scrollTop"
-      :style="{ top: `${topDistance}px` }"
+      :style="backTopStyle"
       :class="['back-to-top', showBackTop && 'visible']"
     ></div>
   </div>
@@ -35,6 +35,11 @@ export default {
       scrollTimer: ''
     }
   },
+  computed: {
+    backTopStyle() {
+      return { top: `${this.topDistance}px` }
+    }
+  },
   created() {
     if (!this.$isMobile) {
       this.initProgress()
@@ -45,10 +50,8 @@ export default {
     if (!this.$isMobile) {
       // 顶部进度条
       this.$Progress.finish()
-
       // 滚动页面
-      const handleScroll = () => this.handleScroll()
-      on(window, 'scroll', handleScroll)
+      on(window, 'scroll', this.handleScroll)
     }
   },
   methods: {
@@ -109,17 +112,18 @@ export default {
   position: relative;
   padding-bottom: 1rem;
   text-align: center;
-  will-change: scroll-position;
   .back-to-top {
     position: fixed;
+    top: 0;
     right: 0.25rem;
     width: 70px;
     height: 900px;
     z-index: 99;
     opacity: 1;
-    transition: all 0.6s ease-out;
+    transition: top 0.6s ease-out;
     background: url(https://i.loli.net/2019/01/24/5c496f5c617f6.png) no-repeat center;
     background-size: contain;
+    will-change: left, top;
     &.visible {
       animation: float 3s linear infinite;
     }
