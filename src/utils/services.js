@@ -183,6 +183,7 @@ export const queryHot = async (postList, isAdd) => {
 // 喜欢小站
 export const likeSite = async type => {
   return new Promise(resolve => {
+    if (isDev) return resolve(0)
     const query = new AV.Query('Counter')
     const Counter = AV.Object.extend('Counter')
     query.equalTo('title', 'site')
