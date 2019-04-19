@@ -91,7 +91,7 @@ export const queryCategory = async () => {
 // 获取标签
 export const queryTag = async () => {
   try {
-    const url = `${blog}/labels?access_token=${access_token}`
+    const url = `${blog}/labels?access_token=${access_token}&page=1&per_page=100`
     const response = await fetch(url)
     checkStatus(response)
     const data = await response.json()
