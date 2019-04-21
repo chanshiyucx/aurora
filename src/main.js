@@ -49,7 +49,6 @@ Vue.prototype.$scroll = (anchor, toggle) => {
 
 // Register AV objects to the global
 window.AV = AV
-
 // Init Leancloud
 AV.init(config.leancloud)
 
