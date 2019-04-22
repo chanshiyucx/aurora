@@ -88,7 +88,7 @@ if (!isMobile.phone) {
 
 // 延时载入背景图片
 setTimeout(() => {
-  document.getElementById('bg').className += ' backstretch'
+  document.getElementById('bg').className += ' touhoubg'
 }, 4 * 1000)
 
 // 切换页面销毁所有灯箱

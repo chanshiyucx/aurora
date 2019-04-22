@@ -76,9 +76,9 @@
   height: 100%;
   z-index: -1;
   background-size: cover;
-  background-position: 50% 50%;
+  background-position: top center;
   background-repeat: no-repeat;
-  background-image: url(https://i.loli.net/2018/12/16/5c164034ac74c.jpg);
+  background-image: url(https://i.loli.net/2019/04/23/5cbdedc925332.jpg);
   &::after {
     content: '';
     position: absolute;
@@ -90,7 +90,8 @@
   }
 }
 
-.backstretch li {
+.schoolbg li,
+.touhoubg li {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -98,46 +99,89 @@
   height: 100%;
   z-index: 0;
   background-size: cover;
-  background-position: 50% 50%;
   background-repeat: no-repeat;
   opacity: 0;
   animation: imageAnimation 72s linear infinite 0s;
 }
-.backstretch li:nth-child(1) {
+
+.schoolbg li {
+  background-position: center center;
+}
+.schoolbg li:nth-child(1) {
   background-image: url(https://i.loli.net/2018/12/16/5c164034ac74c.jpg);
 }
-.backstretch li:nth-child(2) {
+.schoolbg li:nth-child(2) {
   background-image: url(https://i.loli.net/2018/12/09/5c0cc108c3b5c.jpg);
   animation-delay: 8s;
 }
-.backstretch li:nth-child(3) {
+.schoolbg li:nth-child(3) {
   background-image: url(https://i.loli.net/2018/12/09/5c0cc1010f9e5.jpg);
   animation-delay: 16s;
 }
-.backstretch li:nth-child(4) {
+.schoolbg li:nth-child(4) {
   background-image: url(https://i.loli.net/2018/12/09/5c0cc111f30a3.jpg);
   animation-delay: 24s;
 }
-.backstretch li:nth-child(5) {
+.schoolbg li:nth-child(5) {
   background-image: url(https://i.loli.net/2018/12/09/5c0cc1159ea42.jpg);
   animation-delay: 32s;
 }
-.backstretch li:nth-child(6) {
+.schoolbg li:nth-child(6) {
   background-image: url(https://i.loli.net/2018/12/09/5c0cc11b0691b.jpg);
   animation-delay: 40s;
 }
-.backstretch li:nth-child(7) {
+.schoolbg li:nth-child(7) {
   background-image: url(https://i.loli.net/2018/12/09/5c0cc12115c2e.jpg);
   animation-delay: 48s;
 }
-.backstretch li:nth-child(8) {
+.schoolbg li:nth-child(8) {
   background-image: url(https://i.loli.net/2018/12/09/5c0cc0f409d63.jpg);
   animation-delay: 56s;
 }
-.backstretch li:nth-child(9) {
+.schoolbg li:nth-child(9) {
   background-image: url(https://i.loli.net/2018/12/09/5c0cc1268cd42.jpg);
   animation-delay: 64s;
 }
+
+.touhoubg li {
+  background-position: top center;
+}
+.touhoubg li:nth-child(1) {
+  background-image: url(https://i.loli.net/2019/04/23/5cbdedc925332.jpg);
+}
+.touhoubg li:nth-child(2) {
+  background-image: url(https://i.loli.net/2019/04/23/5cbdeeb50a0a5.jpg);
+  animation-delay: 8s;
+}
+.touhoubg li:nth-child(3) {
+  background-image: url(https://i.loli.net/2019/04/23/5cbde85d44623.jpg);
+  animation-delay: 16s;
+}
+.touhoubg li:nth-child(4) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc111f30a3.jpg);
+  animation-delay: 24s;
+}
+.touhoubg li:nth-child(5) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc1159ea42.jpg);
+  animation-delay: 32s;
+}
+.touhoubg li:nth-child(6) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc11b0691b.jpg);
+  animation-delay: 40s;
+}
+.touhoubg li:nth-child(7) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc12115c2e.jpg);
+  animation-delay: 48s;
+}
+.touhoubg li:nth-child(8) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc0f409d63.jpg);
+  animation-delay: 56s;
+}
+.touhoubg li:nth-child(9) {
+  background-image: url(https://i.loli.net/2018/12/09/5c0cc1268cd42.jpg);
+  animation-delay: 64s;
+}
+
 /* Animation for the slideshow images */
 @keyframes imageAnimation {
   0% {
