@@ -172,7 +172,7 @@
       position: relative;
       text-align: center;
       border-radius: 0.03rem;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
       background: rgba(255, 255, 255, 0.6);
       &::before {
         content: '';
@@ -202,7 +202,7 @@
       margin-top: 0.04rem;
       width: 0.28rem;
       height: 0.28rem;
-      animation: rotate 1.2s linear 0s infinite;
+      animation: rotate 2s linear 0s infinite;
     }
     .popup {
       right: 0.42rem;
@@ -211,14 +211,37 @@
       width: 1.9rem;
     }
     .inner {
-      p {
-        transition: background 0.25s ease-in-out;
+      position: relative;
+      z-index: 1;
+      .mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0.36rem;
+        z-index: -1;
+        background: #b28fce;
+        border-radius: 0.03rem 0.03rem 0 0;
+        transition: transform 0.25s ease-in-out;
       }
-    }
-
-    .active {
-      color: #eee;
-      background-color: #b28fce;
+      .bottom {
+        border-radius: 0 0 0.03rem 0.03rem;
+        transform: translateY(0.36rem);
+      }
+      ul {
+        list-style: none;
+        width: 100%;
+        height: 0.72rem;
+        z-index: 999;
+        border-radius: 0.03rem;
+        li {
+          height: 0.36rem;
+          transition: color 0.25s ease-in-out;
+        }
+        .active {
+          color: #eee;
+        }
+      }
     }
   }
   .like {

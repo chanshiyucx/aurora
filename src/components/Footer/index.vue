@@ -33,8 +33,11 @@
       <img src="@/assets/img/sakura.png" alt="theme" />
       <div class="popup">
         <div class="cursor inner">
-          <p :class="theme === 'touhoubg' && 'active'" @click="switchTheme(0)">千年幻想</p>
-          <p :class="theme === 'schoolbg' && 'active'" @click="switchTheme(1)">玻璃の空</p>
+          <ul>
+            <li :class="theme === 'touhoubg' && 'active'" @click="switchTheme(0)">千年幻想</li>
+            <li :class="theme === 'schoolbg' && 'active'" @click="switchTheme(1)">玻璃の空</li>
+          </ul>
+          <div :class="['mask', theme === 'schoolbg' && 'bottom']"></div>
         </div>
       </div>
     </div>
