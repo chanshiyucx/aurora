@@ -152,54 +152,28 @@
       margin-left: 5px;
     }
   }
+  .theme,
   .like {
     position: fixed;
     right: 0.12rem;
-    bottom: 0.12rem;
     width: 0.36rem;
     height: 0.36rem;
     border-radius: 50%;
     text-align: center;
     line-height: 0.36rem;
-    background-image: linear-gradient(to right, rgba(135, 206, 250, 0.4), rgba(255, 192, 203, 0.8));
-    &:hover {
-      .icon {
-        animation: pulse 1.2s ease-in-out 0s infinite;
-      }
-      .popup {
-        opacity: 1;
-        transform: scaleY(1);
-      }
-    }
-    .icon {
-      display: inline-block;
-      width: 0.36rem;
-      height: 0.36rem;
-      font-size: 0.2rem;
-      color: #fff;
-    }
-
-    .active {
-      color: #b854d4;
-    }
     .popup {
       position: fixed;
-      right: 0.7rem;
-      bottom: 0.04rem;
       width: 1.8rem;
-      height: 0.48rem;
       opacity: 0;
-      line-height: 0.48rem;
+      transform: scaleY(0);
+      transition: all 0.25s ease-out;
+    }
+    .inner {
+      position: relative;
       text-align: center;
-      pointer-events: none;
       border-radius: 0.03rem;
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
       background: rgba(255, 255, 255, 0.6);
-      transform: scaleY(0);
-      transition: all 0.25s ease-out;
-      span {
-        color: #b854d4;
-      }
       &::before {
         content: '';
         position: absolute;
@@ -211,6 +185,73 @@
         border-top: 0.1rem solid transparent;
         border-bottom: 0.1rem solid transparent;
         transform: translate(100%, -50%);
+      }
+    }
+  }
+
+  .theme {
+    bottom: 0.56rem;
+    &:hover {
+      .popup {
+        opacity: 1;
+        transform: scaleY(1);
+      }
+    }
+    img {
+      display: inline-block;
+      margin-top: 0.04rem;
+      width: 0.28rem;
+      height: 0.28rem;
+      animation: rotate 1.2s linear 0s infinite;
+    }
+    .popup {
+      right: 0.42rem;
+      bottom: 0.4rem;
+      padding-right: 0.22rem;
+      width: 1.9rem;
+    }
+    .inner {
+      p {
+        transition: background 0.25s ease-in-out;
+      }
+    }
+
+    .active {
+      color: #eee;
+      background-color: #b28fce;
+    }
+  }
+  .like {
+    bottom: 0.12rem;
+    background-image: linear-gradient(to right, rgba(135, 206, 250, 0.4), rgba(255, 192, 203, 0.8));
+    &:hover {
+      .icon {
+        animation: pulse 1.2s ease-in-out 0s infinite;
+      }
+      .popup {
+        opacity: 1;
+        transform: scaleY(1);
+      }
+    }
+    .active {
+      color: #b854d4;
+    }
+    .icon {
+      display: inline-block;
+      width: 0.36rem;
+      height: 0.36rem;
+      font-size: 0.2rem;
+      color: #fff;
+    }
+    .popup {
+      right: 0.64rem;
+      bottom: 0.04rem;
+      width: 1.68rem;
+      height: 0.48rem;
+      line-height: 0.48rem;
+      pointer-events: none;
+      span {
+        color: #b854d4;
       }
     }
   }

@@ -78,7 +78,6 @@
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
-  background-image: url(https://i.loli.net/2019/04/23/5cbdedc925332.jpg);
   &::after {
     content: '';
     position: absolute;
@@ -88,6 +87,14 @@
     height: 100%;
     background-color: rgba(255, 255, 255, 0.6);
   }
+}
+
+.initSchoolbg {
+  background-image: url(https://i.loli.net/2018/12/16/5c164034ac74c.jpg);
+}
+
+.initTouhoubg {
+  background-image: url(https://i.loli.net/2019/04/23/5cbdedc925332.jpg);
 }
 
 .schoolbg li,
@@ -101,11 +108,11 @@
   background-size: cover;
   background-repeat: no-repeat;
   opacity: 0;
-  animation: imageAnimation 72s linear infinite 0s;
 }
 
 .schoolbg li {
   background-position: center center;
+  animation: schoolbgAnimation 72s linear infinite 0s;
 }
 .schoolbg li:nth-child(1) {
   background-image: url(https://i.loli.net/2018/12/16/5c164034ac74c.jpg);
@@ -145,6 +152,7 @@
 
 .touhoubg li {
   background-position: top center;
+  animation: touhoubgAnimation 72s linear infinite 0s;
 }
 .touhoubg li:nth-child(1) {
   background-image: url(https://i.loli.net/2019/04/23/5cbdedc925332.jpg);
@@ -183,7 +191,27 @@
 }
 
 /* Animation for the slideshow images */
-@keyframes imageAnimation {
+@keyframes schoolbgAnimation {
+  0% {
+    opacity: 0;
+    animation-timing-function: ease-in;
+  }
+  1.5% {
+    opacity: 1;
+  }
+  12% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  13% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes touhoubgAnimation {
   0% {
     opacity: 0;
     animation-timing-function: ease-in;

@@ -82,14 +82,9 @@ if (!isMobile.phone) {
 ;(function() {
   const font = new FontFaceObserver('Noto Serif SC', { weight: '400' })
   font.load().then(() => {
-    document.documentElement.className += ' fonts-loaded'
+    document.documentElement.classList.add('fonts-loaded')
   })
 })()
-
-// 延时载入背景图片
-setTimeout(() => {
-  document.getElementById('bg').className += ' touhoubg'
-}, 4 * 1000)
 
 // 切换页面销毁所有灯箱
 router.beforeEach((to, from, next) => {
