@@ -16,13 +16,13 @@
               <div :class="['touhou', theme === 'touhoubg' && 'active']" @click="switchTheme(0)">
                 <h3>千年幻想</h3>
                 <div class="preview">
-                  <div><img src="https://i.loli.net/2019/04/24/5cc059925542b.png" alt="千年幻想" /></div>
+                  <div><img src="https://i.loli.net/2019/04/25/5cc09717f2cce.png" alt="千年幻想" /></div>
                 </div>
               </div>
               <div :class="['school', theme === 'schoolbg' && 'active']" @click="switchTheme(1)">
                 <h3>玻璃の空</h3>
                 <div class="preview">
-                  <div><img src="https://i.loli.net/2019/04/23/5cbf1354a41b6.jpg" alt="玻璃の空" /></div>
+                  <div><img src="https://i.loli.net/2019/04/25/5cc0976f58a9d.jpg" alt="玻璃の空" /></div>
                 </div>
               </div>
             </div>
@@ -63,6 +63,8 @@ export default {
     }
   },
   mounted() {
+    this.queryLike()
+
     // 延时载入背景图片
     this.bgNode.classList.add(initTheme)
     setTimeout(() => {
