@@ -5,7 +5,8 @@
     <div class="page">
       <Transition name="fade-transform" mode="out-in"> <RouterView /> </Transition>
     </div>
-    <Footer />
+    <Footer @dropPanel="showPanel = true" />
+    <Panel v-show="showPanel" @hidePanel="showPanel = false" />
     <div
       v-if="!$isMobile"
       @click="scrollTop"
@@ -18,13 +19,15 @@
 <script>
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import Panel from '@/components/Panel'
 import { on, getLocation } from '@/utils'
 
 export default {
   name: 'App',
   components: {
     Header,
-    Footer
+    Footer,
+    Panel
   },
   data() {
     return {
@@ -32,7 +35,8 @@ export default {
       topDistance: -950,
       clientHeight: 0,
       lastScroll: new Date(),
-      scrollTimer: ''
+      scrollTimer: '',
+      showPanel: false
     }
   },
   computed: {

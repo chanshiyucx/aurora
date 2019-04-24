@@ -29,26 +29,7 @@
         蝉鸣如雨 - 花宵道中
       </p>
     </div>
-    <div v-if="!$isMobile" class="theme" @mouseenter="handleHover('theme')">
-      <img src="@/assets/img/sakura.png" alt="theme" />
-      <div class="popup">
-        <div class="cursor inner">
-          <ul>
-            <li :class="theme === 'touhoubg' && 'active'" @click="switchTheme(0)">千年幻想</li>
-            <li :class="theme === 'schoolbg' && 'active'" @click="switchTheme(1)">玻璃の空</li>
-          </ul>
-          <div :class="['mask', theme === 'schoolbg' && 'bottom']"></div>
-        </div>
-      </div>
-    </div>
-    <div v-if="!$isMobile" class="like" @mouseenter="handleHover('likeSite')">
-      <i :class="['icon', 'icon-heart', 'cursor', isLikeSite && 'active']" @click="likeSite"></i>
-      <div class="popup">
-        <p class="inner">
-          已有 <span>{{ likeTimes }}</span> 人点赞了哦！
-        </p>
-      </div>
-    </div>
+    <div class="sakura cursor" @click="dropPanel"><img src="@/assets/img/sakura.png" alt="theme" /></div>
   </div>
 </template>
 
@@ -60,8 +41,6 @@ import tips from '@/assets/live2d/tips.json'
 import costume from '@/assets/live2d/costume.json'
 
 const { waifuClick, hoverTips, clickTips, hitokotos } = tips
-const theme = localStorage.getItem('theme') || 'touhoubg'
-const initTheme = theme === 'touhoubg' ? 'initTouhoubg' : 'initSchoolbg'
 
 export default {
   name: 'Footer',
@@ -78,12 +57,8 @@ export default {
         { icon: 'comment', type: 'talk' },
         { icon: 'cancel-outline', type: 'close' }
       ],
-      isLikeSite: window.localStorage.getItem('isLikeSite', true),
-      likeTimes: 0,
       audio: this.$config.APlayer,
-      isMini: true,
-      bgNode: document.getElementById('bg'),
-      theme
+      isMini: true
     }
   },
   computed: mapState({
@@ -94,16 +69,7 @@ export default {
     if (!this.$isMobile) {
       this.dressup()
       this.loopTips()
-      this.queryLike()
     }
-    // 延时载入背景图片
-    this.bgNode.classList.add(initTheme)
-    setTimeout(() => {
-      setTimeout(() => {
-        this.bgNode.classList.remove(initTheme)
-      }, 2000)
-      this.bgNode.classList.add(this.theme)
-    }, 4000)
   },
   methods: {
     // 换装
@@ -135,27 +101,6 @@ export default {
       const inx = random(0, hitokotos.length - 1)
       const nextTips = hitokotos[inx].hitokoto
       this.$store.dispatch('showTips', { tips: nextTips })
-    },
-    // 切换主题
-    switchTheme(inx) {
-      const themeList = ['touhoubg', 'schoolbg']
-      const newTheme = themeList[inx]
-      const isSame = this.bgNode.classList.contains(newTheme)
-      if (isSame) return
-      this.bgNode.className = newTheme
-      this.theme = newTheme
-      localStorage.setItem('theme', newTheme)
-    },
-    // 点赞数
-    async queryLike() {
-      this.likeTimes = await this.$store.dispatch('queryLike', 'getTimes')
-    },
-    // 点赞
-    async likeSite() {
-      if (this.isLikeSite) return
-      this.likeTimes = await this.$store.dispatch('queryLike')
-      this.isLikeSite = true
-      window.localStorage.setItem('isLikeSite', true)
     },
     handleClickWaifu() {
       let nextTips
@@ -211,6 +156,10 @@ export default {
     // 播放器最小化
     handleUpdate(isMini) {
       this.isMini = isMini
+    },
+    // 打开面板
+    dropPanel() {
+      this.$emit('dropPanel')
     }
   }
 }

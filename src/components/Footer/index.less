@@ -152,130 +152,22 @@
       margin-left: 5px;
     }
   }
-  .theme,
-  .like {
+
+  .sakura {
     position: fixed;
     right: 0.12rem;
+    bottom: 0.12rem;
     width: 0.36rem;
     height: 0.36rem;
     border-radius: 50%;
     text-align: center;
     line-height: 0.36rem;
-    .popup {
-      position: fixed;
-      width: 1.8rem;
-      opacity: 0;
-      transform: scaleY(0);
-      transition: all 0.25s ease-out;
-    }
-    .inner {
-      position: relative;
-      text-align: center;
-      border-radius: 0.03rem;
-      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
-      background: rgba(255, 255, 255, 0.6);
-      &::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        right: 0;
-        width: 0;
-        height: 0;
-        border-left: 0.12rem solid rgba(255, 255, 255, 0.6);
-        border-top: 0.1rem solid transparent;
-        border-bottom: 0.1rem solid transparent;
-        transform: translate(100%, -50%);
-      }
-    }
-  }
-
-  .theme {
-    bottom: 0.56rem;
-    &:hover {
-      .popup {
-        opacity: 1;
-        transform: scaleY(1);
-      }
-    }
     img {
       display: inline-block;
       margin-top: 0.04rem;
       width: 0.28rem;
       height: 0.28rem;
       animation: rotate 2s linear 0s infinite;
-    }
-    .popup {
-      right: 0.42rem;
-      bottom: 0.4rem;
-      padding-right: 0.22rem;
-      width: 1.9rem;
-    }
-    .inner {
-      position: relative;
-      z-index: 1;
-      .mask {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 0.36rem;
-        z-index: -1;
-        background: #b28fce;
-        border-radius: 0.03rem 0.03rem 0 0;
-        transition: transform 0.25s ease-in-out;
-      }
-      .bottom {
-        border-radius: 0 0 0.03rem 0.03rem;
-        transform: translateY(0.36rem);
-      }
-      ul {
-        list-style: none;
-        width: 100%;
-        height: 0.72rem;
-        z-index: 999;
-        border-radius: 0.03rem;
-        li {
-          height: 0.36rem;
-          transition: color 0.25s ease-in-out;
-        }
-        .active {
-          color: #eee;
-        }
-      }
-    }
-  }
-  .like {
-    bottom: 0.12rem;
-    background-image: linear-gradient(to right, rgba(135, 206, 250, 0.4), rgba(255, 192, 203, 0.8));
-    &:hover {
-      .icon {
-        animation: pulse 1.2s ease-in-out 0s infinite;
-      }
-      .popup {
-        opacity: 1;
-        transform: scaleY(1);
-      }
-    }
-    .active {
-      color: #b854d4;
-    }
-    .icon {
-      display: inline-block;
-      width: 0.36rem;
-      height: 0.36rem;
-      font-size: 0.2rem;
-      color: #fff;
-    }
-    .popup {
-      right: 0.64rem;
-      bottom: 0.04rem;
-      width: 1.68rem;
-      height: 0.48rem;
-      line-height: 0.48rem;
-      pointer-events: none;
-      span {
-        color: #b854d4;
-      }
     }
   }
 }
