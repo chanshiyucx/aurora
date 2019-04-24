@@ -8,7 +8,9 @@
           <div></div>
         </div>
         <div class="main">
-          <div class="header"><div class="inner">蝉時雨</div></div>
+          <div class="header">
+            <div class="inner">{{ $config.title }}</div>
+          </div>
           <div class="body">
             <div class="theme">
               <div :class="['touhou', theme === 'touhoubg' && 'active']" @click="switchTheme(0)">
