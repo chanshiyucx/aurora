@@ -16,7 +16,7 @@
               <div :class="['touhou', theme === 'touhoubg' && 'active']" @click="switchTheme(0)">
                 <h3>千年幻想</h3>
                 <div class="preview">
-                  <div><img src="https://i.loli.net/2019/04/24/5cbf3ca6d83c4.png" alt="千年幻想" /></div>
+                  <div><img src="https://i.loli.net/2019/04/24/5cc059925542b.png" alt="千年幻想" /></div>
                 </div>
               </div>
               <div :class="['school', theme === 'schoolbg' && 'active']" @click="switchTheme(1)">
@@ -59,7 +59,7 @@ export default {
   },
   computed: {
     likeBtnText() {
-      return this.isLikeSite ? "谢谢点赞(●'◡'●)" : '点赞一下 (<ゝω・)☆'
+      return this.isLikeSite ? "谢谢点赞 (●'◡'●)" : '点赞一下 (<ゝω・)☆'
     }
   },
   mounted() {
