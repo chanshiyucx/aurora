@@ -82,6 +82,8 @@ export default {
       const themeList = ['touhoubg', 'schoolbg']
       const randomInx = Math.floor(Math.random() * 2)
 
+      // 移动端主题
+      if (this.$isMobile) return 'schoolbg'
       // 还没有设置过主题
       if (!theme || !themeChangeDate) {
         return themeList[randomInx]
@@ -96,23 +98,24 @@ export default {
     },
     // 创建背景节点
     createBgNode() {
+      const appNode = document.getElementById('app')
       const bgNode = document.createElement('ul')
       bgNode.id = 'bg'
       bgNode.classList.add(this.initTheme)
+      document.body.insertBefore(bgNode, appNode)
+      this.bgNode = bgNode
+      if (this.$isMobile) return
+
       for (let i = 0; i < 10; i++) {
         const imgNode = document.createElement('li')
         bgNode.appendChild(imgNode)
       }
-      const appNode = document.getElementById('app')
-      document.body.insertBefore(bgNode, appNode)
-      this.bgNode = bgNode
-
       // 延时载入背景图片
       setTimeout(() => {
         setTimeout(() => {
-          this.bgNode.classList.remove(this.initTheme)
+          bgNode.classList.remove(this.initTheme)
         }, 2000)
-        this.bgNode.classList.add(this.theme)
+        bgNode.classList.add(this.theme)
       }, 4000)
     },
     // 切换主题

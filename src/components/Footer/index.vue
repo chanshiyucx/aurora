@@ -29,7 +29,7 @@
         蝉鸣如雨 - 花宵道中
       </p>
     </div>
-    <div class="sakura cursor" @click="dropPanel" @mouseenter="handleHover('panel')">
+    <div v-if="!$isMobile" class="sakura cursor" @click="dropPanel" @mouseenter="handleHover('panel')">
       <img src="@/assets/img/sakura.png" alt="theme" />
     </div>
   </div>
