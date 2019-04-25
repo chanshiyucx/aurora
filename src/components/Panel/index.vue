@@ -20,7 +20,7 @@
                 </div>
               </div>
               <div :class="['school', theme === 'schoolbg' && 'active']" @click="switchTheme(1)">
-                <h3>玻璃の空</h3>
+                <h3>琉璃の空</h3>
                 <div class="preview">
                   <div><img src="https://i.loli.net/2019/04/25/5cc0976f58a9d.jpg" alt="玻璃の空" /></div>
                 </div>
