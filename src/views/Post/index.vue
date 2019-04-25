@@ -63,8 +63,8 @@ export default {
     async queryPost() {
       this.post = await this.$store.dispatch('queryPost', { number: this.number })
       this.$nextTick(async () => {
-        const posts = await this.$store.dispatch('queryHot', { posts: [{ ...this.post }], isAdd: true })
-        this.post = posts[0]
+        const hot = await this.$store.dispatch('addHot', { post: this.post })
+        this.$set(this.post, 'times', hot)
       })
     }
   }

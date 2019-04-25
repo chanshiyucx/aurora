@@ -127,7 +127,11 @@ export default {
       this.$set(this.list, queryPage, posts)
       // 获取文章热度
       this.$nextTick(async () => {
-        this.posts = await this.$store.dispatch('queryHot', { posts })
+        const ids = this.posts.map(o => o.id)
+        const hot = await this.$store.dispatch('queryHot', { ids })
+        this.posts.forEach((o, i) => {
+          o.times = hot[i]
+        })
       })
     }
   }

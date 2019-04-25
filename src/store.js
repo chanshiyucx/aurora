@@ -6,11 +6,12 @@ import {
   queryMoodCount,
   queryPosts,
   queryPost,
-  queryHot,
   queryTag,
   queryCategory,
   queryMood,
   queryPage,
+  queryHot,
+  addHot,
   likeSite,
   visitor
 } from './utils/services'
@@ -73,8 +74,12 @@ export default new Vuex.Store({
       return data
     },
     // 获取文章热度
-    async queryHot(context, { posts, isAdd = false }) {
-      return await queryHot(posts, isAdd)
+    async queryHot(context, { ids }) {
+      return await queryHot(ids)
+    },
+    // 增加热度
+    async addHot(context, { post }) {
+      return await addHot(post)
     },
     // 获取文章详情
     async queryPost(context, { number }) {

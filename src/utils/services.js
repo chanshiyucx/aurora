@@ -129,53 +129,56 @@ export const queryPage = async type => {
 }
 
 // 文章热度
-export const queryHot = async (postList, isAdd) => {
+export const queryHot = async ids => {
   return new Promise(resolve => {
-    if (isDev) return resolve(postList)
-    const seq = postList.map(o => {
-      return new Promise(resolve => {
-        const query = new AV.Query('Counter')
-        const Counter = AV.Object.extend('Counter')
-        const { title, id } = o
-        query.equalTo('id', id)
-        query
-          .find()
-          .then(res => {
-            if (res.length > 0) {
-              // 已存在则返回热度
-              const counter = res[0]
-              // 是否增接热度
-              if (isAdd) {
-                counter
-                  .increment('time', 1)
-                  .save(null, { fetchWhenSave: true })
-                  .then(counter => {
-                    o.times = counter.get('time')
-                    resolve(o)
-                  })
-                  .catch(console.error)
-              } else {
-                o.times = counter.get('time')
-                resolve(o)
-              }
-            } else {
-              // 不存在则新建
-              const newcounter = new Counter()
-              newcounter.set('title', title)
-              newcounter.set('id', id)
-              newcounter.set('time', 1)
-              newcounter.set('site', location.href)
-              newcounter
-                .save()
-                .then(() => resolve(o))
-                .catch(console.error)
-            }
-          })
-          .catch(console.error)
-      }).catch(console.error)
-    })
-    Promise.all(seq)
-      .then(data => resolve(data))
+    if (isDev) return resolve([])
+    const query = new AV.Query('Counter')
+    query.containedIn('id', ids)
+    query
+      .find()
+      .then(res => {
+        const hot = res.map(o => o.attributes.time)
+        resolve(hot)
+      })
+      .catch(console.error)
+  }).catch(console.error)
+}
+
+// 增加热度
+export const addHot = post => {
+  return new Promise(resolve => {
+    if (isDev) return resolve(1)
+    const query = new AV.Query('Counter')
+    const Counter = AV.Object.extend('Counter')
+    const { title, id } = post
+    query.equalTo('id', id)
+    query
+      .find()
+      .then(res => {
+        if (res.length > 0) {
+          // 已存在则返回热度
+          const counter = res[0]
+          counter
+            .increment('time', 1)
+            .save(null, { fetchWhenSave: true })
+            .then(counter => {
+              const time = counter.get('time')
+              resolve(time)
+            })
+            .catch(console.error)
+        } else {
+          // 不存在则新建
+          const newcounter = new Counter()
+          newcounter.set('title', title)
+          newcounter.set('id', id)
+          newcounter.set('time', 1)
+          newcounter.set('site', location.href)
+          newcounter
+            .save()
+            .then(() => resolve(1))
+            .catch(console.error)
+        }
+      })
       .catch(console.error)
   }).catch(console.error)
 }
