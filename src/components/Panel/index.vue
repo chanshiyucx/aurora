@@ -44,17 +44,15 @@
 </template>
 
 <script>
-const theme = localStorage.getItem('theme') || 'touhoubg'
-const initTheme = theme === 'touhoubg' ? 'initTouhoubg' : 'initSchoolbg'
-
 export default {
   name: 'Panel',
   data() {
     return {
-      bgNode: document.getElementById('bg'),
-      theme,
-      isLikeSite: window.localStorage.getItem('isLikeSite', true),
-      likeTimes: 0
+      bgNode: '',
+      theme: '',
+      initTheme: '',
+      likeTimes: 0,
+      isLikeSite: window.localStorage.getItem('isLikeSite', true)
     }
   },
   computed: {
@@ -64,17 +62,59 @@ export default {
   },
   mounted() {
     this.queryLike()
-
-    // 延时载入背景图片
-    this.bgNode.classList.add(initTheme)
-    setTimeout(() => {
-      setTimeout(() => {
-        this.bgNode.classList.remove(initTheme)
-      }, 2000)
-      this.bgNode.classList.add(this.theme)
-    }, 4000)
+    this.initThemeBg()
   },
   methods: {
+    // 初始化背景主题
+    initThemeBg() {
+      const theme = this.getInitTheme()
+      const initTheme = theme === 'touhoubg' ? 'initTouhoubg' : 'initSchoolbg'
+      this.theme = theme
+      this.initTheme = initTheme
+      this.createBgNode()
+      localStorage.setItem('theme', theme)
+      localStorage.setItem('themeChangeDate', new Date().toISOString())
+    },
+    // 获取初始化主题
+    getInitTheme() {
+      let theme = localStorage.getItem('theme')
+      const themeChangeDate = localStorage.getItem('themeChangeDate')
+      const themeList = ['touhoubg', 'schoolbg']
+      const randomInx = Math.floor(Math.random() * 2)
+
+      // 还没有设置过主题
+      if (!theme || !themeChangeDate) {
+        return themeList[randomInx]
+      }
+      // 主题设置超过一天
+      const now = new Date().getDate()
+      const last = new Date(themeChangeDate).getDate()
+      if (now - last > 1) {
+        return themeList[randomInx]
+      }
+      return theme
+    },
+    // 创建背景节点
+    createBgNode() {
+      const bgNode = document.createElement('ul')
+      bgNode.id = 'bg'
+      bgNode.classList.add(this.initTheme)
+      for (let i = 0; i < 10; i++) {
+        const imgNode = document.createElement('li')
+        bgNode.appendChild(imgNode)
+      }
+      const appNode = document.getElementById('app')
+      document.body.insertBefore(bgNode, appNode)
+      this.bgNode = bgNode
+
+      // 延时载入背景图片
+      setTimeout(() => {
+        setTimeout(() => {
+          this.bgNode.classList.remove(this.initTheme)
+        }, 2000)
+        this.bgNode.classList.add(this.theme)
+      }, 4000)
+    },
     // 切换主题
     switchTheme(inx) {
       const themeList = ['touhoubg', 'schoolbg']
@@ -84,6 +124,7 @@ export default {
       this.bgNode.className = newTheme
       this.theme = newTheme
       localStorage.setItem('theme', newTheme)
+      localStorage.setItem('themeChangeDate', new Date().toISOString())
     },
     // 点赞数
     async queryLike() {
