@@ -137,7 +137,10 @@ export const queryHot = async ids => {
     query
       .find()
       .then(res => {
-        const hot = res.map(o => o.attributes.time)
+        const hot = res
+          .map(o => o.attributes)
+          .sort((a, b) => b.id - a.id)
+          .map(o => o.time)
         resolve(hot)
       })
       .catch(console.error)
