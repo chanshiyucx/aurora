@@ -135,12 +135,12 @@ export default {
    */
   qrcode: [
     {
-      name: '11',
-      img: 'https://i.loli.net/2019/04/27/5cc40cc352e48.png'
+      name: '支付宝',
+      img: 'https://i.loli.net/2019/04/27/5cc4744a2b0d2.png'
     },
     {
-      name: '22',
-      img: 'https://i.loli.net/2019/04/27/5cc40cc352e48.png'
+      name: '微信',
+      img: 'https://i.loli.net/2019/04/27/5cc4707401e0a.png'
     }
   ],
 

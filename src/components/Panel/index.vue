@@ -14,9 +14,9 @@
           <div class="body">
             <div class="swiper-wrapper">
               <ul id="swiper" class="swiper animate" :style="containerStyle">
-                <li><Qrcode /></li>
+                <li><Qrcode @zoom="setZoomSrc" /></li>
                 <li><Theme :theme="theme" @switchTheme="switchTheme" /></li>
-                <li><Qrcode /></li>
+                <li><Qrcode @zoom="setZoomSrc" /></li>
                 <li><Theme :theme="theme" @switchTheme="switchTheme" /></li>
               </ul>
             </div>
@@ -40,6 +40,11 @@
         </div>
       </div>
     </div>
+    <Transition name="fade-transform" mode="out-in">
+      <div v-show="!!zoomSrc" class="zoom" @click="setZoomSrc('')">
+        <img class="cursor" :src="zoomSrc" alt />
+      </div>
+    </Transition>
   </div>
 </template>
 
@@ -60,7 +65,8 @@ export default {
       currentInx: 1, // 初始位置 -6rem
       step: 6, // 每一步 6rem
       lockSwiper: false,
-      swiper: ''
+      swiper: '',
+      zoomSrc: ''
     }
   },
   computed: {
@@ -188,6 +194,10 @@ export default {
           this.currentInx = 1
         }
       }, 500)
+    },
+    // 设置缩放二维码
+    setZoomSrc(src) {
+      this.zoomSrc = src
     }
   }
 }

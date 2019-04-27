@@ -2,14 +2,19 @@
   <ul class="qrcode">
     <li v-for="item in $config.qrcode" :key="item.name">
       <h3>{{ item.name }}</h3>
-      <img :src="item.img" :alt="item.name" />
+      <img class="cursor" :src="item.img" :alt="item.name" @click="zoom(item.img)" />
     </li>
   </ul>
 </template>
 
 <script>
 export default {
-  name: 'Qrcode'
+  name: 'Qrcode',
+  methods: {
+    zoom(src) {
+      this.$emit('zoom', src)
+    }
+  }
 }
 </script>
 <style lang="less" scoped>
@@ -17,11 +22,11 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 0.06rem 0.12rem;
+  padding: 0.1rem;
   h3 {
-    margin-bottom: 0.08rem;
+    margin-bottom: 0.1rem;
     font-size: 0.18rem;
-    line-height: 0.36rem;
+    line-height: 0.32rem;
     font-weight: normal;
   }
   img {
