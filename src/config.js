@@ -131,6 +131,20 @@ export default {
    */
 
   /**
+   * 赛钱箱
+   */
+  qrcode: [
+    {
+      name: '11',
+      img: 'https://i.loli.net/2019/04/27/5cc40cc352e48.png'
+    },
+    {
+      name: '22',
+      img: 'https://i.loli.net/2019/04/27/5cc40cc352e48.png'
+    }
+  ],
+
+  /**
    * 加载动画
    */
   loadingImg: 'https://i.loli.net/2018/12/15/5c14be28964d2.gif',

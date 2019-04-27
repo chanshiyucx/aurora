@@ -9,23 +9,23 @@
         </div>
         <div class="main">
           <div class="header">
-            <div class="inner">{{ $config.title }}</div>
+            <div class="inner">{{ panelTitle }}</div>
           </div>
           <div class="body">
-            <div class="theme">
-              <div :class="['touhou', theme === 'touhoubg' && 'active']" @click="switchTheme(0)">
-                <h3>千年幻想</h3>
-                <div class="preview">
-                  <div><img src="https://i.loli.net/2019/04/25/5cc09717f2cce.png" alt="千年幻想" /></div>
-                </div>
-              </div>
-              <div :class="['school', theme === 'schoolbg' && 'active']" @click="switchTheme(1)">
-                <h3>琉璃の空</h3>
-                <div class="preview">
-                  <div><img src="https://i.loli.net/2019/04/25/5cc0976f58a9d.jpg" alt="玻璃の空" /></div>
-                </div>
-              </div>
+            <div class="swiper-wrapper">
+              <ul id="swiper" class="swiper animate" :style="containerStyle">
+                <li><Qrcode /></li>
+                <li><Theme :theme="theme" @switchTheme="switchTheme" /></li>
+                <li><Qrcode /></li>
+                <li><Theme :theme="theme" @switchTheme="switchTheme" /></li>
+              </ul>
             </div>
+            <button class="cursor btn left-btn" @click="swiperTo(-1)">
+              <i class="icon icon-left-open-outline"></i>
+            </button>
+            <button class="cursor btn right-btn" @click="swiperTo(1)">
+              <i class="icon icon-right-open-outline"></i>
+            </button>
             <div class="like">
               <p>
                 已有 <span>{{ likeTimes }}</span> 人点赞了哦！
@@ -44,18 +44,38 @@
 </template>
 
 <script>
+import Theme from './components/Theme'
+import Qrcode from './components/Qrcode'
+
 export default {
   name: 'Panel',
+  components: { Theme, Qrcode },
   data() {
     return {
       bgNode: '',
       theme: '',
       initTheme: '',
       likeTimes: 0,
-      isLikeSite: window.localStorage.getItem('isLikeSite', true)
+      isLikeSite: window.localStorage.getItem('isLikeSite', true),
+      currentInx: 1, // 初始位置 -6rem
+      step: 6, // 每一步 6rem
+      lockSwiper: false,
+      swiper: ''
     }
   },
   computed: {
+    panelTitle() {
+      const inx = (this.currentInx + 1) % 2
+      return ['主题设置', '赛钱箱'][inx]
+    },
+    distance() {
+      return [0, -6, -12, -18][this.currentInx]
+    },
+    containerStyle() {
+      return {
+        transform: `translate3d(${this.distance}rem, 0, 0)`
+      }
+    },
     likeBtnText() {
       return this.isLikeSite ? "谢谢点赞 (●'◡'●)" : '点赞一下 (<ゝω・)☆'
     }
@@ -63,6 +83,8 @@ export default {
   mounted() {
     this.queryLike()
     this.initThemeBg()
+
+    this.swiper = document.getElementById('swiper')
   },
   methods: {
     // 初始化背景主题
@@ -143,6 +165,29 @@ export default {
     // 关闭面板
     hidePanel() {
       this.$emit('hidePanel')
+      // 还原面板初始位置
+      this.$nextTick(() => {
+        this.currentInx = 1
+      })
+    },
+    // 滑动面板
+    swiperTo(direction) {
+      if (this.lockSwiper) return
+      this.lockSwiper = true
+      this.swiper.classList.add('animate')
+
+      this.currentInx += direction
+      setTimeout(() => {
+        this.lockSwiper = false
+        if (this.currentInx === 0) {
+          this.swiper.classList.remove('animate')
+          this.currentInx = 2
+        }
+        if (this.currentInx === 3) {
+          this.swiper.classList.remove('animate')
+          this.currentInx = 1
+        }
+      }, 500)
     }
   }
 }
