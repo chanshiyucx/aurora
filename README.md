@@ -21,7 +21,7 @@ Aurora 是一个基于 Vue 开发的 SPA 单页面博客应用程序，使用 [G
 ```bash
 npm install -g @vue/cli-service-global
 
-git@github.com:chanshiyucx/aurora.git
+git clone git@github.com:chanshiyucx/aurora.git
 cd aurora
 npm install # or yarn
 ```
