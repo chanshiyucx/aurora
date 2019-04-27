@@ -34,7 +34,7 @@ Vue.prototype.$gallery = null
 const scrollOpts = {
   updateURL: false,
   emitEvents: false,
-  durationMin: 1000,
+  durationMin: 600,
   durationMax: 1200,
   easing: 'easeOutQuint'
 }

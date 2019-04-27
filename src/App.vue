@@ -55,7 +55,7 @@ export default {
       // 顶部进度条
       this.$Progress.finish()
       // 滚动页面
-      on(window, 'scroll', this.handleScroll)
+      on(window, 'scroll', () => this.handleScroll())
     }
   },
   methods: {
