@@ -40,11 +40,11 @@
         </div>
       </div>
     </div>
-    <Transition name="fade-transform" mode="out-in">
-      <div v-show="!!zoomSrc" class="zoom" @click="setZoomSrc('')">
-        <img class="cursor" :src="zoomSrc" alt />
-      </div>
-    </Transition>
+    <div v-show="!!zoomSrc" class="zoom" @click="setZoomSrc('')">
+      <Transition name="zoom-transform" mode="out-in">
+        <img v-show="!!zoomSrc" class="cursor" :src="zoomSrc" alt />
+      </Transition>
+    </div>
   </div>
 </template>
 

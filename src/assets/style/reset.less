@@ -24,6 +24,18 @@
   transform: translateY(30px);
 }
 
+/* zoom-transform */
+.zoom-transform-leave-active,
+.zoom-transform-enter-active {
+  transition: transform 0.4s;
+}
+.zoom-transform-enter {
+  transform: scale(0.6);
+}
+.zoom-transform-leave-to {
+  transform: scale(1);
+}
+
 /* 顶部进度条 */
 .__cov-progress {
   z-index: 99;
