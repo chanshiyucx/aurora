@@ -136,11 +136,11 @@ export default {
   qrcode: [
     {
       name: '11',
-      img: 'https://i.loli.net/2019/04/27/5cc40cc352e48.png'
+      img: 'https://i.loli.net/2019/04/27/5cc43ef3e474e.png'
     },
     {
       name: '22',
-      img: 'https://i.loli.net/2019/04/27/5cc40cc352e48.png'
+      img: 'https://i.loli.net/2019/04/27/5cc43ef3e474e.png'
     }
   ],
 

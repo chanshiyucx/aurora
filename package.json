@@ -17,15 +17,15 @@
     "gitalk": "^1.5.0",
     "highlight.js": "^9.15.6",
     "ismobilejs": "^0.5.1",
-    "leancloud-storage": "^3.12.0",
+    "leancloud-storage": "^3.13.0",
     "marked": "^0.6.2",
     "smooth-scroll": "^16.0.3",
     "timeago.js": "^4.0.0-beta.2",
     "valine": "^1.3.6",
     "viewerjs": "^1.3.3",
-    "vue": "^2.5.21",
+    "vue": "^2.6.10",
     "vue-progressbar": "^0.7.5",
-    "vue-router": "^3.0.1",
+    "vue-router": "^3.0.6",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
