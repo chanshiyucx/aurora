@@ -68,7 +68,7 @@ export default {
         color: #b28fce;
         transition: background 0.25s ease-out;
         &:hover {
-          background: #986db2;
+          background-color: #986db2;
         }
       }
       span.disabled {
@@ -84,7 +84,7 @@ export default {
       width: 100%;
       height: 100%;
       z-index: -1;
-      background: #b28fce;
+      background-color: #b28fce;
       transform: scaleX(0);
       transform-origin: bottom left;
       transition: all 0.25s ease-out;
@@ -99,7 +99,7 @@ export default {
     z-index: -2;
     border: 2px solid #fff;
     border-top-width: 0;
-    background: transparent;
+    background-color: transparent;
     transition: all 0.25s ease-out;
 
     &::before,
