@@ -21,7 +21,7 @@
         bottom: 0;
         padding: 0.12rem 0.14rem;
         width: 100%;
-        background: rgba(0, 0, 0, 0.4);
+        background-color: rgba(0, 0, 0, 0.4);
         .title {
           display: flex;
           justify-content: space-between;
@@ -80,10 +80,9 @@
       h3,
       h4 {
         margin: 0.24rem 0.16rem 0.16rem;
-        transition: all 0.25s ease;
+        transition: color 0.25s ease;
         i {
           padding-right: 0.06rem;
-          transition: all 0.25s ease;
         }
         &:hover {
           &,
@@ -120,6 +119,10 @@
       ol,
       ul {
         margin: 0 0.16rem 0.16rem 0.52rem;
+        ol,
+        ul {
+          margin-top: 0.12rem;
+        }
       }
 
       a {
@@ -168,7 +171,7 @@
         position: relative;
         padding: 0.36rem 0;
         font-style: italic;
-        background: rgba(0, 0, 0, 0.08);
+        background-color: rgba(0, 0, 0, 0.08);
         box-shadow: #999 0px 10px 8px -10px inset, #999 0px -10px 8px -10px inset;
         & > p {
           margin: 0.1rem 0.46rem;
