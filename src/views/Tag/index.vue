@@ -30,7 +30,7 @@
       <Loading v-else />
     </Transition>
 
-    <Comment v-if="$config.tagOpts.enableGitalk && initComment" title="标签" />
+    <Comment v-if="$config.tagOpts.enableComment && initComment" title="标签" />
   </div>
 </template>
 

@@ -30,6 +30,10 @@ Vue.prototype.$config = config
 Vue.prototype.$isMobile = isMobile.phone
 Vue.prototype.$gallery = null
 
+// Init Leancloud
+window.AV = AV
+AV.init(config.leancloud)
+
 // 滚动到锚点
 const scrollOpts = {
   updateURL: false,
@@ -46,11 +50,6 @@ Vue.prototype.$scroll = (anchor, toggle) => {
     scroll.animateScroll(anchor, scrollOpts)
   }
 }
-
-// Register AV objects to the global
-window.AV = AV
-// Init Leancloud
-AV.init(config.leancloud)
 
 // 顶部进度条
 const options = {
@@ -72,10 +71,10 @@ Vue.use(APlayer, {
   productionTip: false // disable console output
 })
 
-// PC 端启用烟花特效与鼠标特效
+// 烟花特效与鼠标特效
 if (!isMobile.phone) {
-  firework()
-  fairyDustCursor()
+  config.effect.firework && firework()
+  config.effect.fairyDustCursor && fairyDustCursor()
 }
 
 // 载入字体

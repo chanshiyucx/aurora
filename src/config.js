@@ -50,7 +50,7 @@ export default {
    * 归档页面
    */
   archiveOpts: {
-    enableGitalk: false,
+    enableComment: false,
     qoute: '文章千古事，得失寸心知'
   },
 
@@ -58,7 +58,7 @@ export default {
    * 分类页面【与 Github Issues 的 Milestone 对应】
    */
   categoryOpts: {
-    enableGitalk: false,
+    enableComment: false,
     qoute: '行云流水，落笔生花'
   },
 
@@ -66,7 +66,7 @@ export default {
    * 标签配置
    */
   tagOpts: {
-    enableGitalk: false,
+    enableComment: false,
     qoute: '列卒周匝，星罗云布'
   },
 
@@ -74,7 +74,7 @@ export default {
    * 心情页面
    */
   moodOpts: {
-    enableGitalk: true,
+    enableComment: true,
     qoute: '欲言又止，止言又欲'
   },
 
@@ -82,7 +82,7 @@ export default {
    * 书单页面
    */
   bookOpts: {
-    enableGitalk: true,
+    enableComment: true,
     qoute: '吾生也有涯，而知也无涯'
   },
 
@@ -90,7 +90,7 @@ export default {
    * 友链页面
    */
   friendOpts: {
-    enableGitalk: true,
+    enableComment: true,
     qoute: '青青子衿，悠悠我心'
   },
 
@@ -98,7 +98,7 @@ export default {
    * 关于页面
    */
   aboutOpts: {
-    enableGitalk: true,
+    enableComment: true,
     qoute: '蝉鸣如雨，花宵道中',
     avatar: 'https://i.loli.net/2018/12/09/5c0cc2b4e0195.png',
     graduated: 'University of Electronic Science and Technology of China (UESTC)',
@@ -153,6 +153,14 @@ export default {
    * 文章默认图
    */
   defaultCover: 'https://i.loli.net/2019/01/24/5c49bd8dad2f5.jpg',
+
+  /**
+   * 背景特效，请酌量食用
+   */
+  effect: {
+    firework: true, // 点击烟花特效
+    fairyDustCursor: false // 光标小星星特效
+  },
 
   /**
    * 主题配色，目前主要用于文章、说说、关于等卡片配色，以后可能会有其他用途

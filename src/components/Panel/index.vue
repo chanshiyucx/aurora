@@ -126,11 +126,11 @@ export default {
     },
     // 创建背景节点
     createBgNode() {
-      const appNode = document.getElementById('app')
+      const fireworks = document.getElementById('fireworks')
       const bgNode = document.createElement('ul')
       bgNode.id = 'bg'
       bgNode.classList.add(this.initTheme)
-      document.body.insertBefore(bgNode, appNode)
+      document.body.insertBefore(bgNode, fireworks)
       this.bgNode = bgNode
       if (this.$isMobile) return
 

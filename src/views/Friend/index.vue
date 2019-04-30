@@ -19,7 +19,7 @@
       <Loading v-else />
     </Transition>
 
-    <Comment v-if="$config.friendOpts.enableGitalk && initComment" title="友链" />
+    <Comment v-if="$config.friendOpts.enableComment && initComment" title="友链" />
   </div>
 </template>
 

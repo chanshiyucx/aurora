@@ -14,7 +14,7 @@
       <Loading v-else />
     </Transition>
 
-    <Comment v-if="$config.archiveOpts.enableGitalk && initComment" title="归档" />
+    <Comment v-if="$config.archiveOpts.enableComment && initComment" title="归档" />
   </div>
 </template>
 

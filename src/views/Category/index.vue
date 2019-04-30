@@ -37,7 +37,7 @@
       <Loading v-else />
     </Transition>
 
-    <Comment v-if="$config.categoryOpts.enableGitalk && initComment" title="分类" />
+    <Comment v-if="$config.categoryOpts.enableComment && initComment" title="分类" />
   </div>
 </template>
 

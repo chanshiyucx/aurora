@@ -37,7 +37,7 @@
       <Loading v-else />
     </Transition>
 
-    <Comment v-if="$config.bookOpts.enableGitalk && initComment" title="书单" />
+    <Comment v-if="$config.bookOpts.enableComment && initComment" title="书单" />
   </div>
 </template>
 

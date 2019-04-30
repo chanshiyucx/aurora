@@ -20,7 +20,7 @@
       <Loading v-else />
     </Transition>
 
-    <Comment v-if="$config.moodOpts.enableGitalk && initComment" title="心情" />
+    <Comment v-if="$config.moodOpts.enableComment && initComment" title="心情" />
   </div>
 </template>
 

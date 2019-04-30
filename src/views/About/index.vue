@@ -32,7 +32,7 @@
       <Loading v-else />
     </Transition>
 
-    <Comment v-if="$config.aboutOpts.enableGitalk && initComment" title="关于" />
+    <Comment v-if="$config.aboutOpts.enableComment && initComment" title="关于" />
   </div>
 </template>
 
