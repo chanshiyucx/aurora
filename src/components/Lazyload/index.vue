@@ -8,7 +8,7 @@ export default {
   props: ['src', 'alt', 'temp'],
   data() {
     return {
-      imgSrc: require('../../assets/img/cover.jpg')
+      imgSrc: this.$config.defaultCover
     }
   },
   created() {
