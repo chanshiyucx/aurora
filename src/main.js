@@ -39,8 +39,8 @@ const scrollOpts = {
   updateURL: false,
   emitEvents: false,
   durationMin: 600,
-  durationMax: 1200,
-  easing: 'easeOutQuint'
+  durationMax: 1000,
+  easing: 'easeInQuint'
 }
 const scroll = new SmoothScroll()
 Vue.prototype.$scroll = (anchor, toggle) => {
