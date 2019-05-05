@@ -30,7 +30,7 @@
                 </p>
               </div>
             </div>
-            <div class="desc">{{ item.desc }}</div>
+            <div class="description">{{ item.description }}</div>
           </li>
         </ul>
       </div>

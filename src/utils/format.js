@@ -13,7 +13,7 @@ export const formatPost = post => {
     title: cover && cover[1] ? cover[1] : '',
     src: cover && cover[2] ? cover[2] : config.defaultCover
   }
-  post.desc = temp[2] || temp[0]
+  post.description = temp[2] || temp[0]
   post.created_at = format(created_at, 'zh_CN')
   return post
 }
@@ -23,9 +23,9 @@ export const formatPost = post => {
  */
 export const formatCategory = category => {
   category.forEach(o => {
-    const desc = o.description.split('\r\n')
-    o.summary = desc[0].split('summary:')[1]
-    o.cover = desc[1].split('cover:')[1]
+    const description = o.description.split('\r\n')
+    o.summary = description[0].split('summary:')[1]
+    o.cover = description[1].split('cover:')[1]
   })
   return category
 }
@@ -58,7 +58,7 @@ export const formatPage = (data, type) => {
           postTitle: content[5].split('postTitle:')[1],
           postLink: content[6].split('postLink:')[1],
           cover: content[7].split('cover:')[1],
-          desc: content[9].split('desc:')[1]
+          description: content[9].split('description:')[1]
         }
       })
       break
