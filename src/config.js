@@ -66,7 +66,7 @@ export default {
   categoryOpts: {
     display: true,
     enableComment: false,
-    qoute: '行云流水，落笔生花'
+    qoute: '华枝春满，天心月圆'
   },
 
   /**

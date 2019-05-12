@@ -11,8 +11,8 @@
           @mouseenter="showTips(post)"
         >
           <div class="post-header">
-            <MagicImg :src="post.cover.src" :alt="post.cover.title" />
-            <div>
+            <Cover :src="post.cover.src" :alt="post.cover.title" />
+            <div class="head">
               <h3>{{ post.title }}</h3>
               <span>{{ post.cover.title }}</span>
             </div>
@@ -53,16 +53,16 @@ import AOS from 'aos'
 import SmoothScroll from 'smooth-scroll'
 import MarkDown from '@/components/MarkDown'
 import Loading from '@/components/Loading'
-import MagicImg from '@/components/MagicImg'
 import Pagination from '@/components/Pagination'
+import Cover from './components/Cover'
 
 export default {
   name: 'Home',
   components: {
     MarkDown,
     Loading,
-    MagicImg,
-    Pagination
+    Pagination,
+    Cover
   },
   data() {
     return {
