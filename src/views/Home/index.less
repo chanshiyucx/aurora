@@ -38,8 +38,17 @@
       h3,
       span {
         color: #fff;
-        text-shadow: 2px 1px rgba(0, 0, 0, 0.4);
+        text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
         letter-spacing: 0.6px;
+        background: linear-gradient(to right, #fb618d 10%, #fff 50%, var(--primary-color) 60%);
+        background-size: auto auto;
+        background-clip: border-box;
+        background-size: 200% auto;
+        background-clip: text;
+        text-fill-color: transparent;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: textclip 3s linear infinite;
       }
       h3 {
         display: inline-block;
