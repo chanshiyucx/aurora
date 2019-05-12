@@ -3,8 +3,8 @@
     <Transition name="fade-transform" mode="out-in">
       <article v-if="post" class="card">
         <div class="post-header">
-          <MagicImg :src="post.cover.src" :alt="post.cover.title" />
-          <div>
+          <Cover :src="post.cover.src" :alt="post.cover.title" maskHeight="0.8rem" />
+          <div class="head">
             <div class="title">
               <h1>{{ post.title }}</h1>
               <span>{{ post.cover.title }}</span>
@@ -35,15 +35,15 @@
 <script>
 import MarkDown from '@/components/MarkDown'
 import Loading from '@/components/Loading'
-import MagicImg from '@/components/MagicImg'
 import Comment from '@/components/Comment'
+import Cover from '@/components/Cover'
 
 export default {
   name: 'Post',
   components: {
     MarkDown,
     Loading,
-    MagicImg,
+    Cover,
     Comment
   },
   data() {

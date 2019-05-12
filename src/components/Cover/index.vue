@@ -1,14 +1,33 @@
 <template>
   <div class="wrapper">
     <img :src="imgSrc" :alt="alt" loading="lazy" />
-    <div class="mask" :style="{ backgroundImage: `url(${imgSrc})` }"></div>
+    <div
+      class="mask"
+      :style="{
+        height: maskHeight,
+        backgroundImage: `url(${imgSrc})`
+      }"
+    ></div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'MagicImg',
-  props: ['src', 'alt', 'temp'],
+  props: {
+    src: {
+      type: String,
+      default: ''
+    },
+    alt: {
+      type: String,
+      default: ''
+    },
+    maskHeight: {
+      type: String,
+      default: '.5rem'
+    }
+  },
   data() {
     return {
       imgSrc: this.$config.defaultCover
@@ -35,7 +54,6 @@ export default {
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 0.5rem;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;

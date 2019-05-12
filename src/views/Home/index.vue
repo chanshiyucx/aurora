@@ -54,7 +54,7 @@ import SmoothScroll from 'smooth-scroll'
 import MarkDown from '@/components/MarkDown'
 import Loading from '@/components/Loading'
 import Pagination from '@/components/Pagination'
-import Cover from './components/Cover'
+import Cover from '@/components/Cover'
 
 export default {
   name: 'Home',
