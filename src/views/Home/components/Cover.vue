@@ -40,7 +40,6 @@ export default {
     background-size: cover;
     background-position: bottom;
     filter: blur(3px);
-    transform: scale(1.06, 1.1);
     transition: height 0.6s ease-out;
     overflow: hidden;
   }
