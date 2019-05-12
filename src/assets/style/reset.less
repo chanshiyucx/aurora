@@ -58,7 +58,7 @@
   }
   &::-webkit-scrollbar-thumb {
     border-radius: 3px;
-    background-color: #986db2;
+    background-color: var(--dark-color);
     background-image: -webkit-linear-gradient(
       45deg,
       rgba(255, 255, 255, 0.4) 25%,
@@ -291,6 +291,7 @@ td.hljs-ln-numbers {
 }
 .lg-image {
   box-shadow: 0 0 1.6rem #eee;
+  background-color: #fff;
 }
 #lg-counter {
   &,
@@ -304,12 +305,12 @@ td.hljs-ln-numbers {
   .lg-thumb-item {
     &.active,
     &:hover {
-      border-color: #b854d4;
+      border-color: var(--primary-color);
     }
   }
 }
 .lg-progress-bar .lg-progress {
-  background-color: #b854d4;
+  background-color: var(--primary-color);
 }
 .lg-sub-html h4 {
   color: #dfdfdf;
@@ -320,23 +321,23 @@ td.hljs-ln-numbers {
   .gt-container {
     text-align: left;
     a {
-      color: #b854d4;
+      color: var(--primary-color);
       border-bottom: none;
     }
     .gt-svg svg {
-      fill: #b854d4;
+      fill: var(--primary-color);
     }
     .gt-comment-date,
     .gt-container .gt-comment-text {
       color: #666;
     }
     .gt-ico-text {
-      color: #b854d4;
+      color: var(--primary-color);
     }
     .gt-btn-login {
       margin-top: 0;
       border: none;
-      background-color: #986db2 !important;
+      background-color: var(--dark-color) !important;
       span {
         line-height: 1;
         color: #fff;
@@ -355,7 +356,7 @@ td.hljs-ln-numbers {
     .gt-popup {
       margin-top: 0.1rem;
       .is--active::before {
-        background: #b854d4;
+        background: var(--primary-color);
       }
     }
   }
@@ -383,14 +384,14 @@ td.hljs-ln-numbers {
       background-color: rgba(255, 255, 255, 0.66);
     }
     .gt-btn-public {
-      background-color: #986db2;
+      background-color: var(--dark-color);
       span {
         color: #fff;
       }
     }
     .gt-avatar-github {
       svg {
-        fill: #986db2;
+        fill: var(--dark-color);
       }
     }
   }
@@ -407,7 +408,7 @@ td.hljs-ln-numbers {
     }
     .gt-btn-loadmore {
       border: none;
-      background-color: #986db2;
+      background-color: var(--dark-color);
       span {
         color: #fff;
       }
@@ -445,9 +446,9 @@ td.hljs-ln-numbers {
   }
 
   a {
-    color: #b854d4;
+    color: var(--primary-color);
     &:before {
-      background: #b854d4;
+      background: var(--primary-color);
     }
   }
 
@@ -466,7 +467,7 @@ td.hljs-ln-numbers {
   .vinfo {
     text-align: left;
     .vnum {
-      color: #b854d4;
+      color: var(--primary-color);
     }
   }
 
@@ -474,7 +475,7 @@ td.hljs-ln-numbers {
     .vinput {
       border-bottom-color: #ccc;
       &:focus {
-        border-bottom-color: #b854d4;
+        border-bottom-color: var(--primary-color);
       }
     }
 
@@ -495,7 +496,7 @@ td.hljs-ln-numbers {
       color: #fff;
       border-radius: 3px;
       border: none;
-      background-color: #986db2;
+      background-color: var(--dark-color);
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
     }
 
@@ -542,7 +543,7 @@ td.hljs-ln-numbers {
       }
       .vnick {
         margin-right: 0.12rem;
-        color: #b854d4;
+        color: var(--primary-color);
       }
       .vmeta {
         display: flex;
@@ -552,7 +553,7 @@ td.hljs-ln-numbers {
           font-size: 0.14rem;
         }
         .vat {
-          color: #b854d4;
+          color: var(--primary-color);
         }
       }
       .vsys {

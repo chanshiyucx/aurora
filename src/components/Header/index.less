@@ -20,7 +20,7 @@
       letter-spacing: 2px;
       transition: color 0.25s ease-in-out;
       &:hover {
-        color: #b854d4;
+        color: var(--primary-color);
       }
     }
     .subtitle {
@@ -46,16 +46,22 @@
         font-size: 0.16rem;
         list-style: none;
         height: 86%;
-        transition: color 0.25s ease-in-out;
+        @media screen and (max-width: 600px) {
+          width: 0.6rem;
+        }
         a {
           display: flex;
           flex-direction: column;
           justify-content: space-around;
           align-items: center;
           height: 100%;
-        }
-        &:hover {
-          color: #b854d4;
+          transition: color 0.25s ease-in-out;
+          &:hover {
+            &,
+            i {
+              color: var(--primary-color);
+            }
+          }
         }
       }
     }

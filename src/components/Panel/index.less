@@ -219,7 +219,7 @@
         line-height: 0.6rem;
         font-size: 0.18rem;
         span {
-          color: #b854d4;
+          color: var(--primary-color);
         }
       }
     }
@@ -242,8 +242,8 @@
         overflow: hidden;
         border-style: none;
         border-radius: 0.3rem;
-        box-shadow: #d68fe9 0px 0px 10px;
-        background-color: #d68fe9;
+        box-shadow: var(--light-color) 0px 0px 10px;
+        background-color: var(--light-color);
         transform: translate(-50%, 50%);
         transition: all 0.5s cubic-bezier(0.86, -0.02, 0.08, 1.02) 0s;
         text-align: center;
@@ -251,7 +251,7 @@
         color: #eee;
         font-size: 0.16rem;
         &:hover {
-          box-shadow: #b854d4 0px 0px 10px;
+          box-shadow: var(--primary-color) 0px 0px 10px;
           &::before {
             transform: translateX(0px);
           }
@@ -270,7 +270,7 @@
         }
 
         &::before {
-          background-color: #b854d4;
+          background-color: var(--primary-color);
           transform: translateX(-100%);
           transition: all 0.5s cubic-bezier(0.86, -0.02, 0.08, 1.02) 0s;
         }

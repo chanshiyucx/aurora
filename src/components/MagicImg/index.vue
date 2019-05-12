@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'Lazyload',
+  name: 'MagicImg',
   props: ['src', 'alt', 'temp'],
   data() {
     return {

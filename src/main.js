@@ -15,10 +15,10 @@ import config from './config'
 // 全局样式与字体图标
 import 'aos/dist/aos.css'
 import 'gitalk/dist/gitalk.css'
+import './assets/font/fontello.less'
+import './assets/style/animation.less'
 import './assets/style/reset.less'
 import './assets/style/layout.less'
-import './assets/style/animation.less'
-import './assets/font/fontello.less'
 
 // 引入三方库
 import firework from './assets/lib/fireworks'
@@ -102,8 +102,18 @@ new Vue({
 
 // 自定义控制台
 const labelStyle = 'color:#ffffff;line-height: 22px;'
-console.info('%c 蝉時雨 %c', `${labelStyle}background:#986db2;`, '', 'https://chanshiyu.com')
-console.info('%c Theme %c', `${labelStyle}background:#986db2;`, '', 'https://github.com/chanshiyucx/aurora')
+console.info(
+  `%c ${config.title} %c`,
+  `${labelStyle}background:var(--dark-color);`,
+  '',
+  window.location.origin
+)
+console.info(
+  '%c Theme %c',
+  `${labelStyle}background:var(--dark-color);`,
+  '',
+  'https://github.com/chanshiyucx/aurora'
+)
 console.info('~❀~ 发现控制台报错请务必联系博主 ~❀~')
 console.log(
   '%c ',

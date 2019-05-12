@@ -3,7 +3,7 @@
     <Transition name="fade-transform" mode="out-in">
       <article v-if="post" class="card">
         <div class="post-header">
-          <Lazyload :src="post.cover.src" :alt="post.cover.title" />
+          <MagicImg :src="post.cover.src" :alt="post.cover.title" />
           <div>
             <div class="title">
               <h1>{{ post.title }}</h1>
@@ -35,7 +35,7 @@
 <script>
 import MarkDown from '@/components/MarkDown'
 import Loading from '@/components/Loading'
-import Lazyload from '@/components/Lazyload'
+import MagicImg from '@/components/MagicImg'
 import Comment from '@/components/Comment'
 
 export default {
@@ -43,7 +43,7 @@ export default {
   components: {
     MarkDown,
     Loading,
-    Lazyload,
+    MagicImg,
     Comment
   },
   data() {

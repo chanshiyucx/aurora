@@ -11,7 +11,7 @@
           @mouseenter="showTips(post)"
         >
           <div class="post-header">
-            <Lazyload :src="post.cover.src" :alt="post.cover.title" />
+            <MagicImg :src="post.cover.src" :alt="post.cover.title" />
             <div>
               <h3>{{ post.title }}</h3>
               <span>{{ post.cover.title }}</span>
@@ -53,7 +53,7 @@ import AOS from 'aos'
 import SmoothScroll from 'smooth-scroll'
 import MarkDown from '@/components/MarkDown'
 import Loading from '@/components/Loading'
-import Lazyload from '@/components/Lazyload'
+import MagicImg from '@/components/MagicImg'
 import Pagination from '@/components/Pagination'
 
 export default {
@@ -61,7 +61,7 @@ export default {
   components: {
     MarkDown,
     Loading,
-    Lazyload,
+    MagicImg,
     Pagination
   },
   data() {

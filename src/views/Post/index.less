@@ -91,7 +91,7 @@
         &:hover {
           &,
           i {
-            color: #b854d4;
+            color: var(--primary-color);
           }
         }
       }
@@ -131,9 +131,9 @@
 
       a {
         position: relative;
-        color: #b854d4;
+        color: var(--primary-color);
         i {
-          color: #b854d4;
+          color: var(--primary-color);
         }
         &::after {
           content: '';
@@ -142,7 +142,7 @@
           left: 0;
           width: 100%;
           height: 1.5px;
-          background-color: #b854d4;
+          background-color: var(--primary-color);
           transform: scaleX(0);
           transform-origin: bottom right;
           transition: transform 0.25s ease-out;
@@ -164,7 +164,7 @@
       ul {
         code {
           padding: 2px 5px;
-          color: #b854d4;
+          color: var(--primary-color);
           font-weight: bold;
           border-radius: 3px;
           background-color: rgba(0, 0, 0, 0.1);
@@ -211,6 +211,7 @@
           border: 6px solid transparent;
           box-shadow: 0 0 10px #999;
           transition: all 0.25s ease-out;
+          background-color: #fff;
         }
         img[src*='full'] {
           margin-left: -0.16rem;

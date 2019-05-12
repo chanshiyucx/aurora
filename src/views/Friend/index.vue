@@ -7,7 +7,7 @@
           <li v-for="item in friend" :key="item.name">
             <div>
               <a :href="item.link" rel="noopener noreferrer" target="_blank">
-                <Lazyload class="cover" :src="item.cover" :alt="item.name" />
+                <MagicImg class="cover" :src="item.cover" :alt="item.name" />
                 <div class="info">
                   <img :src="item.avatar" alt /> <span>{{ item.name }}</span>
                 </div>
@@ -25,7 +25,7 @@
 
 <script>
 import Loading from '@/components/Loading'
-import Lazyload from '@/components/Lazyload'
+import MagicImg from '@/components/MagicImg'
 import Quote from '@/components/Quote'
 import Comment from '@/components/Comment'
 
@@ -33,7 +33,7 @@ export default {
   name: 'Friend',
   components: {
     Loading,
-    Lazyload,
+    MagicImg,
     Quote,
     Comment
   },

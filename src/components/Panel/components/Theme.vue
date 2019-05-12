@@ -87,10 +87,10 @@ export default {
 
   .active {
     h3 {
-      color: #b854d4;
+      color: var(--primary-color);
     }
     .preview::before {
-      border: #d68fe9 solid 5px;
+      border: var(--light-color) solid 5px;
     }
   }
 }

@@ -5,7 +5,9 @@
       <span class="subtitle">{{ $config.subtitle }}</span>
       <ul>
         <li v-for="menu in displayMenus" :key="menu.path">
-          <RouterLink :class="['icon', `icon-${menu.icon}`]" :to="menu.path">{{ menu.title }}</RouterLink>
+          <RouterLink :to="menu.path">
+            <i :class="['icon', `icon-${menu.icon}`]" /> {{ menu.title }}
+          </RouterLink>
         </li>
       </ul>
     </div>
