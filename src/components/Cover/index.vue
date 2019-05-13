@@ -1,13 +1,20 @@
 <template>
   <div class="wrapper">
-    <img :src="imgSrc" :alt="alt" loading="lazy" />
+    <Transition name="opacity-transform" mode="out-in">
+      <img v-if="imgSrc" :key="imgSrc" :src="imgSrc" :alt="alt" />
+      <img v-else key="defaultCover" :src="defaultCover" alt="defaultCover" />
+    </Transition>
     <div
       class="mask"
       :style="{
-        height: maskHeight,
-        backgroundImage: `url(${imgSrc})`
+        height: maskHeight
       }"
-    ></div>
+    >
+      <Transition name="opacity-transform" mode="out-in">
+        <img v-if="imgSrc" :key="imgSrc" :src="imgSrc" :alt="alt" />
+        <img v-else key="defaultCover" :src="defaultCover" alt="defaultCover" />
+      </Transition>
+    </div>
   </div>
 </template>
 
@@ -30,13 +37,16 @@ export default {
   },
   data() {
     return {
-      imgSrc: this.$config.defaultCover
+      defaultCover: this.$config.defaultCover,
+      imgSrc: ''
     }
   },
   created() {
     const img = new Image()
     img.onload = () => {
-      this.imgSrc = this.src
+      setTimeout(() => {
+        this.imgSrc = this.src
+      }, 1000)
     }
     img.src = this.src
   }
@@ -54,12 +64,13 @@ export default {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: bottom;
     filter: blur(3px);
-    transition: height 0.6s ease-out;
     overflow: hidden;
+    img {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
   }
 }
 </style>

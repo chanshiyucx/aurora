@@ -36,6 +36,18 @@
   transform: scale(1);
 }
 
+/* opacity-transform */
+.opacity-transform-leave-active,
+.opacity-transform-enter-active {
+  transition: all 1s;
+}
+.opacity-transform-enter {
+  opacity: 0.4;
+}
+.opacity-transform-leave-to {
+  transform: 1;
+}
+
 /* 顶部进度条 */
 .__cov-progress {
   z-index: 99;
@@ -303,6 +315,7 @@ td.hljs-ln-numbers {
   padding: 0 5px;
   background-color: rgba(0, 0, 0, 0.45);
   .lg-thumb-item {
+    background-color: #fff;
     &.active,
     &:hover {
       border-color: var(--primary-color);

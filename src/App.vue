@@ -45,6 +45,8 @@ export default {
     }
   },
   created() {
+    document.title = this.$config.title
+
     if (!this.$isMobile) {
       this.initProgress()
     }
