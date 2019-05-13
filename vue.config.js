@@ -7,7 +7,7 @@ module.exports = {
         '//cdn.jsdelivr.net/npm/lightgallery.js@1.1.2/dist/css/lightgallery.min.css'
       ],
       js: [
-        '//cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js',
+        '//cdn.jsdelivr.net/npm/animejs@2.2.0/anime.min.js',
         '//cdn.jsdelivr.net/npm/lightgallery.js@1.1.2/dist/js/lightgallery.min.js',
         '//cdn.jsdelivr.net/npm/lg-autoplay.js@1.0.0/dist/lg-autoplay.min.js',
         '//cdn.jsdelivr.net/npm/lg-pager.js@1.0.0/dist/lg-pager.min.js',

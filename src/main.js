@@ -21,7 +21,7 @@ import './assets/style/reset.less'
 import './assets/style/layout.less'
 
 // 引入三方库
-// import firework from './assets/lib/fireworks'
+import firework from './assets/lib/fireworks'
 import fairyDustCursor from './assets/lib/fairyDustCursor'
 
 // 配置全局变量
@@ -73,7 +73,7 @@ Vue.use(APlayer, {
 
 // 烟花特效与鼠标特效
 if (!isMobile.phone) {
-  // config.effect.firework && firework()
+  config.effect.firework && firework()
   config.effect.fairyDustCursor && fairyDustCursor()
 }
 
