@@ -36,16 +36,18 @@
   transform: scale(1);
 }
 
-/* opacity-transform */
-.opacity-transform-leave-active,
-.opacity-transform-enter-active {
-  transition: all 1s;
+/* cover-transform */
+.cover-transform-leave-active,
+.cover-transform-enter-active {
+  transition: all 0.5s;
 }
-.opacity-transform-enter {
-  opacity: 0.4;
+.cover-transform-enter {
+  opacity: 0;
+  transform: translateY(-10px);
 }
-.opacity-transform-leave-to {
-  transform: 1;
+.cover-transform-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
 }
 
 /* 顶部进度条 */

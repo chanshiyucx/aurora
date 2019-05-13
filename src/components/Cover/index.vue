@@ -1,18 +1,15 @@
 <template>
   <div class="wrapper">
-    <Transition name="opacity-transform" mode="out-in">
-      <img v-if="imgSrc" :key="imgSrc" :src="imgSrc" :alt="alt" />
-      <img v-else key="defaultCover" :src="defaultCover" alt="defaultCover" />
-    </Transition>
-    <div
-      class="mask"
-      :style="{
-        height: maskHeight
-      }"
-    >
-      <Transition name="opacity-transform" mode="out-in">
+    <img :src="defaultCover" alt="defaultCover" />
+    <div class="cover">
+      <Transition name="cover-transform" mode="out-in">
         <img v-if="imgSrc" :key="imgSrc" :src="imgSrc" :alt="alt" />
-        <img v-else key="defaultCover" :src="defaultCover" alt="defaultCover" />
+      </Transition>
+    </div>
+    <div class="mask" :style="{ height: maskHeight }">
+      <img :src="defaultCover" alt="defaultCover" />
+      <Transition name="cover-transform" mode="out-in">
+        <img v-if="imgSrc" :key="imgSrc" :src="imgSrc" :alt="alt" />
       </Transition>
     </div>
   </div>
@@ -44,9 +41,7 @@ export default {
   created() {
     const img = new Image()
     img.onload = () => {
-      setTimeout(() => {
-        this.imgSrc = this.src
-      }, 1000)
+      this.imgSrc = this.src
     }
     img.src = this.src
   }
@@ -59,13 +54,18 @@ export default {
   img {
     width: 100%;
   }
+  .cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
   .mask {
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
-    filter: blur(3px);
     overflow: hidden;
+    filter: blur(3px);
     img {
       position: absolute;
       left: 0;
