@@ -5,9 +5,15 @@
   color: #555;
 }
 
+html {
+  --primary-color: #b854d4;
+  --light-color: #d68fe9;
+  --dark-color: #986db2;
+}
+
 ::selection {
   color: #fff;
-  background: #d68fe9;
+  background: var(--light-color);
 }
 
 /* fade-transform */
@@ -332,6 +338,10 @@ td.hljs-ln-numbers {
 }
 
 /* Gitalk */
+.markdown-body code {
+  color: var(--primary-color);
+  font-weight: 700;
+}
 #gitalk {
   .gt-container {
     text-align: left;

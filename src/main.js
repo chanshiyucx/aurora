@@ -17,8 +17,8 @@ import 'aos/dist/aos.css'
 import 'gitalk/dist/gitalk.css'
 import './assets/font/fontello.less'
 import './assets/style/animation.less'
-import './assets/style/reset.less'
 import './assets/style/layout.less'
+import './assets/style/reset.less'
 
 // 引入三方库
 import firework from './assets/lib/fireworks'

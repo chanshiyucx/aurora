@@ -25,7 +25,7 @@ export default {
         { path: '/archive', display: archiveOpts.display, icon: 'inbox', title: '归档' },
         { path: '/category', display: categoryOpts.display, icon: 'bookmark-empty', title: '分类' },
         { path: '/tag', display: tagOpts.display, icon: 'tag', title: '标签' },
-        { path: '/mood', display: moodOpts.display, icon: 'comment', title: '心情' },
+        { path: '/mood', display: moodOpts.display, icon: 'comment', title: '梦呓' },
         { path: '/book', display: bookOpts.display, icon: 'pencil', title: '书单' },
         { path: '/friend', display: friendOpts.display, icon: 'heart', title: '友链' },
         { path: '/about', display: aboutOpts.display, icon: 'universal-access', title: '关于' }
