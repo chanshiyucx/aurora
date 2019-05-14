@@ -31,12 +31,13 @@ export default {
   },
   data() {
     return {
-      showBackTop: false,
       topDistance: -950,
       clientHeight: 0,
       lastScroll: new Date(),
       scrollTimer: '',
-      showPanel: false
+      showBackTop: false,
+      showPanel: false,
+      showLoading: true
     }
   },
   computed: {
