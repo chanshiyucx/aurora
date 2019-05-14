@@ -48,9 +48,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import AOS from 'aos'
 import SmoothScroll from 'smooth-scroll'
+import { mapState } from 'vuex'
 import MarkDown from '@/components/MarkDown'
 import Loading from '@/components/Loading'
 import Pagination from '@/components/Pagination'
@@ -69,22 +69,35 @@ export default {
       loading: false,
       page: 0,
       pageSize: 12,
-      maxPage: 0,
       posts: [],
       list: [],
       scroll: new SmoothScroll()
     }
   },
-  computed: mapState({
+  computed: {
+    ...mapState({
+      totalCount: state => state.totalCount
+    }),
+    currentCount() {
+      let count = 0
+      this.list.forEach((o, i) => {
+        if (i <= this.page) {
+          count += o.length
+        }
+      })
+      return count
+    },
     isDisabledPrev() {
       return this.page <= 1
     },
     isDisabledNext() {
-      if (!this.maxPage) return false
-      return this.page >= this.maxPage
+      return this.currentCount >= this.totalCount
     }
-  }),
+  },
   async created() {
+    if (!this.totalCount) {
+      await this.$store.dispatch('queryArchivesCount')
+    }
     await this.queryPosts()
 
     AOS.init({
@@ -114,17 +127,11 @@ export default {
         pageSize: this.pageSize
       })
       this.loading = false
-      if (posts.length === 0) {
-        this.maxPage = queryPage - 1
-        return
-      }
+
       this.scrollTop(() => {
         this.page = queryPage
         this.posts = posts
         this.$set(this.list, queryPage, posts)
-        if (posts.length < this.pageSize) {
-          this.maxPage = queryPage
-        }
         // 获取文章热度
         this.$nextTick(async () => {
           const ids = this.posts.map(o => o.id)

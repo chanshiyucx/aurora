@@ -24,13 +24,18 @@ let tipsTimer = ''
 export default new Vuex.Store({
   state: {
     tips: '',
-    tipsUpdateAt: ''
+    tipsUpdateAt: '',
+    totalCount: 0
   },
   mutations: {
     // 设置一言
     setTips(state, { tips, tipsUpdateAt }) {
       state.tips = tips
       state.tipsUpdateAt = tipsUpdateAt
+    },
+    // 设置文章数量
+    setTotalCount(state, { totalCount }) {
+      state.totalCount = totalCount
     }
   },
   actions: {
@@ -50,10 +55,10 @@ export default new Vuex.Store({
       }, 6000)
     },
     // 获取文章总数
-    async queryArchivesCount() {
+    async queryArchivesCount({ commit }) {
       const data = await queryArchivesCount()
-      const count = data.repository.issues.totalCount
-      return count
+      const totalCount = data.repository.issues.totalCount
+      commit('setTotalCount', { totalCount })
     },
     // 获取 分类 & 标签筛选文章数量
     async queryFilterArchivesCount(context, payload) {

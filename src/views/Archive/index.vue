@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Loading from '@/components/Loading'
 import Quote from '@/components/Quote'
 import ArchiveCard from '@/components/Archive'
@@ -36,7 +37,6 @@ export default {
     return {
       loading: false,
       initComment: false,
-      count: 0,
       page: 0,
       pageSize: 10,
       posts: [],
@@ -44,6 +44,9 @@ export default {
     }
   },
   computed: {
+    ...mapState({
+      totalCount: state => state.totalCount
+    }),
     currentCount() {
       let count = 0
       this.list.forEach((o, i) => {
@@ -57,11 +60,13 @@ export default {
       return this.page <= 1
     },
     isDisabledNext() {
-      return this.currentCount >= this.count
+      return this.currentCount >= this.totalCount
     }
   },
   async created() {
-    this.count = await this.$store.dispatch('queryArchivesCount')
+    if (!this.totalCount) {
+      await this.$store.dispatch('queryArchivesCount')
+    }
     await this.queryPosts()
     this.initComment = true
   },
