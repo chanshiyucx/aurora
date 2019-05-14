@@ -16,7 +16,12 @@ import Valine from 'valine'
 
 export default {
   name: 'Comment',
-  props: ['title'],
+  props: {
+    title: {
+      type: String,
+      default: ''
+    }
+  },
   data() {
     return {
       anonymous: false,

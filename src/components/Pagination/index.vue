@@ -19,7 +19,20 @@ export default {
   components: {
     Spinner
   },
-  props: ['loading', 'isDisabledPrev', 'isDisabledNext'],
+  props: {
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    isDisabledPrev: {
+      type: Boolean,
+      default: false
+    },
+    isDisabledNext: {
+      type: Boolean,
+      default: false
+    }
+  },
   computed: {
     hide() {
       return this.isDisabledPrev && this.isDisabledNext

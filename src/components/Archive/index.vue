@@ -41,7 +41,24 @@ export default {
   components: {
     Pagination
   },
-  props: ['posts', 'loading', 'isDisabledPrev', 'isDisabledNext'],
+  props: {
+    posts: {
+      type: Array,
+      default: () => []
+    },
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    isDisabledPrev: {
+      type: Boolean,
+      default: false
+    },
+    isDisabledNext: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       colors: shuffle(this.$config.themeColors)

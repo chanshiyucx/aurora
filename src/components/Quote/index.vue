@@ -7,7 +7,12 @@
 <script>
 export default {
   name: 'Quote',
-  props: ['quote']
+  props: {
+    quote: {
+      type: String,
+      default: ''
+    }
+  }
 }
 </script>
 

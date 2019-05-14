@@ -10,7 +10,16 @@
 <script>
 export default {
   name: 'Segment',
-  props: ['color', 'title']
+  props: {
+    color: {
+      type: String,
+      default: ''
+    },
+    title: {
+      type: String,
+      default: ''
+    }
+  }
 }
 </script>
 

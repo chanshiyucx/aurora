@@ -5,7 +5,16 @@
 <script>
 export default {
   name: 'MagicImg',
-  props: ['src', 'alt', 'temp'],
+  props: {
+    src: {
+      type: String,
+      default: ''
+    },
+    alt: {
+      type: String,
+      default: ''
+    }
+  },
   data() {
     return {
       imgSrc: this.$config.defaultCover
