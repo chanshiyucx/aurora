@@ -1,14 +1,14 @@
 <template>
   <div class="wrapper">
     <img :src="defaultCover" alt="defaultCover" />
-    <div class="cover">
+    <div v-if="!disabledAnimate" class="cover">
       <Transition name="cover-transform" mode="out-in">
         <img v-if="imgSrc" :key="imgSrc" :src="imgSrc" :alt="alt" />
       </Transition>
     </div>
     <div class="mask" :style="{ height: maskHeight }">
       <img :src="defaultCover" alt="defaultCover" />
-      <Transition name="cover-transform" mode="out-in">
+      <Transition v-if="!disabledAnimate" name="cover-transform" mode="out-in">
         <img v-if="imgSrc" :key="imgSrc" :src="imgSrc" :alt="alt" />
       </Transition>
     </div>
@@ -34,11 +34,17 @@ export default {
     loadCover: {
       type: Boolean,
       default: false
+    },
+    isLoad: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
+    const disabledAnimate = this.isLoad
     return {
-      defaultCover: this.$config.defaultCover,
+      defaultCover: disabledAnimate ? this.src : this.$config.defaultCover,
+      disabledAnimate,
       imgSrc: ''
     }
   },
@@ -46,7 +52,7 @@ export default {
     loadCover: {
       immediate: true,
       handler(val) {
-        if (val) this.loadImg()
+        if (val && !this.disabledAnimate) this.loadImg()
       }
     }
   },

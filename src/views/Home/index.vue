@@ -15,7 +15,8 @@
               :src="post.cover.src"
               :alt="post.cover.title"
               :loadCover="post.loadCover"
-              @loadNextCover="loadNextCover"
+              :isLoad="post.isLoad"
+              @loadNextCover="loadNextCover(post)"
             />
             <div class="head">
               <h3>{{ post.title }}</h3>
@@ -157,9 +158,10 @@ export default {
       })
     },
     // 按顺序加载封面图
-    loadNextCover() {
-      const post = this.posts.find(o => !o.loadCover)
-      if (post) post.loadCover = true
+    loadNextCover(post) {
+      post.isLoad = true
+      const nextPost = this.posts.find(o => !o.loadCover)
+      if (nextPost) nextPost.loadCover = true
     },
     // 跳转文章页
     gotoPost(number) {
