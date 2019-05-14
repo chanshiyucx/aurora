@@ -4,7 +4,7 @@ import config from '../config'
 /**
  * 格式化文章
  */
-export const formatPost = post => {
+export const formatPost = (post, index) => {
   const { body, created_at } = post
   const temp = body.split('\r\n')
   const regex = /^\[(.+)\].*(http.*(?:jpg|jpeg|png|gif))/g
@@ -13,6 +13,7 @@ export const formatPost = post => {
     title: cover && cover[1] ? cover[1] : '',
     src: cover && cover[2] ? cover[2] : config.defaultCover
   }
+  post.loadCover = index < 4
   post.description = temp[2] || temp[0]
   post.created_at = format(created_at, 'zh_CN')
   return post

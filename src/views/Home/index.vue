@@ -11,7 +11,12 @@
           @mouseenter="showTips(post)"
         >
           <div class="post-header">
-            <Cover :src="post.cover.src" :alt="post.cover.title" />
+            <Cover
+              :src="post.cover.src"
+              :alt="post.cover.title"
+              :loadCover="post.loadCover"
+              @loadNextCover="loadNextCover"
+            />
             <div class="head">
               <h3>{{ post.title }}</h3>
               <span>{{ post.cover.title }}</span>
@@ -49,7 +54,6 @@
 
 <script>
 import AOS from 'aos'
-import SmoothScroll from 'smooth-scroll'
 import { mapState } from 'vuex'
 import MarkDown from '@/components/MarkDown'
 import Loading from '@/components/Loading'
@@ -70,8 +74,7 @@ export default {
       page: 0,
       pageSize: 12,
       posts: [],
-      list: [],
-      scroll: new SmoothScroll()
+      list: []
     }
   },
   computed: {
@@ -152,6 +155,11 @@ export default {
         setTimeout(callback, 1000 + delayTime)
         setTimeout(AOS.refresh, 1500 + delayTime)
       })
+    },
+    // 按顺序加载封面图
+    loadNextCover() {
+      const post = this.posts.find(o => !o.loadCover)
+      if (post) post.loadCover = true
     },
     // 跳转文章页
     gotoPost(number) {

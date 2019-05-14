@@ -30,6 +30,10 @@ export default {
     maskHeight: {
       type: String,
       default: '.5rem'
+    },
+    loadCover: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -38,12 +42,23 @@ export default {
       imgSrc: ''
     }
   },
-  created() {
-    const img = new Image()
-    img.onload = () => {
-      this.imgSrc = this.src
+  watch: {
+    loadCover: {
+      immediate: true,
+      handler(val) {
+        if (val) this.loadImg()
+      }
     }
-    img.src = this.src
+  },
+  methods: {
+    loadImg() {
+      const img = new Image()
+      img.onload = () => {
+        this.imgSrc = this.src
+        this.$emit('loadNextCover')
+      }
+      img.src = this.src
+    }
   }
 }
 </script>
