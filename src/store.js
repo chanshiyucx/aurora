@@ -101,9 +101,8 @@ export default new Vuex.Store({
     // 获取标签
     async queryTag() {
       let data = await queryTag()
-      data = data.filter(
-        o => o.name !== 'Mood' && o.name !== 'Friend' && o.name !== 'Book' && o.name !== 'About'
-      )
+      const filterLabel = ['Mood', 'Friend', 'Book', 'About']
+      data = data.filter(o => !filterLabel.includes(o.name))
       return data
     },
     // 获取心情
