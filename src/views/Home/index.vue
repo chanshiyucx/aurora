@@ -11,13 +11,7 @@
           @mouseenter="showTips(post)"
         >
           <div class="post-header">
-            <Cover
-              :src="post.cover.src"
-              :alt="post.cover.title"
-              :loadCover="post.loadCover"
-              :isLoad="post.isLoad"
-              @loadNextCover="loadNextCover(post)"
-            />
+            <Cover :src="post.cover.src" :alt="post.cover.title" />
             <div class="head">
               <h3>{{ post.title }}</h3>
               <span>{{ post.cover.title }}</span>
@@ -156,12 +150,6 @@ export default {
         setTimeout(callback, 1000 + delayTime)
         setTimeout(AOS.refresh, 1500 + delayTime)
       })
-    },
-    // 按顺序加载封面图
-    loadNextCover(post) {
-      post.isLoad = true
-      const nextPost = this.posts.find(o => !o.loadCover)
-      if (nextPost) nextPost.loadCover = true
     },
     // 跳转文章页
     gotoPost(number) {

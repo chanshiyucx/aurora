@@ -1,14 +1,14 @@
 <template>
   <div class="wrapper">
     <img :src="defaultCover" alt="defaultCover" />
-    <div v-if="!disabledAnimate" class="cover">
+    <div class="cover">
       <Transition name="cover-transform" mode="out-in">
         <img v-if="imgSrc" :key="imgSrc" :src="imgSrc" :alt="alt" />
       </Transition>
     </div>
     <div class="mask" :style="{ height: maskHeight }">
       <img :src="defaultCover" alt="defaultCover" />
-      <Transition v-if="!disabledAnimate" name="cover-transform" mode="out-in">
+      <Transition name="cover-transform" mode="out-in">
         <img v-if="imgSrc" :key="imgSrc" :src="imgSrc" :alt="alt" />
       </Transition>
     </div>
@@ -30,38 +30,22 @@ export default {
     maskHeight: {
       type: String,
       default: '.5rem'
-    },
-    loadCover: {
-      type: Boolean,
-      default: false
-    },
-    isLoad: {
-      type: Boolean,
-      default: false
     }
   },
   data() {
-    const disabledAnimate = this.isLoad
     return {
-      defaultCover: disabledAnimate ? this.src : this.$config.defaultCover,
-      disabledAnimate,
+      defaultCover: this.$config.defaultCover,
       imgSrc: ''
     }
   },
-  watch: {
-    loadCover: {
-      immediate: true,
-      handler(val) {
-        if (val && !this.disabledAnimate) this.loadImg()
-      }
-    }
+  created() {
+    this.loadImg()
   },
   methods: {
     loadImg() {
       const img = new Image()
       img.onload = () => {
         this.imgSrc = this.src
-        this.$emit('loadNextCover')
       }
       img.src = this.src
     }
