@@ -14,16 +14,16 @@ export default {
   /**
    * 站点标题
    */
-  title: '蝉時雨',
-  subtitle: '蝉鸣如雨 花宵道中',
+  title: '弥月',
+  subtitle: '梦醒时分 月当此时明',
 
   /**
    * Github Issues 配置【文章、说说、书单、友链】
    */
-  username: 'chanshiyucx', // github 用户名
-  repository: 'blog', // 文章仓库地址
+  username: 'miyuesc', // github 用户名
+  //repository: 'blog', // 文章仓库地址
   // token 从中间任意位置拆开成两部分，避免 github 代码检测失效
-  token: ['0ad1a0539c5b96fd18fa', 'aaafba9c7d1362a5746c'],
+  //token: ['0ad1a0539c5b96fd18fa', 'aaafba9c7d1362a5746c'],
 
   /**
    * Gitalk 配置【评论功能】，详细文档参见：https://github.com/gitalk/gitalk
@@ -84,7 +84,7 @@ export default {
   moodOpts: {
     display: true,
     enableComment: true,
-    qoute: '欲言又止，止言又欲'
+    qoute: '欲言又止，止言又欲'+
   },
 
   /**
