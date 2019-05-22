@@ -79,7 +79,7 @@ export default {
     },
     // 滚动到顶部
     scrollTop() {
-      this.$scroll(0)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     },
     // 监听页面滚动
     handleScroll(forced) {

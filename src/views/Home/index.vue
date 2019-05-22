@@ -150,7 +150,8 @@ export default {
     // 滚动到顶部
     scrollTop(callback) {
       this.$nextTick(() => {
-        this.$scroll(0)
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+
         // 对于移动端延长滚动时间
         const delayTime = this.$isMobile ? 500 : 0
         setTimeout(callback, 1000 + delayTime)

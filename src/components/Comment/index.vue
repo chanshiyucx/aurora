@@ -81,7 +81,7 @@ export default {
             anchor = document.getElementById(this.tagName.slice(1))
             if (toggle && anchor) {
               clearInterval(this.timer)
-              this.$scroll(anchor, toggle)
+              window.scrollTo({ top: anchor.offsetTop, behavior: 'smooth' })
             }
           }, 500)
         }

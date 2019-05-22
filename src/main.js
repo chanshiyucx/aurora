@@ -3,7 +3,6 @@ import isMobile from 'ismobilejs'
 import AV from 'leancloud-storage'
 import FontFaceObserver from 'fontfaceobserver'
 import VueProgressBar from 'vue-progressbar'
-import SmoothScroll from 'smooth-scroll'
 import APlayer from '@moefe/vue-aplayer'
 
 // Let's go!
@@ -20,7 +19,7 @@ import './assets/style/animation.less'
 import './assets/style/layout.less'
 import './assets/style/reset.less'
 
-// 引入三方库
+// 引入动效库
 import firework from './assets/lib/fireworks'
 import fairyDustCursor from './assets/lib/fairyDustCursor'
 
@@ -33,23 +32,6 @@ Vue.prototype.$gallery = null
 // Init Leancloud
 window.AV = AV
 AV.init(config.leancloud)
-
-// 滚动到锚点
-const scrollOpts = {
-  updateURL: false,
-  emitEvents: false,
-  durationMin: 600,
-  durationMax: 1000,
-  easing: 'easeInQuint'
-}
-const scroll = new SmoothScroll()
-Vue.prototype.$scroll = (anchor, toggle) => {
-  if (toggle) {
-    scroll.animateScroll(anchor, toggle, scrollOpts)
-  } else {
-    scroll.animateScroll(anchor, scrollOpts)
-  }
-}
 
 // 顶部进度条
 const options = {
