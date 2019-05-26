@@ -43,7 +43,8 @@ const createCall = async document => {
 export const queryArchivesCount = () => createCall(documents.queryArchivesCount({ username, repository }))
 
 // 获取心情数量
-export const queryMoodCount = () => createCall(documents.queryMoodCount({ username, repository }))
+export const queryInspirationCount = () =>
+  createCall(documents.queryInspirationCount({ username, repository }))
 
 // 按分类 & 标签筛选文章
 export const queryFilterArchivesCount = ({ label, milestone }) =>
@@ -102,9 +103,9 @@ export const queryTag = async () => {
 }
 
 // 获取心情
-export const queryMood = async ({ page = 1, pageSize = 10 }) => {
+export const queryInspiration = async ({ page = 1, pageSize = 10 }) => {
   try {
-    const url = `${blog}/issues?${closed}&labels=mood&page=${page}&per_page=${pageSize}`
+    const url = `${blog}/issues?${closed}&labels=inspiration&page=${page}&per_page=${pageSize}`
     const response = await fetch(url)
     checkStatus(response)
     const data = await response.json()

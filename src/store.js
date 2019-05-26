@@ -3,19 +3,19 @@ import Vuex from 'vuex'
 import {
   queryArchivesCount,
   queryFilterArchivesCount,
-  queryMoodCount,
+  queryInspirationCount,
   queryPosts,
   queryPost,
   queryTag,
   queryCategory,
-  queryMood,
+  queryInspiration,
   queryPage,
   queryHot,
   addHot,
   likeSite,
   visitor
 } from './utils/services'
-import { formatPost, formatCategory, formatMood, formatPage } from './utils/format'
+import { formatPost, formatCategory, formatInspiration, formatPage } from './utils/format'
 
 Vue.use(Vuex)
 
@@ -67,8 +67,8 @@ export default new Vuex.Store({
       return count
     },
     // 获取心情总数
-    async queryMoodCount() {
-      const data = await queryMoodCount()
+    async queryInspirationCount() {
+      const data = await queryInspirationCount()
       const count = data.repository.issues.totalCount
       return count
     },
@@ -101,17 +101,17 @@ export default new Vuex.Store({
     // 获取标签
     async queryTag() {
       let data = await queryTag()
-      const filterLabel = ['Mood', 'Friend', 'Book', 'About']
+      const filterLabel = ['Inspiration', 'Friend', 'Book', 'About']
       data = data.filter(o => !filterLabel.includes(o.name))
       return data
     },
     // 获取心情
-    async queryMood(context, { page, pageSize }) {
-      let data = await queryMood({
+    async queryInspiration(context, { page, pageSize }) {
+      let data = await queryInspiration({
         page,
         pageSize
       })
-      data = formatMood(data)
+      data = formatInspiration(data)
       return data
     },
     // 获取书单 & 友链 & 关于

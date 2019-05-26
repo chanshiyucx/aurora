@@ -34,9 +34,9 @@ export const formatCategory = category => {
 /**
  * 格式化心情
  */
-export const formatMood = mood => {
-  mood.forEach(o => (o.date = format(o.created_at, 'zh_CN')))
-  return mood
+export const formatInspiration = inspiration => {
+  inspiration.forEach(o => (o.date = format(o.created_at, 'zh_CN')))
+  return inspiration
 }
 
 /**

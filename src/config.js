@@ -79,9 +79,9 @@ export default {
   },
 
   /**
-   * 心情页面
+   * 灵感页面
    */
-  moodOpts: {
+  inspirationOpts: {
     display: true,
     enableComment: true,
     qoute: '欲言又止，止言又欲'
