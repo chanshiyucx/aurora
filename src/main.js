@@ -19,10 +19,6 @@ import './assets/style/animation.less'
 import './assets/style/layout.less'
 import './assets/style/reset.less'
 
-// 引入动效库
-import firework from './assets/lib/fireworks'
-import fairyDustCursor from './assets/lib/fairyDustCursor'
-
 // 配置全局变量
 Vue.config.productionTip = false
 Vue.prototype.$config = config
