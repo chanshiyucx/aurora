@@ -42,7 +42,7 @@ const createCall = async document => {
 // 获取文章数量
 export const queryArchivesCount = () => createCall(documents.queryArchivesCount({ username, repository }))
 
-// 获取心情数量
+// 获取灵感数量
 export const queryInspirationCount = () =>
   createCall(documents.queryInspirationCount({ username, repository }))
 
@@ -102,7 +102,7 @@ export const queryTag = async () => {
   }
 }
 
-// 获取心情
+// 获取灵感
 export const queryInspiration = async ({ page = 1, pageSize = 10 }) => {
   try {
     const url = `${blog}/issues?${closed}&labels=inspiration&page=${page}&per_page=${pageSize}`

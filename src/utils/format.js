@@ -32,7 +32,7 @@ export const formatCategory = category => {
 }
 
 /**
- * 格式化心情
+ * 格式化灵感
  */
 export const formatInspiration = inspiration => {
   inspiration.forEach(o => (o.date = format(o.created_at, 'zh_CN')))

@@ -66,7 +66,7 @@ export default new Vuex.Store({
       const count = data.search.issueCount
       return count
     },
-    // 获取心情总数
+    // 获取灵感总数
     async queryInspirationCount() {
       const data = await queryInspirationCount()
       const count = data.repository.issues.totalCount
@@ -105,7 +105,7 @@ export default new Vuex.Store({
       data = data.filter(o => !filterLabel.includes(o.name))
       return data
     },
-    // 获取心情
+    // 获取灵感
     async queryInspiration(context, { page, pageSize }) {
       let data = await queryInspiration({
         page,
