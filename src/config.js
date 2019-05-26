@@ -167,14 +167,6 @@ export default {
   defaultCover: 'https://i.loli.net/2019/01/24/5c49bd8dad2f5.jpg',
 
   /**
-   * 背景特效，请酌量食用
-   */
-  effect: {
-    firework: true, // 点击烟花特效
-    fairyDustCursor: false // 光标小星星特效
-  },
-
-  /**
    * 音乐播放器,
    */
   APlayer: [

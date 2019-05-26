@@ -53,12 +53,6 @@ Vue.use(APlayer, {
   productionTip: false // disable console output
 })
 
-// 烟花特效与鼠标特效
-if (!isMobile.phone) {
-  config.effect.firework && firework()
-  config.effect.fairyDustCursor && fairyDustCursor()
-}
-
 // 载入字体
 ;(function() {
   const font = new FontFaceObserver('Noto Serif SC', { weight: '400' })
