@@ -1,4 +1,5 @@
 import { format } from 'timeago.js'
+import { parseTime } from './index'
 import config from '../config'
 
 /**
@@ -36,7 +37,7 @@ export const formatCategory = category => {
  * 格式化灵感
  */
 export const formatInspiration = inspiration => {
-  inspiration.forEach(o => (o.date = format(o.created_at, 'zh_CN')))
+  inspiration.forEach(o => (o.date = parseTime(o.created_at, '{y}年{m}月{d}日')))
   return inspiration
 }
 
