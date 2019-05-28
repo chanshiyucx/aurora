@@ -4,11 +4,6 @@
 export const random = (a, b) => parseInt(Math.random() * (b - a + 1) + a, 10)
 
 /**
- * @description 延时函数
- */
-export const delay = time => new Promise(resolve => setTimeout(resolve, time))
-
-/**
  * Fisher–Yates Shuffle 洗牌算法
  */
 export const shuffle = array => {

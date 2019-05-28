@@ -3,7 +3,7 @@
     v-if="!$isMobile"
     @click="scrollTop"
     :style="backTopStyle"
-    :class="['back-to-top', showBackTop && !lock && 'anime']"
+    :class="['back-to-top', 'cursor', showBackTop && !lock && 'anime']"
   ></div>
 </template>
 
