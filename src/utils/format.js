@@ -4,17 +4,18 @@ import config from '../config'
 /**
  * 格式化文章
  */
+const regex = /^(.+)?\r\n\s*(.+)?\r\n/
+const coverRegex = /^\[(.+)\].*(http.*(?:jpg|jpeg|png|gif))/
 export const formatPost = (post, index) => {
   const { body, created_at } = post
-  const temp = body.split('\r\n')
-  const regex = /^\[(.+)\].*(http.*(?:jpg|jpeg|png|gif))/g
-  const cover = regex.exec(temp[0])
+  const result = regex.exec(body)
+  const cover = coverRegex.exec(result[1])
   post.cover = {
-    title: cover && cover[1] ? cover[1] : '',
-    src: cover && cover[2] ? cover[2] : config.defaultCover
+    title: cover[1] || 'defaultCover',
+    src: cover[2] || config.defaultCover
   }
   post.loadCover = index < 4
-  post.description = temp[2] || temp[0]
+  post.description = result[2]
   post.created_at = format(created_at, 'zh_CN')
   return post
 }

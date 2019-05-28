@@ -26,7 +26,7 @@
         :loading="loading"
         :isDisabledPrev="isDisabledPrev"
         :isDisabledNext="isDisabledNext"
-        @handleClick="handleClick"
+        @handlePage="handlePage"
       />
     </div>
   </div>
@@ -69,8 +69,9 @@ export default {
     }
   },
   methods: {
-    handleClick(type) {
-      this.$emit('handleClick', type)
+    // 翻页
+    handlePage(type) {
+      this.$emit('handlePage', type)
     },
     // 跳转文章页
     gotoPost(number) {

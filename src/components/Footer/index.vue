@@ -80,9 +80,7 @@ export default {
   methods: {
     // 换装
     dressup(switchWaifu) {
-      if (switchWaifu) {
-        this.waifu = this.waifu === 'tia' ? 'pio' : 'tia'
-      }
+      if (switchWaifu) this.waifu = this.waifu === 'tia' ? 'pio' : 'tia'
       const path = '/live2d/'
       // 获取装扮
       const waifuCostume = costume[this.waifu]
@@ -119,9 +117,9 @@ export default {
     handleHover(type) {
       let tips
       if (type === 'switch') {
-        tips = `要介绍<span style="color: #b854d4">${
-          this.waifu === 'pio' ? ' 姐姐 Tia ' : ' 妹妹 Pio '
-        } </span>给你认识么(◍˃̶ᗜ˂̶◍)✩`
+        tips = `要召唤<span style="color: #b854d4">${
+          this.waifu === 'pio' ? ' 欧内酱 Tia ' : ' 一抹多 Pio '
+        } </span>么(◍˃̶ᗜ˂̶◍)✩`
       } else {
         tips = hoverTips[type]
       }

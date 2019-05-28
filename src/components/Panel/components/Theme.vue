@@ -61,7 +61,7 @@ export default {
       left: -4px;
       border-radius: 2px;
       border: #ffe4d8 solid 5px;
-      transition-duration: 0.25s;
+      transition-duration: 0.3s;
       transition-property: transform border;
     }
 

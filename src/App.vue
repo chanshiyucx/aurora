@@ -3,7 +3,9 @@
     <vue-progress-bar></vue-progress-bar>
     <Header />
     <div class="page">
-      <Transition name="fade-transform" mode="out-in"> <RouterView /> </Transition>
+      <Transition name="fade-transform" mode="out-in">
+        <keep-alive :exclude="['Post']" :max="10"> <RouterView /> </keep-alive>
+      </Transition>
     </div>
     <Footer @dropPanel="showPanel = true" />
     <Panel v-show="showPanel" @hidePanel="showPanel = false" />

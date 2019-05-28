@@ -40,11 +40,7 @@
         </div>
       </div>
     </div>
-    <div v-show="!!zoomSrc" class="zoom" @click="setZoomSrc('')">
-      <Transition name="zoom-transform" mode="out-in">
-        <img v-show="!!zoomSrc" class="cursor" :src="zoomSrc" alt />
-      </Transition>
-    </div>
+    <div v-if="!!zoomSrc" class="zoom" @click="setZoomSrc('')"><img class="cursor" :src="zoomSrc" alt /></div>
   </div>
 </template>
 

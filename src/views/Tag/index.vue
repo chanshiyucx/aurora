@@ -22,7 +22,7 @@
               :loading="loading"
               :isDisabledPrev="isDisabledPrev"
               :isDisabledNext="isDisabledNext"
-              @handleClick="filterPosts"
+              @handlePage="filterPosts"
             />
           </div>
           <Loading v-else-if="label" />

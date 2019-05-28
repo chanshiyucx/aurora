@@ -30,18 +30,6 @@ html {
   transform: translateY(30px);
 }
 
-/* zoom-transform */
-.zoom-transform-leave-active,
-.zoom-transform-enter-active {
-  transition: transform 0.4s;
-}
-.zoom-transform-enter {
-  transform: scale(0.6);
-}
-.zoom-transform-leave-to {
-  transform: scale(1);
-}
-
 /* cover-transform */
 .cover-transform-leave-active,
 .cover-transform-enter-active {
@@ -416,7 +404,7 @@ td.hljs-ln-numbers {
       border-radius: 3px;
       background-color: rgba(255, 255, 255, 0.66);
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
-      transition: all 0.25s ease 0s, transform 0.6s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
+      transition: all 0.3s ease 0s, transform 0.6s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
       &:hover {
         transform: translateY(-4px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.24);

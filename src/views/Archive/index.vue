@@ -9,7 +9,7 @@
           :loading="loading"
           :isDisabledPrev="isDisabledPrev"
           :isDisabledNext="isDisabledNext"
-          @handleClick="queryPosts"
+          @handlePage="queryPosts"
         />
       </div>
       <Loading v-else />
