@@ -26,7 +26,7 @@
           <div class="post-body"><MarkDown :content="post.description" /></div>
           <div class="post-meta">
             <span> <i class="icon icon-calendar"></i> {{ post.created_at }} </span>
-            <span> <i class="icon icon-fire"></i> 热度{{ post.times || 1 }}℃ </span>
+            <span> <i class="icon icon-fire"></i> 热度{{ times[post.id] || 1 }}℃ </span>
             <span>
               <i class="icon icon-bookmark-empty"></i> {{ post.milestone ? post.milestone.title : '未分类' }}
             </span>
@@ -75,7 +75,8 @@ export default {
       page: 0,
       pageSize: 12,
       posts: [],
-      list: []
+      list: [],
+      times: {}
     }
   },
   computed: {
@@ -136,16 +137,16 @@ export default {
         this.page = queryPage
         this.posts = posts
         this.$set(this.list, queryPage, posts)
-        // 获取文章热度
-        this.$nextTick(async () => {
-          const ids = this.posts.map(o => o.id)
-          const hot = await this.$store.dispatch('queryHot', { ids })
-          this.posts = this.posts.map((o, i) => {
-            o.times = hot[i]
-            return o
-          })
-        })
       })
+
+      // 获取文章热度
+      const ids = posts.map(o => o.id)
+      const hot = await this.$store.dispatch('queryHot', { ids })
+      const newTimes = { ...this.times }
+      hot.forEach(o => {
+        newTimes[o.id] = o.time
+      })
+      this.times = newTimes
     },
     // 滚动到顶部
     scrollTop(callback) {
