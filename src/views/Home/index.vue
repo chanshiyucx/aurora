@@ -149,15 +149,11 @@ export default {
       this.times = newTimes
     },
     // 滚动到顶部
-    scrollTop(callback) {
-      this.$nextTick(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-
-        // 对于移动端延长滚动时间
-        const delayTime = this.$isMobile ? 500 : 0
-        setTimeout(callback, 1000 + delayTime)
-        setTimeout(AOS.refresh, 1500 + delayTime)
-      })
+    scrollTop(cb) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      const delayTime = this.$isMobile ? 500 : 0
+      setTimeout(cb, 1000 + delayTime)
+      setTimeout(AOS.refresh, 1500 + delayTime)
     },
     // 按顺序加载封面图
     loadNextCover(post) {

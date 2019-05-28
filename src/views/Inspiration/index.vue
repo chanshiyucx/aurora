@@ -85,10 +85,9 @@ export default {
       this.page = queryPage
 
       if (this.list[queryPage]) {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-        setTimeout(() => {
+        this.scrollTop(() => {
           this.inspiration = this.list[queryPage]
-        }, this.delayTime)
+        })
         return
       }
 
@@ -99,11 +98,15 @@ export default {
       })
       this.loading = false
 
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      setTimeout(() => {
+      this.scrollTop(() => {
         this.inspiration = inspiration
         this.$set(this.list, queryPage, inspiration)
-      }, this.delayTime)
+      })
+    },
+    // 滚动到顶部
+    scrollTop(cb) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      setTimeout(cb, this.delayTime)
     }
   }
 }

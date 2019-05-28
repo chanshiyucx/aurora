@@ -116,8 +116,10 @@ export default {
       this.page = queryPage
 
       if (this.list[queryPage]) {
-        window.scrollTo({ top: 380, behavior: 'smooth' })
-        this.posts = this.list[queryPage]
+        this.scrollTop(() => {
+          this.posts = this.list[queryPage]
+        })
+
         return
       }
 
@@ -129,12 +131,11 @@ export default {
         filter
       })
 
-      window.scrollTo({ top: 380, behavior: 'smooth' })
-      setTimeout(() => {
+      this.scrollTop(() => {
         this.loading = false
         this.posts = posts
         this.$set(this.list, queryPage, posts)
-      }, this.delayTime)
+      })
 
       // 获取文章热度
       const ids = posts.map(o => o.id)
@@ -144,6 +145,11 @@ export default {
         newTimes[o.id] = o.time
       })
       this.times = newTimes
+    },
+    // 滚动到顶部
+    scrollTop(cb) {
+      window.scrollTo({ top: 380, behavior: 'smooth' })
+      setTimeout(cb, this.delayTime)
     }
   }
 }

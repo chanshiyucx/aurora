@@ -109,7 +109,9 @@ export default {
     // 获取初始化主题
     getInitTheme() {
       if (this.$isMobile) return 'school'
-      return localStorage.getItem('theme') || 'touhou'
+      const localTheme = localStorage.getItem('theme')
+      if (['touhou', 'school'].includes(localTheme)) return localTheme
+      return 'touhou'
     },
     // 创建背景节点
     createBgNode() {
