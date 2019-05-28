@@ -13,7 +13,7 @@
             :loading="loading"
             :isDisabledPrev="isDisabledPrev"
             :isDisabledNext="isDisabledNext"
-            @handleClick="queryInspiration"
+            @handlePage="queryInspiration"
           />
         </div>
       </div>

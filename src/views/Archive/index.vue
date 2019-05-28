@@ -51,7 +51,7 @@ export default {
       totalCount: state => state.totalCount
     }),
     postTimes() {
-      return this.posts.map(o => o.id).map(id => this.times[id])
+      return this.posts.map(o => this.times[o.id])
     },
     currentCount() {
       let count = 0
@@ -105,11 +105,7 @@ export default {
       // 获取文章热度
       const ids = posts.map(o => o.id)
       const hot = await this.$store.dispatch('queryHot', { ids })
-      const newTimes = { ...this.times }
-      hot.forEach(o => {
-        newTimes[o.id] = o.time
-      })
-      this.times = newTimes
+      this.times = { ...this.times, ...hot }
     },
     // 滚动到顶部
     scrollTop(cb) {
