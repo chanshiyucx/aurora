@@ -25,7 +25,7 @@
             </a>
           </div>
           <Segment v-for="(item, i) in about" :key="item.title" :title="item.title" :color="colors[i]">
-            <MarkDown :content="item.content" :onlyRender="true" />
+            <MarkDown :content="item.content" />
           </Segment>
         </div>
       </div>

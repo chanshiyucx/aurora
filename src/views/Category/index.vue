@@ -25,13 +25,14 @@
             </div>
             <ArchiveCard
               :posts="posts"
+              :times="postTimes"
               :loading="loading"
               :isDisabledPrev="isDisabledPrev"
               :isDisabledNext="isDisabledNext"
               @handleClick="filterPosts"
             />
           </div>
-          <Loading v-else-if="milestone && loading" />
+          <Loading v-else-if="milestone" />
         </Transition>
       </div>
       <Loading v-else />
@@ -65,10 +66,15 @@ export default {
       page: 0,
       pageSize: 10,
       posts: [],
-      list: []
+      list: [],
+      times: {},
+      delayTime: this.$config.isMobile ? 500 : 0 + 800
     }
   },
   computed: {
+    postTimes() {
+      return this.posts.map(o => o.id).map(id => this.times[id])
+    },
     currentCount() {
       let count = 0
       this.list.forEach((o, i) => {
@@ -98,8 +104,8 @@ export default {
     async handleFilter(category) {
       if (this.milestone.number === category.number) return
       this.reset()
-      this.count = await this.$store.dispatch('queryFilterArchivesCount', { milestone: category.title })
       this.milestone = category
+      this.count = await this.$store.dispatch('queryFilterArchivesCount', { milestone: category.title })
       this.filterPosts()
     },
     // 重置
@@ -117,7 +123,10 @@ export default {
       this.page = queryPage
 
       if (this.list[queryPage]) {
-        this.posts = this.list[queryPage]
+        window.scrollTo({ top: 380, behavior: 'smooth' })
+        setTimeout(() => {
+          this.posts = this.list[queryPage]
+        }, this.delayTime)
         return
       }
 
@@ -128,18 +137,22 @@ export default {
         pageSize: this.pageSize,
         filter
       })
-      this.loading = false
 
-      this.posts = posts
-      this.$set(this.list, queryPage, posts)
+      window.scrollTo({ top: 380, behavior: 'smooth' })
+      setTimeout(() => {
+        this.loading = false
+        this.posts = posts
+        this.$set(this.list, queryPage, posts)
+      }, this.delayTime)
+
       // 获取文章热度
-      this.$nextTick(async () => {
-        const ids = this.posts.map(o => o.id)
-        const hot = await this.$store.dispatch('queryHot', { ids })
-        this.posts.forEach((o, i) => {
-          o.times = hot[i]
-        })
+      const ids = posts.map(o => o.id)
+      const hot = await this.$store.dispatch('queryHot', { ids })
+      const newTimes = { ...this.times }
+      hot.forEach(o => {
+        newTimes[o.id] = o.time
       })
+      this.times = newTimes
     }
   }
 }

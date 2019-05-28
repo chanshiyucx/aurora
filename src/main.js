@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import isMobile from 'ismobilejs'
 import AV from 'leancloud-storage'
+import isMobile from 'ismobilejs'
 import FontFaceObserver from 'fontfaceobserver'
 import VueProgressBar from 'vue-progressbar'
 import APlayer from '@moefe/vue-aplayer'
@@ -23,7 +23,6 @@ import './assets/style/reset.less'
 Vue.config.productionTip = false
 Vue.prototype.$config = config
 Vue.prototype.$isMobile = isMobile.phone
-Vue.prototype.$gallery = null
 
 // Init Leancloud
 window.AV = AV
@@ -56,15 +55,6 @@ Vue.use(APlayer, {
     document.documentElement.classList.add('fonts-loaded')
   })
 })()
-
-// 切换页面销毁所有灯箱
-router.beforeEach((to, from, next) => {
-  Object.keys(window.lgData).forEach(k => {
-    window.lgData[k].destroy && window.lgData[k].destroy(true)
-  })
-  window.lgData = {}
-  next()
-})
 
 new Vue({
   router,

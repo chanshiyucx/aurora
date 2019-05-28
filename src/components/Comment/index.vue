@@ -26,8 +26,7 @@ export default {
     return {
       anonymous: false,
       showModeBtn: false,
-      tagName: this.$route.hash,
-      timer: ''
+      tagName: this.$route.hash
     }
   },
   mounted() {
@@ -38,9 +37,7 @@ export default {
       window.location.hash = hash.split(this.tagName)[0]
     }
 
-    setTimeout(() => {
-      this.showModeBtn = true
-    }, 1000)
+    setTimeout(() => (this.showModeBtn = true), 1000)
 
     this.renderGitalk()
     this.renderValine()
@@ -71,15 +68,14 @@ export default {
 
       setTimeout(() => {
         this.showModeBtn = true
-        if (this.anonymous && this.tagName) {
-          let toggle, anchor
+        if (this.tagName) {
+          let anchor
           let count = 0
-          this.timer = setInterval(() => {
-            if (count > 10) return clearInterval(this.timer)
+          const timer = setInterval(() => {
+            if (count > 10) return clearInterval(timer)
             count++
-            toggle = document.querySelector('#comment')
             anchor = document.getElementById(this.tagName.slice(1))
-            if (toggle && anchor) {
+            if (anchor) {
               clearInterval(this.timer)
               window.scrollTo({ top: anchor.offsetTop, behavior: 'smooth' })
             }

@@ -5,7 +5,7 @@
         <Quote :quote="$config.inspirationOpts.qoute" />
         <div class="content">
           <Segment v-for="(item, i) in inspiration" :key="item.number" :title="item.date" :color="colors[i]">
-            <MarkDown :content="item.body" :onlyRender="true" />
+            <MarkDown :content="item.body" />
           </Segment>
         </div>
         <div class="btn-group" v-if="!isDisabledPrev || !isDisabledNext">
@@ -52,7 +52,8 @@ export default {
       page: 0,
       pageSize: 10,
       inspiration: [],
-      list: []
+      list: [],
+      delayTime: this.$config.isMobile ? 500 : 0 + 1000
     }
   },
   computed: {
@@ -84,7 +85,10 @@ export default {
       this.page = queryPage
 
       if (this.list[queryPage]) {
-        this.inspiration = this.list[queryPage]
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        setTimeout(() => {
+          this.inspiration = this.list[queryPage]
+        }, this.delayTime)
         return
       }
 
@@ -95,8 +99,11 @@ export default {
       })
       this.loading = false
 
-      this.inspiration = inspiration
-      this.$set(this.list, queryPage, inspiration)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      setTimeout(() => {
+        this.inspiration = inspiration
+        this.$set(this.list, queryPage, inspiration)
+      }, this.delayTime)
     }
   }
 }

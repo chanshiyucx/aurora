@@ -138,10 +138,7 @@ export const queryHot = async ids => {
     query
       .find()
       .then(res => {
-        const hot = res
-          .map(o => o.attributes)
-          .sort((a, b) => b.id - a.id)
-          .map(o => o.time)
+        const hot = res.map(o => o.attributes)
         resolve(hot)
       })
       .catch(console.error)
@@ -149,7 +146,7 @@ export const queryHot = async ids => {
 }
 
 // 增加热度
-export const addHot = post => {
+export const increaseHot = post => {
   return new Promise(resolve => {
     if (isDev) return resolve(1)
     const query = new AV.Query('Counter')

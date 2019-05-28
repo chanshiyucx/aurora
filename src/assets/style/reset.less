@@ -62,7 +62,7 @@ html {
 }
 
 /* 滚动条 */
-.custom-scroll {
+.i-scroll {
   &::-webkit-scrollbar {
     width: 5px;
     height: 5px;
@@ -88,7 +88,7 @@ html {
 }
 
 & {
-  .custom-scroll;
+  .i-scroll;
 }
 
 /* 轮播背景 */
@@ -113,16 +113,16 @@ html {
   }
 }
 
-.initTouhoubg {
+.initTouhou {
   background-image: url(https://i.loli.net/2019/04/25/5cc0936e25880.jpg);
 }
 
-.initSchoolbg {
+.initSchool {
   background-image: url(https://i.loli.net/2019/04/23/5cbf1354a41b6.jpg);
 }
 
-.touhoubg li,
-.schoolbg li {
+.touhou li,
+.school li {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -134,95 +134,95 @@ html {
   opacity: 0;
 }
 
-.touhoubg li {
+.touhou li {
   background-position: top center;
-  animation: touhoubgAnimation 100s linear infinite 0s;
+  animation: touhouAnimation 100s linear infinite 0s;
 }
 
-.schoolbg li {
+.school li {
   background-position: center center;
-  animation: schoolbgAnimation 90s linear infinite 0s;
+  animation: schoolAnimation 90s linear infinite 0s;
 }
 
-.touhoubg li:nth-child(1) {
+.touhou li:nth-child(1) {
   background-image: url(https://i.loli.net/2019/04/25/5cc0936e25880.jpg);
 }
-.touhoubg li:nth-child(2) {
+.touhou li:nth-child(2) {
   background-image: url(https://i.loli.net/2019/04/25/5cc09372e037c.jpg);
   animation-delay: 10s;
 }
-.touhoubg li:nth-child(3) {
+.touhou li:nth-child(3) {
   background-image: url(https://i.loli.net/2019/04/25/5cc093789bf66.jpg);
   animation-delay: 20s;
 }
-.touhoubg li:nth-child(4) {
+.touhou li:nth-child(4) {
   background-image: url(https://i.loli.net/2019/04/25/5cc0937d4a1f3.png);
   animation-delay: 30s;
 }
-.touhoubg li:nth-child(5) {
+.touhou li:nth-child(5) {
   background-image: url(https://i.loli.net/2019/04/25/5cc09381d6ebd.jpg);
   animation-delay: 40s;
 }
-.touhoubg li:nth-child(6) {
+.touhou li:nth-child(6) {
   background-image: url(https://i.loli.net/2019/04/25/5cc093ca5740a.jpg);
   animation-delay: 50s;
 }
-.touhoubg li:nth-child(7) {
+.touhou li:nth-child(7) {
   background-image: url(https://i.loli.net/2019/04/25/5cc093cea890e.jpg);
   animation-delay: 60s;
 }
-.touhoubg li:nth-child(8) {
+.touhou li:nth-child(8) {
   background-image: url(https://i.loli.net/2019/04/25/5cc093dda61a7.jpg);
   animation-delay: 70s;
 }
-.touhoubg li:nth-child(9) {
+.touhou li:nth-child(9) {
   background-image: url(https://i.loli.net/2019/04/25/5cc093d8a2a4e.jpg);
   animation-delay: 80s;
 }
 
-.touhoubg li:nth-child(10) {
+.touhou li:nth-child(10) {
   background-image: url(https://i.loli.net/2019/04/25/5cc093d3005b7.jpg);
   animation-delay: 90s;
 }
 
-.schoolbg li:nth-child(1) {
+.school li:nth-child(1) {
   background-image: url(https://i.loli.net/2019/04/23/5cbf1354a41b6.jpg);
 }
-.schoolbg li:nth-child(2) {
+.school li:nth-child(2) {
   background-image: url(https://i.loli.net/2019/04/23/5cbf136bdc2d3.jpg);
   animation-delay: 10s;
 }
-.schoolbg li:nth-child(3) {
+.school li:nth-child(3) {
   background-image: url(https://i.loli.net/2019/04/23/5cbf136fe0333.jpg);
   animation-delay: 20s;
 }
-.schoolbg li:nth-child(4) {
+.school li:nth-child(4) {
   background-image: url(https://i.loli.net/2019/04/23/5cbf137481842.jpg);
   animation-delay: 30s;
 }
-.schoolbg li:nth-child(5) {
+.school li:nth-child(5) {
   background-image: url(https://i.loli.net/2019/04/23/5cbf1379952b2.jpg);
   animation-delay: 40s;
 }
-.schoolbg li:nth-child(6) {
+.school li:nth-child(6) {
   background-image: url(https://i.loli.net/2019/04/23/5cbf13983c5ef.jpg);
   animation-delay: 50s;
 }
-.schoolbg li:nth-child(7) {
+.school li:nth-child(7) {
   background-image: url(https://i.loli.net/2019/04/23/5cbf139c68120.jpg);
   animation-delay: 60s;
 }
-.schoolbg li:nth-child(8) {
+.school li:nth-child(8) {
   background-image: url(https://i.loli.net/2019/04/23/5cbf13a0a95a2.jpg);
   animation-delay: 70s;
 }
-.schoolbg li:nth-child(9) {
+.school li:nth-child(9) {
   background-image: url(https://i.loli.net/2019/04/25/5cc08b39e2f20.jpg);
   animation-delay: 80s;
 }
 
 /* Animation for the slideshow images */
-@keyframes touhoubgAnimation {
+@keyframes touhouAnimation {
   0% {
     opacity: 0;
     animation-timing-function: ease-in;
@@ -242,7 +242,7 @@ html {
   }
 }
 
-@keyframes schoolbgAnimation {
+@keyframes schoolAnimation {
   0% {
     opacity: 0;
     animation-timing-function: ease-in;
@@ -288,7 +288,7 @@ pre {
   line-height: 1.5;
   box-shadow: #aaa 0px 10px 8px -10px inset, #aaa 0px -10px 8px -10px inset;
   overflow: auto;
-  .custom-scroll;
+  .i-scroll;
 }
 
 td.hljs-ln-numbers {
@@ -432,7 +432,7 @@ td.hljs-ln-numbers {
     .gt-comment-body {
       max-height: 6rem;
       overflow: auto;
-      .custom-scroll;
+      .i-scroll;
     }
   }
 

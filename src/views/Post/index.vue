@@ -63,7 +63,7 @@ export default {
     async queryPost() {
       this.post = await this.$store.dispatch('queryPost', { number: this.number })
       this.$nextTick(async () => {
-        const hot = await this.$store.dispatch('addHot', { post: this.post })
+        const hot = await this.$store.dispatch('increaseHot', { post: this.post })
         this.$set(this.post, 'times', hot)
       })
     }

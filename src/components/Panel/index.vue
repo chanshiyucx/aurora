@@ -13,7 +13,7 @@
           </div>
           <div class="body">
             <div class="swiper-wrapper">
-              <ul id="swiper" class="swiper animate" :style="containerStyle">
+              <ul ref="swiper" id="swiper" class="swiper animate" :style="containerStyle">
                 <li><Qrcode @zoom="setZoomSrc" /></li>
                 <li><Theme :theme="theme" @switchTheme="switchTheme" /></li>
                 <li><Qrcode @zoom="setZoomSrc" /></li>
@@ -62,7 +62,7 @@ export default {
       initTheme: '',
       likeTimes: 0,
       isLikeSite: window.localStorage.getItem('isLikeSite', true),
-      currentInx: 1, // 初始位置 -6rem
+      currentInx: 1,
       step: 6, // 每一步 6rem
       lockSwiper: false,
       swiper: '',
@@ -72,7 +72,7 @@ export default {
   computed: {
     panelTitle() {
       const inx = (this.currentInx + 1) % 2
-      return ['主题设置', '赛钱箱'][inx]
+      return ['背景主题', '赛钱箱'][inx]
     },
     distance() {
       return [0, -6, -12, -18][this.currentInx]
@@ -89,74 +89,8 @@ export default {
   mounted() {
     this.queryLike()
     this.initThemeBg()
-
-    this.swiper = document.getElementById('swiper')
   },
   methods: {
-    // 初始化背景主题
-    initThemeBg() {
-      const theme = this.getInitTheme()
-      const initTheme = theme === 'touhoubg' ? 'initTouhoubg' : 'initSchoolbg'
-      this.theme = theme
-      this.initTheme = initTheme
-      this.createBgNode()
-      localStorage.setItem('theme', theme)
-      localStorage.setItem('themeChangeDate', new Date().toISOString())
-    },
-    // 获取初始化主题
-    getInitTheme() {
-      let theme = localStorage.getItem('theme')
-      const themeChangeDate = localStorage.getItem('themeChangeDate')
-      const themeList = ['touhoubg', 'schoolbg']
-      const randomInx = Math.floor(Math.random() * 2)
-
-      // 移动端主题
-      if (this.$isMobile) return 'schoolbg'
-      // 还没有设置过主题
-      if (!theme || !themeChangeDate) {
-        return themeList[randomInx]
-      }
-      // 主题设置超过一天
-      const now = new Date().getDate()
-      const last = new Date(themeChangeDate).getDate()
-      if (now - last > 1) {
-        return themeList[randomInx]
-      }
-      return theme
-    },
-    // 创建背景节点
-    createBgNode() {
-      const fireworks = document.getElementById('fireworks')
-      const bgNode = document.createElement('ul')
-      bgNode.id = 'bg'
-      bgNode.classList.add(this.initTheme)
-      document.body.insertBefore(bgNode, fireworks)
-      this.bgNode = bgNode
-      if (this.$isMobile) return
-
-      for (let i = 0; i < 10; i++) {
-        const imgNode = document.createElement('li')
-        bgNode.appendChild(imgNode)
-      }
-      // 延时载入背景图片
-      setTimeout(() => {
-        setTimeout(() => {
-          bgNode.classList.remove(this.initTheme)
-        }, 2000)
-        bgNode.classList.add(this.theme)
-      }, 4000)
-    },
-    // 切换主题
-    switchTheme(inx) {
-      const themeList = ['touhoubg', 'schoolbg']
-      const newTheme = themeList[inx]
-      const isSame = this.bgNode.classList.contains(newTheme)
-      if (isSame) return
-      this.bgNode.className = newTheme
-      this.theme = newTheme
-      localStorage.setItem('theme', newTheme)
-      localStorage.setItem('themeChangeDate', new Date().toISOString())
-    },
     // 点赞数
     async queryLike() {
       this.likeTimes = await this.$store.dispatch('queryLike', 'getTimes')
@@ -167,6 +101,46 @@ export default {
       this.likeTimes = await this.$store.dispatch('queryLike')
       this.isLikeSite = true
       window.localStorage.setItem('isLikeSite', true)
+    },
+    // 初始化背景主题
+    initThemeBg() {
+      const theme = this.getInitTheme()
+      const initTheme = theme === 'touhou' ? 'initTouhou' : 'initSchool'
+      this.theme = theme
+      this.initTheme = initTheme
+      this.createBgNode()
+    },
+    // 获取初始化主题
+    getInitTheme() {
+      if (this.$isMobile) return 'school'
+      return localStorage.getItem('theme') || 'touhou'
+    },
+    // 创建背景节点
+    createBgNode() {
+      const appNode = document.getElementById('app')
+      const bgNode = document.createElement('ul')
+      bgNode.id = 'bg'
+      bgNode.classList.add(this.initTheme)
+      document.body.insertBefore(bgNode, appNode)
+      this.bgNode = bgNode
+      if (this.$isMobile) return
+
+      for (let i = 0; i < 10; i++) {
+        const imgNode = document.createElement('li')
+        bgNode.appendChild(imgNode)
+      }
+      // 延时载入背景图片
+      setTimeout(() => {
+        setTimeout(() => bgNode.classList.remove(this.initTheme), 2000)
+        bgNode.classList.add(this.theme)
+      }, 4000)
+    },
+    // 切换主题
+    switchTheme(theme) {
+      if (this.theme === theme) return
+      this.bgNode.className = theme
+      this.theme = theme
+      localStorage.setItem('theme', theme)
     },
     // 关闭面板
     hidePanel() {
@@ -180,17 +154,18 @@ export default {
     swiperTo(direction) {
       if (this.lockSwiper) return
       this.lockSwiper = true
-      this.swiper.classList.add('animate')
+      const swiper = this.$refs.swiper
+      swiper.classList.add('animate')
 
       this.currentInx += direction
       setTimeout(() => {
         this.lockSwiper = false
         if (this.currentInx === 0) {
-          this.swiper.classList.remove('animate')
+          swiper.classList.remove('animate')
           this.currentInx = 2
         }
         if (this.currentInx === 3) {
-          this.swiper.classList.remove('animate')
+          swiper.classList.remove('animate')
           this.currentInx = 1
         }
       }, 500)

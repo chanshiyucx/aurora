@@ -11,7 +11,7 @@ import {
   queryInspiration,
   queryPage,
   queryHot,
-  addHot,
+  increaseHot,
   likeSite,
   visitor
 } from './utils/services'
@@ -83,8 +83,8 @@ export default new Vuex.Store({
       return await queryHot(ids)
     },
     // 增加热度
-    async addHot(context, { post }) {
-      return await addHot(post)
+    async increaseHot(context, { post }) {
+      return await increaseHot(post)
     },
     // 获取文章详情
     async queryPost(context, { number }) {

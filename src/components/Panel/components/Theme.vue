@@ -1,12 +1,12 @@
 <template>
   <ul class="theme">
-    <li :class="['touhou', theme === 'touhoubg' && 'active']" @click="switchTheme(0)">
+    <li :class="['touhou', theme === 'touhou' && 'active']" @click="switchTheme('touhou')">
       <h3>千年幻想</h3>
       <div class="preview cursor">
         <div><img src="https://i.loli.net/2019/04/25/5cc09717f2cce.png" alt="千年幻想" /></div>
       </div>
     </li>
-    <li :class="['school', theme === 'schoolbg' && 'active']" @click="switchTheme(1)">
+    <li :class="['school', theme === 'school' && 'active']" @click="switchTheme('school')">
       <h3>琉璃の空</h3>
       <div class="preview cursor">
         <div><img src="https://i.loli.net/2019/04/25/5cc0976f58a9d.jpg" alt="玻璃の空" /></div>
@@ -21,12 +21,12 @@ export default {
   props: {
     theme: {
       type: String,
-      default: 'touhoubg'
+      default: 'touhou'
     }
   },
   methods: {
-    switchTheme(i) {
-      this.$emit('switchTheme', i)
+    switchTheme(theme) {
+      this.$emit('switchTheme', theme)
     }
   }
 }
@@ -40,8 +40,8 @@ export default {
   h3 {
     margin-bottom: 0.14rem;
     font-size: 0.18rem;
-    line-height: 0.4rem;
     font-weight: normal;
+    line-height: 0.4rem;
   }
   .preview {
     position: relative;

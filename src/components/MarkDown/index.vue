@@ -42,16 +42,11 @@ export default {
     target: {
       type: String,
       default: ''
-    },
-    onlyRender: {
-      type: Boolean,
-      default: false
     }
   },
   data() {
     return {
-      html: '',
-      gallery: ''
+      html: ''
     }
   },
   created() {
@@ -67,27 +62,26 @@ export default {
       this.html = marked(this.content)
 
       // 对于只是纯解析文字不需要代码高亮和灯箱
-      if (this.onlyRender) return
-      this.$nextTick(() => {
-        // 并不是每个 marked 都需要高亮处理
-        if (this.target) {
+      if (this.target) {
+        this.$nextTick(() => {
           // 代码行数
-          hljs.initLineNumbersOnLoad({
-            target: this.target
-          })
+          hljs.initLineNumbersOnLoad({ target: this.target })
           // 灯箱
-          window.lightGallery(document.getElementById('post'), {
+          window.lightGallery(document.querySelector(this.target), {
             selector: '.img-box',
             thumbMargin: 6,
             download: false,
             subHtmlSelectorRelative: true
           })
-        }
-      })
+        })
+      }
     }
   },
   beforeDestroy() {
-    this.gallery && this.gallery.destroy()
+    Object.keys(window.lgData).forEach(k => {
+      window.lgData[k].destroy && window.lgData[k].destroy(true)
+    })
+    window.lgData = {}
   }
 }
 </script>
