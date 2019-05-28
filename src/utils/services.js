@@ -132,7 +132,7 @@ export const queryPage = async type => {
 // 文章热度
 export const queryHot = async ids => {
   return new Promise(resolve => {
-    // if (isDev) return resolve([])
+    if (isDev) return resolve([])
     const query = new AV.Query('Counter')
     query.containedIn('id', ids)
     query
