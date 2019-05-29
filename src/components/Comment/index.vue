@@ -76,8 +76,9 @@ export default {
             count++
             anchor = document.getElementById(this.tagName.slice(1))
             if (anchor) {
-              clearInterval(this.timer)
-              window.scrollTo({ top: anchor.offsetTop, behavior: 'smooth' })
+              clearInterval(timer)
+              const top = anchor.getBoundingClientRect().top
+              window.scrollTo({ top, behavior: 'smooth' })
             }
           }, 500)
         }

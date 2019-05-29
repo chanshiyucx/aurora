@@ -9,12 +9,8 @@ export const random = (a, b) => parseInt(Math.random() * (b - a + 1) + a, 10)
 export const shuffle = array => {
   let m = array.length
   let i
-
-  // While there remain elements to shuffle…
   while (m) {
-    // Pick a remaining element…
     i = Math.floor(Math.random() * m--)
-    // And swap it with the current element.
     ;[array[m], array[i]] = [array[i], array[m]]
   }
 
@@ -55,3 +51,6 @@ export const parseTime = (time, format = '{y}-{m}-{d} {h}:{i}:{s}') => {
   })
   return time_str
 }
+
+const obj = { hello: 'world' }
+const blob = new Blob([JSON.stringify(obj, null, 2)], { type: 'application/json' })
