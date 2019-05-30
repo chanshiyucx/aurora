@@ -12,7 +12,7 @@
     margin: 0.16rem 0 0.32rem;
   }
 
-  /deep/.content {
+  .content {
     p {
       code {
         padding: 2px 5px;
@@ -51,6 +51,25 @@
 
     strong {
       text-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+    }
+
+    /deep/span[class*='img-box'] {
+      img {
+        max-width: 100%;
+        border-radius: 3px;
+        border: 6px solid transparent;
+        box-shadow: 0 0 10px #999;
+        transition: all 0.3s ease-out;
+        background-color: #fff;
+        &:hover {
+          border-color: #b28fce;
+        }
+      }
+      span {
+        display: block;
+        padding: 4px 0 0 6px;
+        font-style: italic;
+      }
     }
   }
 }
