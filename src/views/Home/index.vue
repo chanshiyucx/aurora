@@ -1,181 +1,92 @@
 <template>
-  <div id="home">
-    <Transition name="fade-transform" mode="out-in">
-      <div class="main" v-if="posts.length">
-        <article
-          class="card"
-          data-aos="fade-up"
-          v-for="post in posts"
-          :key="post.id"
-          @click="gotoPost(post.number)"
-          @mouseenter="showTips(post)"
-        >
-          <div class="post-header">
-            <Cover
-              :src="post.cover.src"
-              :alt="post.cover.title"
-              :loadCover="post.loadCover"
-              :isLoad="post.isLoad"
-              @loadNextCover="loadNextCover(post)"
-            />
-            <div class="head">
-              <h3>{{ post.title }}</h3>
-              <span>{{ post.cover.title }}</span>
-            </div>
-          </div>
-          <div class="post-body"><MarkDown :content="post.description" :onlyRender="true" /></div>
-          <div class="post-meta">
-            <span> <i class="icon icon-calendar"></i> {{ post.created_at }} </span>
-            <span> <i class="icon icon-fire"></i> 热度{{ post.times || 1 }}℃ </span>
-            <span>
-              <i class="icon icon-bookmark-empty"></i> {{ post.milestone ? post.milestone.title : '未分类' }}
-            </span>
-            <span>
-              <i class="icon icon-tag"></i>
-              <span v-for="label in post.labels.slice(0, 2)" :key="label.id">{{ label.name }}</span>
-            </span>
-          </div>
-        </article>
+  <div class="home">
+    <section
+      id="background"
+      class="background"
+      :style="{
+        opacity: 1,
+        backgroundImage:
+          'url(' + require('../../assets/images/' + backgroundImage) + ')'
+      }"
+    ></section>
+    <div class="title" data-value="HI,MIYUESC!">HI,MIYUESC!</div>
+    <div class="tools">
+      <div class="text">
+        <img src="../../assets/icons/quotes.svg" style="float: left" />
+        <span>梦醒时分，月当此时明</span>
+        <img src="../../assets/icons/quotes.svg" style="float: right" />
       </div>
-    </Transition>
-
-    <Transition name="fade-transform" mode="out-in">
-      <div v-if="!list.length"><Loading /></div>
-      <div class="btn-group" v-if="list.length && (!isDisabledPrev || !isDisabledNext)">
-        <Pagination
-          :loading="loading"
-          :isDisabledPrev="isDisabledPrev"
-          :isDisabledNext="isDisabledNext"
-          @handleClick="queryPosts"
-        />
-      </div>
-    </Transition>
+      <ul class="tools-box">
+        <li @click="changeBg('pre')">
+          <img src="../../assets/icons/angle-left.svg" />
+        </li>
+        <li v-for="(i, k) in contacts" :key="k">
+          <a :href="i.link" rel="noopener noreferrer" target="_blank">
+            <img :src="i.icon" alt="i.label" style="width: 20px; height: 20px"
+          /></a>
+        </li>
+        <li @click="changeBg('next')">
+          <img src="../../assets/icons/angle-right.svg" />
+        </li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <h2>test</h2>
+    </div>
   </div>
 </template>
 
-<script>
-import AOS from 'aos'
-import { mapState } from 'vuex'
-import MarkDown from '@/components/MarkDown'
-import Loading from '@/components/Loading'
-import Pagination from '@/components/Pagination'
-import Cover from '@/components/Cover'
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
 
-export default {
-  name: 'Home',
-  components: {
-    MarkDown,
-    Loading,
-    Pagination,
-    Cover
-  },
-  data() {
-    return {
-      loading: false,
-      page: 0,
-      pageSize: 12,
-      posts: [],
-      list: []
-    }
-  },
-  computed: {
-    ...mapState({
-      totalCount: state => state.totalCount
-    }),
-    currentCount() {
-      let count = 0
-      this.list.forEach((o, i) => {
-        if (i <= this.page) {
-          count += o.length
-        }
-      })
-      return count
+@Component({})
+export default class Home extends Vue {
+  backgroundImage: String = "bg.webp";
+  bgs: any[] = ["bg.webp", "bg-01.jpg", "bg-02.jpg", "bg-03.jpg", "bg-04.jpg"];
+  bgIndex: number = 0;
+  contacts: any[] = [
+    {
+      icon: "https://i.loli.net/2019/01/25/5c4b2a7558ad7.png",
+      link:
+        "http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=P0dWUQYKDw1-WVBHUl5WUxFcUFI"
     },
-    isDisabledPrev() {
-      return this.page <= 1
+    {
+      icon: "https://i.loli.net/2019/01/25/5c4b2982b5687.png",
+      link: "https://github.com/miyuesc"
     },
-    isDisabledNext() {
-      return this.currentCount >= this.totalCount
+    {
+      icon: "https://i.loli.net/2018/12/09/5c0cc518dc4f4.png",
+      link: "https://www.zhihu.com/people/miyuesc/activities"
+    },
+    {
+      icon: "https://i.loli.net/2018/12/09/5c0cc51ae4f0c.png",
+      link: "https://music.163.com/m/user/home?id=256780134"
     }
-  },
-  async created() {
-    if (!this.totalCount) {
-      await this.$store.dispatch('queryArchivesCount')
-    }
-    await this.queryPosts()
+  ];
 
-    AOS.init({
-      duration: 2000,
-      easing: 'ease-out',
-      debounceDelay: 200,
-      offset: 50
-    })
-  },
-  methods: {
-    // 获取文章列表
-    async queryPosts(type = 'next') {
-      if (this.loading) return
-      const queryPage = type === 'prev' ? this.page - 1 : this.page + 1
+  created() {
+    this.backgroundImage = this.bgs[this.bgIndex];
+  }
 
-      if (this.list[queryPage]) {
-        this.scrollTop(() => {
-          this.page = queryPage
-          this.posts = this.list[queryPage]
-        })
-        return
+  changeBg(direction: any) {
+    if (direction === "pre") {
+      if (this.bgIndex - 1 > -1) {
+        --this.bgIndex;
+      } else {
+        this.bgIndex = 4;
       }
-
-      this.loading = true
-      const posts = await this.$store.dispatch('queryPosts', {
-        page: queryPage,
-        pageSize: this.pageSize
-      })
-      this.loading = false
-
-      this.scrollTop(() => {
-        this.page = queryPage
-        this.posts = posts
-        this.$set(this.list, queryPage, posts)
-        // 获取文章热度
-        this.$nextTick(async () => {
-          const ids = this.posts.map(o => o.id)
-          const hot = await this.$store.dispatch('queryHot', { ids })
-          this.posts = this.posts.map((o, i) => {
-            o.times = hot[i]
-            return o
-          })
-        })
-      })
-    },
-    // 滚动到顶部
-    scrollTop(callback) {
-      this.$nextTick(() => {
-        this.$scroll(0)
-        // 对于移动端延长滚动时间
-        const delayTime = this.$isMobile ? 500 : 0
-        setTimeout(callback, 1000 + delayTime)
-        setTimeout(AOS.refresh, 1500 + delayTime)
-      })
-    },
-    // 按顺序加载封面图
-    loadNextCover(post) {
-      post.isLoad = true
-      const nextPost = this.posts.find(o => !o.loadCover)
-      if (nextPost) nextPost.loadCover = true
-    },
-    // 跳转文章页
-    gotoPost(number) {
-      this.$router.push({ name: 'post', params: { number } })
-    },
-    // 看板娘
-    showTips(post) {
-      const tips = `要去看看<span style="color: #b854d4"> ${post.title} </span>吗？`
-      this.$store.dispatch('showTips', { tips })
+      this.backgroundImage = this.bgs[this.bgIndex];
+    } else {
+      if (this.bgIndex + 1 > 4) {
+        this.bgIndex = 0;
+      } else {
+        ++this.bgIndex;
+      }
+      this.backgroundImage = this.bgs[this.bgIndex];
     }
   }
 }
 </script>
-
-<style lang="less" scope>
-@import './index.less';
+<style lang="less">
+@import "./home.less";
 </style>

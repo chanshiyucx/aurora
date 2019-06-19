@@ -1,45 +1,50 @@
 <template>
-  <div id="header">
-    <div class="inner">
-      <RouterLink class="title" to="/">{{ $config.title }}</RouterLink>
-      <span class="subtitle">{{ $config.subtitle }}</span>
-      <ul>
-        <li v-for="menu in displayMenus" :key="menu.path">
-          <RouterLink :to="menu.path">
-            <i :class="['icon', `icon-${menu.icon}`]" /> {{ menu.title }}
-          </RouterLink>
+  <div class="header" :class="isTop ? '' : 'clear_styl'">
+    <div class="blog-logo" @click="toPage('/')">
+      <img src="../../assets/logo.png" alt="" style="height: 24px"/>
+      <span>MiyueSC Official Blog</span>
+    </div>
+    <div class="nav">
+      <ul class="menus">
+        <li
+          class="menu-item"
+          v-for="(i, k) in menus"
+          :key="k"
+          @click="toPage(i.path)"
+        >
+          <img :src="require('../../assets/icons/' + i.icon + '.svg')" alt="" />
+          <span>{{ i.label }}</span>
         </li>
       </ul>
     </div>
   </div>
 </template>
+<script lang="ts">
+import { Vue, Component, Prop, Model, Watch } from "vue-property-decorator";
+import config from "@/config/index";
 
-<script>
-export default {
-  name: 'Header',
-  data() {
-    const { archiveOpts, categoryOpts, tagOpts, moodOpts, bookOpts, friendOpts, aboutOpts } = this.$config
-    return {
-      menus: [
-        { path: '/', display: true, icon: 'shop', title: '首页' },
-        { path: '/archive', display: archiveOpts.display, icon: 'inbox', title: '归档' },
-        { path: '/category', display: categoryOpts.display, icon: 'bookmark-empty', title: '分类' },
-        { path: '/tag', display: tagOpts.display, icon: 'tag', title: '标签' },
-        { path: '/mood', display: moodOpts.display, icon: 'comment', title: '梦呓' },
-        { path: '/book', display: bookOpts.display, icon: 'pencil', title: '书单' },
-        { path: '/friend', display: friendOpts.display, icon: 'heart', title: '友链' },
-        { path: '/about', display: aboutOpts.display, icon: 'universal-access', title: '关于' }
-      ]
+@Component
+export default class BlogHeader extends Vue {
+  menus: any[] = config.menus;
+  isTop: Boolean = true;
+
+  toPage(path: any) {
+    this.$router.push({ path: path });
+  }
+  created() {
+    const top = document.documentElement.scrollTop || document.body.scrollTop;
+    if (!top) {
+      this.isTop = true;
     }
-  },
-  computed: {
-    displayMenus() {
-      return this.menus.filter(o => o.display)
-    }
+    window.addEventListener("scroll", () => {
+      const tops =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      this.isTop = !tops;
+    });
   }
 }
 </script>
 
-<style lang="less" scope>
-@import './index.less';
+<style lang="less">
+@import "./header.less";
 </style>

@@ -1,0 +1,94 @@
+.blog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  .loading {
+    position: fixed;
+    top: calc(~"50vh - 30px");
+    left: calc(~"50vw - 30px");
+  }
+}
+.main {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  box-sizing: border-box;
+  .cover {
+    width: 100%;
+    height: 200px;
+    background-image: url("../../assets/images/bg-02.jpg");
+    background-size: 100%;
+    padding-top: 280px;
+    transition: all 1s ease-in-out;
+    span {
+      font-size: 60px;
+      margin: auto;
+      background: linear-gradient(to left, #0d737f 33%, #2aa8ad 73%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+  .articles-box {
+    position: absolute;
+    width: 1000px;
+    top: 520px;
+    left: calc(~"50% - 500px");
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 24px;
+    .articles {
+      text-align: left;
+      .article-card {
+        width: 100%;
+        height: 240px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(100, 100, 100, 0.4);
+        margin-bottom: 36px;
+        transition: all 0.5s;
+        .article-title {
+          padding: 16px;
+          font-size: 24px;
+        }
+        .article-time {
+          padding-left: 16px;
+          width: 148px;
+          font-size: 12px;
+          color: #aaaaaa;
+          float: left;
+        }
+        .article-tag {
+          width: 60px;
+          float: left;
+          span {
+            padding: 6px;
+            border-radius: 4px;
+            background: #eeeeee;
+          }
+        }
+        .article-desc {
+          height: 100px;
+        }
+        .article-cover {
+          float: right;
+          width: 240px;
+          height: 240px;
+          overflow: hidden;
+          border-radius: 0 8px 8px 0;
+          img {
+            transition: all 0.5s;
+          }
+        }
+        &:hover {
+          box-shadow: 0 0 10px rgba(100, 100, 100, 0.8);
+          transform: translateY(-6px);
+          img {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+    .tags {
+      height: 600px;
+    }
+  }
+}
