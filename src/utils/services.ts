@@ -1,5 +1,5 @@
 import config from "@/config/index";
-import { Vue } from "vue-property-decorator";
+import {Vue} from "vue-property-decorator";
 
 const GRAPHQL_URL = "https://api.github.com/graphql";
 const GITHUB_API = "https://api.github.com/repos";
@@ -25,6 +25,17 @@ export const queryPosts = async ({ page = 1, pageSize = 10, filter = "" }) => {
     const response = await Vue.axios.get(url);
     checkStatus(response);
     return response.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+// 获取标签
+export const queryTag = async () => {
+  try {
+    const url = `${blog}/labels?access_token=${access_token}&page=1&per_page=100`;
+    const response = await fetch(url);
+    checkStatus(response);
+    return await response.json();
   } catch (err) {
     console.log(err);
   }

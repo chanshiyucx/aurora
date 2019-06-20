@@ -3,7 +3,7 @@
 </template>
 <script lang="ts">
 import marked from "marked";
-import { Vue, Component, Prop, Model, Watch } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 import hljs from "@/assets/lib/highlight";
 
 const renderer = new marked.Renderer();
@@ -41,38 +41,41 @@ export default class MarkDown extends Vue {
   content!: string;
   @Prop({ type: String, default: "" })
   target!: string;
+  @Prop({ type: Boolean, default: false })
+  onlyRender!: boolean;
+  @Prop({ type: Boolean, default: true })
+  desc!: boolean;
 
   html: any = "";
 
   doMarked() {
-    console.log(this.content);
-    this.html = marked(this.content);
-    // 对于只是纯解析文字不需要代码高亮和灯箱
-    if (this.target) {
+    this.html = marked(this.content); // 对于只是纯解析文字不需要代码高亮和灯箱
+    if (this.onlyRender) return;
+    else {
       this.$nextTick(() => {
-        // 代码行数
-        hljs
-          .initLineNumbersOnLoad({ target: this.target })(
-            // 灯箱
-            window as any
-          )
-          .lightGallery(document.querySelector(this.target), {
-            selector: ".img-box",
-            thumbMargin: 6,
-            download: false,
-            subHtmlSelectorRelative: true
+        // 对于只是纯解析文字不需要代码高亮和灯箱
+        if (this.target) {
+          this.$nextTick(() => {
+            // 代码行数
+            hljs
+              .initLineNumbersOnLoad({ target: this.target })(
+                // 灯箱
+                window as any
+              )
+              .lightGallery(document.querySelector(this.target), {
+                selector: ".img-box",
+                thumbMargin: 6,
+                download: false,
+                subHtmlSelectorRelative: true
+              });
           });
+        }
       });
     }
   }
+
   created() {
     this.doMarked();
-  }
-  beforeDestroy() {
-    // Object.keys((window as any).lgData).forEach(k => {
-    //   window.lgData[k].destroy && window.lgData[k].destroy(true)
-    // })
-    // window.lgData = {}
   }
 }
 </script>

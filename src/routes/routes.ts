@@ -1,4 +1,4 @@
-import Home from "@/views/home/Index.vue";
+import Home from "@/views/Home/Index.vue";
 
 const routes: any[] = [
   {
@@ -9,17 +9,17 @@ const routes: any[] = [
   {
     path: "/about",
     name: "about",
-    component: () => import("@/views/about/Index.vue")
+    component: () => import("@/views/About/Index.vue")
   },
   {
     path: "/tag",
     name: "tag",
-    component: () => import("@/views/tag/Index.vue")
+    component: () => import("@/views/Tag/Index.vue")
   },
   {
     path: "/blog",
     name: "blog",
-    component: () => import("@/views/blog/Index.vue")
+    component: () => import("@/views/Blog/Index.vue")
   }
 ];
 

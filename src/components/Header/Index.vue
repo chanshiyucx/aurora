@@ -1,7 +1,7 @@
 <template>
   <div class="header" :class="isTop ? '' : 'clear_styl'">
     <div class="blog-logo" @click="toPage('/')">
-      <img src="../../assets/logo.png" alt="" style="height: 24px"/>
+      <img src="../../assets/logo.png" alt="" style="height: 24px" />
       <span>MiyueSC Official Blog</span>
     </div>
     <div class="nav">

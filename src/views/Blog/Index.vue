@@ -15,7 +15,7 @@
       <div class="articles-box">
         <div class="articles">
           <article class="article-card" v-for="(i, k) in articles" :key="k">
-            <div style="width: 400px; float: left">
+            <div style="width: 400px; height: 100%; float: left">
               <div class="article-title">{{ i.title }}</div>
               <div class="article-time">Released at {{ i.updateTime }}</div>
               <div
@@ -27,20 +27,25 @@
                 <span>{{ tag.name }}</span>
               </div>
               <div class="article-desc">
-                <mark-down :content="i.body"></mark-down>
+                <mark-down :content="i.body" :only-render="true"></mark-down>
               </div>
             </div>
             <div class="article-cover">
               <img
-                src="../../assets/images/bg-04.jpg"
-                width="240px"
+                :src="i.body.match(/http\S*jpg/) || i.body.match(/http\S*png/)"
+                width="360px"
                 height="240px"
-                alt="i.title"
               />
             </div>
           </article>
         </div>
-        <div class="tags"></div>
+        <div class="tags-list">
+          <div class="tags-title">
+            <img src="../../assets/icons/tag.svg" />
+            <span>Tags</span>
+          </div>
+          <div class="tags"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -63,9 +68,11 @@ export default class Blog extends Vue {
     filter: ""
   };
   articles: any[] = [];
+  tags: any[] = [];
 
-  created() {
+  async created() {
     this.getAllBlog();
+    await this.queryTag();
   }
   getAllBlog() {
     queryPosts(this.filter).then((data: any) => {
@@ -76,6 +83,11 @@ export default class Blog extends Vue {
         i.updateTime = i.updated_at.toString().substring(0, 10);
       });
     });
+  }
+  // 获取标签列表
+  async queryTag() {
+    this.tags = await this.$store.dispatch("queryTag");
+    console.log(this.tags);
   }
 }
 </script>

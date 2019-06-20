@@ -1,7 +1,7 @@
 .blog {
-  position: absolute;
-  top: 0;
-  left: 0;
+  //position: absolute;
+  //top: 0;
+  //left: 0;
   .loading {
     position: fixed;
     top: calc(~"50vh - 30px");
@@ -23,19 +23,21 @@
     span {
       font-size: 60px;
       margin: auto;
-      background: linear-gradient(to left, #0d737f 33%, #2aa8ad 73%);
+      background: linear-gradient(to left, #0d737f 33%, #0d737f 73%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
   }
   .articles-box {
-    position: absolute;
-    width: 1000px;
-    top: 520px;
-    left: calc(~"50% - 500px");
+    //position: absolute;
+    width: 1200px;
+    //top: 520px;
+    //margin-left: calc(~"50% - 600px");
+    margin: auto;
+    margin-top: 36px;
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-column-gap: 24px;
+    grid-column-gap: 48px;
     .articles {
       text-align: left;
       .article-card {
@@ -57,20 +59,28 @@
           float: left;
         }
         .article-tag {
-          width: 60px;
+          //width: 60px;
           float: left;
+          margin-right: 12px;
           span {
-            padding: 6px;
+            padding: 4px 6px;
             border-radius: 4px;
             background: #eeeeee;
+            font-size: 14px;
           }
         }
         .article-desc {
           height: 100px;
+          width: 380px;
+          padding: 16px;
+          overflow: hidden;
+          float: left;
+          font-size: 14px;
+          text-indent: 28px;
         }
         .article-cover {
           float: right;
-          width: 240px;
+          width: 360px;
           height: 240px;
           overflow: hidden;
           border-radius: 0 8px 8px 0;
@@ -87,8 +97,27 @@
         }
       }
     }
-    .tags {
+    .tags-list {
       height: 600px;
+      text-align: left;
+      padding: 12px;
+      span {
+        height: 36px;
+        line-height: 36px;
+        font-size: 32px;
+        display: inline-block;
+        box-sizing: border-box;
+        vertical-align: middle;
+      }
+      img {
+        height: 36px;
+        display: inline-block;
+        box-sizing: border-box;
+        vertical-align: middle;
+      }
+      .tags {
+
+      }
     }
   }
 }

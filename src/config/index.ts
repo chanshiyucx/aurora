@@ -48,7 +48,7 @@ export default {
       icon: "icon_homepage"
     },
     {
-      path: "/blog",
+      path: "/Blog",
       label: "Blog",
       icon: "icon_file"
     },
