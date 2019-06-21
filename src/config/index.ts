@@ -52,11 +52,11 @@ export default {
       label: "Blog",
       icon: "icon_file"
     },
-    {
-      path: "/tag",
-      label: "Tag",
-      icon: "icon_synergy"
-    },
+    // {
+    //   path: "/tag",
+    //   label: "Tag",
+    //   icon: "icon_synergy"
+    // },
     {
       path: "/archive",
       label: "Archive",

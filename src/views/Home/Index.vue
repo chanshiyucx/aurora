@@ -20,10 +20,23 @@
         <li @click="changeBg('pre')">
           <img src="../../assets/icons/angle-left.svg" />
         </li>
-        <li v-for="(i, k) in contacts" :key="k">
+        <li
+          v-for="(i, k) in contacts"
+          :key="k"
+          :class="i.code ? 'has_code' : ''"
+          @mouseenter="showCode = i.code && !showCode ? true : false"
+          @mouseleave="showCode = false"
+        >
           <a :href="i.link" rel="noopener noreferrer" target="_blank">
             <img :src="i.icon" alt="i.label" style="width: 20px; height: 20px"
           /></a>
+          <div
+            v-if="i.code"
+            class="code"
+            :style="{ opacity: showCode ? 1 : 0 }"
+          >
+            <img :src="i.code" class="code-image" />
+          </div>
         </li>
         <li @click="changeBg('next')">
           <img src="../../assets/icons/angle-right.svg" />
@@ -44,6 +57,7 @@ export default class Home extends Vue {
   backgroundImage: String = "bg.webp";
   bgs: any[] = ["bg.webp", "bg-01.jpg", "bg-02.jpg", "bg-03.jpg", "bg-04.jpg"];
   bgIndex: number = 0;
+  showCode: boolean = false;
   contacts: any[] = [
     {
       icon: "https://i.loli.net/2019/01/25/5c4b2a7558ad7.png",
@@ -61,6 +75,10 @@ export default class Home extends Vue {
     {
       icon: "https://i.loli.net/2018/12/09/5c0cc51ae4f0c.png",
       link: "https://music.163.com/m/user/home?id=256780134"
+    },
+    {
+      icon: "https://i.loli.net/2019/06/21/5d0ca1c87aeb559591.png",
+      code: "https://i.loli.net/2019/06/21/5d0ca341bd24127651.png"
     }
   ];
 

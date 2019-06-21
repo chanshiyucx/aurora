@@ -1,17 +1,29 @@
 // import 'highlight.js/styles/atelier-dune-dark.css'
 import "../styles/atelier-dune-dark.css";
 
+// @ts-ignore
 import hljs from "highlight.js/lib/highlight";
+// @ts-ignore
 import javascript from "highlight.js/lib/languages/javascript";
+// @ts-ignore
 import xml from "highlight.js/lib/languages/xml";
+// @ts-ignore
 import less from "highlight.js/lib/languages/less";
+// @ts-ignore
 import css from "highlight.js/lib/languages/css";
+// @ts-ignore
 import java from "highlight.js/lib/languages/java";
+// @ts-ignore
 import python from "highlight.js/lib/languages/python";
+// @ts-ignore
 import objectivec from "highlight.js/lib/languages/objectivec";
+// @ts-ignore
 import markdown from "highlight.js/lib/languages/markdown";
+// @ts-ignore
 import bash from "highlight.js/lib/languages/bash";
+// @ts-ignore
 import json from "highlight.js/lib/languages/json";
+// @ts-ignore
 import http from "highlight.js/lib/languages/http";
 
 import linenumber from "./linenumber";

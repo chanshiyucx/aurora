@@ -49,28 +49,28 @@ export default class MarkDown extends Vue {
   html: any = "";
 
   doMarked() {
-    this.html = marked(this.content); // 对于只是纯解析文字不需要代码高亮和灯箱
-    if (this.onlyRender) return;
-    else {
-      this.$nextTick(() => {
-        // 对于只是纯解析文字不需要代码高亮和灯箱
-        if (this.target) {
-          this.$nextTick(() => {
-            // 代码行数
-            hljs
-              .initLineNumbersOnLoad({ target: this.target })(
-                // 灯箱
-                window as any
-              )
-              .lightGallery(document.querySelector(this.target), {
-                selector: ".img-box",
-                thumbMargin: 6,
-                download: false,
-                subHtmlSelectorRelative: true
-              });
-          });
-        }
-      });
+    if (this.onlyRender && this.content.split("summary_start")[1]) {
+      this.html = marked(
+        this.content.split("summary_start")[1].split("summary_end")[0]
+      );
+    } else {
+      this.html = marked(this.content); // 对于只是纯解析文字不需要代码高亮和灯箱
+      // if (this.target) {
+      //   this.$nextTick(() => {
+      //     // 代码行数
+      //     hljs
+      //       .initLineNumbersOnLoad({ target: this.target })(
+      //         // 灯箱
+      //         window as any
+      //       )
+      //       .lightGallery(document.querySelector(this.target), {
+      //         selector: ".img-box",
+      //         thumbMargin: 6,
+      //         download: false,
+      //         subHtmlSelectorRelative: true
+      //       });
+      //   });
+      // }
     }
   }
 

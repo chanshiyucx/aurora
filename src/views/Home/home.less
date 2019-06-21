@@ -1,7 +1,7 @@
 .home {
-  position: absolute;
-  top: 0;
-  left: 0;
+  //position: absolute;
+  //top: 0;
+  //left: 0;
   width: 100%;
   transition: all 0.5s ease;
   overflow-x: hidden;
@@ -122,8 +122,32 @@
         width: 48px;
         line-height: 40px;
         float: left;
+        position: relative;
         &:hover {
           animation: waveY 1.6s infinite;
+        }
+        .code {
+          position: absolute;
+          top: 56px;
+          left: -36px;
+          width: 120px;
+          height: 120px;
+          background: rgba(0, 0, 0, 0.6);
+          transition: all 0.5s ease-in-out;
+          border-radius: 4px;
+          &:before {
+            content: "";
+            position: absolute;
+            top: -32px;
+            left: 44px;
+            border: 16px solid transparent;
+            border-bottom-color: rgba(0, 0, 0, 0.6);
+          }
+          img {
+            margin-top: 10px;
+            width: 100px;
+            height: 100px;
+          }
         }
       }
       li:first-child {

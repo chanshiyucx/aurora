@@ -1,5 +1,5 @@
 import config from "@/config/index";
-import {Vue} from "vue-property-decorator";
+import { Vue } from "vue-property-decorator";
 
 const GRAPHQL_URL = "https://api.github.com/graphql";
 const GITHUB_API = "https://api.github.com/repos";

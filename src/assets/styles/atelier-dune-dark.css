@@ -67,3 +67,20 @@
 .hljs-strong {
   font-weight: bold;
 }
+
+pre {
+  margin-bottom: 20px;
+  padding: 15px;
+  font-size: 13px;
+  word-wrap: normal;
+  word-break: break-word !important;
+  /*word-break: break-all;*/
+  white-space: pre;
+  overflow: auto;
+  /*border-radius: 4px;*/
+  /*display: block;*/
+  /*!*overflow-x: auto;*!*/
+  /*background: #20201d;*/
+  color: #a6a28c;
+  /*padding: 0.5em;*/
+}

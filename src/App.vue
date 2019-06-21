@@ -2,25 +2,53 @@
   <div id="app">
     <blog-header></blog-header>
     <router-view />
+    <back-to-top></back-to-top>
+    <blog-footer></blog-footer>
   </div>
 </template>
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+<script>
+//   import {Component, Vue, Watch} from "vue-property-decorator";
 import BlogHeader from "@/components/Header/Index.vue";
+import BlogFooter from "@/components/Footer/Index.vue";
+import BackToTop from "@/components/BackToTop/Index.vue";
 
-@Component({
+// @Component({
+//   components: {
+//     BlogHeader,
+//     BlogFooter,
+//     BackToTop
+//   }
+// })
+export default {
+  name: "App",
+  data() {
+    return {
+      transitionName: ""
+    };
+  },
   components: {
-    BlogHeader
+    BlogHeader,
+    BlogFooter,
+    BackToTop
+  },
+  watch: {
+    $route(to, from) {
+      const toDepth = to.path.split("/").length;
+      const fromDepth = from.path.split("/").length;
+      // this.transitionName = toDepth < fromDepth ? "slide-left" : "slide-right";
+      this.transitionName = "slide";
+    }
   }
-})
-export default class App extends Vue {}
+};
 </script>
 <style>
+html,
 body {
   padding: 0;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   position: relative;
+  scroll-behavior: smooth;
 }
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;

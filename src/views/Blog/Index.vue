@@ -42,9 +42,18 @@
         <div class="tags-list">
           <div class="tags-title">
             <img src="../../assets/icons/tag.svg" />
-            <span>Tags</span>
+            <span class="tag-box-title">Tags</span>
           </div>
-          <div class="tags"></div>
+          <div class="tags">
+            <div
+              class="tag-item"
+              v-for="tag in tags"
+              :key="tag.id"
+              :style="{ color: '#' + tag.color }"
+            >
+              <span class="tag-name">{{ tag.name }}</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -87,7 +96,6 @@ export default class Blog extends Vue {
   // 获取标签列表
   async queryTag() {
     this.tags = await this.$store.dispatch("queryTag");
-    console.log(this.tags);
   }
 }
 </script>
