@@ -12,6 +12,11 @@ const routes: any[] = [
     component: () => import("@/views/About/Index.vue")
   },
   {
+    path: "/archive",
+    name: "archive",
+    component: () => import("@/views/Archive/Index.vue")
+  },
+  {
     path: "/tag",
     name: "tag",
     component: () => import("@/views/Tag/Index.vue")
