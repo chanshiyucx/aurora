@@ -1,5 +1,5 @@
 <template>
-  <div class="markdown" v-html="html"></div>
+  <div class="markdown" v-html="html" v-highlight></div>
 </template>
 <script lang="ts">
 import marked from "marked";
@@ -20,7 +20,7 @@ renderer.heading = function(
 };
 renderer.image = function(href: string, title: string, text: string) {
   return `<span class="img-box" data-src="${href}" data-sub-html="<h4>${text}</h4>"><img src="${href}" loading="lazy" alt="${text}" />${
-    text ? `<span>◭ ${text}</span>` : ""
+    text ? `<span>${text}</span>` : ""
   }</span>`;
 };
 renderer.link = function(href: string, title: string, text: string) {
@@ -29,6 +29,9 @@ renderer.link = function(href: string, title: string, text: string) {
     return `<a href="${href}" target="_blank">${text}</a>`;
   }
   return `<a href="${href}" target="_blank"><i class="icon icon-link"></i>${text}</a>`;
+};
+renderer.text = function(text: string) {
+  return `<p class="article-text">${text}</p>`;
 };
 marked.setOptions({
   renderer,
@@ -50,27 +53,12 @@ export default class MarkDown extends Vue {
 
   doMarked() {
     if (this.onlyRender && this.content.split("summary_start")[1]) {
+      // 显示简介
       this.html = marked(
         this.content.split("summary_start")[1].split("summary_end")[0]
       );
     } else {
-      this.html = marked(this.content); // 对于只是纯解析文字不需要代码高亮和灯箱
-      // if (this.target) {
-      //   this.$nextTick(() => {
-      //     // 代码行数
-      //     hljs
-      //       .initLineNumbersOnLoad({ target: this.target })(
-      //         // 灯箱
-      //         window as any
-      //       )
-      //       .lightGallery(document.querySelector(this.target), {
-      //         selector: ".img-box",
-      //         thumbMargin: 6,
-      //         download: false,
-      //         subHtmlSelectorRelative: true
-      //       });
-      //   });
-      // }
+      this.html = marked(this.content.split("summary_end")[1]); // 显示正文
     }
   }
 

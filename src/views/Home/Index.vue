@@ -1,14 +1,18 @@
 <template>
   <div class="home">
+    <div class="loading" v-if="doLoading">
+      <img
+        src="../../assets/icons/loading.gif"
+        alt="loading"
+      />
+    </div>
+
     <section
       id="background"
       class="background"
-      :style="{
-        opacity: 1,
-        backgroundImage:
-          'url(' + require('../../assets/images/' + backgroundImage) + ')'
-      }"
-    ></section>
+    >
+      <img :src="background" @load="doLoading = false" />
+    </section>
     <div class="title" data-value="HI,MIYUESC!">HI,MIYUESC!</div>
     <div class="tools">
       <div class="text">
@@ -51,39 +55,19 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import config from "@/config/index";
 
 @Component({})
 export default class Home extends Vue {
-  backgroundImage: String = "bg.webp";
-  bgs: any[] = ["bg.webp", "bg-01.jpg", "bg-02.jpg", "bg-03.jpg", "bg-04.jpg"];
+  background: String = config.homeBgs[0];
+  bgs: any[] = config.homeBgs;
   bgIndex: number = 0;
   showCode: boolean = false;
-  contacts: any[] = [
-    {
-      icon: "https://i.loli.net/2019/01/25/5c4b2a7558ad7.png",
-      link:
-        "http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=P0dWUQYKDw1-WVBHUl5WUxFcUFI"
-    },
-    {
-      icon: "https://i.loli.net/2019/01/25/5c4b2982b5687.png",
-      link: "https://github.com/miyuesc"
-    },
-    {
-      icon: "https://i.loli.net/2018/12/09/5c0cc518dc4f4.png",
-      link: "https://www.zhihu.com/people/miyuesc/activities"
-    },
-    {
-      icon: "https://i.loli.net/2018/12/09/5c0cc51ae4f0c.png",
-      link: "https://music.163.com/m/user/home?id=256780134"
-    },
-    {
-      icon: "https://i.loli.net/2019/06/21/5d0ca1c87aeb559591.png",
-      code: "https://i.loli.net/2019/06/21/5d0ca341bd24127651.png"
-    }
-  ];
+  contacts: any[] = config.contact;
+  doLoading: boolean = true;
 
   created() {
-    this.backgroundImage = this.bgs[this.bgIndex];
+    this.background = this.bgs[this.bgIndex];
   }
 
   changeBg(direction: any) {
@@ -93,14 +77,14 @@ export default class Home extends Vue {
       } else {
         this.bgIndex = 4;
       }
-      this.backgroundImage = this.bgs[this.bgIndex];
+      this.background = this.bgs[this.bgIndex];
     } else {
-      if (this.bgIndex + 1 > 4) {
+      if (this.bgIndex + 1 > this.bgs.length - 1) {
         this.bgIndex = 0;
       } else {
         ++this.bgIndex;
       }
-      this.backgroundImage = this.bgs[this.bgIndex];
+      this.background = this.bgs[this.bgIndex];
     }
   }
 }

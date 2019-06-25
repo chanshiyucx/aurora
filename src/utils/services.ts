@@ -26,7 +26,7 @@ export const queryPosts = async ({ page = 1, pageSize = 10, filter = "" }) => {
     checkStatus(response);
     return response.data;
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 };
 // 获取标签
@@ -37,6 +37,28 @@ export const queryTag = async () => {
     checkStatus(response);
     return await response.json();
   } catch (err) {
-    console.log(err);
+    // console.log(err);
+  }
+};
+// 获取单篇文章
+export const queryPost = async (number: number) => {
+  try {
+    const url = `${blog}/issues/${number}?${open}`;
+    const response = await Vue.axios.get(url);
+    checkStatus(response);
+    return await response.data;
+  } catch (err) {
+    // console.log(err);
+  }
+};
+// 获取分类
+export const queryCategory = async () => {
+  try {
+    const url = `${blog}/milestones?access_token=${access_token}`;
+    const response = await fetch(url);
+    checkStatus(response);
+    return await response.json();
+  } catch (err) {
+    // console.log(err);
   }
 };

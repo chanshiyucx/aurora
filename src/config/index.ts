@@ -67,5 +67,43 @@ export default {
       label: "About",
       icon: "icon_warn"
     }
+  ],
+
+  /**
+   * 首页背景图片 配置
+   */
+  homeBgs: [
+    "http://ww1.sinaimg.cn/large/0067sbCSly1g4df43b60jj31hc0u0qhw.jpg",
+    "http://ww1.sinaimg.cn/large/0067sbCSly1g4df1yby5mj31z4140avg.jpg",
+    "http://ww1.sinaimg.cn/large/0067sbCSly1g4df4n9p9bj31hc0u045a.jpg",
+    "http://ww1.sinaimg.cn/large/0067sbCSly1g4df5cdoujj31hc0u04qq.jpg",
+    "http://ww1.sinaimg.cn/large/0067sbCSly1g4df5hfmnuj31hc0u011f.jpg"
+  ],
+
+  /**
+   * 联系方式 配置
+   */
+  contact: [
+    {
+      icon: "https://i.loli.net/2019/01/25/5c4b2a7558ad7.png",
+      link:
+        "http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=P0dWUQYKDw1-WVBHUl5WUxFcUFI"
+    },
+    {
+      icon: "https://i.loli.net/2019/01/25/5c4b2982b5687.png",
+      link: "https://github.com/miyuesc"
+    },
+    {
+      icon: "https://i.loli.net/2018/12/09/5c0cc518dc4f4.png",
+      link: "https://www.zhihu.com/people/miyuesc/activities"
+    },
+    {
+      icon: "https://i.loli.net/2018/12/09/5c0cc51ae4f0c.png",
+      link: "https://music.163.com/m/user/home?id=256780134"
+    },
+    {
+      icon: "https://i.loli.net/2019/06/21/5d0ca1c87aeb559591.png",
+      code: "https://i.loli.net/2019/06/21/5d0ca341bd24127651.png"
+    }
   ]
 };

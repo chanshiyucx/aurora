@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { queryTag } from "@/utils/services";
+import { queryPost, queryTag } from "@/utils/services";
 
 Vue.use(Vuex);
 
@@ -14,6 +14,10 @@ export default new Vuex.Store({
       const filterLabel = ["Mood", "Friend", "Book", "About"];
       data = data.filter((o: any) => !filterLabel.includes(o.name));
       return data;
+    },
+    // 获取文章详情
+    async queryPost(context, { number }) {
+      return await queryPost(number);
     }
   }
 });

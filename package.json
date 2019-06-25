@@ -13,6 +13,7 @@
     "highlight.js": "^9.15.8",
     "leancloud-storage": "^3.13.1",
     "marked": "^0.6.2",
+    "timeago.js": "^4.0.0-beta.2",
     "vue": "^2.6.10",
     "vue-axios": "^2.1.4",
     "vue-class-component": "^7.0.2",

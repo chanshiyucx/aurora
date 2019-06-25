@@ -3,8 +3,26 @@
   //top: 0;
   //left: 0;
   width: 100%;
-  transition: all 0.5s ease;
   overflow-x: hidden;
+  transition: all 0.8s ease-in-out;
+
+  .loading {
+    position: fixed;
+    //top: calc(~"50vh - 30px");
+    //left: calc(~"50vw - 30px");
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+    background: #ffffff;
+    z-index: 10;
+    img {
+      margin: auto;
+      width: 60px;
+      height: 60px;
+      margin-top: calc(~"50vh - 30px");
+    }
+  }
+
   .background {
     position: relative;
     width: 100%;
@@ -14,15 +32,17 @@
     background-position: center top;
     background-size: cover;
     background-attachment: fixed;
-    opacity: 0;
-    transition: 1s ease-in-out;
-    &:after {
-      position: absolute;
-      content: "";
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+    img {
+      opacity: 1;
+      transition: 1s ease-in-out;
+      &:after {
+        position: absolute;
+        content: "";
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
     }
   }
   .title {

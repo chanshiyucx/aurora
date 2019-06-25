@@ -16,7 +16,9 @@
         <div class="articles">
           <article class="article-card" v-for="(i, k) in articles" :key="k">
             <div style="width: 400px; height: 100%; float: left">
-              <div class="article-title">{{ i.title }}</div>
+              <div class="article-title" @click="gotoPost(i.number)">
+                {{ i.title }}
+              </div>
               <div class="article-time">Released at {{ i.updateTime }}</div>
               <div
                 class="article-tag"
@@ -35,23 +37,43 @@
                 :src="i.body.match(/http\S*jpg/) || i.body.match(/http\S*png/)"
                 width="360px"
                 height="240px"
+                @click="gotoPost(i.number)"
               />
             </div>
           </article>
         </div>
-        <div class="tags-list">
-          <div class="tags-title">
-            <img src="../../assets/icons/tag.svg" />
-            <span class="tag-box-title">Tags</span>
+        <div>
+          <div class="tags-list">
+            <div class="tags-title">
+              <img src="../../assets/icons/tag.svg" />
+              <span class="tag-box-title">Tags</span>
+            </div>
+            <div class="tags">
+              <div
+                class="tag-item"
+                v-for="tag in tags"
+                :key="tag.id"
+                :style="{ color: '#' + tag.color }"
+              >
+                <span class="tag-name">{{ tag.name }}</span>
+              </div>
+            </div>
           </div>
-          <div class="tags">
-            <div
-              class="tag-item"
-              v-for="tag in tags"
-              :key="tag.id"
-              :style="{ color: '#' + tag.color }"
-            >
-              <span class="tag-name">{{ tag.name }}</span>
+          <div class="category-list">
+            <div class="category-title">
+              <img src="../../assets/icons/category.svg" />
+              <span class="category-box-title">Categories</span>
+            </div>
+            <div class="categories">
+              <div
+                class="category-item"
+                v-for="category in categories"
+                :key="category.id"
+              >
+                <div class="border-left"></div>
+                <span class="category-name">{{ category.title }}</span>
+                <div class="border-right"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -61,7 +83,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop, Model, Watch } from "vue-property-decorator";
-import { queryPosts } from "@/utils/services";
+import { queryPosts, queryCategory } from "@/utils/services";
 import MarkDown from "@/components/MarkDown/Index.vue";
 
 @Component({
@@ -78,16 +100,18 @@ export default class Blog extends Vue {
   };
   articles: any[] = [];
   tags: any[] = [];
+  categories: any[] = [];
 
   async created() {
-    this.getAllBlog();
     await this.queryTag();
+    await this.getCategory();
+    this.getAllBlog();
   }
   getAllBlog() {
     queryPosts(this.filter).then((data: any) => {
       this.doLoading = false;
       this.articles = data;
-      console.log(data);
+      // console.log(data);
       this.articles.forEach((i: any) => {
         i.updateTime = i.updated_at.toString().substring(0, 10);
       });
@@ -96,6 +120,13 @@ export default class Blog extends Vue {
   // 获取标签列表
   async queryTag() {
     this.tags = await this.$store.dispatch("queryTag");
+  }
+  async getCategory() {
+    this.categories = await queryCategory();
+    // console.log(this.categories);
+  }
+  gotoPost(number: any) {
+    this.$router.push({ name: "post", params: { number } });
   }
 }
 </script>

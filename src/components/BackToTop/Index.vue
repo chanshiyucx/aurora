@@ -2,7 +2,7 @@
   <div
     class="back-to-top"
     @click="turnToTop()"
-    :style="{ top: visible ? '-10px' : '-86vh' }"
+    :style="{ top: visible ? '-10px' : '-90vh' }"
   >
     <img src="../../assets/icons/backtop.png" />
   </div>
@@ -22,7 +22,7 @@ export default class BackToTop extends Vue {
     window.addEventListener("scroll", () => {
       const tops =
         document.documentElement.scrollTop || document.body.scrollTop;
-      this.visible = tops > 200;
+      this.visible = tops > 100;
     });
   }
   turnToTop(): void {
@@ -41,7 +41,7 @@ export default class BackToTop extends Vue {
   img {
     /*height: 86vh;*/
     /*width: 96px;*/
-    max-height: 96vh;
+    max-height: 86vh;
     transform-origin: top;
     -webkit-animation: grow 3.6s 4s infinite ease;
     animation: grow 3.6s 4s infinite ease;

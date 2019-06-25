@@ -51,6 +51,9 @@
         .article-title {
           padding: 16px;
           font-size: 24px;
+          &:hover {
+            cursor: pointer;
+          }
         }
         .article-time {
           padding-left: 16px;
@@ -87,6 +90,9 @@
           border-radius: 0 8px 8px 0;
           img {
             transition: all 0.5s;
+            &:hover {
+              cursor: pointer;
+            }
           }
         }
         &:hover {
@@ -99,9 +105,9 @@
       }
     }
     .tags-list {
-      height: 600px;
+      height: auto;
       text-align: left;
-      padding: 12px;
+      padding: 12px 12px 60px 12px;
       .tag-box-title {
         height: 36px;
         line-height: 36px;
@@ -109,6 +115,7 @@
         display: inline-block;
         box-sizing: border-box;
         vertical-align: middle;
+        margin-left: 20px;
       }
       img {
         height: 36px;
@@ -126,15 +133,13 @@
           .tag-name {
             margin-left: 12px;
             line-height: 28px;
-            padding: 7px 12px 8px 12px;
-            font-size: 12px;
+            padding: 6px 12px 6px 12px;
+            font-size: 14px;
             background: #42a6f8;
             text-decoration: none;
             border-bottom-right-radius: 4px;
             border-top-right-radius: 4px;
-            font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue,
-              PingFang SC, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC,
-              WenQuanYi Micro Hei, sans-serif;
+            font-family: "PingFang SC", sans-serif;
             &:before {
               content: "";
               position: absolute;
@@ -158,6 +163,68 @@
           }
           &:hover {
             transform: translateY(-6px);
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .category-list {
+      height: auto;
+      text-align: left;
+      padding: 12px 12px 60px 12px;
+      .category-box-title {
+        height: 36px;
+        line-height: 36px;
+        font-size: 32px;
+        display: inline-block;
+        box-sizing: border-box;
+        vertical-align: middle;
+        margin-left: 20px;
+      }
+      img {
+        height: 36px;
+        display: inline-block;
+        box-sizing: border-box;
+        vertical-align: middle;
+      }
+      .categories {
+        transition: all 1s;
+        .category-item {
+          display: inline-block;
+          height: 28px;
+          position: relative;
+          margin: 12px 8px;
+          transition: all 0.5s ease-in-out;
+          &:hover {
+            transform: translateY(-5px);
+            cursor: pointer;
+          }
+          .border-left {
+            width: 16px;
+            height: 32px;
+            background-image: url("../../assets/icons/border-left.svg");
+            background-size: cover;
+            float: left;
+          }
+          .border-right {
+            width: 16px;
+            height: 32px;
+            background-image: url("../../assets/icons/border-left.svg");
+            background-size: cover;
+            transform: rotate(180deg);
+            float: left;
+          }
+          .category-name {
+            line-height: 30px;
+            text-align: center;
+            font-size: 16px;
+            border-top: 1px solid crimson;
+            border-bottom: 1px solid crimson;
+            float: left;
+            text-decoration: none;
+            border-bottom-right-radius: 4px;
+            border-top-right-radius: 4px;
+            font-family: "PingFang SC", sans-serif;
           }
         }
       }

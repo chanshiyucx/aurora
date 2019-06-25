@@ -29,7 +29,7 @@ export default function linenumber(hljs: any) {
   function initLineNumbersOnLoad(options: any) {
     try {
       const targetElement = d.querySelector(options.target);
-      const blocks = targetElement.querySelectorAll('code[class*="language-"]');
+      const blocks = targetElement.querySelectorAll("code");
       for (let i in blocks) {
         if (blocks.hasOwnProperty(i)) {
           lineNumbersBlock(blocks[i], options);
