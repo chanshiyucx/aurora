@@ -32,37 +32,48 @@
         <mark-down :content="articleInfo.body" :only-render="false"></mark-down>
       </div>
     </div>
+    <comment
+      v-if="initComment"
+      :id="articleInfo.id"
+      :title="articleInfo.title"
+    ></comment>
   </div>
 </template>
 <script lang="ts">
 import { Vue, Component, Prop, Model, Watch } from "vue-property-decorator";
 import MarkDown from "@/components/MarkDown/Index.vue";
+import Comment from "@/components/Comment/Index.vue";
 // import { queryPost } from "@/utils/services";
 
 @Component({
   components: {
-    MarkDown
+    MarkDown,
+    Comment
   }
 })
 export default class Post extends Vue {
   number: any = "";
   doLoading: boolean = true;
+  initComment: boolean = false;
   articleInfo: any = null;
   background: string = "";
 
   async created() {
     this.number = this.$route.params.number;
     this.getArticleInfo().then(() => {
-      this.doLoading = false;
+      this.$nextTick(() => {
+        this.initComment = true;
+        this.doLoading = false;
+      });
     });
   }
   async getArticleInfo() {
     this.articleInfo = await this.$store.dispatch("queryPost", {
       number: this.number
     });
-    this.background = this.articleInfo.body.match(/http\S*png/)[0]
-      ? this.articleInfo.body.match(/http\S*png/)[0]
-      : this.articleInfo.body.match(/http\S*jpg/)[0];
+    this.background = this.articleInfo.body.match(/http\S*png/)
+      ? this.articleInfo.body.match(/http\S*png/)
+      : this.articleInfo.body.match(/http\S*jpg/);
   }
 }
 </script>

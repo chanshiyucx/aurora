@@ -1,16 +1,10 @@
 <template>
   <div class="home">
     <div class="loading" v-if="doLoading">
-      <img
-        src="../../assets/icons/loading.gif"
-        alt="loading"
-      />
+      <img src="../../assets/icons/loading.gif" alt="loading" />
     </div>
 
-    <section
-      id="background"
-      class="background"
-    >
+    <section id="background" class="background">
       <img :src="background" @load="doLoading = false" />
     </section>
     <div class="title" data-value="HI,MIYUESC!">HI,MIYUESC!</div>
@@ -48,7 +42,7 @@
       </ul>
     </div>
     <div class="main-content">
-      <h2>test</h2>
+      <h2>Hello World</h2>
     </div>
   </div>
 </template>

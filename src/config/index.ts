@@ -22,11 +22,11 @@ export default {
    * Gitalk 配置【评论功能】，详细文档参见：https://github.com/gitalk/gitalk
    */
   gitalk: {
-    clientID: "456cb49191e9fe7bba1d",
-    clientSecret: "f5bcfa9bf9c55b25a644975cfece6c0e4e3fd985",
-    repo: "Comment", // 评论仓库地址
-    owner: "miyuesc",
-    admin: ["miyuesc"],
+    clientID: "7115ac2208f62884d865", // GitHub Application Client ID
+    clientSecret: "e5785cea183393a883212edd7a069ee220279f43", // GitHub Application Client Secret
+    repo: "miyuesc.github.io", // 存放评论的仓库
+    owner: "miyuesc", // 仓库的创建者，
+    admin: ["miyuesc"], // 如果仓库有多个人可以操作，那么在这里以数组形式写出
     distractionFreeMode: false // 是否开始无干扰模式【背景遮罩】
   },
 
@@ -104,6 +104,10 @@ export default {
     {
       icon: "https://i.loli.net/2019/06/21/5d0ca1c87aeb559591.png",
       code: "https://i.loli.net/2019/06/21/5d0ca341bd24127651.png"
+    },
+    {
+      icon: require("../assets/icons/juejin.svg"),
+      link: "https://juejin.im/user/5cdb5ff5f265da03904c3980"
     }
   ]
 };

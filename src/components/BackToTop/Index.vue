@@ -39,21 +39,19 @@ export default class BackToTop extends Vue {
   transition: 600ms all cubic-bezier(0.25, 0.1, 0.3, 1.5);
   outline: none;
   img {
-    /*height: 86vh;*/
-    /*width: 96px;*/
     max-height: 86vh;
     transform-origin: top;
-    -webkit-animation: grow 3.6s 4s infinite ease;
-    animation: grow 3.6s 4s infinite ease;
+    -webkit-animation: grow 3.6s infinite ease-in-out;
+    animation: grow 3.6s infinite ease-in-out;
   }
 }
 
 @keyframes grow {
   33% {
-    -webkit-transform: rotate(-1deg);
-    transform: rotate(-1deg);
+    -webkit-transform: rotate(1.2deg);
+    transform: rotate(1.2deg);
   }
-  67% {
+  66% {
     -webkit-transform: rotate(1deg);
     transform: rotate(1deg);
   }

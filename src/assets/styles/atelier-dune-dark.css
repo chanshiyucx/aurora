@@ -119,5 +119,15 @@ pre > code {
   line-height: 22px;
   font-family: "PingFang SC" , sans-serif;
   padding: 36px;
+  font-weight: lighter;
 }
 
+.hljs-ln-numbers {
+  width: 24px;
+  padding: 2px 6px;
+  border-right: 2px solid #eeeeee;
+  text-align: center;
+}
+.hljs-ln-code {
+  padding-left: 6px;
+}

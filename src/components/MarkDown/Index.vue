@@ -59,6 +59,11 @@ export default class MarkDown extends Vue {
       );
     } else {
       this.html = marked(this.content.split("summary_end")[1]); // 显示正文
+      this.$nextTick(() => {
+        hljs.initLineNumbersOnLoad({
+          target: "#post"
+        });
+      });
     }
   }
 
@@ -68,4 +73,10 @@ export default class MarkDown extends Vue {
 }
 </script>
 
-<style scoped lang="less"></style>
+<style lang="less">
+.markdown {
+  table > tr > .hljs-ln-numbers {
+    width: 24px;
+  }
+}
+</style>

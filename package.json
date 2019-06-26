@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "core-js": "^2.6.5",
+    "gitalk": "^1.5.0",
     "highlight.js": "^9.15.8",
     "leancloud-storage": "^3.13.1",
     "marked": "^0.6.2",
