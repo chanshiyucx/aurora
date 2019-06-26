@@ -28,4 +28,3 @@ export const formatCommonDate = (date: string): string => {
     dataList[0]
   }`;
 };
-

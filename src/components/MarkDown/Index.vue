@@ -7,16 +7,10 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import hljs from "@/assets/lib/highlight";
 
 const renderer = new marked.Renderer();
-renderer.heading = function(
-  text: string,
-  level: number,
-  raw: any,
-  slugger: any
-) {
-  const icon = ["gift", "pagelines", "pilcrow"][level - 2];
-  return `<h${level + 1} id="h-${slugger.slug(
-    raw
-  )}" class="hljs-title">${text}</h${level + 1}>`;
+renderer.heading = function(text: string, level: number) {
+  return `<h${level + 1} id="h-${level}-${escape(text)
+    .replace(/%/g, "\\")
+    .toLowerCase()}" class="hljs-title">${text}</h${level + 1}>`;
 };
 renderer.image = function(href: string, title: string, text: string) {
   return `<span class="img-box" data-src="${href}" data-sub-html="<h4>${text}</h4>"><img src="${href}" loading="lazy" alt="${text}" />${

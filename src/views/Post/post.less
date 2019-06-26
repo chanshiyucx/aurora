@@ -27,6 +27,7 @@
     .main-body {
       margin: auto;
       width: 1080px;
+      position: relative;
       display: grid;
       grid-template-columns: 3fr 1fr;
       grid-column-gap: 48px;
@@ -76,7 +77,42 @@
       }
       .post-menu {
         margin: 24px 0;
+        font-size: 14px;
+        line-height: 22px;
+        position: relative;
         border-left: 1px solid #aaaaaa;
+        .post-menu-ul {
+          list-style: none;
+          text-align: left;
+          padding-left: 0;
+          .post-menu-li {
+            height: 22px;
+            width: 100%;
+            padding-left: 20px;
+            &:hover {
+              border-left: 2px solid #e889ff;
+              padding-left: 18px;
+            }
+            a {
+              height: 22px;
+              width: 240px;
+              display: block;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              text-decoration: none;
+              &:hover {
+                color: #e889ff;
+                width: auto;
+              }
+            }
+          }
+        }
+      }
+      .isFixed {
+        position: fixed;
+        top: 60px;
+        left: calc(~"50vw - 540px")
       }
     }
     //.wish-info {

@@ -35,7 +35,22 @@
             ></mark-down>
           </div>
         </div>
-        <div class="post-menu"></div>
+        <div
+          class="post-menu"
+          id="post-menu"
+          :class="menuBarFixed ? 'isFixed' : ''"
+        >
+          <ul class="post-menu-ul">
+            <li
+              v-for="(m, k) in postMenus"
+              :key="k"
+              class="post-menu-li"
+              :style="{ textIndent: (m.level - 1) * 16 + 'px' }"
+            >
+              <a :href="m.href">{{ m.title }}</a>
+            </li>
+          </ul>
+        </div>
       </div>
       <!--      <div class="wish-info">Read the end, welcome to leave your comments</div>-->
     </div>
@@ -53,6 +68,9 @@ import Comment from "@/components/Comment/Index.vue";
 import { formatJSONDate } from "@/utils/format";
 // import { queryPost } from "@/utils/services";
 
+const w: any = window;
+const d: any = document;
+
 @Component({
   components: {
     MarkDown,
@@ -63,9 +81,12 @@ export default class Post extends Vue {
   number: any = "";
   doLoading: boolean = true;
   initComment: boolean = false;
+  menuBarFixed: boolean = false;
   articleInfo: any = null;
   background: string = "";
   updateTime: string = "";
+  postMenus: any[] = [];
+  winLithener: any = null;
 
   async created() {
     this.number = this.$route.params.number;
@@ -74,6 +95,12 @@ export default class Post extends Vue {
         this.initComment = true;
         this.doLoading = false;
       });
+    });
+    this.winLithener = window.addEventListener("scroll", () => {
+      let scrollTop =
+        w.pageYOffset || d.documentElement.scrollTop || d.body.scrollTop;
+      let offsetTop = d.querySelector("#post-menu").offsetTop;
+      this.menuBarFixed = scrollTop > offsetTop;
     });
   }
   async getArticleInfo() {
@@ -85,7 +112,7 @@ export default class Post extends Vue {
       ? this.articleInfo.body.match(/http\S*png/)
       : this.articleInfo.body.match(/http\S*jpg/);
     this.getTitle(this.articleInfo.body).then((data: any) => {
-      console.log(data);
+      this.postMenus = data;
     });
   }
 
@@ -98,11 +125,18 @@ export default class Post extends Vue {
       m1: any,
       m2: any
     ) {
-      let title = match.replace("\n", "");
+      let title = match.replace("\n", "").replace(/\s*/g, "");
       let level = m1.length;
       tempArr.push({
         title: title.replace(/^#+/, "").replace(/\([^)]*?\)/, ""),
         level: level,
+        href:
+          "#h-" +
+          level +
+          "-" +
+          escape(title.replace(/^#+/, "").replace(/\([^)]*?\)/, ""))
+            .replace(/%/g, "\\")
+            .toLowerCase(),
         children: []
       });
     });
@@ -114,6 +148,11 @@ export default class Post extends Vue {
       item.index = index++;
       return item;
     }));
+  }
+
+  beforeDestroy() {
+    this.winLithener = window.removeEventListener("scroll", () => {});
+    this.winLithener = null;
   }
 }
 </script>
