@@ -14,9 +14,9 @@ renderer.heading = function(
   slugger: any
 ) {
   const icon = ["gift", "pagelines", "pilcrow"][level - 2];
-  return `<h${level} id="h-${slugger.slug(
+  return `<h${level + 1} id="h-${slugger.slug(
     raw
-  )}"><i class="icon icon-${icon}"></i>${text}</h${level}>`;
+  )}" class="hljs-title">${text}</h${level + 1}>`;
 };
 renderer.image = function(href: string, title: string, text: string) {
   return `<span class="img-box" data-src="${href}" data-sub-html="<h4>${text}</h4>"><img src="${href}" loading="lazy" alt="${text}" />${
@@ -24,15 +24,11 @@ renderer.image = function(href: string, title: string, text: string) {
   }</span>`;
 };
 renderer.link = function(href: string, title: string, text: string) {
-  // 只显示一个图标
-  if (text.includes("icon")) {
-    return `<a href="${href}" target="_blank">${text}</a>`;
-  }
-  return `<a href="${href}" target="_blank"><i class="icon icon-link"></i>${text}</a>`;
+  return `<a href="${href}" target="_blank">${text}</a>`;
 };
-renderer.text = function(text: string) {
-  return `<p class="article-text">${text}</p>`;
-};
+// renderer.text = function(text: string) {
+//   return `<p class="article-text">${text}</p>`;
+// };
 marked.setOptions({
   renderer,
   highlight: (code: any) => hljs.highlightAuto(code).value
@@ -77,6 +73,12 @@ export default class MarkDown extends Vue {
 .markdown {
   table > tr > .hljs-ln-numbers {
     width: 24px;
+  }
+  blockquote {
+    margin-inline-start: 12px;
+    border-left: 4px solid #bcbcbc;
+    background: #eeeeee;
+    padding: 6px 12px;
   }
 }
 </style>

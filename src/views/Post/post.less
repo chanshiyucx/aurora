@@ -24,44 +24,71 @@
       padding-top: 280px;
       transition: all 1s ease-in-out;
     }
-    .post-title {
-      font-size: 36px;
-      padding: 12px;
+    .main-body {
       margin: auto;
-      background: linear-gradient(to left, #020404 33%, #010b0c 73%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: bold;
-    }
-    .post-info {
-      width: 800px;
-      height: 80px;
-      line-height: 80px !important;
-      font-family: "PingFang SC" , sans-serif;
-      margin: auto;
-      .info-created {
-        float: left;
-        color: #7d7d7d;
-      }
-      .info-tags {
-        .info-tag {
-          float: left;
-          margin: 0 12px;
-          span {
-            color: #ffffff;
-            padding: 6px 8px;
-            background: #eeeeee;
-            border-radius: 4px;
+      width: 1080px;
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      grid-column-gap: 48px;
+      .post-body {
+        .post-title {
+          font-size: 36px;
+          padding: 12px;
+          font-family: "PingFang SS", "Microsoft YaHei UI", sans-serif;
+          background: linear-gradient(to left, #020404 33%, #010b0c 73%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          font-weight: bold;
+        }
+        .post-info {
+          width: 800px;
+          height: 80px;
+          line-height: 80px !important;
+          font-family: "PingFang SC", sans-serif;
+          margin: auto;
+
+          .info-created {
+            float: left;
+            color: #7d7d7d;
+          }
+
+          .info-tags {
+            .info-tag {
+              float: left;
+              margin: 0 12px;
+
+              span {
+                color: #ffffff;
+                padding: 6px 8px;
+                background: #eeeeee;
+                border-radius: 4px;
+              }
+            }
           }
         }
+        .post-body {
+          width: 800px;
+          height: auto;
+          margin: auto;
+          text-align: left;
+          border-bottom: 1px dashed #b5b5b5;
+        }
+      }
+      .post-menu {
+        margin: 24px 0;
+        border-left: 1px solid #aaaaaa;
       }
     }
-    .post-body {
-      width: 800px;
-      height: auto;
-      margin: auto;
-      text-align: left;
-      //text-indent: 24px;
-    }
+    //.wish-info {
+    //  width: 120px;
+    //  height: 120px;
+    //  margin: auto;
+    //  margin-top: 20px;
+    //  background: -webkit-linear-gradient(45deg, #ff1ba9, #a43fff);
+    //  color: #ffffff;
+    //  border-radius: 90px, 70px, 45px, 95px / 30px , 50px, 75px, 25px;
+    //  font-size: 12px;
+    //  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    //}
   }
 }

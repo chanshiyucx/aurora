@@ -30,6 +30,7 @@ export default class Comment extends Vue {
 .comment {
   width: 800px;
   margin: auto;
+  margin-top: 120px;
   height: auto;
   text-align: left !important;
 }

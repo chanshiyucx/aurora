@@ -46,9 +46,11 @@ html,
 body {
   padding: 0;
   margin: 0;
-  -webkit-font-smoothing: antialiased;
-  position: relative;
+  user-select: none;
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
 }
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
@@ -59,6 +61,7 @@ body {
   background: #ffffff;
   overflow-x: hidden;
   box-sizing: border-box;
+  cursor: url("/public/Arrow.cur"), auto;
 }
 ::-webkit-scrollbar {
   width: 6px;

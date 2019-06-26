@@ -41,8 +41,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs-title,
 .hljs-section,
 .hljs-selector-id {
-  color: #900;
-  font-weight: bold;
+  color: #555555;
+  font-family: "PingFang SC", sans-serif;
 }
 
 .hljs-subst {
@@ -109,15 +109,20 @@ pre {
   color: #a6a28c;
   border-radius: 8px;
 }
-.article-text {
-  line-height: 20px;
+p {
+  line-height: 22px;
   color: #555555;
-  font-family: "PingFang SC", sans-serif;
+  font-family: "PingFang SS", "Microsoft YaHei UI", sans-serif;
   /*text-indent: 24px;*/
 }
-pre > code {
+li {
   line-height: 22px;
-  font-family: "PingFang SC" , sans-serif;
+  color: #555555;
+  font-family: "PingFang SS", "Microsoft YaHei UI", sans-serif;
+}
+pre > code {
+  line-height: 20px;
+  font-family: "PingFang SC" , "Microsoft YaHei UI", sans-serif;
   padding: 36px;
   font-weight: lighter;
 }
@@ -125,9 +130,12 @@ pre > code {
 .hljs-ln-numbers {
   width: 24px;
   padding: 2px 6px;
-  border-right: 2px solid #eeeeee;
+  border-right: 2px solid #bcbcbc;
   text-align: center;
 }
 .hljs-ln-code {
   padding-left: 6px;
+}
+a {
+  color: #aaaaaa;
 }
