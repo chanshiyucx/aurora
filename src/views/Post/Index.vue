@@ -28,31 +28,27 @@
               </div>
             </div>
           </div>
-          <div class="post-body">
+          <div class="post-text">
             <mark-down
               :content="articleInfo.body"
               :only-render="false"
             ></mark-down>
           </div>
         </div>
-        <div
-          class="post-menu"
-          id="post-menu"
-          :class="menuBarFixed ? 'isFixed' : ''"
-        >
-          <ul class="post-menu-ul">
+        <div class="post-menu" id="post-menu">
+          <ul class="post-menu-ul" :class="menuBarFixed ? 'isFixed' : ''">
             <li
               v-for="(m, k) in postMenus"
               :key="k"
               class="post-menu-li"
               :style="{ textIndent: (m.level - 1) * 16 + 'px' }"
+              :class="currentIndex === k ? 'active' : ''"
             >
-              <a :href="m.href">{{ m.title }}</a>
+              <a :href="m.href" @click="currentIndex = k">{{ m.title }}</a>
             </li>
           </ul>
         </div>
       </div>
-      <!--      <div class="wish-info">Read the end, welcome to leave your comments</div>-->
     </div>
     <comment
       v-if="initComment"
@@ -86,22 +82,27 @@ export default class Post extends Vue {
   background: string = "";
   updateTime: string = "";
   postMenus: any[] = [];
-  winLithener: any = null;
+  winListener: any = null;
+  currentIndex: number = 0;
 
   async created() {
     this.number = this.$route.params.number;
-    this.getArticleInfo().then(() => {
-      this.$nextTick(() => {
-        this.initComment = true;
-        this.doLoading = false;
+    this.getArticleInfo()
+      .then(() => {
+        this.$nextTick(() => {
+          this.initComment = true;
+          this.doLoading = false;
+        });
+      })
+      .then(() => {
+        this.winListener = window.addEventListener("scroll", () => {
+          const offsetTop: number =
+            document.documentElement.scrollTop || document.body.scrollTop;
+          this.menuBarFixed = offsetTop > 360;
+          this.currentIndex = offsetTop === 0 ? 0 : this.currentIndex;
+        });
+        // let data: any = document.getElementsByClassName("hidden-anchor");
       });
-    });
-    this.winLithener = window.addEventListener("scroll", () => {
-      let scrollTop =
-        w.pageYOffset || d.documentElement.scrollTop || d.body.scrollTop;
-      let offsetTop = d.querySelector("#post-menu").offsetTop;
-      this.menuBarFixed = scrollTop > offsetTop;
-    });
   }
   async getArticleInfo() {
     this.articleInfo = await this.$store.dispatch("queryPost", {
@@ -125,34 +126,28 @@ export default class Post extends Vue {
       m1: any,
       m2: any
     ) {
-      let title = match.replace("\n", "").replace(/\s*/g, "");
+      let title = match.replace("\n", "");
       let level = m1.length;
       tempArr.push({
         title: title.replace(/^#+/, "").replace(/\([^)]*?\)/, ""),
         level: level,
-        href:
-          "#h-" +
-          level +
-          "-" +
-          escape(title.replace(/^#+/, "").replace(/\([^)]*?\)/, ""))
-            .replace(/%/g, "\\")
-            .toLowerCase(),
         children: []
       });
     });
 
-    // 只处理一级二级标题，以及添加与id对应的index值
-    nav = tempArr.filter(item => item.level <= 3);
+    // 处理标题
+    nav = tempArr.filter(item => item.level <= 5);
     let index = 0;
     return (nav = nav.map(item => {
+      item.href = `#h-${index}`;
       item.index = index++;
       return item;
     }));
   }
 
   beforeDestroy() {
-    this.winLithener = window.removeEventListener("scroll", () => {});
-    this.winLithener = null;
+    this.winListener = window.removeEventListener("scroll", () => {});
+    this.winListener = null;
   }
 }
 </script>

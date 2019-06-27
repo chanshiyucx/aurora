@@ -41,12 +41,24 @@
               />
             </div>
           </article>
+          <div class="error-img" v-if="!articles.length">
+            <img
+              src="http://ww1.sinaimg.cn/large/0067sbCSly1g4fs489wyog306o06o74f.gif"
+              alt="sorry,There are no posts under this category"
+            />
+            <p class="error-text">
+              I'm sorry,There are no posts under this category!
+            </p>
+            <p class="error-text">
+              And I will complement as soon as possible
+            </p>
+          </div>
         </div>
         <div>
           <div class="tags-list">
             <div class="tags-title">
               <img src="../../assets/icons/tag.svg" />
-              <span class="tag-box-title">Tags</span>
+              <span class="tag-box-title" @click="resetFilter">Tags</span>
             </div>
             <div class="tags">
               <div
@@ -54,6 +66,7 @@
                 v-for="tag in tags"
                 :key="tag.id"
                 :style="{ color: '#' + tag.color }"
+                @click="queryFilter(tag.name, 'tag')"
               >
                 <span class="tag-name">{{ tag.name }}</span>
               </div>
@@ -62,13 +75,16 @@
           <div class="category-list">
             <div class="category-title">
               <img src="../../assets/icons/category.svg" />
-              <span class="category-box-title">Categories</span>
+              <span class="category-box-title" @click="resetFilter"
+                >Categories</span
+              >
             </div>
             <div class="categories">
               <div
                 class="category-item"
                 v-for="category in categories"
                 :key="category.id"
+                @click="queryFilter(category.number, 'category')"
               >
                 <div class="border-left"></div>
                 <span class="category-name">{{ category.title }}</span>
@@ -127,6 +143,23 @@ export default class Blog extends Vue {
   }
   gotoPost(number: any) {
     this.$router.push({ name: "post", params: { number } });
+  }
+  queryFilter(filter: any, type: string) {
+    this.doLoading = true;
+    this.filter.filter =
+      type === "tag" ? `&labels=${filter}` : `&milestone=${filter}`;
+    queryPosts(this.filter).then((data: any) => {
+      this.articles = data;
+      this.articles.forEach((i: any) => {
+        i.updateTime = i.updated_at.toString().substring(0, 10);
+      });
+      this.doLoading = false;
+    });
+  }
+  resetFilter() {
+    this.doLoading = true;
+    this.filter = { page: 1, pageSize: 10, filter: "" };
+    this.getAllBlog();
   }
 }
 </script>

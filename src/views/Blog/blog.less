@@ -41,6 +41,17 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-column-gap: 48px;
+    .error-img {
+      width: 100%;
+      img {
+        margin-left: calc(~"50% - 120px");
+      }
+      .error-text {
+        text-align: center;
+        font-family: "Algerian", sans-serif;
+        font-size: 28px;
+      }
+    }
     .articles {
       text-align: left;
       .article-card {
@@ -65,6 +76,7 @@
           font-size: 12px;
           color: #aaaaaa;
           float: left;
+          line-height: 20px;
         }
         .article-tag {
           //width: 60px;
@@ -78,13 +90,14 @@
           }
         }
         .article-desc {
-          height: 100px;
+          height: 108px;
           width: 360px;
           padding: 16px;
           overflow: hidden;
           float: left;
           font-size: 14px;
-          text-indent: 28px;
+          text-indent: 2rem;
+          text-overflow: ellipsis;
         }
         .article-cover {
           float: right;
@@ -120,6 +133,9 @@
         box-sizing: border-box;
         vertical-align: middle;
         margin-left: 20px;
+        &:hover {
+          cursor: pointer;
+        }
       }
       img {
         height: 36px;
@@ -128,6 +144,7 @@
         vertical-align: middle;
       }
       .tags {
+        padding-top: 24px;
         .tag-item {
           display: inline-block;
           height: 28px;
@@ -184,6 +201,9 @@
         box-sizing: border-box;
         vertical-align: middle;
         margin-left: 20px;
+        &:hover{
+          cursor: pointer;
+        }
       }
       img {
         height: 36px;
@@ -193,6 +213,7 @@
       }
       .categories {
         transition: all 1s;
+        padding-top: 24px;
         .category-item {
           display: inline-block;
           height: 28px;

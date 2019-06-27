@@ -67,7 +67,7 @@
             }
           }
         }
-        .post-body {
+        .post-text {
           width: 800px;
           height: auto;
           margin: auto;
@@ -80,6 +80,8 @@
         font-size: 14px;
         line-height: 22px;
         position: relative;
+        //top: 0;
+        //left: 848px;
         border-left: 1px solid #aaaaaa;
         .post-menu-ul {
           list-style: none;
@@ -104,27 +106,24 @@
               &:hover {
                 color: #e889ff;
                 width: auto;
+                max-width: 420px;
               }
             }
           }
+          .active {
+            color: #e889ff;
+            border-left: 2px solid #e889ff;
+            padding-left: 18px;
+            a {
+              color: #e889ff;
+            }
+          }
+        }
+        .isFixed {
+          position: fixed;
+          top: 60px;
         }
       }
-      .isFixed {
-        position: fixed;
-        top: 60px;
-        left: calc(~"50vw - 540px")
-      }
     }
-    //.wish-info {
-    //  width: 120px;
-    //  height: 120px;
-    //  margin: auto;
-    //  margin-top: 20px;
-    //  background: -webkit-linear-gradient(45deg, #ff1ba9, #a43fff);
-    //  color: #ffffff;
-    //  border-radius: 90px, 70px, 45px, 95px / 30px , 50px, 75px, 25px;
-    //  font-size: 12px;
-    //  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    //}
   }
 }

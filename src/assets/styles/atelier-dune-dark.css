@@ -122,7 +122,7 @@ li {
 }
 pre > code {
   line-height: 20px;
-  font-family: "PingFang SC" , "Microsoft YaHei UI", sans-serif;
+  font-family: "PingFang SC", "Microsoft YaHei UI", sans-serif;
   padding: 36px;
   font-weight: lighter;
 }
@@ -138,4 +138,11 @@ pre > code {
 }
 a {
   color: #aaaaaa;
+}
+.hidden-anchor {
+  position: relative;
+  top: -100px;
+  display: block;
+  height: 0;
+  overflow: hidden;
 }

@@ -8,9 +8,8 @@ import hljs from "@/assets/lib/highlight";
 
 const renderer = new marked.Renderer();
 renderer.heading = function(text: string, level: number) {
-  return `<h${level + 1} id="h-${level}-${escape(text)
-    .replace(/%/g, "\\")
-    .toLowerCase()}" class="hljs-title">${text}</h${level + 1}>`;
+  return `<a class="hidden-anchor" ref="hiddenAnchor">${text}</a><h${level +
+    1} class="hljs-title">${text}</h${level + 1}>`;
 };
 renderer.image = function(href: string, title: string, text: string) {
   return `<span class="img-box" data-src="${href}" data-sub-html="<h4>${text}</h4>"><img src="${href}" loading="lazy" alt="${text}" />${
@@ -18,11 +17,8 @@ renderer.image = function(href: string, title: string, text: string) {
   }</span>`;
 };
 renderer.link = function(href: string, title: string, text: string) {
-  return `<a href="${href}" target="_blank">${text}</a>`;
+  return `<a href=${href} target="_blank">${text}</a>`;
 };
-// renderer.text = function(text: string) {
-//   return `<p class="article-text">${text}</p>`;
-// };
 marked.setOptions({
   renderer,
   highlight: (code: any) => hljs.highlightAuto(code).value
@@ -53,6 +49,11 @@ export default class MarkDown extends Vue {
         hljs.initLineNumbersOnLoad({
           target: "#post"
         });
+        document
+          .querySelectorAll(".hidden-anchor")
+          .forEach((a: any, index: number) => {
+            a.id = `h-${index}`;
+          });
       });
     }
   }
