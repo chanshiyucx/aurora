@@ -5,7 +5,11 @@
     </div>
 
     <section id="background" class="background">
-      <img :src="background" @load="doLoading = false" />
+      <img
+        :src="background"
+        @load="bgDownload"
+        :class="bgOpacity ? 'changing' : '0'"
+      />
     </section>
     <div class="title" data-value="HI,MIYUESC!">HI,MIYUESC!</div>
     <div class="tools">
@@ -56,6 +60,7 @@ export default class Home extends Vue {
   background: String = config.homeBgs[0];
   bgs: any[] = config.homeBgs;
   bgIndex: number = 0;
+  bgOpacity: boolean = false;
   showCode: boolean = false;
   contacts: any[] = config.contact;
   doLoading: boolean = true;
@@ -64,22 +69,31 @@ export default class Home extends Vue {
     this.background = this.bgs[this.bgIndex];
   }
 
+  bgDownload() {
+    this.doLoading = false;
+  }
   changeBg(direction: any) {
-    if (direction === "pre") {
-      if (this.bgIndex - 1 > -1) {
-        --this.bgIndex;
+    // this.doLoading = true;
+    this.bgOpacity = true;
+    setTimeout(() => {
+      this.bgOpacity = false;
+    }, 1600);
+    setTimeout(() => {
+      if (direction === "pre") {
+        if (this.bgIndex - 1 > -1) {
+          --this.bgIndex;
+        } else {
+          this.bgIndex = 4;
+        }
       } else {
-        this.bgIndex = 4;
+        if (this.bgIndex + 1 > this.bgs.length - 1) {
+          this.bgIndex = 0;
+        } else {
+          ++this.bgIndex;
+        }
       }
       this.background = this.bgs[this.bgIndex];
-    } else {
-      if (this.bgIndex + 1 > this.bgs.length - 1) {
-        this.bgIndex = 0;
-      } else {
-        ++this.bgIndex;
-      }
-      this.background = this.bgs[this.bgIndex];
-    }
+    }, 800);
   }
 }
 </script>

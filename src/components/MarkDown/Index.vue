@@ -8,7 +8,7 @@ import hljs from "@/assets/lib/highlight";
 
 const renderer = new marked.Renderer();
 renderer.heading = function(text: string, level: number) {
-  return `<a class="hidden-anchor" ref="hiddenAnchor">${text}</a><h${level +
+  return `<a class="hidden-anchor" ref="hiddenAnchor"></a><h${level +
     1} class="hljs-title">${text}</h${level + 1}>`;
 };
 renderer.image = function(href: string, title: string, text: string) {

@@ -41,10 +41,15 @@
               v-for="(m, k) in postMenus"
               :key="k"
               class="post-menu-li"
-              :style="{ textIndent: (m.level - 1) * 16 + 'px' }"
+              :style="{
+                textIndent: (m.level - 1) * 16 + 'px',
+                height: m.level > 2 ? '0' : '22px'
+              }"
               :class="currentIndex === k ? 'active' : ''"
             >
-              <a :href="m.href" @click="currentIndex = k">{{ m.title }}</a>
+              <a v-if="m.level < 3" :href="m.href" @click="currentIndex = k">
+                {{ m.title }}
+              </a>
             </li>
           </ul>
         </div>
