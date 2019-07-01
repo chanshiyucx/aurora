@@ -12,7 +12,11 @@
           :key="k"
           @click="toPage(i.path)"
         >
-          <img :src="require('../../assets/icons/' + i.icon + '.svg')" alt="" />
+          <img
+            :src="i.icon"
+            alt=""
+            style="height: 16px; width: 16px; margin: auto"
+          />
           <span>{{ i.label }}</span>
         </li>
       </ul>

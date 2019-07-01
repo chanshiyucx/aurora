@@ -24,7 +24,7 @@ export default {
   gitalk: {
     clientID: "7115ac2208f62884d865", // GitHub Application Client ID
     clientSecret: "e5785cea183393a883212edd7a069ee220279f43", // GitHub Application Client Secret
-    repo: "miyuesc.github.io", // 存放评论的仓库
+    repo: "blog", // 存放评论的仓库
     owner: "miyuesc", // 仓库的创建者，
     admin: ["miyuesc"], // 如果仓库有多个人可以操作，那么在这里以数组形式写出
     distractionFreeMode: false // 是否开始无干扰模式【背景遮罩】
@@ -45,12 +45,12 @@ export default {
     {
       path: "/",
       label: "Home",
-      icon: "icon_homepage"
+      icon: require("../assets/icons/icon_homepage.svg")
     },
     {
       path: "/Blog",
       label: "Blog",
-      icon: "icon_file"
+      icon: require("../assets/icons/icon_file.svg")
     },
     // {
     //   path: "/tag",
@@ -60,12 +60,17 @@ export default {
     {
       path: "/archive",
       label: "Archive",
-      icon: "icon_timeline"
+      icon: require("../assets/icons/icon_timeline.svg")
+    },
+    {
+      path: "/link",
+      label: "Friend",
+      icon: require("../assets/icons/icon_link.svg")
     },
     {
       path: "/about",
       label: "About",
-      icon: "icon_warn"
+      icon: require("../assets/icons/icon_warn.svg")
     }
   ],
 

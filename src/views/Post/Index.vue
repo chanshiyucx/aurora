@@ -58,6 +58,7 @@
     <comment
       v-if="initComment"
       :id="articleInfo.id"
+      :number="articleInfo.number"
       :title="articleInfo.title"
     ></comment>
   </div>

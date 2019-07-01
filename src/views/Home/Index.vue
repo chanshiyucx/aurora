@@ -29,7 +29,7 @@
           @mouseenter="showCode = i.code && !showCode ? true : false"
           @mouseleave="showCode = false"
         >
-          <a :href="i.link" rel="noopener noreferrer" target="_blank">
+          <a :href="i.icon_link" rel="noopener noreferrer" target="_blank">
             <img :src="i.icon" alt="i.label" style="width: 20px; height: 20px"
           /></a>
           <div
