@@ -18,7 +18,7 @@ export default class Comment extends Vue {
     let gitalk: any = new Gitalk({
       ...config.gitalk,
       // id: location.pathname // 用于标记评论是哪个页面的，确保唯一，并且长度小于50
-      id: this.id.toString(),
+      id: this.id + this.title,
       title: this.title
     });
     gitalk.render("comment");
