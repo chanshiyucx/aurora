@@ -14,10 +14,18 @@
           <div class="body">
             <div class="swiper-wrapper">
               <ul ref="swiper" id="swiper" class="swiper animate" :style="containerStyle">
-                <li><Qrcode @zoom="setZoomSrc" /></li>
-                <li><Theme :theme="theme" @switchTheme="switchTheme" /></li>
-                <li><Qrcode @zoom="setZoomSrc" /></li>
-                <li><Theme :theme="theme" @switchTheme="switchTheme" /></li>
+                <li>
+                  <Qrcode @zoom="setZoomSrc" />
+                </li>
+                <li>
+                  <Theme :theme="theme" @switchTheme="switchTheme" />
+                </li>
+                <li>
+                  <Qrcode @zoom="setZoomSrc" />
+                </li>
+                <li>
+                  <Theme :theme="theme" @switchTheme="switchTheme" />
+                </li>
               </ul>
             </div>
             <button class="cursor btn left-btn" @click="swiperTo(-1)">
@@ -28,11 +36,14 @@
             </button>
             <div class="like">
               <p>
-                已有 <span>{{ likeTimes }}</span> 人点赞了哦！
+                已有
+                <span>{{ likeTimes }}</span> 人点赞了哦！
               </p>
             </div>
           </div>
-          <div class="footer"><div class="cursor" :data-title="likeBtnText" @click="likeSite"></div></div>
+          <div class="footer">
+            <div class="cursor" :data-title="likeBtnText" @click="likeSite"></div>
+          </div>
         </div>
         <div class="long-line">
           <div></div>
@@ -40,7 +51,9 @@
         </div>
       </div>
     </div>
-    <div v-if="!!zoomSrc" class="zoom" @click="setZoomSrc('')"><img class="cursor" :src="zoomSrc" alt /></div>
+    <div v-if="!!zoomSrc" class="zoom" @click="setZoomSrc('')">
+      <img class="cursor" :src="zoomSrc" alt />
+    </div>
   </div>
 </template>
 
@@ -131,7 +144,7 @@ export default {
       setTimeout(() => {
         setTimeout(() => bgNode.classList.remove(this.initTheme), 2000)
         bgNode.classList.add(this.theme)
-      }, 4000)
+      }, 5000)
     },
     // 切换主题
     switchTheme(theme) {
