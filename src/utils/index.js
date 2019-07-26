@@ -51,6 +51,3 @@ export const parseTime = (time, format = '{y}-{m}-{d} {h}:{i}:{s}') => {
   })
   return time_str
 }
-
-const obj = { hello: 'world' }
-const blob = new Blob([JSON.stringify(obj, null, 2)], { type: 'application/json' })

@@ -32,7 +32,7 @@ export default function linenumber(hljs) {
       const targetElement = d.querySelector(options.target)
       const blocks = targetElement.querySelectorAll('code[class*="language-"]')
       for (let i in blocks) {
-        if (blocks.hasOwnProperty(i)) {
+        if (Object.prototype.hasOwnProperty.call(blocks, i)) {
           lineNumbersBlock(blocks[i], options)
         }
       }
@@ -118,7 +118,7 @@ export default function linenumber(hljs) {
   function duplicateMultilineNodes(element) {
     const nodes = element.childNodes
     for (let node in nodes) {
-      if (nodes.hasOwnProperty(node)) {
+      if (Object.prototype.hasOwnProperty.call(nodes, node)) {
         const child = nodes[node]
         if (getLinesCount(child.textContent) > 0) {
           if (child.childNodes.length > 0) {
