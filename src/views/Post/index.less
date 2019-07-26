@@ -72,7 +72,7 @@
     }
 
     .post-body {
-      padding: 0.16rem;
+      padding: 0.16rem 0;
       line-height: 1.6;
       font-size: 0.16rem;
       text-align: justify;
@@ -244,21 +244,17 @@
 
       .markdown > table {
         margin: 0 auto 0.16rem;
-        border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 3px;
         border-collapse: separate;
-        border-spacing: 0;
+        border-spacing: 2px;
+        border: 1px solid #dfdfdf;
         tr {
           height: 0.32rem;
-        }
-        tr:nth-child(2n),
-        thead > tr {
-          background-color: rgba(0, 0, 0, 0.1);
         }
         td,
         th {
           padding: 0 0.36rem;
-          border-right: 1px solid rgba(0, 0, 0, 0.1);
+          border: 1px solid #dfdfdf;
           &:last-child {
             border-right: none;
           }
