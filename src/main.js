@@ -69,5 +69,5 @@ console.info('%c Theme %c', `${labelStyle}background: #d68fe9;`, '', 'https://gi
 console.info('~❀~ 发现控制台报错请务必联系博主 ~❀~')
 console.log(
   '%c ',
-  'background:url(https://i.loli.net/2018/12/09/5c0cc2b905841.png) no-repeat center;background-size:200px;padding-left:200px;padding-bottom:162px;overflow:hidden;border-radius:10px;margin:5px 0'
+  'background:url(https://raw.githubusercontent.com/chanshiyucx/poi/master/2019/5c0cc2b905841.png) no-repeat center;background-size:200px;padding-left:200px;padding-bottom:162px;overflow:hidden;border-radius:10px;margin:5px 0'
 )

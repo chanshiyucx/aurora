@@ -4,7 +4,9 @@
     <Header />
     <div class="page">
       <Transition name="fade-transform" mode="out-in">
-        <keep-alive :exclude="['Post']" :max="10"> <RouterView /> </keep-alive>
+        <keep-alive :exclude="['Post']" :max="10">
+          <RouterView />
+        </keep-alive>
       </Transition>
     </div>
     <Footer @dropPanel="showPanel = true" />
