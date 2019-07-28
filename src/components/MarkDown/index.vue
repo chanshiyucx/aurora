@@ -27,6 +27,12 @@ renderer.link = function(href, title, text) {
   return `<a href="${href}" target="_blank"><i class="icon icon-link"></i>${text}</a>`
 }
 
+// Table 包裹元素，使之可以横向滚动
+renderer.table = function(header, body) {
+  if (body) body = `<tbody>${body}</tbody>`
+  return `<div class="table-wrapper">\n<table>\n<thead>\n${header}</thead>\n${body}</table>\n</div>\n`
+}
+
 marked.setOptions({
   renderer,
   highlight: code => hljs.highlightAuto(code).value
