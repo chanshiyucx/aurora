@@ -244,20 +244,24 @@
 
       .table-wrapper > table {
         margin: 0 auto 0.16rem;
-        border-radius: 3px;
-        border-collapse: separate;
-        border-spacing: 2px;
-        border: 1px solid #dfdfdf;
-        tr {
-          height: 0.32rem;
-        }
-        th {
-          background-color: rgba(0, 0, 0, 0.1);
-        }
-        td,
-        th {
-          padding: 0 0.36rem;
+        max-width: 100%;
+        overflow-x: auto;
+        & > table {
+          border-radius: 3px;
+          border-collapse: separate;
+          border-spacing: 2px;
           border: 1px solid #dfdfdf;
+          tr {
+            height: 0.32rem;
+          }
+          th {
+            background-color: rgba(0, 0, 0, 0.1);
+          }
+          td,
+          th {
+            padding: 0 0.36rem;
+            border: 1px solid #dfdfdf;
+          }
         }
       }
     }
