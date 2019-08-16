@@ -41,8 +41,8 @@ export default {
    * leancloud 配置 【文章浏览次数】
    */
   leancloud: {
-    appId: 'b6DWxsCOWuhurfp4YqbD5cDE-gzGzoHsz',
-    appKey: 'h564RR5uVuJV5uSeP7oFTBye'
+    appId: 'LjOwR4ELEqbauKvtQbwq5TUw-MdYXbMMI',
+    appKey: 'BOSFJ49ohbGctgn4zvJE9VN6'
   },
 
   /**
