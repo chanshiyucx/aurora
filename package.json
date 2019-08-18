@@ -5,6 +5,7 @@
   "author": "蝉時雨 <me@chanshiyu.com>",
   "license": "MIT",
   "scripts": {
+    "start": "npm run serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
@@ -28,7 +29,7 @@
     "@vue/cli-plugin-babel": "^3.10.0",
     "@vue/cli-plugin-eslint": "^3.10.0",
     "@vue/cli-service": "^3.10.0",
-    "@vue/eslint-config-prettier": "^5.0.0",
+    "@vue/eslint-config-prettier": "^4.0.1",
     "babel-eslint": "^10.0.2",
     "eslint": "^6.1.0",
     "eslint-plugin-vue": "^5.2.3",
