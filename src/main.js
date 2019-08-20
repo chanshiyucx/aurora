@@ -22,7 +22,7 @@ import './assets/style/reset.less'
 // 配置全局变量
 Vue.config.productionTip = false
 Vue.prototype.$config = config
-Vue.prototype.$isMobile = isMobile.phone
+Vue.prototype.$isMobile = isMobile().phone
 
 // Init Leancloud
 window.AV = AV

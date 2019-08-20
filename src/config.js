@@ -148,11 +148,11 @@ export default {
   qrcode: [
     {
       name: '支付宝',
-      img: 'https://i.loli.net/2019/04/27/5cc4744a2b0d2.png'
+      img: 'https://raw.githubusercontent.com/chanshiyucx/poi/master/2019/5cc4744a2b0d2.png'
     },
     {
       name: '微信',
-      img: 'https://i.loli.net/2019/04/27/5cc4707401e0a.png'
+      img: 'https://raw.githubusercontent.com/chanshiyucx/poi/master/2019/wx.png'
     }
   ],
 
