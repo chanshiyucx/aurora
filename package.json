@@ -1,8 +1,8 @@
 {
-  "name": "aurora",
-  "version": "1.1.0",
+  "name": "xlzy",
+  "version": "1.0.0",
   "description": "An awesome blog theme",
-  "author": "蝉時雨 <me@chanshiyu.com>",
+  "author": "执笔看墨花开 <1017866168@qq.com>",
   "license": "MIT",
   "scripts": {
     "start": "npm run serve",
