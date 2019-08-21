@@ -20,10 +20,10 @@ export default {
   /**
    * Github Issues 配置【文章、说说、书单、友链】
    */
-  username: 'chanshiyucx', // github 用户名
+  username: 'xlzy520', // github 用户名
   repository: 'blog', // 文章仓库地址
   // token 从中间任意位置拆开成两部分，避免 github 代码检测失效
-  token: ['0ad1a0539c5b96fd18fa', 'aaafba9c7d1362a5746c'],
+  token: ['73fc1ba1aceed26c85a4', '8f9af1108536ea496bf6'],
 
   /**
    * Gitalk 配置【评论功能】，详细文档参见：https://github.com/gitalk/gitalk
