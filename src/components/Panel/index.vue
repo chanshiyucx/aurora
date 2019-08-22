@@ -137,7 +137,8 @@ export default {
     },
     // 初始化背景主题
     initThemeBg() {
-      let theme = localStorage.getItem('theme') || 'school'
+      let theme = localStorage.getItem('theme') || 'touhou'
+      console.log('this.$isMobile', this.$isMobile)
       if (this.$isMobile) {
         theme = 'school'
       }
@@ -152,7 +153,12 @@ export default {
     setTheme(theme) {
       this.theme = theme
       localStorage.setItem('theme', theme)
-      window.$('#bg').backstretch(bg[theme], { duration: 4000 })
+      window.$('#bg').backstretch(bg[theme], {
+        duration: 10000,
+        alignY: 0,
+        transition: 'fade',
+        transitionDuration: 1000
+      })
     },
     // 关闭面板
     hidePanel() {
