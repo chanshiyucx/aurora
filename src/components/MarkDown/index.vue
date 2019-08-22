@@ -53,7 +53,7 @@ export default {
   data() {
     return {
       html: '',
-      lightGallery: ''
+      lg: ''
     }
   },
   created() {
@@ -75,7 +75,8 @@ export default {
         hljs.initLineNumbersOnLoad({ target: this.target })
 
         // 灯箱
-        this.lightGallery = window.$(this.target).lightGallery({
+        this.lg = window.$(this.target)
+        this.lg.lightGallery({
           selector: '.img-box',
           hash: false,
           share: false,
@@ -85,7 +86,7 @@ export default {
     }
   },
   beforeDestroy() {
-    this.lightGallery && this.lightGallery.destroy()
+    this.lg && this.lg.data('lightGallery').destroy(true)
   }
 }
 </script>
