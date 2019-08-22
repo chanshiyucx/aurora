@@ -138,7 +138,6 @@ export default {
     // 初始化背景主题
     initThemeBg() {
       let theme = localStorage.getItem('theme') || 'touhou'
-      console.log('this.$isMobile', this.$isMobile)
       if (this.$isMobile) {
         theme = 'school'
       }
