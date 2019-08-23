@@ -213,6 +213,12 @@
       }
 
       span[class*='img-box'] {
+        display: block;
+        margin-bottom: 15px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+
         img {
           margin: 0 auto;
           max-width: 100%;
@@ -231,7 +237,7 @@
         }
         span {
           display: block;
-          padding-top: 4px;
+          padding-top: 5px;
           font-style: italic;
           text-align: center;
         }

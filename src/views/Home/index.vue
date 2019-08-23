@@ -23,12 +23,21 @@
               <span>{{ post.cover.title }}</span>
             </div>
           </div>
-          <div class="post-body"><MarkDown :content="post.description" /></div>
+          <div class="post-body">
+            <MarkDown :content="post.description" />
+          </div>
           <div class="post-meta">
-            <span> <i class="icon icon-calendar"></i> {{ post.created_at }} </span>
-            <span> <i class="icon icon-fire"></i> 热度{{ times[post.id] || 1 }}℃ </span>
             <span>
-              <i class="icon icon-bookmark-empty"></i> {{ post.milestone ? post.milestone.title : '未分类' }}
+              <i class="icon icon-calendar"></i>
+              {{ post.created_at }}
+            </span>
+            <span>
+              <i class="icon icon-fire"></i>
+              热度{{ times[post.id] || 1 }}℃
+            </span>
+            <span>
+              <i class="icon icon-bookmark-empty"></i>
+              {{ post.milestone ? post.milestone.title : '未分类' }}
             </span>
             <span>
               <i class="icon icon-tag"></i>
@@ -40,7 +49,9 @@
     </Transition>
 
     <Transition name="fade-transform" mode="out-in">
-      <div v-if="!list.length"><Loading /></div>
+      <div v-if="!list.length">
+        <Loading />
+      </div>
       <div class="btn-group" v-if="list.length && (!isDisabledPrev || !isDisabledNext)">
         <Pagination
           :loading="loading"
@@ -73,7 +84,7 @@ export default {
     return {
       loading: false,
       page: 0,
-      pageSize: 12,
+      pageSize: 10,
       posts: [],
       list: [],
       times: {}

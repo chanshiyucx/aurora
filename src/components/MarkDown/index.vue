@@ -52,7 +52,8 @@ export default {
   },
   data() {
     return {
-      html: ''
+      html: '',
+      lg: ''
     }
   },
   created() {
@@ -68,26 +69,24 @@ export default {
       this.html = marked(this.content)
 
       // 对于只是纯解析文字不需要代码高亮和灯箱
-      if (this.target) {
-        this.$nextTick(() => {
-          // 代码行数
-          hljs.initLineNumbersOnLoad({ target: this.target })
-          // 灯箱
-          window.lightGallery(document.querySelector(this.target), {
-            selector: '.img-box',
-            thumbMargin: 6,
-            download: false,
-            subHtmlSelectorRelative: true
-          })
+      if (!this.target) return
+      this.$nextTick(() => {
+        // 代码行数
+        hljs.initLineNumbersOnLoad({ target: this.target })
+
+        // 灯箱
+        this.lg = window.$(this.target)
+        this.lg.lightGallery({
+          selector: '.img-box',
+          hash: false,
+          share: false,
+          subHtmlSelectorRelative: true
         })
-      }
+      })
     }
   },
   beforeDestroy() {
-    Object.keys(window.lgData).forEach(k => {
-      window.lgData[k].destroy && window.lgData[k].destroy(true)
-    })
-    window.lgData = {}
+    this.lg && this.lg.data('lightGallery').destroy(true)
   }
 }
 </script>

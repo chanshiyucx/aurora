@@ -10,7 +10,7 @@ const blog = `${GITHUB_API}/${username}/${repository}`
 const access_token = token.join('')
 const open = `state=open&access_token=${access_token}`
 const closed = `state=closed&access_token=${access_token}`
-const isDev = window.location.href.includes('localhost')
+const isDev = /^(192\.168|localhost)/.test(window.location.host)
 
 // 状态检测
 const checkStatus = response => {

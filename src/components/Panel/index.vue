@@ -61,14 +61,39 @@
 import Theme from './components/Theme'
 import Qrcode from './components/Qrcode'
 
+const bg = {
+  touhou: [
+    'https://i.loli.net/2019/04/25/5cc0936e25880.jpg',
+    'https://i.loli.net/2019/04/25/5cc09372e037c.jpg',
+    'https://i.loli.net/2019/04/25/5cc093789bf66.jpg',
+    'https://i.loli.net/2019/04/25/5cc093cea890e.jpg',
+    'https://i.loli.net/2019/04/25/5cc093dda61a7.jpg',
+    'https://i.loli.net/2019/04/25/5cc093ca5740a.jpg',
+    'https://i.loli.net/2019/04/25/5cc0937d4a1f3.png',
+    'https://i.loli.net/2019/04/25/5cc093d8a2a4e.jpg',
+    'https://i.loli.net/2019/04/25/5cc09381d6ebd.jpg',
+    'https://i.loli.net/2019/04/25/5cc093d3005b7.jpg'
+  ],
+  school: [
+    'https://i.loli.net/2019/04/23/5cbf1354a41b6.jpg',
+    'https://i.loli.net/2019/04/23/5cbf136bdc2d3.jpg',
+    'https://i.loli.net/2019/04/23/5cbf136fe0333.jpg',
+    'https://i.loli.net/2019/04/23/5cbf137481842.jpg',
+    'https://i.loli.net/2019/04/23/5cbf1379952b2.jpg',
+    'https://i.loli.net/2019/04/23/5cbf13983c5ef.jpg',
+    'https://i.loli.net/2019/04/23/5cbf139c68120.jpg',
+    'https://i.loli.net/2019/04/23/5cbf13a0a95a2.jpg',
+    'https://i.loli.net/2019/04/25/5cc08b39e2f20.jpg'
+  ],
+  mobile: ['https://i.loli.net/2019/08/23/mNY5iO1T6jgXPR8.png']
+}
+
 export default {
   name: 'Panel',
   components: { Theme, Qrcode },
   data() {
     return {
-      bgNode: '',
       theme: '',
-      initTheme: '',
       likeTimes: 0,
       isLikeSite: window.localStorage.getItem('isLikeSite', true),
       currentInx: 1,
@@ -113,45 +138,27 @@ export default {
     },
     // 初始化背景主题
     initThemeBg() {
-      const theme = this.getInitTheme()
-      const initTheme = theme === 'touhou' ? 'initTouhou' : 'initSchool'
-      this.theme = theme
-      this.initTheme = initTheme
-      this.createBgNode()
-    },
-    // 获取初始化主题
-    getInitTheme() {
-      if (this.$isMobile) return 'school'
-      const localTheme = localStorage.getItem('theme')
-      if (['touhou', 'school'].includes(localTheme)) return localTheme
-      return 'touhou'
-    },
-    // 创建背景节点
-    createBgNode() {
-      const appNode = document.getElementById('app')
-      const bgNode = document.createElement('ul')
-      bgNode.id = 'bg'
-      bgNode.classList.add(this.initTheme)
-      document.body.insertBefore(bgNode, appNode)
-      this.bgNode = bgNode
-      if (this.$isMobile) return
-
-      for (let i = 0; i < 10; i++) {
-        const imgNode = document.createElement('li')
-        bgNode.appendChild(imgNode)
+      let theme = localStorage.getItem('theme') || 'touhou'
+      if (this.$isMobile) {
+        theme = 'mobile'
       }
-      // 延时载入背景图片
-      setTimeout(() => {
-        setTimeout(() => bgNode.classList.remove(this.initTheme), 2000)
-        bgNode.classList.add(this.theme)
-      }, 5000)
+      this.setTheme(theme)
     },
     // 切换主题
     switchTheme(theme) {
       if (this.theme === theme) return
-      this.bgNode.className = theme
+      this.setTheme(theme)
+    },
+    // 设置主题
+    setTheme(theme) {
       this.theme = theme
       localStorage.setItem('theme', theme)
+      window.$('#bg').backstretch(bg[theme], {
+        duration: 10000,
+        alignY: 0,
+        transition: 'fade',
+        transitionDuration: 1000
+      })
     },
     // 关闭面板
     hidePanel() {

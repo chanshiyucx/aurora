@@ -39,7 +39,7 @@ export default {
       loading: false,
       initComment: false,
       page: 0,
-      pageSize: 12,
+      pageSize: 10,
       posts: [],
       list: [],
       times: {},

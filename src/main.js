@@ -17,7 +17,6 @@ import 'gitalk/dist/gitalk.css'
 import './assets/font/fontello.less'
 import './assets/style/animation.less'
 import './assets/style/layout.less'
-import './assets/style/reset.less'
 
 // 配置全局变量
 Vue.config.productionTip = false
