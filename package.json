@@ -8,7 +8,9 @@
     "start": "npm run serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "deploy.sh",
+    "report": "vue-cli-service build --report"
   },
   "dependencies": {
     "@moefe/vue-aplayer": "^2.0.0-beta.5",
