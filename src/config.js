@@ -112,25 +112,25 @@ export default {
     display: true,
     enableComment: true,
     qoute: '蝉鸣如雨，花宵道中',
-    avatar: 'https://i.loli.net/2018/12/09/5c0cc2b4e0195.png',
+    avatar: require('./assets/images/avatar.png'),
     graduated: 'University of Electronic Science and Technology of China (UESTC)',
     college: 'Communication&Information Engineering',
     // 联系方式，可自由添加
     contact: [
       {
-        icon: 'https://i.loli.net/2019/01/25/5c4b2a7558ad7.png',
+        icon: require('./assets/images/email.png'),
         link: 'http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=tNnR9Nfc1drH3N3NwZrX29k'
       },
       {
-        icon: 'https://i.loli.net/2019/01/25/5c4b2982b5687.png',
+        icon: require('./assets/images/github.png'),
         link: 'https://github.com/chanshiyucx'
       },
       {
-        icon: 'https://i.loli.net/2018/12/09/5c0cc518dc4f4.png',
+        icon: require('./assets/images/zhihu.png'),
         link: 'https://www.zhihu.com/people/ichanshiyu/activities'
       },
       {
-        icon: 'https://i.loli.net/2018/12/09/5c0cc51ae4f0c.png',
+        icon: require('./assets/images/music.png'),
         link: 'https://music.163.com/#/user/home?id=103060582'
       }
     ]
@@ -148,23 +148,23 @@ export default {
   qrcode: [
     {
       name: '支付宝',
-      img: 'https://raw.githubusercontent.com/chanshiyucx/poi/master/2019/5cc4744a2b0d2.png'
+      img: require('./assets/images/zfb.png')
     },
     {
       name: '微信',
-      img: 'https://raw.githubusercontent.com/chanshiyucx/poi/master/2019/wx.png'
+      img: require('./assets/images/wx.png')
     }
   ],
 
   /**
    * 加载动画
    */
-  loadingImg: 'https://i.loli.net/2018/12/15/5c14be28964d2.gif',
+  loadingImg: require('./assets/images/loading.gif'),
 
   /**
    * 文章默认图
    */
-  defaultCover: 'https://i.loli.net/2019/01/24/5c49bd8dad2f5.jpg',
+  defaultCover: require('./assets/images/defaultCover.jpg'),
 
   /**
    * 音乐播放器,
@@ -174,31 +174,31 @@ export default {
       name: 'うたかたの风と蝉时雨',
       artist: 'Little Planet',
       url: 'https://files.catbox.moe/wo7zjt.mp3',
-      cover: 'https://i.loli.net/2018/12/09/5c0cc3ca1081b.jpg'
+      cover: require('./assets/images/cover1.jpg')
     },
     {
       name: '春の凑に',
       artist: 'TUMENECO',
       url: 'https://files.catbox.moe/ducy49.mp3',
-      cover: 'https://i.loli.net/2018/12/11/5c0f196d01a3a.jpg'
+      cover: require('./assets/images/cover2.jpg')
     },
     {
       name: '夏阳炎',
       artist: '天威梦方',
       url: 'https://files.catbox.moe/7migen.mp3',
-      cover: 'https://i.loli.net/2018/12/09/5c0cc3cee372a.jpg'
+      cover: require('./assets/images/cover3.jpg')
     },
     {
       name: '秋风のとおり道',
       artist: '风神华伝',
       url: 'https://files.catbox.moe/b58fq6.mp3',
-      cover: 'https://i.loli.net/2018/12/09/5c0cc3d13844a.jpg'
+      cover: require('./assets/images/cover4.jpg')
     },
     {
       name: '冬のわすれもの',
       artist: 'ハルノカゼ',
       url: 'https://files.catbox.moe/vwnawp.mp3',
-      cover: 'https://i.loli.net/2018/12/09/5c0cc3d36349c.jpg'
+      cover: require('./assets/images/cover5.jpg')
     }
   ],
 
