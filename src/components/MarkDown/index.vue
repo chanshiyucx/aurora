@@ -4,7 +4,13 @@
 
 <script>
 import marked from 'marked'
+import Zooming from 'zooming'
 import hljs from '@/assets/lib/highlight'
+
+const zooming = new Zooming({
+  bgOpacity: 0,
+  zIndex: 100
+})
 
 const renderer = new marked.Renderer()
 
@@ -14,7 +20,7 @@ renderer.heading = function(text, level, raw, slugger) {
 }
 
 renderer.image = function(href, title, text) {
-  return `<span class="img-box" data-src="${href}" data-sub-html="<h4>${text}</h4>"><img src="${href}" loading="lazy" alt="${text}" />${
+  return `<span class="img-box"><img class="img-zoomable" src="${href}" loading="lazy" alt="${text}" />${
     text ? `<span>◭ ${text}</span>` : ''
   }</span>`
 }
@@ -71,22 +77,13 @@ export default {
       // 对于只是纯解析文字不需要代码高亮和灯箱
       if (!this.target) return
       this.$nextTick(() => {
-        // 代码行数
         hljs.initLineNumbersOnLoad({ target: this.target })
-
-        // 灯箱
-        this.lg = window.$(this.target)
-        this.lg.lightGallery({
-          selector: '.img-box',
-          hash: false,
-          share: false,
-          subHtmlSelectorRelative: true
-        })
+        zooming.listen('.img-zoomable')
       })
     }
   },
   beforeDestroy() {
-    this.lg && this.lg.data('lightGallery').destroy(true)
+    zooming.close()
   }
 }
 </script>
