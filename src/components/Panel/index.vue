@@ -95,7 +95,7 @@ export default {
     return {
       theme: '',
       likeTimes: 0,
-      isLikeSite: window.localStorage.getItem('isLikeSite', true),
+      isLikeSite: localStorage.getItem('isLikeSite', true),
       currentInx: 1,
       step: 6, // 每一步 6rem
       lockSwiper: false,
@@ -134,7 +134,7 @@ export default {
       if (this.isLikeSite) return
       this.likeTimes = await this.$store.dispatch('queryLike')
       this.isLikeSite = true
-      window.localStorage.setItem('isLikeSite', true)
+      localStorage.setItem('isLikeSite', true)
     },
     // 初始化背景主题
     initThemeBg() {
@@ -152,7 +152,9 @@ export default {
     // 设置主题
     setTheme(theme) {
       this.theme = theme
-      localStorage.setItem('theme', theme)
+      if (!this.$isMobile) {
+        localStorage.setItem('theme', theme)
+      }
       window.$('#bg').backstretch(bg[theme], {
         duration: 10000,
         alignY: 0,
