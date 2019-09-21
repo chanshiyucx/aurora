@@ -15,7 +15,6 @@
               :src="post.cover.src"
               :alt="post.cover.title"
               :loadCover="post.loadCover"
-              :isLoad="post.isLoad"
               @loadNextCover="loadNextCover(post)"
             />
             <div class="head">
@@ -166,7 +165,6 @@ export default {
     },
     // 按顺序加载封面图
     loadNextCover(post) {
-      post.isLoad = true
       const nextPost = this.posts.find(o => !o.loadCover)
       if (nextPost) nextPost.loadCover = true
     },

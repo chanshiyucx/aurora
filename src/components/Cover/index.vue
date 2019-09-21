@@ -1,16 +1,10 @@
 <template>
   <div class="wrapper">
     <img :src="defaultCover" alt="defaultCover" />
-    <div v-if="!disabledAnimate" class="cover">
-      <Transition name="cover-transform" mode="out-in">
-        <img v-if="imgSrc" :key="imgSrc" :src="imgSrc" :alt="alt" />
-      </Transition>
-    </div>
+    <img class="cover fadeIn" v-show="imgSrc" :src="imgSrc" :alt="alt" />
     <div class="mask" :style="{ height: maskHeight }">
       <img :src="defaultCover" alt="defaultCover" />
-      <Transition v-if="!disabledAnimate" name="cover-transform" mode="out-in">
-        <img v-if="imgSrc" :key="imgSrc" :src="imgSrc" :alt="alt" />
-      </Transition>
+      <img class="fadeIn" v-show="imgSrc" :src="imgSrc" :alt="alt" />
     </div>
   </div>
 </template>
@@ -34,17 +28,11 @@ export default {
     loadCover: {
       type: Boolean,
       default: false
-    },
-    isLoad: {
-      type: Boolean,
-      default: false
     }
   },
   data() {
-    const disabledAnimate = this.isLoad
     return {
-      defaultCover: disabledAnimate ? this.src : this.$config.defaultCover,
-      disabledAnimate,
+      defaultCover: this.$config.defaultCover,
       imgSrc: ''
     }
   },
@@ -52,7 +40,9 @@ export default {
     loadCover: {
       immediate: true,
       handler(val) {
-        if (val && !this.disabledAnimate) this.loadImg()
+        if (val) {
+          this.loadImg()
+        }
       }
     }
   },
@@ -60,10 +50,8 @@ export default {
     loadImg() {
       const img = new Image()
       img.onload = () => {
-        this.$nextTick(() => {
-          this.imgSrc = this.src
-          this.$emit('loadNextCover')
-        })
+        this.imgSrc = this.src
+        this.$emit('loadNextCover')
       }
       img.src = this.src
     }
@@ -94,6 +82,10 @@ export default {
       left: 0;
       bottom: 0;
     }
+  }
+
+  .fadeIn {
+    animation: coverDown 0.6s ease-out;
   }
 }
 </style>

@@ -74,9 +74,21 @@
   }
 }
 
+/** 封面图动画 */
+@keyframes coverDown {
+  0% {
+    opacity: 0.5;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
 /* 文字跑马灯 */
 @keyframes textclip {
-  to {
+  100% {
     background-position: 200% center;
   }
 }
