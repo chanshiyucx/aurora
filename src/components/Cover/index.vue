@@ -60,8 +60,10 @@ export default {
     loadImg() {
       const img = new Image()
       img.onload = () => {
-        this.imgSrc = this.src
-        this.$emit('loadNextCover')
+        this.$nextTick(() => {
+          this.imgSrc = this.src
+          this.$emit('loadNextCover')
+        })
       }
       img.src = this.src
     }
