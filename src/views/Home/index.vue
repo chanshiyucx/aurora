@@ -15,7 +15,7 @@
               :src="post.cover.src"
               :alt="post.cover.title"
               :loadCover="post.loadCover"
-              @loadNextCover="loadNextCover(post)"
+              @loadNextCover="loadNextCover"
             />
             <div class="head">
               <h3>{{ post.title }}</h3>
@@ -164,7 +164,7 @@ export default {
       setTimeout(AOS.refresh, 1500 + delayTime)
     },
     // 按顺序加载封面图
-    loadNextCover(post) {
+    loadNextCover() {
       const nextPost = this.posts.find(o => !o.loadCover)
       if (nextPost) nextPost.loadCover = true
     },
