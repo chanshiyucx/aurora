@@ -37,13 +37,11 @@ export default {
   },
   created() {
     document.title = this.$config.title
-    if (!this.$isMobile) this.initProgress()
     this.visitorStatistics()
+    if (!this.$isMobile) this.initProgress()
   },
   mounted() {
-    if (!this.$isMobile) {
-      this.$Progress.finish()
-    }
+    if (!this.$isMobile) this.$Progress.finish()
   },
   methods: {
     // 注册顶部进度条
@@ -72,6 +70,7 @@ export default {
   position: relative;
   padding-bottom: 1rem;
   text-align: center;
+
   .page {
     margin: 0 auto;
     padding: 0 0.12rem;

@@ -4,6 +4,8 @@
   src: url('../font/GuDianMingChaoTi.ttf');
 }
 
+@font: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Cantarell, 'Helvetica Neue', sans-serif;
+
 * {
   margin: 0;
   padding: 0;
@@ -24,7 +26,7 @@ body,
 }
 
 body {
-  font-family: 'Helvetica', 'PingFang SC', serif;
+  font-family: @font;
   font-size: 0.15rem;
   letter-spacing: 0.4px;
   text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
@@ -39,8 +41,8 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  right: 0;
+  bottom: 0;
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
@@ -48,7 +50,7 @@ body {
 
 ::selection {
   color: #fff;
-  background: var(--light-color);
+  background-color: var(--light-color);
 }
 
 img {
@@ -62,25 +64,22 @@ a {
 
 a,
 button,
-span[class*='img-box'],
 .cursor,
 .waifu {
   cursor: url('../cursor/cursor_link.png'), auto;
 }
 
 /* 字体加载 */
-.fonts {
-  font-family: 'Noto Serif SC', 'Helvetica', 'PingFang SC', serif;
-}
 .fonts-loaded {
   body {
-    .fonts;
+    font-family: 'Noto Serif SC', @font;
   }
+
   #gitalk {
     .gt-comment-body,
     .gt-btn-text,
     textarea {
-      .fonts;
+      font-family: 'Noto Serif SC', @font;
     }
   }
 }
@@ -105,11 +104,6 @@ span[class*='img-box'],
 .fade-transform-leave-to {
   opacity: 0;
   transform: translateY(30px);
-}
-
-/* 顶部进度条 */
-.__cov-progress {
-  z-index: 99;
 }
 
 /* 滚动条 */
@@ -153,12 +147,7 @@ code[class*='language-'] {
   word-break: normal;
   word-wrap: normal;
   line-height: 1.5;
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
   tab-size: 4;
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
   hyphens: none;
 }
 
@@ -231,7 +220,7 @@ td.hljs-ln-numbers {
       min-height: 1rem;
       max-height: 2rem;
       background-color: rgba(255, 255, 255, 0.66);
-      background-image: url(https://i.loli.net/2018/12/09/5c0cc2b905841.png);
+      background-image: url(https://raw.githubusercontent.com/chanshiyucx/poi/master/2019/reimu.png);
       background-size: 1.2rem;
       background-repeat: no-repeat;
       background-position: 99% bottom;
@@ -283,7 +272,6 @@ td.hljs-ln-numbers {
       .i-scroll;
     }
   }
-
   textarea,
   .gt-btn-login,
   .gt-btn-preview,
