@@ -63,16 +63,16 @@ import Qrcode from './components/Qrcode'
 
 const bg = {
   touhou: [
-    'https://i.loli.net/2019/04/25/5cc0936e25880.jpg',
-    'https://i.loli.net/2019/04/25/5cc09372e037c.jpg',
-    'https://i.loli.net/2019/04/25/5cc093789bf66.jpg',
-    'https://i.loli.net/2019/04/25/5cc093cea890e.jpg',
-    'https://i.loli.net/2019/04/25/5cc093dda61a7.jpg',
-    'https://i.loli.net/2019/04/25/5cc093ca5740a.jpg',
-    'https://i.loli.net/2019/04/25/5cc0937d4a1f3.png',
-    'https://i.loli.net/2019/04/25/5cc093d8a2a4e.jpg',
-    'https://i.loli.net/2019/04/25/5cc09381d6ebd.jpg',
-    'https://i.loli.net/2019/04/25/5cc093d3005b7.jpg'
+    'https://i.loli.net/2019/09/28/qmth7xajngTM8zl.jpg',
+    'https://i.loli.net/2019/09/29/pHk8d9JPeoR17ri.jpg',
+    'https://i.loli.net/2019/09/29/KcCLBO9aqTA2D5h.jpg',
+    'https://i.loli.net/2019/09/29/if3acdCxLVTM7Ws.jpg',
+    'https://i.loli.net/2019/09/29/uhf6Y4rFmJPdo8p.jpg',
+    'https://i.loli.net/2019/09/29/swpIntC2eT41xQK.jpg',
+    'https://i.loli.net/2019/09/29/JBgk31iTlz9jF76.jpg',
+    'https://i.loli.net/2019/09/29/vr6mEQRWi3NHVyk.jpg',
+    'https://i.loli.net/2019/09/29/DSJYGIjOHZ4Prp9.jpg',
+    'https://i.loli.net/2019/09/29/WpQ6SyrfVN48e3n.jpg'
   ],
   school: [
     'https://i.loli.net/2019/04/23/5cbf1354a41b6.jpg',

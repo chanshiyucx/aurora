@@ -7,7 +7,7 @@ import config from '../config'
  */
 const regex = /^(.+)?\r\n\s*(.+)?\r\n/
 const coverRegex = /^\[(.+)\].*(http.*(?:jpg|jpeg|png|gif))/
-export const formatPost = (post, index) => {
+export const formatPost = post => {
   const { body, created_at } = post
   const result = regex.exec(body)
   const cover = coverRegex.exec(result[1])
