@@ -7,22 +7,27 @@
   border-top: 2px solid currentColor;
   background-color: rgba(255, 255, 255, 0.4);
   transition: all 0.3s ease 0s, transform 0.6s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
+
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.24);
   }
+
   /deep/p {
     margin-bottom: 0.16rem;
     &:last-child {
       margin-bottom: 0;
     }
   }
+
   /deep/a {
     position: relative;
     color: var(--primary-color);
+
     i {
       color: var(--primary-color);
     }
+
     &::after {
       content: '';
       position: absolute;
@@ -35,6 +40,7 @@
       transform-origin: bottom right;
       transition: transform 0.3s ease-out;
     }
+
     &:hover {
       &::after {
         transform-origin: bottom left;
@@ -42,6 +48,7 @@
       }
     }
   }
+
   .label {
     display: inline-block;
     position: relative;
@@ -52,9 +59,11 @@
     line-height: 0.32rem;
     border-radius: 0 3px 3px 0;
     background-color: currentColor;
+
     span {
       color: #fff;
     }
+
     &::after {
       content: '';
       position: absolute;

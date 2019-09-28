@@ -4,9 +4,11 @@
   width: 1.6rem;
   height: 0.4rem;
   z-index: 99;
+
   &.hide {
     display: none;
   }
+
   .previous {
     display: flex;
     justify-content: center;
@@ -19,11 +21,13 @@
     transition: all 0.3s ease-out;
     overflow: hidden;
     text-shadow: 0 1px 1px #b28fce;
+
     .btn {
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 100%;
+
       span {
         display: block;
         flex: 1;
@@ -33,10 +37,12 @@
           background-color: var(--dark-color);
         }
       }
+
       span.disabled {
         display: none;
       }
     }
+
     &::before {
       content: '';
       display: block;
@@ -52,6 +58,7 @@
       transition: all 0.3s ease-out;
     }
   }
+
   .rect {
     position: absolute;
     top: 7px;
@@ -95,6 +102,7 @@
         transform: scaleX(1);
       }
     }
+
     .rect {
       border-color: var(--dark-color);
       &::after,

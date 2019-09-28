@@ -22,11 +22,6 @@
                 <p>
                   推荐指数：
                   <i class="icon icon-star" v-for="i in parseInt(item.rating)" :key="`star-${i}`"></i>
-                  <i
-                    class="icon icon-star unstar"
-                    v-for="i in 5 - parseInt(item.rating)"
-                    :key="`unstar-${i}`"
-                  ></i>
                 </p>
               </div>
             </div>

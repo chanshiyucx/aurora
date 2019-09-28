@@ -21,46 +21,52 @@
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
       background-color: rgba(255, 255, 255, 0.4);
       transition: all 0.3s ease 0s, transform 0.6s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
+
       &:hover {
         transform: translateY(-4px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.24);
       }
+
       .info {
         display: flex;
         justify-content: flex-start;
         padding: 0.12rem 0.12rem 0;
+
         img {
           margin-right: 0.12rem;
           width: 1.2rem;
           height: 1.6rem;
           box-shadow: 0 0 10px #999;
         }
+
         h3 {
           font-size: 0.16rem;
         }
+
         a {
           transition: color 0.3s ease-out;
           &:hover {
             color: var(--primary-color);
           }
         }
+
         > div {
           line-height: 1.7;
         }
+
         .icon-star {
           margin-right: 4px;
           color: var(--primary-color);
         }
-        .unstar {
-          color: #555;
-        }
       }
+
       .description {
         padding: 0.12rem;
         line-height: 1.6;
       }
     }
   }
+
   @media screen and (max-width: 900px) {
     .content li {
       width: 98%;
