@@ -15,7 +15,6 @@ export const formatPost = (post, index) => {
     title: cover[1] || 'defaultCover',
     src: cover[2] || config.defaultCover
   }
-  post.loadCover = index < 4
   post.description = result[2]
   post.created_at = format(created_at, 'zh_CN')
   return post

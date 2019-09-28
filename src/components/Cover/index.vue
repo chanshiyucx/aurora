@@ -2,10 +2,6 @@
   <div class="wrapper">
     <img :src="defaultCover" alt="defaultCover" />
     <img class="cover fadeIn" v-show="imgSrc" :src="imgSrc" :alt="alt" />
-    <div class="mask" :style="{ height: maskHeight }">
-      <img :src="defaultCover" alt="defaultCover" />
-      <img class="fadeIn" v-show="imgSrc" :src="imgSrc" :alt="alt" />
-    </div>
   </div>
 </template>
 
@@ -58,30 +54,20 @@ export default {
   }
 }
 </script>
+
 <style lang="less" scoped>
 .wrapper {
   position: relative;
-  transition: transform 0.6s ease-out;
+  transition: transform 0.3s ease-in-out;
+
   img {
     width: 100%;
   }
+
   .cover {
     position: absolute;
     top: 0;
     left: 0;
-  }
-  .mask {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    overflow: hidden;
-    filter: blur(3px);
-    img {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-    }
   }
 
   .fadeIn {

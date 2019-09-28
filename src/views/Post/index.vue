@@ -23,7 +23,9 @@
             </div>
           </div>
         </div>
-        <div class="post-body"><MarkDown :content="post.body" target="#post" /></div>
+        <div class="post-body">
+          <MarkDown :content="post.body" target="#post" />
+        </div>
       </article>
       <Loading v-else />
     </Transition>
@@ -39,7 +41,7 @@ import Comment from '@/components/Comment'
 import Cover from '@/components/Cover'
 
 export default {
-  name: 'Post',
+  name: 'post',
   components: {
     MarkDown,
     Loading,

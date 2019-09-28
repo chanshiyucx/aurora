@@ -4,7 +4,7 @@
     <Header />
     <div class="page">
       <Transition name="fade-transform" mode="out-in">
-        <keep-alive :exclude="['Post']" :max="10">
+        <keep-alive :exclude="['post']" :max="10">
           <RouterView />
         </keep-alive>
       </Transition>

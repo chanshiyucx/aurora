@@ -27,7 +27,7 @@ import ArchiveCard from '@/components/Archive'
 import Comment from '@/components/Comment'
 
 export default {
-  name: 'Archive',
+  name: 'archive',
   components: {
     Loading,
     Quote,

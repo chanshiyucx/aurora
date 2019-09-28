@@ -34,7 +34,7 @@ import Comment from '@/components/Comment'
 import { shuffle } from '@/utils'
 
 export default {
-  name: 'Inspiration',
+  name: 'inspiration',
   components: {
     MarkDown,
     Loading,

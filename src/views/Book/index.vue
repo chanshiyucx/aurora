@@ -47,7 +47,7 @@ import Quote from '@/components/Quote'
 import Comment from '@/components/Comment'
 
 export default {
-  name: 'Book',
+  name: 'book',
   components: {
     Loading,
     Quote,
@@ -64,7 +64,6 @@ export default {
     this.initComment = true
   },
   methods: {
-    // 获取书单
     async queryBooks() {
       this.book = await this.$store.dispatch('queryPage', { type: 'book' })
     }

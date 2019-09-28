@@ -30,7 +30,7 @@ import Quote from '@/components/Quote'
 import Comment from '@/components/Comment'
 
 export default {
-  name: 'Friend',
+  name: 'friend',
   components: {
     Loading,
     MagicImg,

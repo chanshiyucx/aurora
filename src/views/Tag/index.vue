@@ -42,7 +42,7 @@ import ArchiveCard from '@/components/Archive'
 import Comment from '@/components/Comment'
 
 export default {
-  name: 'Tag',
+  name: 'tag',
   components: {
     Loading,
     Quote,

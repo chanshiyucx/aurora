@@ -49,7 +49,7 @@ import ArchiveCard from '@/components/Archive'
 import Comment from '@/components/Comment'
 
 export default {
-  name: 'Category',
+  name: 'category',
   components: {
     Loading,
     Quote,

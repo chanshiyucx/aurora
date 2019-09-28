@@ -5,7 +5,7 @@
         <article
           class="card"
           data-aos="fade-up"
-          v-for="post in posts"
+          v-for="(post, index) in posts"
           :key="post.id"
           @click="gotoPost(post.number)"
           @mouseenter="showTips(post)"
@@ -14,12 +14,14 @@
             <Cover
               :src="post.cover.src"
               :alt="post.cover.title"
-              :loadCover="post.loadCover"
+              :loadCover="index < LOAD_INX"
               @loadNextCover="loadNextCover"
             />
-            <div class="head">
-              <h3>{{ post.title }}</h3>
-              <span>{{ post.cover.title }}</span>
+            <div class="post-head">
+              <div>
+                <h3>{{ post.title }}</h3>
+                <span>{{ post.cover.title }}</span>
+              </div>
             </div>
           </div>
           <div class="post-body">
@@ -72,7 +74,7 @@ import Pagination from '@/components/Pagination'
 import Cover from '@/components/Cover'
 
 export default {
-  name: 'Home',
+  name: 'home',
   components: {
     MarkDown,
     Loading,
@@ -86,7 +88,8 @@ export default {
       pageSize: 10,
       posts: [],
       list: [],
-      times: {}
+      times: {},
+      LOAD_INX: 4
     }
   },
   computed: {
@@ -127,6 +130,7 @@ export default {
     async queryPosts(type = 'next') {
       if (this.loading) return
       const queryPage = type === 'prev' ? this.page - 1 : this.page + 1
+      this.LOAD_INX = 4
 
       if (this.list[queryPage]) {
         this.scrollTop(() => {
@@ -165,8 +169,7 @@ export default {
     },
     // 按顺序加载封面图
     loadNextCover() {
-      const nextPost = this.posts.find(o => !o.loadCover)
-      if (nextPost) nextPost.loadCover = true
+      this.LOAD_INX += 1
     },
     // 跳转文章页
     gotoPost(number) {
