@@ -2,6 +2,7 @@
   <div class="archive">
     <ul class="content">
       <li
+        class="cursor"
         v-for="(post, i) in posts"
         :key="post.id"
         @click="gotoPost(post.number)"

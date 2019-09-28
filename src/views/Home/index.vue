@@ -15,7 +15,7 @@
               :src="post.cover.src"
               :alt="post.cover.title"
               :loadCover="index < LOAD_INX"
-              @loadNextCover="loadNextCover"
+              @loadNext="loadNext"
             />
             <div class="post-head">
               <h3>{{ post.title }}</h3>
@@ -166,7 +166,7 @@ export default {
       setTimeout(AOS.refresh, 1200 + delayTime)
     },
     // 按顺序加载封面图
-    loadNextCover() {
+    loadNext() {
       this.LOAD_INX += 1
     },
     // 跳转文章页

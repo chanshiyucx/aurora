@@ -165,7 +165,6 @@ export default {
     // 关闭面板
     hidePanel() {
       this.$emit('hidePanel')
-      // 还原面板初始位置
       this.$nextTick(() => {
         this.currentInx = 1
       })

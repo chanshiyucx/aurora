@@ -5,7 +5,7 @@
         <Quote :quote="$config.tagOpts.qoute" />
         <ul class="content">
           <li v-for="item in tag" :key="item.id" @click="handleFilter(item)">
-            <span :style="{ color: `#${item.color}` }">{{ item.name }}</span>
+            <span class="cursor" :style="{ color: `#${item.color}` }">{{ item.name }}</span>
           </li>
         </ul>
         <Transition name="fade-transform" mode="out-in">

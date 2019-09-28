@@ -44,7 +44,7 @@ export const formatInspiration = inspiration => {
  * 格式化书单 & 友链 & 关于
  */
 export const formatPage = (data, type) => {
-  if (!data.body) return
+  if (!data || !data.body) return []
   let section = data.body.split('## ').filter(o => o.length)
 
   switch (type) {

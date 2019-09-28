@@ -4,7 +4,7 @@
       <RouterLink class="title" to="/">{{ $config.title }}</RouterLink>
       <span class="subtitle">{{ $config.subtitle }}</span>
       <ul>
-        <li v-for="menu in displayMenus" :key="menu.path">
+        <li v-for="menu in displayMenu" :key="menu.path">
           <RouterLink :to="menu.path">
             <i :class="['icon', `icon-${menu.icon}`]" /> {{ menu.title }}
           </RouterLink>
@@ -27,8 +27,9 @@ export default {
       friendOpts,
       aboutOpts
     } = this.$config
+
     return {
-      menus: [
+      menu: [
         { path: '/', display: true, icon: 'shop', title: '首页' },
         { path: '/archive', display: archiveOpts.display, icon: 'inbox', title: '归档' },
         { path: '/category', display: categoryOpts.display, icon: 'bookmark-empty', title: '分类' },
@@ -41,8 +42,8 @@ export default {
     }
   },
   computed: {
-    displayMenus() {
-      return this.menus.filter(o => o.display)
+    displayMenu() {
+      return this.menu.filter(o => o.display)
     }
   }
 }

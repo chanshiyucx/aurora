@@ -47,7 +47,7 @@ export default {
       const img = new Image()
       img.onload = () => {
         this.imgSrc = this.src
-        this.$emit('loadNextCover')
+        this.$emit('loadNext')
       }
       img.src = this.src
     }

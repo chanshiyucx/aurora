@@ -20,7 +20,7 @@
       font-size: 0.49rem;
       line-height: 0.6rem;
       letter-spacing: 2px;
-      transition: color 0.3s ease-in-out;
+      transition: color 0.3s ease-out;
       &:hover {
         color: var(--primary-color);
       }
@@ -41,9 +41,13 @@
       height: 0.6rem;
       background-color: rgba(0, 0, 0, 0.1);
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) inset;
-      transition: all 0.6s ease-out;
+      transition: all 0.5s ease;
       animation-name: fadeIn;
       animation-duration: 0.8s;
+
+      &:hover {
+        border-radius: 0.3rem;
+      }
 
       li {
         padding-top: 0.04rem;
@@ -62,7 +66,8 @@
           justify-content: space-around;
           align-items: center;
           height: 100%;
-          transition: color 0.3s ease-in-out;
+          transition: color 0.3s ease-out;
+
           &:hover {
             &,
             i {

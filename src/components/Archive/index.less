@@ -19,32 +19,38 @@
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
       background-color: rgba(255, 255, 255, 0.4);
       transition: all 0.3s ease 0s, transform 0.6s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
+
       &:hover {
         transform: translateY(-4px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.24);
       }
+
       h3 {
         padding: 0.12rem 0.14rem;
         line-height: 2;
         font-size: 0.16rem;
         text-align: justify;
       }
+
       .post-meta {
         display: flex;
         padding: 0.12rem 0.14rem;
         height: 0.5rem;
         font-size: 0.14rem;
         border-top: 1px solid rgba(0, 0, 0, 0.08);
+
         & > span {
           display: flex;
           align-items: center;
           margin-right: 0.1rem;
+
           span {
             padding-right: 6px;
             &:last-child {
               padding-right: 0;
             }
           }
+
           &:last-child {
             margin-right: 0;
           }
@@ -59,12 +65,14 @@
       }
     }
   }
+
   .btn-group {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 0.32rem;
   }
+
   @media screen and (max-width: 900px) {
     ul li {
       width: 98%;
