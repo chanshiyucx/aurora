@@ -28,9 +28,11 @@
     a {
       position: relative;
       color: var(--primary-color);
+
       i {
         color: var(--primary-color);
       }
+
       &::after {
         content: '';
         position: absolute;
@@ -43,6 +45,7 @@
         transform-origin: bottom right;
         transition: transform 0.3s ease-out;
       }
+
       &:hover {
         &::after {
           transform-origin: bottom left;
@@ -56,6 +59,9 @@
     }
 
     /deep/span[class*='img-box'] {
+      display: block;
+      margin-bottom: 15px;
+
       img {
         margin: 0 auto;
         max-width: 100%;

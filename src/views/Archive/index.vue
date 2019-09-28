@@ -43,7 +43,7 @@ export default {
       posts: [],
       list: [],
       times: {},
-      delayTime: this.$config.isMobile ? 500 : 0 + 800
+      delayTime: this.$config.isMobile ? 400 : 0 + 600
     }
   },
   computed: {
