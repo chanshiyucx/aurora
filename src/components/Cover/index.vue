@@ -58,7 +58,7 @@ export default {
 <style lang="less" scoped>
 .wrapper {
   position: relative;
-  transition: transform 0.3s ease-in-out;
+  transition: all 0.6s ease;
 
   img {
     width: 100%;
@@ -71,7 +71,7 @@ export default {
   }
 
   .fadeIn {
-    animation: coverDown 0.6s ease-out;
+    animation: coverDown 0.5s ease-out;
   }
 }
 </style>

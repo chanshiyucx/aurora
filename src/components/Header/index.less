@@ -7,6 +7,7 @@
     margin: 0 auto;
     padding: 0.5rem 0;
     overflow: hidden;
+
     .title,
     .subtitle {
       font-family: GuDianMingChaoTi;
@@ -14,6 +15,7 @@
       animation-duration: 0.6s;
       transform-origin: top center;
     }
+
     .title {
       font-size: 0.49rem;
       line-height: 0.6rem;
@@ -23,11 +25,13 @@
         color: var(--primary-color);
       }
     }
+
     .subtitle {
       font-size: 0.22rem;
       line-height: 0.32rem;
       letter-spacing: 4px;
     }
+
     ul {
       display: flex;
       justify-content: center;
@@ -40,15 +44,18 @@
       transition: all 0.6s ease-out;
       animation-name: fadeIn;
       animation-duration: 0.8s;
+
       li {
         padding-top: 0.04rem;
         width: 0.5rem;
         font-size: 0.16rem;
         list-style: none;
         height: 86%;
+
         @media screen and (max-width: 600px) {
           width: 0.6rem;
         }
+
         a {
           display: flex;
           flex-direction: column;

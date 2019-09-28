@@ -3,7 +3,7 @@
     <Transition name="fade-transform" mode="out-in">
       <div class="main" v-if="posts.length">
         <article
-          class="card"
+          class="card cursor"
           data-aos="fade-up"
           v-for="(post, index) in posts"
           :key="post.id"
@@ -18,10 +18,8 @@
               @loadNextCover="loadNextCover"
             />
             <div class="post-head">
-              <div>
-                <h3>{{ post.title }}</h3>
-                <span>{{ post.cover.title }}</span>
-              </div>
+              <h3>{{ post.title }}</h3>
+              <span>{{ post.cover.title }}</span>
             </div>
           </div>
           <div class="post-body">
@@ -120,7 +118,7 @@ export default {
 
     AOS.init({
       duration: 2000,
-      easing: 'ease-out',
+      easing: 'ease',
       debounceDelay: 200,
       offset: 50
     })
@@ -163,9 +161,9 @@ export default {
     // 滚动到顶部
     scrollTop(cb) {
       window.scrollTo({ top: 0, behavior: 'smooth' })
-      const delayTime = this.$isMobile ? 500 : 0
-      setTimeout(cb, 1000 + delayTime)
-      setTimeout(AOS.refresh, 1500 + delayTime)
+      const delayTime = this.$isMobile ? 400 : 0
+      setTimeout(cb, 800 + delayTime)
+      setTimeout(AOS.refresh, 1200 + delayTime)
     },
     // 按顺序加载封面图
     loadNextCover() {
