@@ -69,9 +69,9 @@ const bg = {
     'https://i.loli.net/2019/09/29/if3acdCxLVTM7Ws.jpg',
     'https://i.loli.net/2019/09/29/uhf6Y4rFmJPdo8p.jpg',
     'https://i.loli.net/2019/09/29/swpIntC2eT41xQK.jpg',
+    'https://i.loli.net/2019/09/29/DSJYGIjOHZ4Prp9.jpg',
     'https://i.loli.net/2019/09/29/vr6mEQRWi3NHVyk.jpg',
     'https://i.loli.net/2019/09/29/yK8BsTzhqvwFxCd.jpg',
-    'https://i.loli.net/2019/09/29/DSJYGIjOHZ4Prp9.jpg',
     'https://i.loli.net/2019/09/29/WpQ6SyrfVN48e3n.jpg'
   ],
   school: [
