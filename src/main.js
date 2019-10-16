@@ -49,6 +49,10 @@ AV.init(config.leancloud)
 const font = new FontFaceObserver('Noto Serif SC', { weight: '400' })
 font.load().then(() => document.documentElement.classList.add('fonts-loaded'))
 
+// Init Image
+const img = new Image()
+img.src = config.defaultCover
+
 new Vue({
   router,
   store,
