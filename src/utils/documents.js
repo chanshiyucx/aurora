@@ -11,7 +11,7 @@ export default {
   queryInspirationCount: ({ username, repository }) => `
     query { 
       repository(owner:"${username}", name: "${repository}") {
-        issues(states:CLOSED, labels: Inspiration) {
+        issues(states:CLOSED, labels: ["Inspiration"]) {
           totalCount
         }
       }
