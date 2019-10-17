@@ -112,7 +112,7 @@ export default {
     display: true,
     enableComment: true,
     qoute: '蝉鸣如雨，花宵道中',
-    avatar: require('./assets/images/avatar.png'),
+    avatar: require('./assets/images/avatar.jpg'),
     graduated: 'University of Electronic Science and Technology of China (UESTC)',
     college: 'Communication&Information Engineering',
     // 联系方式，可自由添加
