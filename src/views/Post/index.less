@@ -15,6 +15,20 @@
         }
       }
 
+      .clip {
+        font-weight: normal;
+        color: #fff;
+        text-transform: capitalize;
+        background: linear-gradient(to right, #f84f7f 10%, #c7d35e 40%, var(--primary-color) 70%);
+        background-size: auto auto;
+        background-clip: border-box;
+        background-size: 200% auto;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        animation: textclip 3s linear infinite;
+      }
+
       .head {
         position: absolute;
         bottom: 0;
@@ -32,29 +46,19 @@
 
           h1,
           span {
-            font-weight: normal;
-            color: #fff;
-            text-transform: capitalize;
-            background: linear-gradient(to right, #f84f7f 10%, #c7d35e 40%, var(--primary-color) 70%);
-            background-size: auto auto;
-            background-clip: border-box;
-            background-size: 200% auto;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            -webkit-background-clip: text;
-            animation: textclip 3s linear infinite;
+            .clip;
           }
         }
 
         .meta {
           display: flex;
           margin-top: 0.08rem;
+          .clip;
 
           & > span {
             display: flex;
             align-items: center;
             margin-right: 0.12rem;
-            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
 
             &,
             span,
@@ -74,6 +78,9 @@
             .icon-fire {
               margin-top: -2px;
               margin-right: 2px;
+            }
+            .icon::before {
+              display: unset;
             }
           }
         }
