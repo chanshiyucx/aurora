@@ -71,7 +71,7 @@ export default {
   }
 
   .fadeIn {
-    animation: coverDown 0.5s ease-out;
+    animation: coverDown 0.4s ease-out;
   }
 }
 </style>
