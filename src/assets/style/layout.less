@@ -4,7 +4,12 @@
   src: url('../font/GuDianMingChaoTi.ttf');
 }
 
-@font: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Cantarell, 'Helvetica Neue', sans-serif;
+@font: 'Noto Serif SC', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+
+.font {
+  font-family: @font;
+  font-display: swap;
+}
 
 * {
   margin: 0;
@@ -26,7 +31,7 @@ body,
 }
 
 body {
-  font-family: @font;
+  .font;
   font-size: 0.15rem;
   letter-spacing: 0.4px;
   text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
@@ -67,25 +72,6 @@ button,
 .cursor,
 .waifu {
   cursor: url('../cursor/cursor_link.png'), auto;
-}
-
-/* 字体加载 */
-.fonts-loaded {
-  body {
-    font-family: 'Noto Serif SC', @font;
-  }
-
-  #gitalk {
-    .gt-comment-body,
-    .gt-btn-text,
-    textarea {
-      font-family: 'Noto Serif SC', @font;
-    }
-  }
-
-  code {
-    font-family: 'courier', 'Noto Serif SC', @font;
-  }
 }
 
 /* 卡片样式 */
@@ -141,9 +127,12 @@ button,
 }
 
 /* 代码高亮 */
-code[class*='language-'] {
+code {
   width: 100%;
-  font-weight: bold;
+  font-family: 'Fira Mono', @font;
+  font-display: swap;
+  font-size: 0.15rem;
+  font-weight: normal;
   text-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
   text-align: left;
   white-space: pre;
@@ -176,6 +165,12 @@ td.hljs-ln-numbers {
   font-weight: 700;
 }
 #gitalk {
+  .gt-comment-body,
+  .gt-btn-text,
+  textarea {
+    .font;
+  }
+
   .gt-container {
     text-align: left;
     a {
