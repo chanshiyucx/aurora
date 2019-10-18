@@ -46,10 +46,9 @@ window.AV = AV
 AV.init(config.leancloud)
 
 // Init Font
-const font = new FontFaceObserver('Noto Serif SC', { weight: '400' })
-font.load().then(() => document.documentElement.classList.add('fonts-loaded'))
-Image
-// Init
+new FontFaceObserver('Noto Serif SC', { weight: '400' })
+
+// Init Image
 const img = new Image()
 img.src = config.defaultCover
 
