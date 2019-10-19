@@ -1,17 +1,7 @@
 <template>
   <div class="wrapper">
     <img :src="defaultCover" alt="defaultCover" />
-    <div class="cover">
-      <Transition name="cover-transform" mode="out-in">
-        <img v-if="imgSrc" :key="imgSrc" :src="imgSrc" :alt="alt" />
-      </Transition>
-    </div>
-    <div class="mask" :style="{ height: maskHeight }">
-      <img :src="defaultCover" alt="defaultCover" />
-      <Transition name="cover-transform" mode="out-in">
-        <img v-if="imgSrc" :key="imgSrc" :src="imgSrc" :alt="alt" />
-      </Transition>
-    </div>
+    <img class="cover fadeIn" v-show="imgSrc" :src="imgSrc" :alt="alt" />
   </div>
 </template>
 
@@ -30,6 +20,10 @@ export default {
     maskHeight: {
       type: String,
       default: '.5rem'
+    },
+    loadCover: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -38,44 +32,46 @@ export default {
       imgSrc: ''
     }
   },
-  created() {
-    this.loadImg()
+  watch: {
+    loadCover: {
+      immediate: true,
+      handler(val) {
+        if (val) {
+          this.loadImg()
+        }
+      }
+    }
   },
   methods: {
     loadImg() {
       const img = new Image()
       img.onload = () => {
         this.imgSrc = this.src
+        this.$emit('loadNext')
       }
       img.src = this.src
     }
   }
 }
 </script>
+
 <style lang="less" scoped>
 .wrapper {
   position: relative;
-  transition: transform 0.6s ease-out;
+  transition: all 0.6s ease;
+
   img {
     width: 100%;
   }
+
   .cover {
     position: absolute;
     top: 0;
     left: 0;
   }
-  .mask {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    overflow: hidden;
-    filter: blur(3px);
-    img {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-    }
+
+  .fadeIn {
+    animation: coverDown 0.4s ease-out;
   }
 }
 </style>

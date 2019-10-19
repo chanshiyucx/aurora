@@ -10,7 +10,7 @@ const blog = `${GITHUB_API}/${username}/${repository}`
 const access_token = token.join('')
 const open = `state=open&access_token=${access_token}`
 const closed = `state=closed&access_token=${access_token}`
-const isDev = window.location.href.includes('localhost')
+const isDev = /^(192\.168|localhost)/.test(window.location.host)
 
 // 状态检测
 const checkStatus = response => {
@@ -42,8 +42,9 @@ const createCall = async document => {
 // 获取文章数量
 export const queryArchivesCount = () => createCall(documents.queryArchivesCount({ username, repository }))
 
-// 获取心情数量
-export const queryMoodCount = () => createCall(documents.queryMoodCount({ username, repository }))
+// 获取灵感数量
+export const queryInspirationCount = () =>
+  createCall(documents.queryInspirationCount({ username, repository }))
 
 // 按分类 & 标签筛选文章
 export const queryFilterArchivesCount = ({ label, milestone }) =>
@@ -101,10 +102,10 @@ export const queryTag = async () => {
   }
 }
 
-// 获取心情
-export const queryMood = async ({ page = 1, pageSize = 10 }) => {
+// 获取灵感
+export const queryInspiration = async ({ page = 1, pageSize = 10 }) => {
   try {
-    const url = `${blog}/issues?${closed}&labels=mood&page=${page}&per_page=${pageSize}`
+    const url = `${blog}/issues?${closed}&labels=inspiration&page=${page}&per_page=${pageSize}`
     const response = await fetch(url)
     checkStatus(response)
     const data = await response.json()
@@ -137,10 +138,8 @@ export const queryHot = async ids => {
     query
       .find()
       .then(res => {
-        const hot = res
-          .map(o => o.attributes)
-          .sort((a, b) => b.id - a.id)
-          .map(o => o.time)
+        const hot = {}
+        res.forEach(o => (hot[o.attributes.id] = o.attributes.time))
         resolve(hot)
       })
       .catch(console.error)
@@ -148,7 +147,7 @@ export const queryHot = async ids => {
 }
 
 // 增加热度
-export const addHot = post => {
+export const increaseHot = post => {
   return new Promise(resolve => {
     if (isDev) return resolve(1)
     const query = new AV.Query('Counter')

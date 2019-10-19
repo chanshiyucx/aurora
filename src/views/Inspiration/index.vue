@@ -1,11 +1,11 @@
 <template>
-  <div id="mood">
+  <div id="inspiration">
     <Transition name="fade-transform" mode="out-in">
-      <div class="card" v-if="mood.length">
-        <Quote :quote="$config.moodOpts.qoute" />
+      <div class="card" v-if="inspiration.length">
+        <Quote :quote="$config.inspirationOpts.qoute" />
         <div class="content">
-          <Segment v-for="(item, i) in mood" :key="item.number" :title="item.date" :color="colors[i]">
-            <MarkDown :content="item.body" :onlyRender="true" />
+          <Segment v-for="(item, i) in inspiration" :key="item.number" :title="item.date" :color="colors[i]">
+            <MarkDown :content="item.body" />
           </Segment>
         </div>
         <div class="btn-group" v-if="!isDisabledPrev || !isDisabledNext">
@@ -13,14 +13,14 @@
             :loading="loading"
             :isDisabledPrev="isDisabledPrev"
             :isDisabledNext="isDisabledNext"
-            @handleClick="queryMood"
+            @handlePage="queryInspiration"
           />
         </div>
       </div>
       <Loading v-else />
     </Transition>
 
-    <Comment v-if="$config.moodOpts.enableComment && initComment" title="心情" />
+    <Comment v-if="$config.inspirationOpts.enableComment && initComment" title="灵感" />
   </div>
 </template>
 
@@ -34,7 +34,7 @@ import Comment from '@/components/Comment'
 import { shuffle } from '@/utils'
 
 export default {
-  name: 'Mood',
+  name: 'inspiration',
   components: {
     MarkDown,
     Loading,
@@ -51,8 +51,9 @@ export default {
       count: 0,
       page: 0,
       pageSize: 10,
-      mood: [],
-      list: []
+      inspiration: [],
+      list: [],
+      delayTime: this.$config.isMobile ? 400 : 0 + 1000
     }
   },
   computed: {
@@ -73,30 +74,39 @@ export default {
     }
   },
   async created() {
-    this.count = await this.$store.dispatch('queryMoodCount')
-    await this.queryMood()
+    this.count = await this.$store.dispatch('queryInspirationCount')
+    await this.queryInspiration()
     this.initComment = true
   },
   methods: {
-    async queryMood(type = 'next') {
+    async queryInspiration(type = 'next') {
       if (this.loading) return
       const queryPage = type === 'prev' ? this.page - 1 : this.page + 1
       this.page = queryPage
 
       if (this.list[queryPage]) {
-        this.mood = this.list[queryPage]
+        this.scrollTop(() => {
+          this.inspiration = this.list[queryPage]
+        })
         return
       }
 
       this.loading = true
-      const mood = await this.$store.dispatch('queryMood', {
+      const inspiration = await this.$store.dispatch('queryInspiration', {
         page: queryPage,
         pageSize: this.pageSize
       })
       this.loading = false
 
-      this.mood = mood
-      this.$set(this.list, queryPage, mood)
+      this.scrollTop(() => {
+        this.inspiration = inspiration
+        this.$set(this.list, queryPage, inspiration)
+      })
+    },
+    // 滚动到顶部
+    scrollTop(cb) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      setTimeout(cb, this.delayTime)
     }
   }
 }

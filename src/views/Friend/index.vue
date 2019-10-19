@@ -4,10 +4,16 @@
       <div class="card" v-if="friend.length">
         <Quote :quote="$config.friendOpts.qoute" />
         <ul class="content">
-          <li v-for="item in friend" :key="item.name">
+          <li v-for="(item, index) in friend" :key="item.name">
             <div>
               <a :href="item.link" rel="noopener noreferrer" target="_blank">
-                <MagicImg class="cover" :src="item.cover" :alt="item.name" />
+                <Cover
+                  class="cover"
+                  :src="item.cover"
+                  :alt="item.name"
+                  :loadCover="index < LOAD_INX"
+                  @loadNext="loadNext"
+                />
                 <div class="info">
                   <img :src="item.avatar" alt /> <span>{{ item.name }}</span>
                 </div>
@@ -25,22 +31,23 @@
 
 <script>
 import Loading from '@/components/Loading'
-import MagicImg from '@/components/MagicImg'
+import Cover from '@/components/Cover'
 import Quote from '@/components/Quote'
 import Comment from '@/components/Comment'
 
 export default {
-  name: 'Friend',
+  name: 'friend',
   components: {
     Loading,
-    MagicImg,
+    Cover,
     Quote,
     Comment
   },
   data() {
     return {
       friend: [],
-      initComment: false
+      initComment: false,
+      LOAD_INX: 4
     }
   },
   async created() {
@@ -48,9 +55,11 @@ export default {
     this.initComment = true
   },
   methods: {
-    // 获取友链
     async queryFriends() {
       this.friend = await this.$store.dispatch('queryPage', { type: 'friend' })
+    },
+    loadNext() {
+      this.LOAD_INX += 1
     }
   }
 }

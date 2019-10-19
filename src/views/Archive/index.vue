@@ -5,10 +5,11 @@
         <Quote :quote="$config.archiveOpts.qoute" />
         <ArchiveCard
           :posts="posts"
+          :times="postTimes"
           :loading="loading"
           :isDisabledPrev="isDisabledPrev"
           :isDisabledNext="isDisabledNext"
-          @handleClick="queryPosts"
+          @handlePage="queryPosts"
         />
       </div>
       <Loading v-else />
@@ -26,7 +27,7 @@ import ArchiveCard from '@/components/Archive'
 import Comment from '@/components/Comment'
 
 export default {
-  name: 'Archive',
+  name: 'archive',
   components: {
     Loading,
     Quote,
@@ -40,13 +41,18 @@ export default {
       page: 0,
       pageSize: 10,
       posts: [],
-      list: []
+      list: [],
+      times: {},
+      delayTime: this.$config.isMobile ? 400 : 0 + 600
     }
   },
   computed: {
     ...mapState({
       totalCount: state => state.totalCount
     }),
+    postTimes() {
+      return this.posts.map(o => this.times[o.id])
+    },
     currentCount() {
       let count = 0
       this.list.forEach((o, i) => {
@@ -78,7 +84,9 @@ export default {
       this.page = queryPage
 
       if (this.list[queryPage]) {
-        this.posts = this.list[queryPage]
+        this.scrollTop(() => {
+          this.posts = this.list[queryPage]
+        })
         return
       }
 
@@ -89,16 +97,22 @@ export default {
       })
       this.loading = false
 
-      this.posts = posts
-      this.$set(this.list, queryPage, posts)
+      this.scrollTop(() => {
+        this.posts = posts
+        this.$set(this.list, queryPage, posts)
+      })
+
       // 获取文章热度
       this.$nextTick(async () => {
-        const ids = this.posts.map(o => o.id)
+        const ids = posts.map(o => o.id)
         const hot = await this.$store.dispatch('queryHot', { ids })
-        this.posts.forEach((o, i) => {
-          o.times = hot[i]
-        })
+        this.times = { ...this.times, ...hot }
       })
+    },
+    // 滚动到顶部
+    scrollTop(cb) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      setTimeout(cb, this.delayTime)
     }
   }
 }

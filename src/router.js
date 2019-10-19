@@ -32,9 +32,9 @@ export default new Router({
       component: () => import('./views/Tag')
     },
     {
-      path: '/mood',
-      name: 'mood',
-      component: () => import('./views/Mood')
+      path: '/inspiration',
+      name: 'inspiration',
+      component: () => import('./views/Inspiration')
     },
     {
       path: '/book',

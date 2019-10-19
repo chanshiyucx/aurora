@@ -2,6 +2,7 @@
   <div class="archive">
     <ul class="content">
       <li
+        class="cursor"
         v-for="(post, i) in posts"
         :key="post.id"
         @click="gotoPost(post.number)"
@@ -10,7 +11,7 @@
         <h3>{{ post.title }}</h3>
         <div class="post-meta">
           <span> <i class="icon icon-calendar"></i> {{ post.created_at }} </span>
-          <span> <i class="icon icon-fire"></i> 热度{{ post.times || 1 }}℃ </span>
+          <span> <i class="icon icon-fire"></i> 热度{{ times[i] || 1 }}℃ </span>
           <span>
             <i class="icon icon-bookmark-empty"></i> {{ post.milestone ? post.milestone.title : '未分类' }}
           </span>
@@ -26,7 +27,7 @@
         :loading="loading"
         :isDisabledPrev="isDisabledPrev"
         :isDisabledNext="isDisabledNext"
-        @handleClick="handleClick"
+        @handlePage="handlePage"
       />
     </div>
   </div>
@@ -43,6 +44,10 @@ export default {
   },
   props: {
     posts: {
+      type: Array,
+      default: () => []
+    },
+    times: {
       type: Array,
       default: () => []
     },
@@ -65,8 +70,9 @@ export default {
     }
   },
   methods: {
-    handleClick(type) {
-      this.$emit('handleClick', type)
+    // 翻页
+    handlePage(type) {
+      this.$emit('handlePage', type)
     },
     // 跳转文章页
     gotoPost(number) {

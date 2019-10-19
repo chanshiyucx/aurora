@@ -17,18 +17,21 @@ export default {
   }
 }
 </script>
+
 <style lang="less" scoped>
 .qrcode {
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 0.1rem;
+
   h3 {
     margin-bottom: 0.1rem;
     font-size: 0.18rem;
-    line-height: 0.32rem;
     font-weight: normal;
+    line-height: 0.32rem;
   }
+
   img {
     width: 1.5rem;
     height: 1.5rem;

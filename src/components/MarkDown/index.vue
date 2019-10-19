@@ -4,7 +4,13 @@
 
 <script>
 import marked from 'marked'
+import Zooming from 'zooming'
 import hljs from '@/assets/lib/highlight'
+
+const zooming = new Zooming({
+  bgOpacity: 0,
+  zIndex: 100
+})
 
 const renderer = new marked.Renderer()
 
@@ -14,7 +20,7 @@ renderer.heading = function(text, level, raw, slugger) {
 }
 
 renderer.image = function(href, title, text) {
-  return `<span class="img-box" data-src="${href}" data-sub-html="<h4>${text}</h4>"><img src="${href}" loading="lazy" alt="${text}" />${
+  return `<span class="img-box cursor"><img class="img-zoomable" src="${href}" loading="lazy" alt="${text}" />${
     text ? `<span>◭ ${text}</span>` : ''
   }</span>`
 }
@@ -25,6 +31,12 @@ renderer.link = function(href, title, text) {
     return `<a href="${href}" target="_blank">${text}</a>`
   }
   return `<a href="${href}" target="_blank"><i class="icon icon-link"></i>${text}</a>`
+}
+
+// Table 包裹元素，使之可以横向滚动
+renderer.table = function(header, body) {
+  if (body) body = `<tbody>${body}</tbody>`
+  return `<div class="table-wrapper">\n<table>\n<thead>\n${header}</thead>\n${body}</table>\n</div>\n`
 }
 
 marked.setOptions({
@@ -42,16 +54,12 @@ export default {
     target: {
       type: String,
       default: ''
-    },
-    onlyRender: {
-      type: Boolean,
-      default: false
     }
   },
   data() {
     return {
       html: '',
-      gallery: ''
+      lg: ''
     }
   },
   created() {
@@ -67,27 +75,15 @@ export default {
       this.html = marked(this.content)
 
       // 对于只是纯解析文字不需要代码高亮和灯箱
-      if (this.onlyRender) return
+      if (!this.target) return
       this.$nextTick(() => {
-        // 并不是每个 marked 都需要高亮处理
-        if (this.target) {
-          // 代码行数
-          hljs.initLineNumbersOnLoad({
-            target: this.target
-          })
-          // 灯箱
-          window.lightGallery(document.getElementById('post'), {
-            selector: '.img-box',
-            thumbMargin: 6,
-            download: false,
-            subHtmlSelectorRelative: true
-          })
-        }
+        hljs.initLineNumbersOnLoad({ target: this.target })
+        zooming.listen('.img-zoomable')
       })
     }
   },
   beforeDestroy() {
-    this.gallery && this.gallery.destroy()
+    zooming.close()
   }
 }
 </script>

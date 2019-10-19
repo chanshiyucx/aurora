@@ -5,7 +5,7 @@
         <Quote :quote="$config.tagOpts.qoute" />
         <ul class="content">
           <li v-for="item in tag" :key="item.id" @click="handleFilter(item)">
-            <span :style="{ color: `#${item.color}` }">{{ item.name }}</span>
+            <span class="cursor" :style="{ color: `#${item.color}` }">{{ item.name }}</span>
           </li>
         </ul>
         <Transition name="fade-transform" mode="out-in">
@@ -18,13 +18,14 @@
             </div>
             <ArchiveCard
               :posts="posts"
+              :times="postTimes"
               :loading="loading"
               :isDisabledPrev="isDisabledPrev"
               :isDisabledNext="isDisabledNext"
-              @handleClick="filterPosts"
+              @handlePage="filterPosts"
             />
           </div>
-          <Loading v-else-if="label && loading" />
+          <Loading v-else-if="label" />
         </Transition>
       </div>
       <Loading v-else />
@@ -41,7 +42,7 @@ import ArchiveCard from '@/components/Archive'
 import Comment from '@/components/Comment'
 
 export default {
-  name: 'Tag',
+  name: 'tag',
   components: {
     Loading,
     Quote,
@@ -58,10 +59,15 @@ export default {
       page: 0,
       pageSize: 10,
       posts: [],
-      list: []
+      list: [],
+      times: {},
+      delayTime: this.$config.isMobile ? 500 : 0 + 800
     }
   },
   computed: {
+    postTimes() {
+      return this.posts.map(o => this.times[o.id])
+    },
     currentCount() {
       let count = 0
       this.list.forEach((o, i) => {
@@ -91,8 +97,8 @@ export default {
     async handleFilter(label) {
       if (this.label.name === label.name) return
       this.reset()
-      this.count = await this.$store.dispatch('queryFilterArchivesCount', { label: label.name })
       this.label = label
+      this.count = await this.$store.dispatch('queryFilterArchivesCount', { label: label.name })
       this.filterPosts()
     },
     // 重置
@@ -110,7 +116,9 @@ export default {
       this.page = queryPage
 
       if (this.list[queryPage]) {
-        this.posts = this.list[queryPage]
+        this.scrollTop(() => {
+          this.posts = this.list[queryPage]
+        })
         return
       }
 
@@ -121,18 +129,24 @@ export default {
         pageSize: this.pageSize,
         filter
       })
-      this.loading = false
 
-      this.posts = posts
-      this.$set(this.list, queryPage, posts)
+      this.scrollTop(() => {
+        this.loading = false
+        this.posts = posts
+        this.$set(this.list, queryPage, posts)
+      })
+
       // 获取文章热度
       this.$nextTick(async () => {
-        const ids = this.posts.map(o => o.id)
+        const ids = posts.map(o => o.id)
         const hot = await this.$store.dispatch('queryHot', { ids })
-        this.posts.forEach((o, i) => {
-          o.times = hot[i]
-        })
+        this.times = { ...this.times, ...hot }
       })
+    },
+    // 滚动到顶部
+    scrollTop(cb) {
+      window.scrollTo({ top: 230, behavior: 'smooth' })
+      setTimeout(cb, this.delayTime)
     }
   }
 }

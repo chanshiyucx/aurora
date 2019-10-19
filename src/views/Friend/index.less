@@ -2,6 +2,7 @@
   > .card {
     padding-top: 0.16rem;
   }
+
   .content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -23,6 +24,7 @@
       position: relative;
       padding-bottom: 0.16rem;
       overflow: hidden;
+
       > div {
         width: 1.96rem;
         height: 1.1rem;
@@ -31,11 +33,13 @@
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
       }
     }
+
     a {
       &:hover {
         .cover {
           transform: scale(1.06);
         }
+
         .info {
           transform: translateY(-100%);
           span {
@@ -43,10 +47,12 @@
           }
         }
       }
+
       .cover {
         width: 100%;
         transition: transform 0.6s ease-out;
       }
+
       .info {
         display: flex;
         flex-direction: column;
@@ -58,6 +64,7 @@
         height: 1.1rem;
         background-color: rgba(255, 255, 255, 0.4);
         transition: transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
+
         img {
           margin-bottom: -0.16rem;
           width: 0.5rem;
@@ -66,6 +73,7 @@
           box-shadow: 0 0 9px #666;
           z-index: 1;
         }
+
         span {
           padding: 0.2rem 0 0.08rem;
           width: 100%;

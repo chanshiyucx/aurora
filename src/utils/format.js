@@ -1,4 +1,5 @@
 import { format } from 'timeago.js'
+import { parseTime } from './index'
 import config from '../config'
 
 /**
@@ -11,8 +12,8 @@ export const formatPost = post => {
   const result = regex.exec(body)
   const cover = coverRegex.exec(result[1])
   post.cover = {
-    title: cover && cover[1] ? cover[1] : '',
-    src: cover && cover[2] ? cover[2] : config.defaultCover
+    title: cover[1] || 'defaultCover',
+    src: cover[2] || config.defaultCover
   }
   post.description = result[2]
   post.created_at = format(created_at, 'zh_CN')
@@ -32,18 +33,18 @@ export const formatCategory = category => {
 }
 
 /**
- * 格式化心情
+ * 格式化灵感
  */
-export const formatMood = mood => {
-  mood.forEach(o => (o.date = format(o.created_at, 'zh_CN')))
-  return mood
+export const formatInspiration = inspiration => {
+  inspiration.forEach(o => (o.date = parseTime(o.created_at, '{y}年{m}月{d}日')))
+  return inspiration
 }
 
 /**
  * 格式化书单 & 友链 & 关于
  */
 export const formatPage = (data, type) => {
-  if (!data.body) return
+  if (!data || !data.body) return []
   let section = data.body.split('## ').filter(o => o.length)
 
   switch (type) {

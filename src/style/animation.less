@@ -1,4 +1,4 @@
-/* InDown */
+/* FadeInDown */
 @keyframes fadeInDown {
   0% {
     opacity: 0;
@@ -11,11 +11,24 @@
   }
 }
 
-/* In */
+/* FadeIn */
 @keyframes fadeIn {
   0% {
     opacity: 0;
     transform: scale(0.86);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ZoomIn */
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
   }
 
   100% {
@@ -61,9 +74,21 @@
   }
 }
 
+/** 封面图动画 */
+@keyframes coverDown {
+  0% {
+    opacity: 0.6;
+    transform: translateY(-8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
 /* 文字跑马灯 */
 @keyframes textclip {
-  to {
+  100% {
     background-position: 200% center;
   }
 }

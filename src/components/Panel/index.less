@@ -12,6 +12,7 @@
     left: 0px;
     width: 100%;
     height: 100%;
+    background-color: rgba(255, 255, 255, 0.4);
   }
 
   .container {
@@ -23,19 +24,14 @@
     height: 100%;
     perspective: 600px;
     transform: translateY(-100%);
+    will-change: transform;
     animation: 0.9s ease-out 0s 1 normal forwards running dropDown;
   }
 
   .wrapper {
     width: 100%;
     height: 100%;
-  }
-
-  .mask {
-    background-color: rgba(255, 255, 255, 0.4);
-  }
-
-  .wrapper {
+    will-change: transform;
     animation: 3s ease-out 0s 1 normal forwards running dropWave;
   }
 
@@ -50,7 +46,6 @@
     transform: translateX(-50%);
     div {
       position: absolute;
-
       width: 2px;
       height: 150%;
       background-color: rgb(93, 53, 35);
@@ -76,8 +71,8 @@
         content: '';
         display: block;
         position: absolute;
-        bottom: -4.5px;
         left: -4.5px;
+        bottom: -4.5px;
         width: 10px;
         height: 10px;
         background-color: rgb(93, 53, 35);
@@ -101,14 +96,15 @@
     border-radius: 0.12rem;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 20px;
     transform: translate(-50%, -50%);
+
     .header {
       width: 100%;
       box-sizing: border-box;
       height: 0.5rem;
-      border-top-left-radius: 0.12rem;
-      border-top-right-radius: 0.12rem;
+      border-radius: 0.12rem 0.12rem 0 0;
       background-color: rgb(251, 244, 241);
       border-bottom: 1px solid rgb(93, 53, 35);
+
       .inner {
         margin: 0px auto;
         width: 85%;
@@ -162,7 +158,7 @@
         text-align: center;
         overflow: hidden;
         outline: none;
-        transition: color 0.25s ease-in-out;
+        transition: color 0.3s ease-in-out;
         box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
         font-size: 0.28rem;
 
@@ -183,7 +179,7 @@
           border-radius: 50%;
           transform: scale(0);
           background-color: rgb(93, 53, 35);
-          transition: transform 0.25s ease-in-out;
+          transition: transform 0.3s ease-in-out;
           z-index: 0;
         }
         &:hover {
@@ -195,6 +191,7 @@
           }
         }
       }
+
       .left-btn {
         left: 0;
         transform: translate(-50%, -50%);
@@ -202,6 +199,7 @@
           transform: translateX(-2px);
         }
       }
+
       .right-btn {
         right: 0;
         transform: translate(50%, -50%);
@@ -228,10 +226,10 @@
       position: relative;
       width: 100%;
       height: 0.5rem;
-      border-bottom-left-radius: 0.12rem;
-      border-bottom-right-radius: 0.12rem;
+      border-radius: 0 0 0.12rem 0.12rem;
       border-top: 1px solid rgb(93, 53, 35);
       background-color: rgb(251, 244, 241);
+
       div {
         position: absolute;
         bottom: 0px;
@@ -250,6 +248,7 @@
         letter-spacing: 2px;
         color: #eee;
         font-size: 0.16rem;
+
         &:hover {
           box-shadow: var(--primary-color) 0px 0px 10px;
           &::before {
@@ -291,13 +290,15 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.66);
+
     img {
       width: 4rem;
       height: 4rem;
       border-radius: 3px;
       box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 10px;
-      border: 10px solid rgba(255, 255, 255, 0.8);
+      border: 10px solid rgba(255, 255, 255, 0.66);
+      animation: zoomIn 0.3s ease-out 0s forwards;
     }
   }
 }

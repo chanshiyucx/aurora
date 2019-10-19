@@ -3,7 +3,7 @@
     <Transition name="fade-transform" mode="out-in">
       <article v-if="post" class="card">
         <div class="post-header">
-          <Cover :src="post.cover.src" :alt="post.cover.title" maskHeight="0.8rem" />
+          <Cover :src="post.cover.src" :alt="post.cover.title" loadCover maskHeight="0.8rem" />
           <div class="head">
             <div class="title">
               <h1>{{ post.title }}</h1>
@@ -23,7 +23,9 @@
             </div>
           </div>
         </div>
-        <div class="post-body"><MarkDown :content="post.body" target="#post" /></div>
+        <div class="post-body">
+          <MarkDown :content="post.body" target="#post" />
+        </div>
       </article>
       <Loading v-else />
     </Transition>
@@ -39,7 +41,7 @@ import Comment from '@/components/Comment'
 import Cover from '@/components/Cover'
 
 export default {
-  name: 'Post',
+  name: 'post',
   components: {
     MarkDown,
     Loading,
@@ -63,7 +65,7 @@ export default {
     async queryPost() {
       this.post = await this.$store.dispatch('queryPost', { number: this.number })
       this.$nextTick(async () => {
-        const hot = await this.$store.dispatch('addHot', { post: this.post })
+        const hot = await this.$store.dispatch('increaseHot', { post: this.post })
         this.$set(this.post, 'times', hot)
       })
     }

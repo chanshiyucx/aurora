@@ -7,6 +7,7 @@
     margin: 0 auto;
     padding: 0.5rem 0;
     overflow: hidden;
+
     .title,
     .subtitle {
       font-family: GuDianMingChaoTi;
@@ -14,20 +15,23 @@
       animation-duration: 0.6s;
       transform-origin: top center;
     }
+
     .title {
       font-size: 0.49rem;
       line-height: 0.6rem;
       letter-spacing: 2px;
-      transition: color 0.25s ease-in-out;
+      transition: color 0.3s ease-out;
       &:hover {
         color: var(--primary-color);
       }
     }
+
     .subtitle {
       font-size: 0.22rem;
       line-height: 0.32rem;
       letter-spacing: 4px;
     }
+
     ul {
       display: flex;
       justify-content: center;
@@ -37,31 +41,61 @@
       height: 0.6rem;
       background-color: rgba(0, 0, 0, 0.1);
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) inset;
-      transition: all 0.6s ease-out;
+      transition: all 0.5s ease;
       animation-name: fadeIn;
       animation-duration: 0.8s;
+
+      &:hover {
+        border-radius: 0.3rem;
+      }
+
       li {
         padding-top: 0.04rem;
         width: 0.5rem;
         font-size: 0.16rem;
         list-style: none;
         height: 86%;
-        @media screen and (max-width: 600px) {
-          width: 0.6rem;
-        }
+
         a {
           display: flex;
           flex-direction: column;
           justify-content: space-around;
           align-items: center;
           height: 100%;
-          transition: color 0.25s ease-in-out;
+          transition: color 0.3s ease-out;
+
           &:hover {
             &,
             i {
               color: var(--primary-color);
             }
           }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .inner {
+      .title {
+        font-size: 0.46rem;
+        line-height: 0.56rem;
+      }
+
+      .subtitle {
+        font-size: 0.22rem;
+        line-height: 0.36rem;
+      }
+
+      ul {
+        padding: 0 0.24rem;
+        height: 0.6rem;
+        border-radius: 0.3rem;
+        background-color: rgba(255, 255, 255, 0.4);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        li {
+          width: 0.52rem;
+          font-size: 0.17rem;
         }
       }
     }

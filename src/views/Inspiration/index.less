@@ -1,10 +1,12 @@
-#mood {
+#inspiration {
   > .card {
     padding-top: 0.16rem;
   }
+
   .content {
     padding: 0.16rem;
   }
+
   .btn-group {
     display: flex;
     justify-content: center;
@@ -12,7 +14,7 @@
     margin: 0.16rem 0 0.32rem;
   }
 
-  /deep/.content {
+  .content {
     p {
       code {
         padding: 2px 5px;
@@ -26,9 +28,11 @@
     a {
       position: relative;
       color: var(--primary-color);
+
       i {
         color: var(--primary-color);
       }
+
       &::after {
         content: '';
         position: absolute;
@@ -39,8 +43,9 @@
         background-color: var(--primary-color);
         transform: scaleX(0);
         transform-origin: bottom right;
-        transition: transform 0.25s ease-out;
+        transition: transform 0.3s ease-out;
       }
+
       &:hover {
         &::after {
           transform-origin: bottom left;
@@ -51,6 +56,31 @@
 
     strong {
       text-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+    }
+
+    /deep/span[class*='img-box'] {
+      display: block;
+      margin-bottom: 15px;
+
+      img {
+        margin: 0 auto;
+        max-width: 100%;
+        border-radius: 3px;
+        border: 6px solid transparent;
+        box-shadow: 0 0 10px #999;
+        transition: all 0.3s ease-out;
+        background-color: #fff;
+        &:hover {
+          border-color: #b28fce;
+        }
+      }
+
+      span {
+        display: block;
+        padding: 4px 0 0 6px;
+        font-style: italic;
+        text-align: center;
+      }
     }
   }
 }

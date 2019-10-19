@@ -1,0 +1,285 @@
+@font-face {
+  font-family: GuDianMingChaoTi;
+  font-weight: bold;
+  src: url('../assets/font/GuDianMingChaoTi.ttf');
+}
+
+@font: 'Noto Serif SC', -apple-system, Roboto, Helvetica Neue, sans-serif;
+
+.font {
+  font-family: @font;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #555;
+}
+
+html {
+  --primary-color: #b854d4;
+  --light-color: #d68fe9;
+  --dark-color: #986db2;
+}
+
+body,
+#app {
+  min-height: 100vh;
+  background-color: rgba(255, 255, 255, 0.66);
+}
+
+body {
+  .font;
+  font-size: 0.15rem;
+  letter-spacing: 0.4px;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+  user-select: none;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  cursor: url('../assets/cursor/cursor.png'), auto;
+}
+
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+::selection {
+  color: #fff;
+  background-color: var(--light-color);
+}
+
+img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a,
+button,
+.cursor,
+.waifu {
+  cursor: url('../assets/cursor/cursor_link.png'), auto;
+}
+
+/* 卡片样式 */
+.card {
+  border-radius: 0.03rem;
+  background-color: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
+}
+
+/* fade-transform */
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.5s;
+}
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* 滚动条 */
+.i-scroll {
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: var(--dark-color);
+    background-image: -webkit-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.4) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0.4) 75%,
+      transparent 75%,
+      transparent
+    );
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+}
+
+& {
+  .i-scroll;
+}
+
+/* 代码高亮 */
+code {
+  width: 100%;
+  font-family: 'Fira Mono', @font;
+  font-size: 0.15rem;
+  font-weight: normal;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+  text-align: left;
+  white-space: pre;
+  letter-spacing: 0;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  tab-size: 4;
+  hyphens: none;
+}
+
+pre {
+  padding: 0.12rem 0.16rem;
+  max-height: 6rem;
+  line-height: 1.5;
+  box-shadow: #aaa 0px 10px 8px -10px inset, #aaa 0px -10px 8px -10px inset;
+  overflow: auto;
+  .i-scroll;
+}
+
+td.hljs-ln-numbers {
+  padding-right: 0.16rem;
+  text-align: center;
+}
+
+/* Gitalk */
+.markdown-body code {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+#gitalk {
+  .gt-comment-body,
+  .gt-btn-text,
+  textarea {
+    .font;
+  }
+
+  .gt-container {
+    text-align: left;
+    a {
+      color: var(--primary-color);
+      border-bottom: none;
+    }
+    .gt-svg svg {
+      fill: var(--primary-color);
+    }
+    .gt-comment-date,
+    .gt-container .gt-comment-text {
+      color: #666;
+    }
+    .gt-ico-text {
+      color: var(--primary-color);
+    }
+    .gt-btn-login {
+      margin-top: 0;
+      border: none;
+      background-color: var(--dark-color) !important;
+      span {
+        line-height: 1;
+        color: #fff;
+      }
+      @media screen and (max-width: 479px) {
+        margin-top: 9px !important;
+      }
+    }
+  }
+  .gt-meta {
+    padding-top: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    .gt-counts {
+      float: left;
+    }
+    .gt-popup {
+      margin-top: 0.1rem;
+      .is--active::before {
+        background: var(--primary-color);
+      }
+    }
+  }
+  .gt-header {
+    textarea,
+    .gt-header-preview {
+      border: none;
+      min-height: 1rem;
+      max-height: 2rem;
+      background-color: rgba(255, 255, 255, 0.66);
+      background-image: url(https://raw.githubusercontent.com/chanshiyucx/poi/master/2019/reimu.png);
+      background-size: 1.2rem;
+      background-repeat: no-repeat;
+      background-position: 99% bottom;
+      overflow: scroll;
+    }
+    textarea {
+      height: 120px !important;
+    }
+    .gt-header-controls-tip {
+      float: left;
+    }
+    .gt-btn {
+      border: none;
+      background-color: rgba(255, 255, 255, 0.66);
+    }
+    .gt-btn-public {
+      background-color: var(--dark-color);
+      span {
+        color: #fff;
+      }
+    }
+    .gt-avatar-github {
+      svg {
+        fill: var(--dark-color);
+      }
+    }
+  }
+  .gt-comments {
+    .gt-comment-content {
+      border-radius: 3px;
+      background-color: rgba(255, 255, 255, 0.66);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
+      transition: all 0.3s ease 0s, transform 0.6s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.24);
+      }
+    }
+    .gt-btn-loadmore {
+      border: none;
+      background-color: var(--dark-color);
+      span {
+        color: #fff;
+      }
+    }
+    .gt-comment-body {
+      max-height: 5rem;
+      overflow: auto;
+      .i-scroll;
+    }
+  }
+  textarea,
+  .gt-btn-login,
+  .gt-btn-preview,
+  .gt-btn-loadmore,
+  .gt-btn-public,
+  .gt-avatar {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
+  }
+}

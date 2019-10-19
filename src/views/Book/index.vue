@@ -22,11 +22,6 @@
                 <p>
                   推荐指数：
                   <i class="icon icon-star" v-for="i in parseInt(item.rating)" :key="`star-${i}`"></i>
-                  <i
-                    class="icon icon-star unstar"
-                    v-for="i in 5 - parseInt(item.rating)"
-                    :key="`unstar-${i}`"
-                  ></i>
                 </p>
               </div>
             </div>
@@ -47,7 +42,7 @@ import Quote from '@/components/Quote'
 import Comment from '@/components/Comment'
 
 export default {
-  name: 'Book',
+  name: 'book',
   components: {
     Loading,
     Quote,
@@ -64,7 +59,6 @@ export default {
     this.initComment = true
   },
   methods: {
-    // 获取书单
     async queryBooks() {
       this.book = await this.$store.dispatch('queryPage', { type: 'book' })
     }

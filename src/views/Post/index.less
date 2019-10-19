@@ -1,17 +1,35 @@
 #post {
   width: 100%;
   article {
-    background-color: rgba(255, 255, 255, 0.66);
+    position: relative;
     will-change: transform;
+    overflow: unset;
+    z-index: 99;
+
     .post-header {
       position: relative;
       overflow: hidden;
-      margin-bottom: 0.16rem;
+
       &:hover {
         .wrapper {
           transform: scale(1.05);
         }
       }
+
+      .clip {
+        font-weight: normal;
+        color: #fff;
+        text-transform: capitalize;
+        background: linear-gradient(to right, #f84f7f 10%, #c7d35e 40%, var(--primary-color) 70%);
+        background-size: auto auto;
+        background-clip: border-box;
+        background-size: 200% auto;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        animation: textclip 3s linear infinite;
+      }
+
       .head {
         position: absolute;
         bottom: 0;
@@ -21,35 +39,28 @@
         overflow: hidden;
         background-color: hsla(0, 0%, 100%, 0.5);
         box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.12);
+
         .title {
           display: flex;
           justify-content: space-between;
           align-items: center;
+
           h1,
           span {
-            font-weight: normal;
-            color: #fff;
-            text-transform: capitalize;
-            background: linear-gradient(to right, #f84f7f 10%, #c7d35e 40%, var(--primary-color) 70%);
-            background-size: auto auto;
-            background-clip: border-box;
-            background-size: 200% auto;
-            background-clip: text;
-            text-fill-color: transparent;
-            -webkit-text-fill-color: transparent;
-            -webkit-background-clip: text;
-            animation: textclip 3s linear infinite;
+            .clip;
           }
         }
 
         .meta {
           display: flex;
           margin-top: 0.08rem;
+          .clip;
+
           & > span {
             display: flex;
             align-items: center;
             margin-right: 0.12rem;
-            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
+
             &,
             span,
             .icon {
@@ -58,6 +69,7 @@
             span {
               padding-right: 6px;
             }
+
             &:last-child {
               margin-right: 0;
             }
@@ -68,16 +80,20 @@
               margin-top: -2px;
               margin-right: 2px;
             }
+            .icon::before {
+              display: unset;
+            }
           }
         }
       }
     }
 
     .post-body {
-      padding-bottom: 0.16rem;
+      padding: 0.16rem 0;
       line-height: 1.6;
       font-size: 0.16rem;
       text-align: justify;
+
       p {
         margin: 0 0.16rem 0.16rem;
         &:last-child {
@@ -90,7 +106,9 @@
       h3,
       h4 {
         margin: 0.24rem 0.16rem 0.16rem;
-        transition: color 0.25s ease;
+        transition: color 0.3s ease;
+        color: #555;
+
         i {
           padding-right: 0.06rem;
         }
@@ -110,8 +128,8 @@
         font-size: 0.28rem;
       }
       h2 {
-        padding-bottom: 0.08rem;
-        font-size: 0.24rem;
+        padding-bottom: 0.04rem;
+        font-size: 0.22rem;
         border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
       }
       h3 {
@@ -155,7 +173,7 @@
           background-color: var(--primary-color);
           transform: scaleX(0);
           transform-origin: bottom right;
-          transition: transform 0.25s ease-out;
+          transition: transform 0.3s ease-out;
         }
         &:hover {
           &::after {
@@ -175,7 +193,6 @@
         code {
           padding: 2px 5px;
           color: var(--primary-color);
-          font-weight: bold;
           border-radius: 3px;
           background-color: rgba(0, 0, 0, 0.1);
         }
@@ -185,11 +202,12 @@
         position: relative;
         padding: 0.36rem 0;
         font-style: italic;
-        background-color: rgba(0, 0, 0, 0.08);
         box-shadow: #999 0px 10px 8px -10px inset, #999 0px -10px 8px -10px inset;
+
         & > p {
           margin: 0.1rem 0.46rem;
         }
+
         &::before,
         &::after {
           position: absolute;
@@ -214,13 +232,19 @@
       }
 
       span[class*='img-box'] {
+        display: block;
+        margin-bottom: 15px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+
         img {
           margin: 0 auto;
           max-width: 100%;
           border-radius: 3px;
           border: 6px solid transparent;
           box-shadow: 0 0 10px #999;
-          transition: all 0.25s ease-out;
+          transition: all 0.3s ease-out;
           background-color: #fff;
         }
         img[src*='full'] {
@@ -230,12 +254,14 @@
           border: none;
           border-radius: 1px;
         }
+
         span {
           display: block;
-          padding-top: 4px;
+          padding-top: 5px;
           font-style: italic;
           text-align: center;
         }
+
         &:hover {
           img {
             border-color: #b28fce;
@@ -243,25 +269,26 @@
         }
       }
 
-      .markdown > table {
-        margin: 0 auto 0.16rem;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        border-radius: 3px;
-        border-collapse: separate;
-        border-spacing: 0;
-        tr {
-          height: 0.32rem;
-        }
-        tr:nth-child(2n),
-        thead > tr {
-          background-color: rgba(0, 0, 0, 0.1);
-        }
-        td,
-        th {
-          padding: 0 0.36rem;
-          border-right: 1px solid rgba(0, 0, 0, 0.1);
-          &:last-child {
-            border-right: none;
+      .table-wrapper {
+        max-width: 100%;
+        overflow-x: auto;
+
+        & > table {
+          margin: 0 auto 0.16rem;
+          border-radius: 3px;
+          border-collapse: separate;
+          border-spacing: 2px;
+          border: 1px solid #dfdfdf;
+          tr {
+            height: 0.32rem;
+          }
+          th {
+            background-color: rgba(0, 0, 0, 0.1);
+          }
+          td,
+          th {
+            padding: 0 0.36rem;
+            border: 1px solid #dfdfdf;
           }
         }
       }
