@@ -6,7 +6,8 @@
       <ul>
         <li v-for="menu in displayMenu" :key="menu.path">
           <RouterLink :to="menu.path">
-            <i :class="['icon', `icon-${menu.icon}`]" /> {{ menu.title }}
+            <i :class="['icon', `icon-${menu.icon}`]" />
+            {{ menu.title }}
           </RouterLink>
         </li>
       </ul>
@@ -18,15 +19,7 @@
 export default {
   name: 'Header',
   data() {
-    const {
-      archiveOpts,
-      categoryOpts,
-      tagOpts,
-      inspirationOpts,
-      bookOpts,
-      friendOpts,
-      aboutOpts
-    } = this.$config
+    const { archiveOpts, categoryOpts, tagOpts, inspirationOpts, bookOpts, friendOpts, aboutOpts } = this.$config
 
     return {
       menu: [

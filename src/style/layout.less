@@ -1,10 +1,10 @@
 @font-face {
   font-family: GuDianMingChaoTi;
   font-weight: bold;
-  src: url('../font/GuDianMingChaoTi.ttf');
+  src: url('../assets/font/GuDianMingChaoTi.ttf');
 }
 
-@font: 'Noto Serif SC', -apple-system, Roboto, Helvetica, sans-serif;
+@font: 'Noto Serif SC', -apple-system, Roboto, Helvetica Neue, sans-serif;
 
 .font {
   font-family: @font;
@@ -38,7 +38,8 @@ body {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: url('../cursor/cursor.png'), auto;
+  text-rendering: optimizeLegibility;
+  cursor: url('../assets/cursor/cursor.png'), auto;
 }
 
 #bg {
@@ -59,6 +60,9 @@ body {
 
 img {
   display: block;
+  margin: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 a {
@@ -70,7 +74,7 @@ a,
 button,
 .cursor,
 .waifu {
-  cursor: url('../cursor/cursor_link.png'), auto;
+  cursor: url('../assets/cursor/cursor_link.png'), auto;
 }
 
 /* 卡片样式 */

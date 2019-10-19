@@ -15,8 +15,8 @@ import config from './config'
 import 'aos/dist/aos.css'
 import 'gitalk/dist/gitalk.css'
 import './assets/font/fontello.less'
-import './assets/style/animation.less'
-import './assets/style/layout.less'
+import './style/animation.less'
+import './style/layout.less'
 
 // Global variable
 Vue.config.productionTip = false
