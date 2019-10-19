@@ -56,10 +56,6 @@
         list-style: none;
         height: 86%;
 
-        @media screen and (max-width: 600px) {
-          width: 0.6rem;
-        }
-
         a {
           display: flex;
           flex-direction: column;
@@ -74,6 +70,29 @@
               color: var(--primary-color);
             }
           }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .inner {
+      .title {
+        font-size: 0.54rem;
+        line-height: 0.66rem;
+      }
+
+      .subtitle {
+        font-size: 0.24rem;
+        line-height: 0.4rem;
+      }
+
+      ul {
+        height: 0.86rem;
+        border-radius: 0.3rem;
+        li {
+          width: 0.76rem;
+          font-size: 0.24rem;
         }
       }
     }
