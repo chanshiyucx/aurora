@@ -197,6 +197,6 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-@import url('./index.less');
+<style lang="scss" scoped>
+@import url('./index.scss');
 </style>

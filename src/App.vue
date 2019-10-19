@@ -2,33 +2,33 @@
   <div id="app">
     <vue-progress-bar></vue-progress-bar>
     <Header />
-    <div class="page">
+    <!-- <div class="page">
       <Transition name="fade-transform" mode="out-in">
         <keep-alive :exclude="['post']" :max="10">
           <RouterView />
         </keep-alive>
       </Transition>
-    </div>
-    <Footer @dropPanel="showPanel = true" />
+    </div>-->
+    <!-- <Footer @dropPanel="showPanel = true" />
     <Panel v-show="showPanel" @hidePanel="showPanel = false" />
-    <ScrollTop />
+    <ScrollTop />-->
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import Panel from '@/components/Panel'
-import ScrollTop from '@/components/ScrollTop'
+// import Footer from '@/components/Footer'
+// import Panel from '@/components/Panel'
+// import ScrollTop from '@/components/ScrollTop'
 import { getLocation } from '@/utils'
 
 export default {
   name: 'App',
   components: {
-    Header,
-    Footer,
-    Panel,
-    ScrollTop
+    Header
+    // Footer,
+    // Panel,
+    // ScrollTop
   },
   data() {
     return {
@@ -65,7 +65,7 @@ export default {
 }
 </script>
 
-<style lang="less" scope>
+<style lang="scss" scope>
 #app {
   position: relative;
   padding-bottom: 1rem;

@@ -1,0 +1,83 @@
+// Colors
+// colors for theme.
+// --------------------------------------------------
+$whitesmoke: #f5f5f5;
+$gainsboro: #eee;
+$gray-lighter: #ddd;
+$grey-light: #ccc;
+$grey: #bbb;
+$grey-dark: #999;
+$grey-dim: #666;
+$black-light: #555;
+$black-dim: #333;
+$black-deep: #222;
+$purple: #d68fe9;
+$purple-dark: #b980ae;
+$purple-light: #b854d4;
+$mask: rgba(255, 255, 255, 0.66);
+$mask-light: rgba(255, 255, 255, 0.4);
+$mask-deep: rgba(255, 255, 255, 0.8);
+
+// Scaffolding
+// Settings for some of the most global styles.
+// --------------------------------------------------
+
+// Global text color on <body>
+$text-color: $black-light;
+
+// Global link color.
+$link-color: $black-light;
+$link-hover-color: $black-deep;
+$link-decoration-color: $grey-light;
+$link-decoration-hover-color: $black-deep;
+
+// Selection
+$selection-bg: $purple;
+$selection-color: white;
+
+// Typography
+// Font, line-height, and elements colors.
+// --------------------------------------------------
+@font-face {
+  font-family: GuDianMingChaoTi;
+  font-weight: bold;
+  src: url('../assets/font/GuDianMingChaoTi.ttf');
+}
+
+// Font families.
+$font-family-base: 'Noto Serif SC', -apple-system, Roboto, Helvetica Neue, sans-serif;
+$font-family-code: 'Fira Mono', $font-family-base;
+
+// Font Weight
+$font-weight-lighter: 200;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 600;
+$font-weight-bolder: 700;
+
+// Font size
+$font-size-base: 14px;
+$font-size-small: $font-size-base - 2px;
+$font-size-smaller: $font-size-base - 4px;
+$font-size-large: $font-size-base + 2px;
+$font-size-larger: $font-size-base + 4px;
+
+// Global line height
+$line-height-base: 2;
+$line-height-code-block: 1.6;
+
+// Z-index master list
+// --------------------------------------------------
+$zindex-bottom: -1;
+$zindex-1: 1010;
+$zindex-2: 1020;
+$zindex-3: 1030;
+$zindex-4: 1040;
+$zindex-5: 1050;
+
+// Layout sizes
+// --------------------------------------------------
+$main-desktop: 960px;
+$main-desktop-large: 1200px;
+$content-desktop: 700px;
+$content-desktop-large: 900px;

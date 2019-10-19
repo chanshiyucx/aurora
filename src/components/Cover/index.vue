@@ -55,7 +55,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .wrapper {
   position: relative;
   transition: all 0.6s ease;

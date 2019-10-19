@@ -42,6 +42,6 @@ export default {
 }
 </script>
 
-<style lang="less" scope>
-@import './index.less';
+<style lang="scss" scope>
+@import './index.scss';
 </style>

@@ -12,6 +12,10 @@ Aurora 是一个基于 Vue 开发的 SPA 单页面博客应用程序，使用 [G
 
 在线演示：[蝉時雨](https://chanshiyu.com)
 
+## TODO
+
+- [ ] Scss 替换 Less
+
 ## Getting Started
 
 完整详细的主题食用方法参考 [Aurora 食用指南](https://github.com/chanshiyucx/blog/issues/41)。

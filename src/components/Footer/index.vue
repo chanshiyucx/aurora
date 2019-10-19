@@ -17,15 +17,22 @@
             <i :class="['icon', `icon-${item.icon}`]"></i>
           </li>
         </ul>
-        <div class="arrow"><i class="icon icon-emo-devil"></i></div>
+        <div class="arrow">
+          <i class="icon icon-emo-devil"></i>
+        </div>
       </div>
       <APlayer :class="isMini && 'mini'" :audio="audio" fixed mini @update:mini="handleUpdate" />
     </div>
     <div class="site-info">
-      <p><i class="icon icon-copyright"></i>2017-2019 <i class="icon icon-heart"></i> {{ $config.title }}</p>
+      <p>
+        <i class="icon icon-copyright"></i>2017-2019
+        <i class="icon icon-heart"></i>
+        {{ $config.title }}
+      </p>
       <p>
         Theme -
-        <a rel="noopener noreferrer" target="_blank" href="https://github.com/chanshiyucx/aurora">Aurora</a> |
+        <a rel="noopener noreferrer" target="_blank" href="https://github.com/chanshiyucx/aurora">Aurora</a>
+        |
         {{ $config.subtitle }}
       </p>
     </div>
@@ -167,6 +174,6 @@ export default {
 }
 </script>
 
-<style lang="less" scope>
-@import './index.less';
+<style lang="scss" scope>
+@import './index.scss';
 </style>
