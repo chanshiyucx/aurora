@@ -36,7 +36,7 @@ export default {
     }
   },
   created() {
-    document.title = this.$config.title
+    this.initSite()
     this.visitorStatistics()
     if (!this.$isMobile) this.initProgress()
   },
@@ -44,6 +44,10 @@ export default {
     if (!this.$isMobile) this.$Progress.finish()
   },
   methods: {
+    initSite() {
+      const { title, subtitle } = this.$config
+      document.title = `${title} | ${subtitle}`
+    },
     // 注册顶部进度条
     initProgress() {
       this.$Progress.start()
