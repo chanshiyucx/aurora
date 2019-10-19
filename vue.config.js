@@ -12,5 +12,12 @@ module.exports = {
       args[0].cdn = cdn
       return args
     })
+  },
+  css: {
+    loaderOptions: {
+      sass: {
+        prependData: `@import "~@/styles/variables.scss";`
+      }
+    }
   }
 }

@@ -1,3 +1,9 @@
+@font-face {
+  font-family: GuDianMingChaoTi;
+  font-weight: bold;
+  src: url('../assets/font/GuDianMingChaoTi.ttf');
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -21,12 +27,43 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   @include cursor;
+  @include scrollBar;
 }
 
 body,
 #app {
   min-height: 100vh;
   background-color: $mask;
+}
+
+img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+  word-wrap: break-word;
+}
+
+a,
+button,
+.waifu,
+.cursor {
+  @include cursor-link;
+}
+
+input,
+textarea,
+button {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 0;
 }
 
 #bg {
@@ -40,50 +77,12 @@ body,
   background-repeat: no-repeat;
 }
 
-// img {
-//   display: block;
-//   margin: auto;
-//   max-width: 100%;
-//   height: auto;
-// }
-
-// a {
-//   color: inherit;
-//   text-decoration: none;
-// }
-
-a,
-button,
-.cursor,
-.waifu {
-  @include cursor-link;
+.card {
+  border-radius: 0.03rem;
+  background-color: $mask;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
 }
-
-// /* 卡片样式 */
-// .card {
-//   border-radius: 0.03rem;
-//   background-color: rgba(255, 255, 255, 0.76);
-//   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
-//   overflow: hidden;
-// }
-
-// /* fade-transform */
-// .fade-transform-leave-active,
-// .fade-transform-enter-active {
-//   transition: all 0.5s;
-// }
-// .fade-transform-enter {
-//   opacity: 0;
-//   transform: translateY(-30px);
-// }
-// .fade-transform-leave-to {
-//   opacity: 0;
-//   transform: translateY(30px);
-// }
-
-// & {
-//   .i-scroll;
-// }
 
 // /* 代码高亮 */
 // code {

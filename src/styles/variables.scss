@@ -26,8 +26,7 @@ $mask-deep: rgba(255, 255, 255, 0.8);
 $text-color: $black-light;
 
 // Global link color.
-$link-color: $black-light;
-$link-hover-color: $black-deep;
+$link-color: $purple-light;
 $link-decoration-color: $grey-light;
 $link-decoration-hover-color: $black-deep;
 
@@ -38,11 +37,6 @@ $selection-color: white;
 // Typography
 // Font, line-height, and elements colors.
 // --------------------------------------------------
-@font-face {
-  font-family: GuDianMingChaoTi;
-  font-weight: bold;
-  src: url('../assets/font/GuDianMingChaoTi.ttf');
-}
 
 // Font families.
 $font-family-base: 'Noto Serif SC', -apple-system, Roboto, Helvetica Neue, sans-serif;
@@ -63,8 +57,7 @@ $font-size-large: $font-size-base + 2px;
 $font-size-larger: $font-size-base + 4px;
 
 // Global line height
-$line-height-base: 2;
-$line-height-code-block: 1.6;
+$line-height-base: 1.6;
 
 // Z-index master list
 // --------------------------------------------------

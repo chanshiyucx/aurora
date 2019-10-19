@@ -25,13 +25,13 @@
 }
 
 @mixin pc-layout {
-  @media screen and (min-width: 761px) {
+  @media screen and (min-width: 768px) {
     @content;
   }
 }
 
 @mixin sp-layout {
-  @media screen and (max-width: 760px) {
+  @media screen and (max-width: 767px) {
     @content;
   }
 }
