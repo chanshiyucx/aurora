@@ -26,6 +26,7 @@
     <meta name="msapplication-TileImage" content="/assets/mstile-144x144.png" />
     <meta name="msapplication-config" content="browserconfig.xml" />
     <meta name="apple-mobile-web-app-title" content="蝉時雨 | 蝉鸣如雨 花宵道中" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
     <link rel="apple-touch-icon" sizes="57x57" href="/assets/apple-touch-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="60x60" href="/assets/apple-touch-icon-60x60.png" />
@@ -49,7 +50,6 @@
     <% for(var css of htmlWebpackPlugin.options.cdn.css) { %>
     <link rel="stylesheet" href="<%=css%>" />
     <% } %>
-    <script src="/rem.js"></script>
     <script src="/live2d/live2d.min.js"></script>
     <title>蝉時雨 | 蝉鸣如雨 花宵道中</title>
   </head>

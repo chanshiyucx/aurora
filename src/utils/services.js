@@ -43,8 +43,7 @@ const createCall = async document => {
 export const queryArchivesCount = () => createCall(documents.queryArchivesCount({ username, repository }))
 
 // 获取灵感数量
-export const queryInspirationCount = () =>
-  createCall(documents.queryInspirationCount({ username, repository }))
+export const queryInspirationCount = () => createCall(documents.queryInspirationCount({ username, repository }))
 
 // 按分类 & 标签筛选文章
 export const queryFilterArchivesCount = ({ label, milestone }) =>
