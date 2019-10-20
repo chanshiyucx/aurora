@@ -2,11 +2,11 @@
   "name": "蝉時雨",
   "short_name": "蝉時雨",
   "description": "蝉鸣如雨 花宵道中",
+  "lang": "zh-CN",
   "theme_color": "#b854d4",
   "background_color": "#ffffff",
   "display": "standalone",
   "start_url": "/",
-  "scope": "/",
   "icons": [
     {
       "src": "/assets/android-icon-72x72.png",
