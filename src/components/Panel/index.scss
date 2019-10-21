@@ -39,7 +39,6 @@
 
   .short-line,
   .long-line {
-    pointer-events: all;
     position: absolute;
     top: 0px;
     left: 50%;
@@ -96,7 +95,7 @@
     width: 600px;
     text-align: center;
     border-radius: 12px;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 20px;
+    box-shadow: $bg-dark-dim 0px 0px 20px;
     transform: translate(-50%, -50%);
 
     .header {
@@ -293,7 +292,7 @@
       height: 400px;
       border-radius: 3px;
       border: 10px solid $bg-white-dim;
-      box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 10px;
+      box-shadow: $bg-dark-deep 0px 0px 10px;
       animation: zoomIn 0.3s ease-out 0s forwards;
     }
   }

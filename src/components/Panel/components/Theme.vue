@@ -58,7 +58,7 @@ export default {
       width: 212px;
       height: 110px;
       overflow: hidden;
-      background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+      background-image: linear-gradient(to top, $panel-theme-bg-from-color 0%, $panel-theme-bg-to-color 100%);
     }
 
     &::before {
@@ -69,7 +69,7 @@ export default {
       bottom: -4px;
       left: -4px;
       border-radius: 2px;
-      border: #ffe4d8 solid 5px;
+      border: $panel-theme-border solid 5px;
       transition-duration: 0.3s;
       transition-property: transform border;
     }
