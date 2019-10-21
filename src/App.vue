@@ -9,25 +9,25 @@
         </keep-alive>
       </Transition>
     </div>-->
-    <!-- <Footer @dropPanel="showPanel = true" />
+    <!-- <Footer @dropPanel="showPanel = true" />-->
     <Panel v-show="showPanel" @hidePanel="showPanel = false" />
-    <ScrollTop />-->
+    <!-- <ScrollTop /> -->
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header'
 // import Footer from '@/components/Footer'
-// import Panel from '@/components/Panel'
+import Panel from '@/components/Panel'
 // import ScrollTop from '@/components/ScrollTop'
 import { getLocation } from '@/utils'
 
 export default {
   name: 'App',
   components: {
-    Header
+    Header,
     // Footer,
-    // Panel,
+    Panel
     // ScrollTop
   },
   data() {
@@ -37,11 +37,11 @@ export default {
   },
   created() {
     this.initSite()
+    this.initProgress()
     this.visitorStatistics()
-    if (!this.$isMobile) this.initProgress()
   },
   mounted() {
-    if (!this.$isMobile) this.$Progress.finish()
+    this.$Progress.finish()
   },
   methods: {
     initSite() {
@@ -72,13 +72,11 @@ export default {
 <style lang="scss" scope>
 #app {
   position: relative;
-  padding-bottom: 1rem;
-  text-align: center;
+  padding-bottom: 100px;
 
   .page {
     margin: 0 auto;
-    padding: 0 0.12rem;
-    max-width: 900px;
+    max-width: $page-desktop;
     user-select: text;
   }
 }

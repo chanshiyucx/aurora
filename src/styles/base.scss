@@ -33,7 +33,7 @@ body {
 body,
 #app {
   min-height: 100vh;
-  background-color: $mask;
+  background-color: $bg-white-dim;
 }
 
 img {
@@ -75,11 +75,14 @@ button {
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
+  @include sp-layout {
+    display: none;
+  }
 }
 
 .card {
   border-radius: 0.03rem;
-  background-color: $mask;
+  background-color: $bg-white-deep;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
   overflow: hidden;
 }

@@ -84,8 +84,7 @@ const bg = {
     'https://i.loli.net/2019/04/23/5cbf139c68120.jpg',
     'https://i.loli.net/2019/04/23/5cbf13a0a95a2.jpg',
     'https://i.loli.net/2019/04/25/5cc08b39e2f20.jpg'
-  ],
-  mobile: ['https://i.loli.net/2019/08/23/mNY5iO1T6jgXPR8.png']
+  ]
 }
 
 export default {
@@ -97,7 +96,7 @@ export default {
       likeTimes: 0,
       isLikeSite: localStorage.getItem('isLikeSite', true),
       currentInx: 1,
-      step: 6, // 每一步 6rem
+      step: 6,
       lockSwiper: false,
       swiper: '',
       zoomSrc: ''
@@ -138,10 +137,8 @@ export default {
     },
     // 初始化背景主题
     initThemeBg() {
+      if (this.$isMobile) return
       let theme = localStorage.getItem('theme') || 'touhou'
-      if (this.$isMobile) {
-        theme = 'mobile'
-      }
       this.setTheme(theme)
     },
     // 切换主题
@@ -152,9 +149,6 @@ export default {
     // 设置主题
     setTheme(theme) {
       this.theme = theme
-      if (!this.$isMobile) {
-        localStorage.setItem('theme', theme)
-      }
       window.$('#bg').backstretch(bg[theme], {
         duration: 10000,
         alignY: 0,

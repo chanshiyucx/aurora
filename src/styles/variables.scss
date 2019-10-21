@@ -13,10 +13,7 @@ $black-dim: #333;
 $black-deep: #222;
 $purple: #d68fe9;
 $purple-dark: #b980ae;
-$purple-light: #b854d4;
-$mask: rgba(255, 255, 255, 0.66);
-$mask-light: rgba(255, 255, 255, 0.4);
-$mask-deep: rgba(255, 255, 255, 0.8);
+$purple-dim: #b854d4;
 
 // Scaffolding
 // Settings for some of the most global styles.
@@ -26,13 +23,19 @@ $mask-deep: rgba(255, 255, 255, 0.8);
 $text-color: $black-light;
 
 // Global link color.
-$link-color: $purple-light;
-$link-decoration-color: $grey-light;
-$link-decoration-hover-color: $black-deep;
+$link-color: $purple-dim;
 
 // Selection
 $selection-bg: $purple;
 $selection-color: white;
+
+// Background
+$bg-white: rgba(255, 255, 255, 0.4);
+$bg-white-dim: rgba(255, 255, 255, 0.6);
+$bg-white-deep: rgba(255, 255, 255, 0.8);
+$bg-dark: rgba(0, 0, 0, 0.1);
+$bg-dark-dim: rgba(0, 0, 0, 0.2);
+$bg-dark-deep: rgba(0, 0, 0, 0.3);
 
 // Typography
 // Font, line-height, and elements colors.
@@ -62,15 +65,20 @@ $line-height-base: 1.6;
 // Z-index master list
 // --------------------------------------------------
 $zindex-bottom: -1;
-$zindex-1: 1010;
-$zindex-2: 1020;
-$zindex-3: 1030;
-$zindex-4: 1040;
-$zindex-5: 1050;
+$zindex-1: 1;
+$zindex-2: 10;
+$zindex-3: 100;
+$zindex-4: 1000;
 
 // Layout sizes
 // --------------------------------------------------
-$main-desktop: 960px;
-$main-desktop-large: 1200px;
-$content-desktop: 700px;
-$content-desktop-large: 900px;
+$page-desktop: 900px;
+
+// Card sizes
+// --------------------------------------------------
+$card-padding: 12px;
+$card-padding-large: 16px;
+
+// Mobile Background
+// --------------------------------------------------
+$mobile-bg: url('https://chanshiyu.com/poi/2019/9.jpg');

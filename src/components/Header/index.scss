@@ -3,45 +3,90 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem 0;
+
+  @include pc-layout {
+    padding: 50px 0;
+  }
+  @include sp-layout {
+    padding: 40px 0;
+    color: white;
+    background-image: $mobile-bg;
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+  }
 
   .title,
   .subtitle {
     font-family: GuDianMingChaoTi;
+    letter-spacing: 4px;
     animation: fadeInDown 0.5s ease-out;
   }
 
   .title {
-    font-size: 0.49rem;
-    line-height: 0.6rem;
-    letter-spacing: 2px;
     transition: color 0.3s ease-out;
+    @include pc-layout {
+      font-size: 48px;
+      line-height: 60px;
+    }
+    @include sp-layout {
+      font-size: 44px;
+      line-height: 56px;
+    }
     &:hover {
-      color: $purple;
+      color: $link-color;
     }
   }
 
   .subtitle {
-    font-size: 0.22rem;
-    line-height: 0.32rem;
-    letter-spacing: 4px;
+    @include pc-layout {
+      font-size: 22px;
+      line-height: 32px;
+    }
+    @include sp-layout {
+      font-size: 20px;
+      line-height: 30px;
+    }
   }
 
   nav {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 0.1rem;
-    padding: 0 0.32rem;
-    height: 0.6rem;
-    background-color: rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) inset;
-    transition: all 0.5s ease;
-    animation-name: fadeIn;
-    animation-duration: 0.8s;
-
-    &:hover {
-      border-radius: 0.3rem;
+    margin-top: 10px;
+    height: 60px;
+    overflow: hidden;
+    @include pc-layout {
+      padding: 0 32px;
+      background-color: $bg-dark;
+      box-shadow: 0 0 10px $bg-dark-dim inset;
+      transition: all 0.5s ease;
+      animation: fadeIn 0.5s ease-out;
+      &:hover {
+        border-radius: 30px;
+      }
+    }
+    @include sp-layout {
+      width: 100%;
+      transform: translateY(40px);
+      box-shadow: 0 -1px 2px $bg-dark;
+      text-shadow: $bg-dark-dim 0 1px;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: -4px;
+        filter: blur(4px);
+        z-index: $zindex-bottom;
+        background-image: $mobile-bg;
+        background-size: cover;
+        background-position: bottom;
+        background-repeat: no-repeat;
+      }
     }
 
     a {
@@ -49,45 +94,12 @@
       flex-direction: column;
       justify-content: space-around;
       align-items: center;
-      padding-top: 0.04rem;
-      width: 0.5rem;
-      font-size: 0.16rem;
-      list-style: none;
-      height: 86%;
-      height: 100%;
-      transition: color 0.3s ease-out;
-
+      width: 50px;
+      font-size: $font-size-large;
+      transition: color 0.3s ease;
       &:hover {
-        &,
-        i {
-          color: var(--primary-color);
-        }
+        color: $link-color;
       }
     }
   }
-  // @media screen and (max-width: 900px) {
-  //   .inner {
-  //     .title {
-  //       font-size: 0.46rem;
-  //       line-height: 0.56rem;
-  //     }
-
-  //     .subtitle {
-  //       font-size: 0.22rem;
-  //       line-height: 0.36rem;
-  //     }
-
-  //     ul {
-  //       padding: 0 0.24rem;
-  //       height: 0.6rem;
-  //       border-radius: 0.3rem;
-  //       background-color: rgba(255, 255, 255, 0.4);
-  //       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  //       li {
-  //         width: 0.52rem;
-  //         font-size: 0.17rem;
-  //       }
-  //     }
-  //   }
-  // }
 }
