@@ -21,6 +21,7 @@ body {
   font-weight: $font-weight-normal;
   line-height: $line-height-base;
   color: $text-color;
+  text-shadow: 0 0 1px $bg-dark-dim;
   user-select: none;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -83,7 +84,7 @@ button {
 .card {
   border-radius: 0.03rem;
   background-color: $bg-white-deep;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
+  box-shadow: $card-shadow-primary;
   overflow: hidden;
 }
 

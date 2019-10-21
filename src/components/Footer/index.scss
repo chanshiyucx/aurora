@@ -1,170 +1,161 @@
 #footer {
   position: absolute;
   bottom: 0;
-  margin: 0.5rem auto 0;
+  margin: auto 0;
   width: 100%;
 
-  .waifu {
+  .prpr {
     position: fixed;
-    left: 0.2rem;
-    bottom: 0;
-    z-index: 99;
-    transition: all 0.3s ease-in-out;
-    transform: translateY(3px);
-
-    canvas {
-      position: relative;
-      left: 0.1rem;
-      bottom: 0;
-    }
-
-    .tips {
-      position: absolute;
-      margin: 0 0.2rem;
-      padding: 0.05rem 0.1rem;
-      width: 2.5rem;
-      min-height: 0.7rem;
-      line-height: 1.6;
-      text-align: left;
-      border-radius: 0.08rem;
-      background-color: rgba(255, 255, 255, 0.66);
-      box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0px 2px 2px 0 rgba(0, 0, 0, 0.24);
-      text-overflow: ellipsis;
-      overflow: hidden;
-      opacity: 1;
-      animation: shake 50s ease-in-out 0s infinite;
-
-      &.pio {
-        margin-top: -0.06rem;
-      }
-      &.tia {
-        margin-top: -0.12rem;
-      }
-    }
-  }
-
-  .menu {
-    position: fixed;
-    bottom: 0;
     left: 0;
-    z-index: 999;
+    bottom: 0;
+    z-index: $zindex-3;
+    .waifu {
+      position: relative;
+      transform: translateY(3px);
+
+      .tips {
+        position: absolute;
+        margin: 0 15px;
+        padding: 5px 10px;
+        width: 250px;
+        min-height: 70px;
+        border-radius: 8px;
+        background-color: $bg-white-dim;
+        box-shadow: $card-shadow;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        opacity: 1;
+        animation: shake 50s ease-in-out 0s infinite;
+
+        &.pio {
+          margin-top: -6px;
+        }
+        &.tia {
+          margin-top: -12px;
+        }
+      }
+    }
 
     .tool {
-      border-top-right-radius: 3px;
-      border-bottom-right-radius: 3px;
-      background-color: rgba(255, 255, 255, 0.66);
-      transition: all 0.3s ease-out;
-      transform: translateX(-0.36rem) scaleY(0.5);
-      transform-origin: bottom;
+      position: absolute;
+      bottom: 0;
+      left: 0;
 
-      &:hover {
-        background-color: #b28fce;
-        transform: translateX(0) scaleY(1);
-        .arrow {
-          display: none;
-        }
-      }
+      .menu {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        background-color: $bg-white-deep;
+        transition: all 0.3s ease-out;
+        transform: translateX(-36px) scaleY(0.5);
+        transform-origin: bottom;
 
-      ul {
-        margin-bottom: 66px;
-        width: 0.5rem;
-        z-index: 999;
-        list-style: none;
-        text-align: center;
-
-        li {
-          padding: 2px 0;
-          border: none;
-          outline: 0;
-          &:hover {
-            background-color: var(--primary-color);
-          }
-          .icon {
-            color: #eee;
+        &:hover {
+          background-color: $purple-dark;
+          transform: translateX(0) scaleY(1);
+          .devil {
+            display: none;
           }
         }
-      }
 
-      .arrow {
-        position: absolute;
-        top: 50%;
-        right: 0;
-        width: 15px;
-        transform: translateY(-50%) scaleY(2);
+        ul {
+          margin-bottom: 66px;
+          width: 50px;
+          list-style: none;
+          text-align: center;
+          border-top-right-radius: 3px;
+          border-bottom-right-radius: 3px;
+          overflow: hidden;
 
-        .icon {
-          color: var(--primary-color);
-          &::before {
-            font-size: 0.12rem;
-            transform: rotate(-90deg);
-          }
-        }
-      }
-    }
-
-    .aplayer {
-      margin: 0;
-      max-width: 3.1rem;
-      background-color: transparent;
-      transition: all 0.3s ease-out;
-
-      &:hover {
-        transform: translateX(0);
-      }
-
-      .aplayer-body {
-        padding-right: 15px;
-        width: 3.1rem;
-        border-radius: 0 3px 3px 0;
-        background-color: rgba(255, 255, 255, 0.88);
-      }
-
-      .aplayer-list {
-        border: none;
-        background-color: rgba(255, 255, 255, 0.88);
-        background-image: url(https://raw.githubusercontent.com/chanshiyucx/poi/master/2019/reimu.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-
-        li {
-          text-align: left;
-          border: none;
-          &:hover,
-          &.aplayer-list-light {
-            background-color: rgba(178, 143, 206, 0.66);
-            span {
-              color: #fff;
+          li {
+            padding: 2px 0;
+            &:hover {
+              background-color: $purple-dim;
+            }
+            .icon {
+              color: $whitesmoke;
             }
           }
-          .aplayer-list-cur {
-            background-color: #b28fce !important;
+        }
+
+        .devil {
+          position: absolute;
+          top: 50%;
+          right: 0;
+          width: 15px;
+          transform: translateY(-50%) scaleY(2);
+
+          .icon {
+            color: $purple;
+            &::before {
+              font-size: $font-size-small;
+              transform: rotate(-90deg);
+            }
           }
         }
       }
 
-      .aplayer-miniswitcher {
-        width: 15px;
-        background-color: #b28fce;
-        svg,
-        path {
-          fill: #fff;
+      .aplayer {
+        max-width: 310px;
+        background-color: transparent;
+        transition: all 0.3s ease-out;
+        &:hover {
+          transform: translateX(0);
+        }
+
+        .aplayer-miniswitcher {
+          width: 15px;
+          background-color: $purple-dark;
+          path {
+            fill: white;
+          }
+        }
+
+        .aplayer-body {
+          padding-right: 15px;
+          width: 310px;
+          border-radius: 0 3px 3px 0;
+          background-color: $bg-white-deep;
+        }
+
+        .aplayer-list {
+          border: none;
+          border-top-right-radius: 3px;
+          background-color: $bg-white-deep;
+          background-image: $aplayer-bg;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center center;
+
+          li {
+            border: none;
+            &:hover,
+            &.aplayer-list-light {
+              background-color: $bg-aplayer;
+              span {
+                color: white;
+              }
+            }
+            .aplayer-list-cur {
+              background-color: $purple-dark !important;
+            }
+          }
         }
       }
-    }
 
-    .mini {
-      transform: translateX(-100%);
+      .mini {
+        transform: translateX(-100%);
+      }
     }
   }
 
   .site-info {
-    padding-bottom: 0.1rem;
+    padding-bottom: 8px;
+    text-align: center;
 
     a {
       transition: color 0.3s ease-out;
       &:hover {
-        color: var(--primary-color);
+        color: $link-color;
       }
     }
 
@@ -175,20 +166,14 @@
 
   .sakura {
     position: fixed;
-    right: 0.12rem;
-    bottom: 0.12rem;
-    width: 0.36rem;
-    height: 0.36rem;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 0.36rem;
-
-    img {
-      display: inline-block;
-      margin-top: 0.04rem;
-      width: 0.28rem;
-      height: 0.28rem;
-      animation: rotate 2s linear 0s infinite;
+    right: 12px;
+    bottom: 12px;
+    width: 28px;
+    height: 28px;
+    animation: rotate 2s linear 0s infinite;
+    @include sp-layout {
+      top: 12px;
+      bottom: unset;
     }
   }
 }

@@ -9,7 +9,7 @@
         </keep-alive>
       </Transition>
     </div>-->
-    <!-- <Footer @dropPanel="showPanel = true" />-->
+    <Footer @dropPanel="showPanel = true" />
     <Panel v-show="showPanel" @hidePanel="showPanel = false" />
     <!-- <ScrollTop /> -->
   </div>
@@ -17,7 +17,7 @@
 
 <script>
 import Header from '@/components/Header'
-// import Footer from '@/components/Footer'
+import Footer from '@/components/Footer'
 import Panel from '@/components/Panel'
 // import ScrollTop from '@/components/ScrollTop'
 import { getLocation } from '@/utils'
@@ -26,7 +26,7 @@ export default {
   name: 'App',
   components: {
     Header,
-    // Footer,
+    Footer,
     Panel
     // ScrollTop
   },

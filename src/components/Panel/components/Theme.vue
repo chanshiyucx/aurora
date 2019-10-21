@@ -41,13 +41,13 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 0.14rem 0.12rem 0;
+  padding: 14px 12px 0;
 
   h3 {
-    margin-bottom: 0.14rem;
-    font-size: 0.18rem;
+    margin-bottom: 14px;
+    font-size: 18px;
     font-weight: normal;
-    line-height: 0.4rem;
+    line-height: 40px;
   }
 
   .preview {
@@ -55,8 +55,8 @@ export default {
     border-radius: 3px;
 
     > div {
-      width: 2.12rem;
-      height: 1.1rem;
+      width: 212px;
+      height: 110px;
       overflow: hidden;
       background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
     }
@@ -81,16 +81,16 @@ export default {
 
   .touhou {
     img {
-      margin: 0.1rem;
-      width: 1.92rem;
-      height: 0.9rem;
+      margin: 10px;
+      width: 192px;
+      height: 90px;
     }
   }
 
   .school {
     img {
-      width: 2.12rem;
-      height: 1.1rem;
+      width: 212px;
+      height: 110px;
     }
   }
 

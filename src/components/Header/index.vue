@@ -1,5 +1,5 @@
 <template>
-  <div id="header">
+  <header id="header">
     <RouterLink class="title" to="/">{{ $config.title }}</RouterLink>
     <span class="subtitle">{{ $config.subtitle }}</span>
     <nav>
@@ -8,7 +8,7 @@
         {{ menu.title }}
       </RouterLink>
     </nav>
-  </div>
+  </header>
 </template>
 
 <script>

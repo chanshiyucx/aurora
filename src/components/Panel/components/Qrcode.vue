@@ -23,18 +23,18 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 0.1rem;
+  padding: 10px;
 
   h3 {
-    margin-bottom: 0.1rem;
-    font-size: 0.18rem;
+    margin-bottom: 10px;
+    font-size: 18px;
     font-weight: normal;
-    line-height: 0.32rem;
+    line-height: 32px;
   }
 
   img {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 150px;
+    height: 150px;
     border-radius: 3px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   }

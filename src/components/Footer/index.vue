@@ -1,27 +1,29 @@
 <template>
-  <div id="footer">
-    <div v-if="showWaifu && !$isMobile" class="waifu">
-      <div v-show="tips && isMini" :class="['tips', this.waifu === 'tia' && 'tia']" v-html="tips"></div>
-      <canvas @click="handleClickWaifu" id="live2d" width="280" height="250" />
-    </div>
-    <div class="menu" v-if="!$isMobile">
-      <div class="tool" v-if="showWaifu">
-        <ul>
-          <li
-            class="cursor"
-            v-for="item in tool"
-            :key="item.type"
-            @click="handleClick(item.type)"
-            @mouseenter="handleHover(item.type)"
-          >
-            <i :class="['icon', `icon-${item.icon}`]"></i>
-          </li>
-        </ul>
-        <div class="arrow">
-          <i class="icon icon-emo-devil"></i>
-        </div>
+  <footer id="footer">
+    <div class="prpr" v-if="!$isMobile">
+      <div v-if="showWaifu" class="waifu">
+        <div v-show="tips && isMini" :class="['tips', this.waifu === 'tia' && 'tia']" v-html="tips"></div>
+        <canvas @click="handleClickWaifu" id="live2d" width="280" height="250" />
       </div>
-      <APlayer :class="isMini && 'mini'" :audio="audio" fixed mini @update:mini="handleUpdate" />
+      <div class="tool">
+        <div class="menu" v-if="showWaifu">
+          <ul>
+            <li
+              class="cursor"
+              v-for="item in menu"
+              :key="item.type"
+              @click="handleClick(item.type)"
+              @mouseenter="handleHover(item.type)"
+            >
+              <i :class="['icon', `icon-${item.icon}`]"></i>
+            </li>
+          </ul>
+          <div class="devil">
+            <i class="icon icon-emo-devil"></i>
+          </div>
+        </div>
+        <APlayer :class="isMini && 'mini'" :audio="audio" fixed mini @update:mini="handleUpdate" />
+      </div>
     </div>
     <div class="site-info">
       <p>
@@ -36,10 +38,8 @@
         {{ $config.subtitle }}
       </p>
     </div>
-    <div v-if="!$isMobile" class="sakura cursor" @click="dropPanel" @mouseenter="handleHover('panel')">
-      <img :src="sakura" alt="theme" />
-    </div>
-  </div>
+    <img class="sakura cursor" :src="sakura" @click="dropPanel" @mouseenter="handleHover('panel')" alt="sakura" />
+  </footer>
 </template>
 
 <script>
@@ -61,7 +61,7 @@ export default {
       showWaifu: true,
       textures: '',
       tipsTimer: '',
-      tool: [
+      menu: [
         { icon: 'venus-double', type: 'switch' },
         { icon: 't-shirt', type: 'dressup' },
         { icon: 'camera', type: 'takephoto' },
