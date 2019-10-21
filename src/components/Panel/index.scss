@@ -19,6 +19,7 @@
   }
 
   .container {
+    pointer-events: none;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -89,6 +90,7 @@
   }
 
   .main {
+    pointer-events: all;
     position: absolute;
     top: 50%;
     left: 50%;

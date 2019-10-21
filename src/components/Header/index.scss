@@ -71,7 +71,8 @@
       width: 100%;
       transform: translateY(40px);
       box-shadow: 0 -1px 2px $bg-dark;
-      text-shadow: 0 1px $bg-dark-dim;
+      text-shadow: 0 1px $bg-dark-deep;
+
       &::before {
         content: '';
         position: absolute;

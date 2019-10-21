@@ -119,7 +119,7 @@ export default {
   },
   mounted() {
     this.queryLike()
-    this.initThemeBg()
+    this.initTheme()
   },
   methods: {
     // 点赞数
@@ -134,7 +134,7 @@ export default {
       localStorage.setItem('isLikeSite', true)
     },
     // 初始化背景主题
-    initThemeBg() {
+    initTheme() {
       if (this.$isMobile) return
       const theme = localStorage.getItem('theme') || 'touhou'
       this.setTheme(theme)
@@ -147,6 +147,7 @@ export default {
     // 设置主题
     setTheme(theme) {
       this.theme = theme
+      localStorage.setItem('theme', theme)
       window.$('#bg').backstretch(bg[theme], {
         duration: 10000,
         alignY: 0,

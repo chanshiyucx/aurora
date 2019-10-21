@@ -41,7 +41,7 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 14px 12px 0;
+  padding: 14px 12px;
 
   h3 {
     margin-bottom: 14px;
@@ -68,7 +68,7 @@ export default {
       right: -4px;
       bottom: -4px;
       left: -4px;
-      border-radius: 2px;
+      border-radius: 3px;
       border: $panel-theme-border solid 5px;
       transition-duration: 0.3s;
       transition-property: transform border;
