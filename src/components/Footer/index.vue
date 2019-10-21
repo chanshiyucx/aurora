@@ -57,10 +57,9 @@ export default {
   data() {
     return {
       sakura,
-      waifu: 'tia',
       showWaifu: true,
+      waifu: 'tia',
       textures: '',
-      tipsTimer: '',
       menu: [
         { icon: 'venus-double', type: 'switch' },
         { icon: 't-shirt', type: 'dressup' },
@@ -83,39 +82,36 @@ export default {
     }
   },
   methods: {
-    // 换装
-    dressup(switchWaifu) {
+    dressup(switchWaifu = false) {
       if (switchWaifu) this.waifu = this.waifu === 'tia' ? 'pio' : 'tia'
-      const path = '/live2d/'
       // 获取装扮
       const waifuCostume = costume[this.waifu]
-      let textures = ''
-      while (!textures || this.textures === textures) {
+      let textures = this.textures
+      while (textures === this.textures) {
         textures = waifuCostume[random(0, waifuCostume.length - 1)]
       }
       this.textures = textures
       // 获取模型
-      model.model = `moc/${this.waifu || 'tia'}.moc`
+      model.model = `moc/${this.waifu}.moc`
       model.textures = [textures]
-      // 设置不同的缩放比例
+      // 设置缩放比例
       model.layout.width = this.waifu === 'tia' ? 1.82 : 2
       window.waifuModel = model
-      window.loadlive2d('live2d', path, '')
+      window.loadlive2d('live2d', '/live2d/', '')
     },
-    // 一言轮播
     loopTips() {
-      this.tipsTimer = setTimeout(this.loopTips, 16 * 1000)
+      setTimeout(this.loopTips, 16 * 1000)
       const now = new Date()
-      if (this.tips || (!!this.tipsUpdateAt && now - this.tipsUpdateAt < 6000)) return
+      if (this.tips || (this.tipsUpdateAt && now - this.tipsUpdateAt < 6000)) return
       const inx = random(0, hitokotos.length - 1)
       const nextTips = hitokotos[inx].hitokoto
       this.$store.dispatch('showTips', { tips: nextTips })
     },
     handleClickWaifu() {
-      let nextTips
-      while (!nextTips || nextTips === this.tips) {
-        let index = random(0, waifuClick.length - 1)
-        nextTips = waifuClick[index]
+      let nextTips = this.tips
+      while (nextTips === this.tips) {
+        const inx = random(0, waifuClick.length - 1)
+        nextTips = waifuClick[inx]
       }
       this.$store.dispatch('showTips', { tips: nextTips })
     },
@@ -131,7 +127,6 @@ export default {
       if (!tips) return
       this.$store.dispatch('showTips', { tips })
     },
-    // 看板娘交互
     handleClick(type) {
       switch (type) {
         case 'switch':
@@ -147,8 +142,8 @@ export default {
           break
         case 'talk':
           {
-            const index = random(0, hitokotos.length - 1)
-            const tips = hitokotos[index].hitokoto
+            const inx = random(0, hitokotos.length - 1)
+            const tips = hitokotos[inx].hitokoto
             this.$store.dispatch('showTips', { tips })
           }
           break
@@ -162,11 +157,9 @@ export default {
           return
       }
     },
-    // 播放器最小化
     handleUpdate(isMini) {
       this.isMini = isMini
     },
-    // 打开面板
     dropPanel() {
       this.$emit('dropPanel')
     }

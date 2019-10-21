@@ -29,9 +29,9 @@ export default new Vuex.Store({
   },
   mutations: {
     // 设置一言
-    setTips(state, { tips, tipsUpdateAt }) {
+    setTips(state, { tips }) {
       state.tips = tips
-      state.tipsUpdateAt = tipsUpdateAt
+      state.tipsUpdateAt = new Date()
     },
     // 设置文章数量
     setTotalCount(state, { totalCount }) {
@@ -42,16 +42,9 @@ export default new Vuex.Store({
     // 显示一言
     async showTips({ commit }, { tips }) {
       clearTimeout(tipsTimer)
-      let tipsUpdateAt = new Date()
-      commit('setTips', {
-        tips,
-        tipsUpdateAt
-      })
+      commit('setTips', { tips })
       tipsTimer = setTimeout(() => {
-        commit('setTips', {
-          tips: '',
-          tipsUpdateAt: new Date()
-        })
+        commit('setTips', { tips: '' })
       }, 6000)
     },
     // 获取文章总数

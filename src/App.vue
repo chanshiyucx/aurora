@@ -44,6 +44,7 @@ export default {
     this.$Progress.finish()
   },
   methods: {
+    // 初始化站点信息
     initSite() {
       const { title, subtitle } = this.$config
       document.title = `${title} | ${subtitle}`
