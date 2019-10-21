@@ -45,7 +45,7 @@ export default {
 
   h3 {
     margin-bottom: 14px;
-    font-size: 18px;
+    font-size: $font-size-larger;
     font-weight: normal;
     line-height: 40px;
   }
@@ -96,10 +96,10 @@ export default {
 
   .active {
     h3 {
-      color: var(--primary-color);
+      color: $purple-dim;
     }
     .preview::before {
-      border: var(--light-color) solid 5px;
+      border: $purple solid 5px;
     }
   }
 }

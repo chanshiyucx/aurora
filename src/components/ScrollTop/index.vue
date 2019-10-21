@@ -17,7 +17,7 @@ export default {
       topDistance: -950,
       clientHeight: 0,
       scrollTimer: '',
-      lastScroll: new Date()
+      lastScrollAt: new Date()
     }
   },
   computed: {
@@ -38,8 +38,8 @@ export default {
     // 监听页面滚动
     handleScroll() {
       const now = new Date()
-      if (now - this.lastScroll <= 150) return
-      this.lastScroll = now
+      if (now - this.lastScrollAt <= 150) return
+      this.lastScrollAt = now
       this.handleTop()
 
       clearTimeout(this.scrollTimer)

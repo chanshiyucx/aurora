@@ -38,7 +38,14 @@
         {{ $config.subtitle }}
       </p>
     </div>
-    <img class="sakura cursor" :src="sakura" @click="dropPanel" @mouseenter="handleHover('panel')" alt="sakura" />
+    <img
+      v-if="!$isMobile"
+      class="sakura cursor"
+      :src="sakura"
+      @click="dropPanel"
+      @mouseenter="handleHover('panel')"
+      alt="sakura"
+    />
   </footer>
 </template>
 

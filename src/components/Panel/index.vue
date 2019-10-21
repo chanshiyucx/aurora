@@ -51,7 +51,7 @@
         </div>
       </div>
     </div>
-    <div v-if="!!zoomSrc" class="zoom" @click="setZoomSrc('')">
+    <div v-if="!!zoomSrc" class="zoom" @click="setZoomSrc()">
       <img class="cursor" :src="zoomSrc" alt />
     </div>
   </div>
@@ -96,9 +96,7 @@ export default {
       likeTimes: 0,
       isLikeSite: localStorage.getItem('isLikeSite', true),
       currentInx: 1,
-      step: 6,
       lockSwiper: false,
-      swiper: '',
       zoomSrc: ''
     }
   },
@@ -108,11 +106,11 @@ export default {
       return ['背景主题', '赛钱箱'][inx]
     },
     distance() {
-      return [0, -6, -12, -18][this.currentInx]
+      return [0, -600, -1200, -1800][this.currentInx]
     },
     containerStyle() {
       return {
-        transform: `translate3d(${this.distance}rem, 0, 0)`
+        transform: `translate3d(${this.distance}px, 0, 0)`
       }
     },
     likeBtnText() {
@@ -138,12 +136,12 @@ export default {
     // 初始化背景主题
     initThemeBg() {
       if (this.$isMobile) return
-      let theme = localStorage.getItem('theme') || 'touhou'
+      const theme = localStorage.getItem('theme') || 'touhou'
       this.setTheme(theme)
     },
     // 切换主题
     switchTheme(theme) {
-      if (this.theme === theme) return
+      if (theme === this.theme) return
       this.setTheme(theme)
     },
     // 设置主题
@@ -184,7 +182,7 @@ export default {
       }, 500)
     },
     // 设置缩放二维码
-    setZoomSrc(src) {
+    setZoomSrc(src = '') {
       this.zoomSrc = src
     }
   }
@@ -192,5 +190,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('./index.scss');
+@import './index.scss';
 </style>

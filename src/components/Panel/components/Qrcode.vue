@@ -27,7 +27,7 @@ export default {
 
   h3 {
     margin-bottom: 10px;
-    font-size: 18px;
+    font-size: $font-size-larger;
     font-weight: normal;
     line-height: 32px;
   }
@@ -36,7 +36,7 @@ export default {
     width: 150px;
     height: 150px;
     border-radius: 3px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 4px $bg-dark-deep;
   }
 }
 </style>

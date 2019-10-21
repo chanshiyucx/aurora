@@ -2,16 +2,16 @@
   <div id="app">
     <vue-progress-bar></vue-progress-bar>
     <Header />
-    <!-- <div class="page">
-      <Transition name="fade-transform" mode="out-in">
+    <div class="page">
+      <!-- <Transition name="fade-transform" mode="out-in">
         <keep-alive :exclude="['post']" :max="10">
           <RouterView />
         </keep-alive>
-      </Transition>
-    </div>-->
+      </Transition>-->
+    </div>
     <Footer @dropPanel="showPanel = true" />
     <Panel v-show="showPanel" @hidePanel="showPanel = false" />
-    <!-- <ScrollTop /> -->
+    <ScrollTop />
   </div>
 </template>
 
@@ -19,7 +19,7 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Panel from '@/components/Panel'
-// import ScrollTop from '@/components/ScrollTop'
+import ScrollTop from '@/components/ScrollTop'
 import { getLocation } from '@/utils'
 
 export default {
@@ -27,8 +27,8 @@ export default {
   components: {
     Header,
     Footer,
-    Panel
-    // ScrollTop
+    Panel,
+    ScrollTop
   },
   data() {
     return {

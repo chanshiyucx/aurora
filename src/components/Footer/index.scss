@@ -9,6 +9,10 @@
     left: 0;
     bottom: 0;
     z-index: $zindex-3;
+    @include sp-layout {
+      display: none;
+    }
+
     .waifu {
       position: relative;
       transform: translateY(3px);
@@ -149,7 +153,7 @@
   }
 
   .site-info {
-    padding-bottom: 8px;
+    padding-bottom: 6px;
     text-align: center;
 
     a {
@@ -172,8 +176,7 @@
     height: 28px;
     animation: rotate 2s linear 0s infinite;
     @include sp-layout {
-      top: 12px;
-      bottom: unset;
+      display: none;
     }
   }
 }

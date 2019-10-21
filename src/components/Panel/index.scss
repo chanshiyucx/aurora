@@ -5,6 +5,9 @@
   width: 100vw;
   height: 100vh;
   z-index: $zindex-4;
+  @include sp-layout {
+    display: none;
+  }
 
   .mask {
     position: absolute;
@@ -16,12 +19,11 @@
   }
 
   .container {
-    pointer-events: none;
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     perspective: 600px;
     transform: translateY(-100%);
     will-change: transform;
@@ -29,8 +31,8 @@
   }
 
   .wrapper {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     will-change: transform;
     animation: 3s ease-out 0s 1 normal forwards running dropWave;
   }
@@ -48,7 +50,7 @@
       position: absolute;
       width: 2px;
       height: 150%;
-      background-color: rgb(93, 53, 35);
+      background-color: $panel-color;
     }
   }
 
@@ -75,7 +77,7 @@
         bottom: -4.5px;
         width: 10px;
         height: 10px;
-        background-color: rgb(93, 53, 35);
+        background-color: $panel-color;
         border-radius: 50%;
       }
     }
@@ -88,30 +90,29 @@
   }
 
   .main {
-    pointer-events: all;
     position: absolute;
     top: 50%;
     left: 50%;
     width: 600px;
+    text-align: center;
     border-radius: 12px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 20px;
     transform: translate(-50%, -50%);
 
     .header {
       width: 100%;
-      box-sizing: border-box;
       height: 50px;
+      box-sizing: border-box;
       border-radius: 12px 12px 0 0;
-      background-color: rgb(251, 244, 241);
-      border-bottom: 1px solid rgb(93, 53, 35);
+      border-bottom: 1px solid $panel-color;
+      background-color: $panel-bg-color;
 
       .inner {
         margin: 0px auto;
         width: 85%;
         font-size: 20px;
         line-height: 50px;
-        color: rgb(93, 53, 35);
-        text-align: center;
+        color: $panel-color;
         letter-spacing: 0.1em;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -123,7 +124,7 @@
       position: relative;
       width: 100%;
       height: 260px;
-      background-color: rgb(255, 255, 255);
+      background-color: white;
 
       .swiper-wrapper {
         width: 600px;
@@ -151,22 +152,19 @@
         top: 50%;
         width: 66px;
         height: 66px;
-        background-color: rgb(251, 244, 241);
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        border: none;
-        text-align: center;
         overflow: hidden;
-        outline: none;
-        transition: color 0.3s ease-in-out;
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
         font-size: 28px;
+        border-radius: 50%;
+        box-shadow: $bg-dark-dim 0px 0px 10px;
+        background-color: $panel-bg-color;
+        transform: translate(-50%, -50%);
+        transition: color 0.3s ease-in-out;
 
         i {
           display: inline-block;
           font-size: 28px;
-          z-index: 10;
-          color: rgb(93, 53, 35);
+          color: $panel-color;
+          transition: color 0.3s ease-out;
         }
         &::before {
           content: '';
@@ -178,13 +176,12 @@
           height: 66px;
           border-radius: 50%;
           transform: scale(0);
-          background-color: rgb(93, 53, 35);
+          background-color: $panel-color;
           transition: transform 0.3s ease-in-out;
-          z-index: 0;
         }
         &:hover {
           i {
-            color: #efefef;
+            color: $whitesmoke;
           }
           &::before {
             transform: scale(1);
@@ -215,9 +212,9 @@
         width: 100%;
         height: 60px;
         line-height: 60px;
-        font-size: 18px;
+        font-size: $font-size-larger;
         span {
-          color: var(--primary-color);
+          color: $purple-dim;
         }
       }
     }
@@ -227,30 +224,29 @@
       width: 100%;
       height: 50px;
       border-radius: 0 0 12px 12px;
-      border-top: 1px solid rgb(93, 53, 35);
-      background-color: rgb(251, 244, 241);
+      border-top: 1px solid $panel-color;
+      background-color: $panel-bg-color;
 
       div {
         position: absolute;
         bottom: 0px;
         left: 50%;
-        width: 20px;
+        width: 200px;
         height: 50px;
+        font-size: $font-size-large;
+        color: $whitesmoke;
         line-height: 48px;
+        letter-spacing: 2px;
         overflow: hidden;
         border-style: none;
         border-radius: 30px;
-        box-shadow: var(--light-color) 0px 0px 10px;
-        background-color: var(--light-color);
+        box-shadow: $purple 0px 0px 10px;
+        background-color: $purple;
         transform: translate(-50%, 50%);
         transition: all 0.5s cubic-bezier(0.86, -0.02, 0.08, 1.02) 0s;
-        text-align: center;
-        letter-spacing: 2px;
-        color: #eee;
-        font-size: 16px;
 
         &:hover {
-          box-shadow: var(--primary-color) 0px 0px 10px;
+          box-shadow: $purple 0px 0px 10px;
           &::before {
             transform: translateX(0px);
           }
@@ -267,20 +263,20 @@
           height: 100%;
           border-radius: 30px;
         }
-
         &::before {
-          background-color: var(--primary-color);
+          background-color: $purple-dim;
           transform: translateX(-100%);
           transition: all 0.5s cubic-bezier(0.86, -0.02, 0.08, 1.02) 0s;
         }
         &::after {
           content: attr(data-title);
-          color: rgb(255, 255, 255);
+          color: white;
           letter-spacing: 1px;
         }
       }
     }
   }
+
   .zoom {
     display: flex;
     justify-content: center;
@@ -290,14 +286,14 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(255, 255, 255, 0.66);
+    background-color: $bg-white-dim;
 
     img {
       width: 400px;
       height: 400px;
       border-radius: 3px;
+      border: 10px solid $bg-white-dim;
       box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 10px;
-      border: 10px solid rgba(255, 255, 255, 0.66);
       animation: zoomIn 0.3s ease-out 0s forwards;
     }
   }

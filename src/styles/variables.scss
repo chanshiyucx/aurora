@@ -29,6 +29,10 @@ $link-color: $purple-dim;
 $selection-bg: $purple;
 $selection-color: white;
 
+// Panel
+$panel-color: #5d3523;
+$panel-bg-color: #fbf4f1;
+
 // Background
 $bg-white: rgba(255, 255, 255, 0.4);
 $bg-white-dim: rgba(255, 255, 255, 0.6);
@@ -57,6 +61,7 @@ $font-weight-bolder: 700;
 $font-size-base: 14px;
 $font-size-small: $font-size-base - 2px;
 $font-size-large: $font-size-base + 2px;
+$font-size-larger: $font-size-base + 4px;
 
 // Global line height
 $line-height-base: 1.6;
@@ -83,7 +88,9 @@ $card-padding-large: 16px;
 $card-shadow: 0 0 2px 0 $bg-dark, 0px 2px 2px 0 $bg-dark-dim;
 $card-shadow-primary: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
 
-// Mobile Background
+// Image Assets
 // --------------------------------------------------
 $mobile-bg: url('https://chanshiyu.com/poi/2019/mobile.jpg');
 $aplayer-bg: url('https://chanshiyu.com/poi/2019/reimu.png');
+$aplayer-bg: url('https://chanshiyu.com/poi/2019/reimu.png');
+$backtop-bg: url('https://chanshiyu.com/poi/2019/back-top.png');
