@@ -154,8 +154,13 @@
 
   .site-info {
     padding-bottom: 6px;
-    font-size: $font-size-normal;
     text-align: center;
+    @include pc-layout {
+      font-size: $font-size-normal;
+    }
+    @include sp-layout {
+      font-size: $font-size-small;
+    }
 
     a {
       transition: color 0.3s ease-out;
