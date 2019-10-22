@@ -1,10 +1,10 @@
 <template>
-  <div :class="['pagination', hide && 'hide']">
+  <div v-show="!hide" class="pagination">
     <div class="previous">
-      <Spinner v-if="loading"></Spinner>
+      <Spinner v-if="loading" />
       <div v-else class="btn cursor">
-        <span :class="isDisabledPrev && 'disabled'" @click="handlePage('prev')">Prev</span>
-        <span :class="isDisabledNext && 'disabled'" @click="handlePage('next')">Next</span>
+        <span v-show="!isDisabledPrev" @click="handlePage('prev')">Prev</span>
+        <span v-show="!isDisabledNext" @click="handlePage('next')">Next</span>
       </div>
     </div>
     <div class="rect"></div>
@@ -48,6 +48,6 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-@import './index.less';
+<style lang="scss" scoped>
+@import './index.scss';
 </style>

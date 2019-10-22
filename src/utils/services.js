@@ -43,8 +43,7 @@ const createCall = async document => {
 export const queryArchivesCount = () => createCall(documents.queryArchivesCount({ username, repository }))
 
 // 获取灵感数量
-export const queryInspirationCount = () =>
-  createCall(documents.queryInspirationCount({ username, repository }))
+export const queryInspirationCount = () => createCall(documents.queryInspirationCount({ username, repository }))
 
 // 按分类 & 标签筛选文章
 export const queryFilterArchivesCount = ({ label, milestone }) =>
@@ -185,8 +184,8 @@ export const increaseHot = post => {
   }).catch(console.error)
 }
 
-// 喜欢小站
-export const likeSite = async type => {
+// Nya~~
+export const queryLike = async type => {
   return new Promise(resolve => {
     if (isDev) return resolve(0)
     const query = new AV.Query('Counter')
@@ -222,7 +221,7 @@ export const likeSite = async type => {
 }
 
 // 访问来源
-export const visitor = async referrer => {
+export const visitorStatistics = async referrer => {
   return new Promise(resolve => {
     if (isDev) return resolve()
     const query = new AV.Query('Visitor')

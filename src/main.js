@@ -14,9 +14,8 @@ import config from './config'
 // Layout and Font
 import 'aos/dist/aos.css'
 import 'gitalk/dist/gitalk.css'
-import './assets/font/fontello.less'
-import './style/animation.less'
-import './style/layout.less'
+import './assets/font/fontello.scss'
+import '@/styles/index.scss'
 
 // Global variable
 Vue.config.productionTip = false
@@ -25,11 +24,11 @@ Vue.prototype.$isMobile = isMobile().phone
 
 // Init Progress Bar
 const options = {
-  color: '#986DB2',
+  color: '#d68fe9',
   thickness: '4px',
   transition: {
     speed: '0.2s',
-    opacity: '0.6s',
+    opacity: '0.5s',
     termination: 300
   },
   autoRevert: true,

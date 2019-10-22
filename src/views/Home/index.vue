@@ -1,22 +1,17 @@
 <template>
   <div id="home">
     <Transition name="fade-transform" mode="out-in">
-      <div class="main" v-if="posts.length">
+      <div class="content" v-if="posts.length">
         <article
           class="card cursor"
           data-aos="fade-up"
           v-for="(post, index) in posts"
           :key="post.id"
-          @click="gotoPost(post.number)"
+          @click="gotoPost(post)"
           @mouseenter="showTips(post)"
         >
           <div class="post-header">
-            <Cover
-              :src="post.cover.src"
-              :alt="post.cover.title"
-              :loadCover="index < LOAD_INX"
-              @loadNext="loadNext"
-            />
+            <Cover :src="post.cover.src" :alt="post.cover.title" :loadCover="index < LOAD_INX" @loadNext="loadNext" />
             <div class="post-head">
               <h3>{{ post.title }}</h3>
               <span>{{ post.cover.title }}</span>
@@ -94,20 +89,14 @@ export default {
     ...mapState({
       totalCount: state => state.totalCount
     }),
-    currentCount() {
-      let count = 0
-      this.list.forEach((o, i) => {
-        if (i <= this.page) {
-          count += o.length
-        }
-      })
-      return count
+    maxPage() {
+      return Math.ceil(this.totalCount / this.pageSize)
     },
     isDisabledPrev() {
       return this.page <= 1
     },
     isDisabledNext() {
-      return this.currentCount >= this.totalCount
+      return this.page >= this.maxPage
     }
   },
   async created() {
@@ -115,7 +104,6 @@ export default {
       await this.$store.dispatch('queryArchivesCount')
     }
     await this.queryPosts()
-
     AOS.init({
       duration: 2000,
       easing: 'ease',
@@ -148,7 +136,7 @@ export default {
       this.scrollTop(() => {
         this.page = queryPage
         this.posts = posts
-        this.$set(this.list, queryPage, posts)
+        this.list[queryPage] = posts
       })
 
       // 获取文章热度
@@ -170,8 +158,8 @@ export default {
       this.LOAD_INX += 1
     },
     // 跳转文章页
-    gotoPost(number) {
-      this.$router.push({ name: 'post', params: { number } })
+    gotoPost(post) {
+      this.$router.push({ name: 'post', params: { number: post.number, post } })
     },
     // 看板娘
     showTips(post) {
@@ -182,6 +170,6 @@ export default {
 }
 </script>
 
-<style lang="less" scope>
-@import './index.less';
+<style lang="scss" scope>
+@import './index.scss';
 </style>

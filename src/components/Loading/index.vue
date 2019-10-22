@@ -1,12 +1,16 @@
 <template>
-  <div class="loading"><img :src="$config.loadingImg" alt /></div>
+  <img class="loading" :src="$config.loadingImg" alt />
 </template>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .loading {
-  img {
-    margin: 1rem auto;
-    width: 1rem;
+  @include pc-layout {
+    margin: 100px auto;
+    width: 100px;
+  }
+  @include sp-layout {
+    margin: 150px auto;
+    width: 80px;
   }
 }
 </style>

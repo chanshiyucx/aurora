@@ -1,0 +1,116 @@
+// Colors
+// colors for theme.
+// --------------------------------------------------
+$whitesmoke: #f5f5f5;
+$gainsboro: #eee;
+$gray-lighter: #ddd;
+$grey-light: #ccc;
+$grey: #bbb;
+$grey-dark: #999;
+$grey-dim: #666;
+$black-light: #555;
+$black-dim: #333;
+$black-deep: #222;
+$purple: #d68fe9;
+$purple-dark: #b28fce;
+$purple-dim: #986db2;
+$purple-deep: #b854d4;
+
+// Scaffolding
+// Settings for some of the most global styles.
+// --------------------------------------------------
+
+// Global text color on <body>
+$text-color: $black-light;
+
+// Global link color.
+$link-color: $purple-deep;
+
+// Selection
+$selection-bg: $purple;
+$selection-color: white;
+
+// Panel
+$panel-color: #5d3523;
+$panel-bg-color: #fbf4f1;
+$panel-theme-bg-from-color: #fbc2eb;
+$panel-theme-bg-to-color: #a6c1ee;
+$panel-theme-border: #ffe4d8;
+
+// Text Clip
+$text-clip-start: #fb618d;
+$text-clip-center: #8dc00a;
+$text-clip-end: $purple;
+
+// Background
+$bg-white: rgba(255, 255, 255, 0.4);
+$bg-white-dim: rgba(255, 255, 255, 0.6);
+$bg-white-deep: rgba(255, 255, 255, 0.8);
+$bg-dark: rgba(0, 0, 0, 0.1);
+$bg-dark-dim: rgba(0, 0, 0, 0.2);
+$bg-dark-deep: rgba(0, 0, 0, 0.3);
+$bg-aplayer: rgba(178, 143, 206, 0.66);
+$bg-sp-color: #f4f8fb;
+$bg-dark-line: rgba(0, 0, 0, 0.08);
+
+// Typography
+// Font, line-height, and elements colors.
+// --------------------------------------------------
+
+// Font families.
+$font-family-base: 'Fira Mono', 'Noto Serif SC', -apple-system, Roboto, Helvetica Neue, sans-serif;
+
+// Font Weight
+$font-weight-normal: 400;
+$font-weight-bold: 600;
+$font-weight-bolder: 700;
+
+// Font size
+$font-size-base: 14px;
+$font-size-small: $font-size-base - 2px;
+$font-size-normal: $font-size-base + 1px;
+$font-size-large: $font-size-base + 2px;
+$font-size-larger: $font-size-base + 4px;
+
+// Headings font size
+$font-size-headings-step: 2px;
+$font-size-headings-base: 24px;
+
+// Global line height
+$line-height-base: 1.6;
+$line-height-block: 1.8;
+
+// Z-index master list
+// --------------------------------------------------
+$zindex-bottom: -1;
+$zindex-1: 1;
+$zindex-2: 10;
+$zindex-3: 100;
+$zindex-4: 1000;
+
+// Layout sizes
+// --------------------------------------------------
+$page-desktop: 876px;
+
+// Padding sizes
+// --------------------------------------------------
+$card-padding-small: 8px 10px;
+$card-padding: 12px 14px;
+$code-padding: 12px 14px;
+
+//  Card shadow
+// --------------------------------------------------
+$card-shadow: 0 0 2px 0 $bg-dark, 0px 2px 2px 0 $bg-dark-dim;
+$card-shadow-primary: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
+$card-shadow-hover: 0 10px 20px $bg-dark-dim, 0 6px 6px $bg-dark-deep;
+$card-shadow-sp: 0 14px 38px rgba(0, 0, 0, 0.08), 0 3px 8px rgba(0, 0, 0, 0.06);
+
+// Image Assets
+// --------------------------------------------------
+$mobile-bg: url('https://chanshiyu.com/poi/2019/mobile.jpg');
+$aplayer-bg: url('https://chanshiyu.com/poi/2019/reimu.png');
+$backtop-bg: url('https://chanshiyu.com/poi/2019/back-top.png');
+
+// Transition
+// --------------------------------------------------
+$transition-base: all 0.3s ease 0s, transform 0.6s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;

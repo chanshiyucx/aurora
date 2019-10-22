@@ -18,25 +18,25 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .qrcode {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 0.1rem;
+  padding: 10px;
 
   h3 {
-    margin-bottom: 0.1rem;
-    font-size: 0.18rem;
-    font-weight: normal;
-    line-height: 0.32rem;
+    margin-bottom: 10px;
+    font-size: $font-size-larger;
+    font-weight: $font-weight-normal;
+    line-height: 32px;
   }
 
   img {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 150px;
+    height: 150px;
     border-radius: 3px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 4px $bg-dark-deep;
   }
 }
 </style>

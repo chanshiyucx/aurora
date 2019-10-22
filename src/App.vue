@@ -2,13 +2,13 @@
   <div id="app">
     <vue-progress-bar></vue-progress-bar>
     <Header />
-    <div class="page">
+    <main class="main">
       <Transition name="fade-transform" mode="out-in">
         <keep-alive :exclude="['post']" :max="10">
           <RouterView />
         </keep-alive>
       </Transition>
-    </div>
+    </main>
     <Footer @dropPanel="showPanel = true" />
     <Panel v-show="showPanel" @hidePanel="showPanel = false" />
     <ScrollTop />
@@ -36,14 +36,19 @@ export default {
     }
   },
   created() {
-    document.title = this.$config.title
+    this.initSite()
+    this.initProgress()
     this.visitorStatistics()
-    if (!this.$isMobile) this.initProgress()
   },
   mounted() {
-    if (!this.$isMobile) this.$Progress.finish()
+    this.$Progress.finish()
   },
   methods: {
+    // 初始化站点信息
+    initSite() {
+      const { title, subtitle } = this.$config
+      document.title = `${title} | ${subtitle}`
+    },
     // 注册顶部进度条
     initProgress() {
       this.$Progress.start()
@@ -65,16 +70,19 @@ export default {
 }
 </script>
 
-<style lang="less" scope>
+<style lang="scss" scope>
 #app {
   position: relative;
-  padding-bottom: 1rem;
-  text-align: center;
+  @include pc-layout {
+    padding-bottom: 100px;
+  }
+  @include sp-layout {
+    padding-bottom: 50px;
+  }
 
-  .page {
+  .main {
     margin: 0 auto;
-    padding: 0 0.12rem;
-    max-width: 900px;
+    max-width: $page-desktop;
     user-select: text;
   }
 }

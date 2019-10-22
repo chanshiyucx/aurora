@@ -1,0 +1,125 @@
+#home {
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    @include pc-layout {
+      justify-content: space-between;
+    }
+    @include sp-layout {
+      justify-content: space-around;
+    }
+  }
+
+  article {
+    display: flex;
+    flex-direction: column;
+    transition: $transition-base;
+    @include pc-layout {
+      margin-bottom: 15px;
+      width: 49.2%;
+      &:hover {
+        transform: translateY(-6px);
+        box-shadow: $card-shadow-hover;
+      }
+    }
+    @include sp-layout {
+      margin: 0 3vw 4vw;
+    }
+
+    .post-header {
+      position: relative;
+      overflow: hidden;
+
+      .post-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: 0 12px;
+        width: 100%;
+        height: 50px;
+        background-color: $bg-white-dim;
+        box-shadow: 0 -1px 2px $bg-dark;
+      }
+
+      h3,
+      span {
+        @include clip;
+      }
+
+      h3 {
+        display: inline-block;
+        font-size: $font-size-larger;
+        font-weight: $font-weight-normal;
+      }
+
+      span {
+        font-size: $font-size-small;
+        text-transform: capitalize;
+        @include sp-layout {
+          transform: translateY(2px);
+        }
+      }
+    }
+
+    .post-body {
+      padding: $card-padding;
+      text-align: justify;
+
+      p {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        font-size: $font-size-base;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+        @include pc-layout {
+          -webkit-line-clamp: 3;
+        }
+        @include sp-layout {
+          -webkit-line-clamp: 4;
+        }
+      }
+    }
+
+    .post-meta {
+      display: flex;
+      padding: $card-padding;
+      height: 50px;
+      border-top: 1px solid $bg-dark-line;
+
+      & > span {
+        display: flex;
+        align-items: center;
+        margin-right: 12px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        span {
+          padding-right: 6px;
+          &:last-child {
+            padding-right: 0;
+          }
+        }
+
+        .icon {
+          margin-right: 4px;
+        }
+        .icon-fire {
+          margin-top: -2px;
+        }
+      }
+    }
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 12px 0 24px;
+  }
+}

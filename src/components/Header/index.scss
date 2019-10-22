@@ -1,0 +1,118 @@
+#header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include pc-layout {
+    padding: 50px 0;
+  }
+  @include sp-layout {
+    margin-bottom: 4vw;
+    padding: 40px 0;
+    color: white;
+    background-image: $mobile-bg;
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+  }
+
+  .title,
+  .subtitle {
+    font-family: GuDianMingChaoTi;
+    letter-spacing: 4px;
+    @include pc-layout {
+      animation: fadeInDown 0.5s ease-out forwards;
+    }
+    @include sp-layout {
+      animation: fadeInDownSP 0.5s ease-out forwards;
+    }
+  }
+
+  .title {
+    transition: color 0.3s ease-out;
+    @include pc-layout {
+      font-size: 48px;
+      line-height: 60px;
+    }
+    @include sp-layout {
+      font-size: 44px;
+      line-height: 56px;
+    }
+    &:hover {
+      color: $link-color;
+    }
+  }
+
+  .subtitle {
+    @include pc-layout {
+      font-size: 22px;
+      line-height: 32px;
+    }
+    @include sp-layout {
+      font-size: 20px;
+      line-height: 30px;
+    }
+  }
+
+  nav {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    overflow: hidden;
+    @include pc-layout {
+      padding: 0 32px;
+      height: 60px;
+      background-color: $bg-dark;
+      box-shadow: 0 0 10px $bg-dark-dim inset;
+      transition: all 0.5s ease;
+      animation: fadeIn 0.5s ease-out;
+      &:hover {
+        border-radius: 30px;
+      }
+    }
+    @include sp-layout {
+      width: 100%;
+      height: 56px;
+      transform: translateY(40px);
+      box-shadow: 0 -1px 2px $bg-dark;
+      text-shadow: 0 1px $bg-dark-deep;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: -4px;
+        filter: blur(4px);
+        z-index: $zindex-bottom;
+        background-image: $mobile-bg;
+        background-size: cover;
+        background-position: bottom;
+        background-repeat: no-repeat;
+      }
+    }
+
+    a {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      width: 50px;
+      transition: color 0.3s ease;
+      @include pc-layout {
+        font-size: $font-size-large;
+      }
+      @include sp-layout {
+        font-size: $font-size-normal;
+      }
+      &:hover {
+        color: $link-color;
+      }
+    }
+  }
+}

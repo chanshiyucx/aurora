@@ -1,38 +1,52 @@
 <template>
-  <div id="footer">
-    <div v-if="showWaifu && !$isMobile" class="waifu">
-      <div v-show="tips && isMini" :class="['tips', this.waifu === 'tia' && 'tia']" v-html="tips"></div>
-      <canvas @click="handleClickWaifu" id="live2d" width="280" height="250" />
-    </div>
-    <div class="menu" v-if="!$isMobile">
-      <div class="tool" v-if="showWaifu">
-        <ul>
-          <li
-            class="cursor"
-            v-for="item in tool"
-            :key="item.type"
-            @click="handleClick(item.type)"
-            @mouseenter="handleHover(item.type)"
-          >
-            <i :class="['icon', `icon-${item.icon}`]"></i>
-          </li>
-        </ul>
-        <div class="arrow"><i class="icon icon-emo-devil"></i></div>
+  <footer id="footer">
+    <div class="prpr" v-if="!$isMobile">
+      <div v-if="showWaifu" class="waifu">
+        <div v-show="tips && isMini" :class="['tips', this.waifu === 'tia' && 'tia']" v-html="tips"></div>
+        <canvas @click="handleClickWaifu" id="live2d" width="280" height="250" />
       </div>
-      <APlayer :class="isMini && 'mini'" :audio="audio" fixed mini @update:mini="handleUpdate" />
+      <div class="tool">
+        <div class="menu" v-if="showWaifu">
+          <ul>
+            <li
+              class="cursor"
+              v-for="item in menu"
+              :key="item.type"
+              @click="handleClick(item.type)"
+              @mouseenter="handleHover(item.type)"
+            >
+              <i :class="['icon', `icon-${item.icon}`]"></i>
+            </li>
+          </ul>
+          <div class="devil">
+            <i class="icon icon-emo-devil"></i>
+          </div>
+        </div>
+        <APlayer :class="isMini && 'mini'" :audio="audio" fixed mini @update:mini="handleUpdate" />
+      </div>
     </div>
     <div class="site-info">
-      <p><i class="icon icon-copyright"></i>2017-2019 <i class="icon icon-heart"></i> {{ $config.title }}</p>
+      <p>
+        <i class="icon icon-copyright"></i>2017-2019
+        <i class="icon icon-heart"></i>
+        {{ $config.title }}
+      </p>
       <p>
         Theme -
-        <a rel="noopener noreferrer" target="_blank" href="https://github.com/chanshiyucx/aurora">Aurora</a> |
+        <a rel="noopener noreferrer" target="_blank" href="https://github.com/chanshiyucx/aurora">Aurora</a>
+        |
         {{ $config.subtitle }}
       </p>
     </div>
-    <div v-if="!$isMobile" class="sakura cursor" @click="dropPanel" @mouseenter="handleHover('panel')">
-      <img :src="sakura" alt="theme" />
-    </div>
-  </div>
+    <img
+      v-if="!$isMobile"
+      class="sakura cursor"
+      :src="sakura"
+      @click="dropPanel"
+      @mouseenter="handleHover('panel')"
+      alt="sakura"
+    />
+  </footer>
 </template>
 
 <script>
@@ -50,11 +64,10 @@ export default {
   data() {
     return {
       sakura,
-      waifu: 'tia',
       showWaifu: true,
+      waifu: 'tia',
       textures: '',
-      tipsTimer: '',
-      tool: [
+      menu: [
         { icon: 'venus-double', type: 'switch' },
         { icon: 't-shirt', type: 'dressup' },
         { icon: 'camera', type: 'takephoto' },
@@ -76,39 +89,36 @@ export default {
     }
   },
   methods: {
-    // 换装
-    dressup(switchWaifu) {
+    dressup(switchWaifu = false) {
       if (switchWaifu) this.waifu = this.waifu === 'tia' ? 'pio' : 'tia'
-      const path = '/live2d/'
       // 获取装扮
       const waifuCostume = costume[this.waifu]
-      let textures = ''
-      while (!textures || this.textures === textures) {
+      let textures = this.textures
+      while (textures === this.textures) {
         textures = waifuCostume[random(0, waifuCostume.length - 1)]
       }
       this.textures = textures
       // 获取模型
-      model.model = `moc/${this.waifu || 'tia'}.moc`
+      model.model = `moc/${this.waifu}.moc`
       model.textures = [textures]
-      // 设置不同的缩放比例
+      // 设置缩放比例
       model.layout.width = this.waifu === 'tia' ? 1.82 : 2
       window.waifuModel = model
-      window.loadlive2d('live2d', path, '')
+      window.loadlive2d('live2d', '/live2d/', '')
     },
-    // 一言轮播
     loopTips() {
-      this.tipsTimer = setTimeout(this.loopTips, 16 * 1000)
+      setTimeout(this.loopTips, 16 * 1000)
       const now = new Date()
-      if (this.tips || (!!this.tipsUpdateAt && now - this.tipsUpdateAt < 6000)) return
+      if (this.tips || (this.tipsUpdateAt && now - this.tipsUpdateAt < 6000)) return
       const inx = random(0, hitokotos.length - 1)
       const nextTips = hitokotos[inx].hitokoto
       this.$store.dispatch('showTips', { tips: nextTips })
     },
     handleClickWaifu() {
-      let nextTips
-      while (!nextTips || nextTips === this.tips) {
-        let index = random(0, waifuClick.length - 1)
-        nextTips = waifuClick[index]
+      let nextTips = this.tips
+      while (nextTips === this.tips) {
+        const inx = random(0, waifuClick.length - 1)
+        nextTips = waifuClick[inx]
       }
       this.$store.dispatch('showTips', { tips: nextTips })
     },
@@ -124,7 +134,6 @@ export default {
       if (!tips) return
       this.$store.dispatch('showTips', { tips })
     },
-    // 看板娘交互
     handleClick(type) {
       switch (type) {
         case 'switch':
@@ -140,8 +149,8 @@ export default {
           break
         case 'talk':
           {
-            const index = random(0, hitokotos.length - 1)
-            const tips = hitokotos[index].hitokoto
+            const inx = random(0, hitokotos.length - 1)
+            const tips = hitokotos[inx].hitokoto
             this.$store.dispatch('showTips', { tips })
           }
           break
@@ -155,11 +164,9 @@ export default {
           return
       }
     },
-    // 播放器最小化
     handleUpdate(isMini) {
       this.isMini = isMini
     },
-    // 打开面板
     dropPanel() {
       this.$emit('dropPanel')
     }
@@ -167,6 +174,6 @@ export default {
 }
 </script>
 
-<style lang="less" scope>
-@import './index.less';
+<style lang="scss" scope>
+@import './index.scss';
 </style>

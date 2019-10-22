@@ -2,17 +2,20 @@
   position: fixed;
   top: 0px;
   left: 0px;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  z-index: $zindex-4;
+  @include sp-layout {
+    display: none;
+  }
 
   .mask {
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.4);
+    width: 100vw;
+    height: 100vh;
+    background-color: $bg-white;
   }
 
   .container {
@@ -20,8 +23,8 @@
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     perspective: 600px;
     transform: translateY(-100%);
     will-change: transform;
@@ -29,26 +32,25 @@
   }
 
   .wrapper {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     will-change: transform;
     animation: 3s ease-out 0s 1 normal forwards running dropWave;
   }
 
   .short-line,
   .long-line {
-    pointer-events: all;
     position: absolute;
     top: 0px;
     left: 50%;
-    width: 6rem;
-    height: calc(50% - 1.8rem);
+    width: 600px;
+    height: calc(50% - 180px);
     transform: translateX(-50%);
     div {
       position: absolute;
       width: 2px;
       height: 150%;
-      background-color: rgb(93, 53, 35);
+      background-color: $panel-color;
     }
   }
 
@@ -57,16 +59,16 @@
       bottom: 0px;
     }
     div:nth-child(1) {
-      left: 0.55rem;
+      left: 55px;
     }
     div:nth-child(2) {
-      right: 0.55rem;
+      right: 55px;
     }
   }
 
   .long-line {
     div {
-      bottom: -0.25rem;
+      bottom: -25px;
       &::after {
         content: '';
         display: block;
@@ -75,15 +77,15 @@
         bottom: -4.5px;
         width: 10px;
         height: 10px;
-        background-color: rgb(93, 53, 35);
+        background-color: $panel-color;
         border-radius: 50%;
       }
     }
     div:nth-child(1) {
-      left: 0.25rem;
+      left: 25px;
     }
     div:nth-child(2) {
-      right: 0.25rem;
+      right: 25px;
     }
   }
 
@@ -92,26 +94,26 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 6rem;
-    border-radius: 0.12rem;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 20px;
+    width: 600px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: $bg-dark-dim 0px 0px 20px;
     transform: translate(-50%, -50%);
 
     .header {
       width: 100%;
+      height: 50px;
       box-sizing: border-box;
-      height: 0.5rem;
-      border-radius: 0.12rem 0.12rem 0 0;
-      background-color: rgb(251, 244, 241);
-      border-bottom: 1px solid rgb(93, 53, 35);
+      border-radius: 12px 12px 0 0;
+      border-bottom: 1px solid $panel-color;
+      background-color: $panel-bg-color;
 
       .inner {
         margin: 0px auto;
         width: 85%;
-        font-size: 0.2rem;
-        line-height: 0.5rem;
-        color: rgb(93, 53, 35);
-        text-align: center;
+        font-size: 20px;
+        line-height: 50px;
+        color: $panel-color;
         letter-spacing: 0.1em;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -122,11 +124,11 @@
     .body {
       position: relative;
       width: 100%;
-      height: 2.6rem;
-      background-color: rgb(255, 255, 255);
+      height: 260px;
+      background-color: white;
 
       .swiper-wrapper {
-        width: 6rem;
+        width: 600px;
         overflow: hidden;
 
         ul {
@@ -135,9 +137,9 @@
 
         .swiper {
           display: flex;
-          width: 24rem;
+          width: 2400px;
           li {
-            width: 6rem;
+            width: 600px;
           }
         }
 
@@ -149,24 +151,21 @@
       .btn {
         position: absolute;
         top: 50%;
-        width: 0.66rem;
-        height: 0.66rem;
-        background-color: rgb(251, 244, 241);
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        border: none;
-        text-align: center;
+        width: 66px;
+        height: 66px;
         overflow: hidden;
-        outline: none;
+        font-size: 28px;
+        border-radius: 50%;
+        box-shadow: $bg-dark-dim 0px 0px 10px;
+        background-color: $panel-bg-color;
+        transform: translate(-50%, -50%);
         transition: color 0.3s ease-in-out;
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
-        font-size: 0.28rem;
 
         i {
           display: inline-block;
-          font-size: 0.28rem;
-          z-index: 10;
-          color: rgb(93, 53, 35);
+          font-size: 28px;
+          color: $panel-color;
+          transition: color 0.3s ease-out;
         }
         &::before {
           content: '';
@@ -174,17 +173,16 @@
           position: absolute;
           left: 0;
           top: 0;
-          width: 0.66rem;
-          height: 0.66rem;
+          width: 66px;
+          height: 66px;
           border-radius: 50%;
           transform: scale(0);
-          background-color: rgb(93, 53, 35);
+          background-color: $panel-color;
           transition: transform 0.3s ease-in-out;
-          z-index: 0;
         }
         &:hover {
           i {
-            color: #efefef;
+            color: $whitesmoke;
           }
           &::before {
             transform: scale(1);
@@ -213,11 +211,11 @@
         left: 0;
         bottom: 0;
         width: 100%;
-        height: 0.6rem;
-        line-height: 0.6rem;
-        font-size: 0.18rem;
+        height: 60px;
+        line-height: 60px;
+        font-size: $font-size-larger;
         span {
-          color: var(--primary-color);
+          color: $purple-dim;
         }
       }
     }
@@ -225,32 +223,31 @@
     .footer {
       position: relative;
       width: 100%;
-      height: 0.5rem;
-      border-radius: 0 0 0.12rem 0.12rem;
-      border-top: 1px solid rgb(93, 53, 35);
-      background-color: rgb(251, 244, 241);
+      height: 50px;
+      border-radius: 0 0 12px 12px;
+      border-top: 1px solid $panel-color;
+      background-color: $panel-bg-color;
 
       div {
         position: absolute;
         bottom: 0px;
         left: 50%;
-        width: 2rem;
-        height: 0.5rem;
-        line-height: 0.48rem;
+        width: 200px;
+        height: 50px;
+        font-size: $font-size-large;
+        color: $whitesmoke;
+        line-height: 48px;
+        letter-spacing: 2px;
         overflow: hidden;
         border-style: none;
-        border-radius: 0.3rem;
-        box-shadow: var(--light-color) 0px 0px 10px;
-        background-color: var(--light-color);
+        border-radius: 30px;
+        box-shadow: $purple 0px 0px 10px;
+        background-color: $purple;
         transform: translate(-50%, 50%);
         transition: all 0.5s cubic-bezier(0.86, -0.02, 0.08, 1.02) 0s;
-        text-align: center;
-        letter-spacing: 2px;
-        color: #eee;
-        font-size: 0.16rem;
 
         &:hover {
-          box-shadow: var(--primary-color) 0px 0px 10px;
+          box-shadow: $purple 0px 0px 10px;
           &::before {
             transform: translateX(0px);
           }
@@ -265,22 +262,22 @@
           left: 0px;
           width: 100%;
           height: 100%;
-          border-radius: 0.3rem;
+          border-radius: 30px;
         }
-
         &::before {
-          background-color: var(--primary-color);
+          background-color: $purple-dim;
           transform: translateX(-100%);
           transition: all 0.5s cubic-bezier(0.86, -0.02, 0.08, 1.02) 0s;
         }
         &::after {
           content: attr(data-title);
-          color: rgb(255, 255, 255);
+          color: white;
           letter-spacing: 1px;
         }
       }
     }
   }
+
   .zoom {
     display: flex;
     justify-content: center;
@@ -290,14 +287,14 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(255, 255, 255, 0.66);
+    background-color: $bg-white-dim;
 
     img {
-      width: 4rem;
-      height: 4rem;
+      width: 400px;
+      height: 400px;
       border-radius: 3px;
-      box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 10px;
-      border: 10px solid rgba(255, 255, 255, 0.66);
+      border: 10px solid $bg-white-dim;
+      box-shadow: $bg-dark-deep 0px 0px 10px;
       animation: zoomIn 0.3s ease-out 0s forwards;
     }
   }

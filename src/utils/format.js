@@ -16,7 +16,7 @@ export const formatPost = post => {
     src: cover[2] || config.defaultCover
   }
   post.description = result[2]
-  post.created_at = format(created_at, 'zh_CN')
+  post.created_at = format(created_at, 'zh_CN').replace(/\s/, '')
   return post
 }
 

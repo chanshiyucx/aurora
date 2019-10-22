@@ -1,18 +1,14 @@
 <template>
-  <div id="header">
-    <div class="inner">
-      <RouterLink class="title" to="/">{{ $config.title }}</RouterLink>
-      <span class="subtitle">{{ $config.subtitle }}</span>
-      <ul>
-        <li v-for="menu in displayMenu" :key="menu.path">
-          <RouterLink :to="menu.path">
-            <i :class="['icon', `icon-${menu.icon}`]" />
-            {{ menu.title }}
-          </RouterLink>
-        </li>
-      </ul>
-    </div>
-  </div>
+  <header id="header">
+    <RouterLink class="title" to="/">{{ $config.title }}</RouterLink>
+    <span class="subtitle">{{ $config.subtitle }}</span>
+    <nav>
+      <RouterLink v-for="menu in displayMenu" :key="menu.path" :to="menu.path">
+        <i :class="['icon', `icon-${menu.icon}`]" />
+        {{ menu.title }}
+      </RouterLink>
+    </nav>
+  </header>
 </template>
 
 <script>
@@ -42,6 +38,6 @@ export default {
 }
 </script>
 
-<style lang="less" scope>
-@import './index.less';
+<style lang="scss" scope>
+@import './index.scss';
 </style>

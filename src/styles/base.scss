@@ -1,0 +1,260 @@
+@font-face {
+  font-family: GuDianMingChaoTi;
+  font-weight: bold;
+  src: url('../assets/font/GuDianMingChaoTi.ttf');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::selection {
+  background: $selection-bg;
+  color: $selection-color;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  color: $text-color;
+  line-height: $line-height-base;
+  text-shadow: 0 0 1px $bg-dark-dim;
+  user-select: none;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  @include cursor;
+  @include scrollBar;
+}
+
+body,
+#app {
+  min-height: 100vh;
+  @include pc-layout {
+    background-color: $bg-white-dim;
+  }
+  @include sp-layout {
+    background-color: $bg-sp-color;
+  }
+}
+
+img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+  word-wrap: break-word;
+}
+
+button {
+  border: none;
+  outline: none;
+}
+
+a,
+button,
+.waifu,
+.cursor {
+  @include cursor-link;
+}
+
+input,
+textarea,
+button {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 0;
+}
+
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  @include sp-layout {
+    display: none;
+  }
+}
+
+.card {
+  overflow: hidden;
+  border-radius: 3px;
+  background-color: $bg-white-deep;
+  @include pc-layout {
+    box-shadow: $card-shadow-primary;
+  }
+  @include sp-layout {
+    box-shadow: $card-shadow-sp;
+  }
+}
+
+/* 代码高亮 */
+code {
+  width: 100%;
+  font-family: $font-family-base;
+  font-size: $font-weight-normal;
+  text-shadow: 0 0 1px $bg-dark-deep;
+  text-align: left;
+  white-space: pre;
+  letter-spacing: 0;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  tab-size: 4;
+  hyphens: none;
+}
+
+pre {
+  padding: $code-padding;
+  max-height: 600px;
+  line-height: 1.5;
+  box-shadow: #aaa 0px 10px 8px -10px inset, #aaa 0px -10px 8px -10px inset;
+  overflow: auto;
+  @include scrollBar;
+}
+
+td.hljs-ln-numbers {
+  padding-right: 16px;
+  text-align: center;
+}
+
+/* Gitalk */
+.markdown-body code {
+  color: $purple;
+  font-weight: 700;
+}
+#gitalk {
+  .gt-comment-body,
+  .gt-btn-text,
+  textarea {
+    font-family: $font-family-base;
+  }
+
+  .gt-container {
+    text-align: left;
+    a {
+      color: $purple;
+      border-bottom: none;
+    }
+    .gt-svg svg {
+      fill: $purple;
+    }
+    .gt-comment-date,
+    .gt-container .gt-comment-text {
+      color: #666;
+    }
+    .gt-ico-text {
+      color: $purple;
+    }
+    .gt-btn-login {
+      margin-top: 0;
+      border: none;
+      background-color: $purple-dim !important;
+      span {
+        line-height: 1;
+        color: white;
+      }
+      @media screen and (max-width: 479px) {
+        margin-top: 9px !important;
+      }
+    }
+  }
+  .gt-meta {
+    padding-top: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    .gt-counts {
+      float: left;
+    }
+    .gt-popup {
+      margin-top: 10px;
+      .is--active::before {
+        background: $purple;
+      }
+    }
+  }
+  .gt-header {
+    textarea,
+    .gt-header-preview {
+      border: none;
+      min-height: 100px;
+      max-height: 200px;
+      background-color: $bg-white-dim;
+      background-image: $aplayer-bg;
+      background-size: 120px;
+      background-repeat: no-repeat;
+      background-position: 99% bottom;
+      overflow: scroll;
+    }
+    textarea {
+      height: 120px !important;
+    }
+    .gt-header-controls-tip {
+      float: left;
+    }
+    .gt-btn {
+      border: none;
+      background-color: $bg-white-dim;
+    }
+    .gt-btn-public {
+      background-color: $purple-dim;
+      span {
+        color: white;
+      }
+    }
+    .gt-avatar-github {
+      svg {
+        fill: $purple-dim;
+      }
+    }
+  }
+  .gt-comments {
+    .gt-comment-content {
+      border-radius: 3px;
+      background-color: $bg-white-dim;
+      box-shadow: $card-shadow-primary;
+      transition: $transition-base;
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: $card-shadow-hover;
+      }
+    }
+    .gt-btn-loadmore {
+      border: none;
+      background-color: $purple-dim;
+      span {
+        color: white;
+      }
+    }
+    .gt-comment-body {
+      max-height: 500px;
+      overflow: auto;
+      @include scrollBar;
+    }
+  }
+  textarea,
+  .gt-btn-login,
+  .gt-btn-preview,
+  .gt-btn-loadmore,
+  .gt-btn-public,
+  .gt-avatar {
+    box-shadow: $card-shadow-primary;
+  }
+}
