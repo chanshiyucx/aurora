@@ -28,7 +28,7 @@ export default {
   h3 {
     margin-bottom: 10px;
     font-size: $font-size-larger;
-    font-weight: normal;
+    font-weight: $font-weight-normal;
     line-height: 32px;
   }
 

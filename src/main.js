@@ -28,7 +28,7 @@ const options = {
   thickness: '4px',
   transition: {
     speed: '0.2s',
-    opacity: '0.6s',
+    opacity: '0.5s',
     termination: 300
   },
   autoRevert: true,

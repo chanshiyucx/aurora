@@ -14,6 +14,7 @@ $black-deep: #222;
 $purple: #d68fe9;
 $purple-dark: #b28fce;
 $purple-dim: #986db2;
+$purple-deep: #b854d4;
 
 // Scaffolding
 // Settings for some of the most global styles.
@@ -23,7 +24,7 @@ $purple-dim: #986db2;
 $text-color: $black-light;
 
 // Global link color.
-$link-color: $purple-dim;
+$link-color: $purple-deep;
 
 // Selection
 $selection-bg: $purple;
@@ -38,7 +39,7 @@ $panel-theme-border: #ffe4d8;
 
 // Text Clip
 $text-clip-start: #fb618d;
-$text-clip-center: #c7d35e;
+$text-clip-center: #8dc00a;
 $text-clip-end: $purple;
 
 // Background
@@ -50,6 +51,7 @@ $bg-dark-dim: rgba(0, 0, 0, 0.2);
 $bg-dark-deep: rgba(0, 0, 0, 0.3);
 $bg-aplayer: rgba(178, 143, 206, 0.66);
 $bg-sp-color: #f4f8fb;
+$bg-dark-line: rgba(0, 0, 0, 0.08);
 
 // Typography
 // Font, line-height, and elements colors.
@@ -59,8 +61,6 @@ $bg-sp-color: #f4f8fb;
 $font-family-base: 'Fira Mono', 'Noto Serif SC', -apple-system, Roboto, Helvetica Neue, sans-serif;
 
 // Font Weight
-$font-weight-lighter: 200;
-$font-weight-light: 300;
 $font-weight-normal: 400;
 $font-weight-bold: 600;
 $font-weight-bolder: 700;
@@ -89,8 +89,7 @@ $page-desktop: 876px;
 
 // Card sizes
 // --------------------------------------------------
-$card-padding: 12px;
-$card-padding-large: 16px;
+$card-padding: 12px 14px;
 
 //  Card shadow
 // --------------------------------------------------

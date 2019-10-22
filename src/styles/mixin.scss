@@ -43,3 +43,16 @@
 @mixin cursor-link {
   cursor: url('../assets/cursor/cursor_link.png'), auto;
 }
+
+@mixin clip {
+  color: white;
+  text-transform: capitalize;
+  background-image: linear-gradient(to right, $text-clip-start 10%, $text-clip-center 40%, $text-clip-end 70%);
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  animation: textclip 3s linear infinite;
+}

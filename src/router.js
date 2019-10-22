@@ -10,12 +10,12 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/post/:number',
+      name: 'post',
+      component: () => import('./views/Post')
     }
-    // {
-    //   path: '/post/:number',
-    //   name: 'post',
-    //   component: () => import('./views/Post')
-    // },
     // {
     //   path: '/archive',
     //   name: 'archive',

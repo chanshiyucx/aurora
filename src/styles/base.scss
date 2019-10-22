@@ -94,8 +94,13 @@ button {
 .card {
   border-radius: 3px;
   background-color: $bg-white-deep;
-  box-shadow: $card-shadow-primary;
   overflow: hidden;
+  @include pc-layout {
+    box-shadow: $card-shadow-primary;
+  }
+  @include sp-layout {
+    box-shadow: $card-shadow-sp;
+  }
 }
 
 // /* 代码高亮 */
@@ -103,7 +108,7 @@ button {
 //   width: 100%;
 //   font-family: 'Fira Mono', $font;
 //   font-size: 0.15rem;
-//   font-weight: normal;
+//   font-weight: $font-weight-normal;
 //   text-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
 //   text-align: left;
 //   white-space: pre;
@@ -224,7 +229,7 @@ button {
 //       border-radius: 3px;
 //       background-color: rgba(255, 255, 255, 0.66);
 //       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
-//       transition: all 0.3s ease 0s, transform 0.6s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
+//       transition: all 0.3s ease 0s, transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
 //       &:hover {
 //         transform: translateY(-4px);
 //         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.24);
