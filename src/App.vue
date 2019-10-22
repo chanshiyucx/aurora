@@ -84,9 +84,6 @@ export default {
     margin: 0 auto;
     max-width: $page-desktop;
     user-select: text;
-    @include sp-layout {
-      padding-top: 4vw;
-    }
   }
 }
 </style>

@@ -8,6 +8,7 @@
     padding: 50px 0;
   }
   @include sp-layout {
+    margin-bottom: 4vw;
     padding: 40px 0;
     color: white;
     background-image: $mobile-bg;
