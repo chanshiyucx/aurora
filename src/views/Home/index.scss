@@ -20,13 +20,12 @@
       width: 49.2%;
       &:hover {
         transform: translateY(-6px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.24);
+        box-shadow: $card-shadow-hover;
       }
     }
     @include sp-layout {
-      margin-bottom: 4vw;
-      width: 94vw;
-      box-shadow: 8px 14px 38px rgba(39, 44, 49, 0.06), 1px 3px 8px rgba(39, 44, 49, 0.03);
+      margin: 0 3vw 4vw;
+      box-shadow: $card-shadow-sp;
     }
 
     .post-header {

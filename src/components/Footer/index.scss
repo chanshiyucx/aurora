@@ -153,12 +153,13 @@
   }
 
   .site-info {
-    padding-bottom: 6px;
     text-align: center;
     @include pc-layout {
+      padding-bottom: 6px;
       font-size: $font-size-normal;
     }
     @include sp-layout {
+      padding-bottom: 4px;
       font-size: $font-size-small;
     }
 

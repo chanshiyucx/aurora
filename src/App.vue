@@ -73,7 +73,12 @@ export default {
 <style lang="scss" scope>
 #app {
   position: relative;
-  padding-bottom: 100px;
+  @include pc-layout {
+    padding-bottom: 100px;
+  }
+  @include sp-layout {
+    padding-bottom: 50px;
+  }
 
   .main {
     margin: 0 auto;

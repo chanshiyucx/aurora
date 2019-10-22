@@ -96,6 +96,8 @@ $card-padding-large: 16px;
 // --------------------------------------------------
 $card-shadow: 0 0 2px 0 $bg-dark, 0px 2px 2px 0 $bg-dark-dim;
 $card-shadow-primary: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
+$card-shadow-hover: 0 10px 20px $bg-dark-dim, 0 6px 6px $bg-dark-deep;
+$card-shadow-sp: 0 14px 38px rgba(0, 0, 0, 0.08), 0 3px 8px rgba(0, 0, 0, 0.06);
 
 // Image Assets
 // --------------------------------------------------
