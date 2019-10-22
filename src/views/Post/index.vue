@@ -77,6 +77,7 @@ export default {
     async queryPost(number) {
       this.post = await this.$store.dispatch('queryPost', { number })
     },
+    // 获取并增加热度
     async queryHot() {
       const hot = await this.$store.dispatch('increaseHot', { post: this.post })
       this.$set(this.post, 'times', hot)
