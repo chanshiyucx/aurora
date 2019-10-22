@@ -12,8 +12,8 @@ import {
   queryPage,
   queryHot,
   increaseHot,
-  likeSite,
-  visitor
+  queryLike,
+  visitorStatistics
 } from './utils/services'
 import { formatPost, formatCategory, formatInspiration, formatPage } from './utils/format'
 
@@ -53,7 +53,7 @@ export default new Vuex.Store({
       const totalCount = data.repository.issues.totalCount
       commit('setTotalCount', { totalCount })
     },
-    // 获取 分类 & 标签筛选文章数量
+    // 获取分类 & 标签筛选文章数量
     async queryFilterArchivesCount(context, payload) {
       const data = await queryFilterArchivesCount(payload)
       const count = data.search.issueCount
@@ -115,12 +115,12 @@ export default new Vuex.Store({
     },
     // 获取点赞数
     async queryLike(context, payload) {
-      const data = await likeSite(payload)
+      const data = await queryLike(payload)
       return data
     },
     // 统计访问来源
     async visitorStatistics(context, payload) {
-      await visitor(payload)
+      await visitorStatistics(payload)
     }
   }
 })

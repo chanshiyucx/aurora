@@ -2,13 +2,13 @@
   <div id="app">
     <vue-progress-bar></vue-progress-bar>
     <Header />
-    <div class="page">
+    <main class="main">
       <Transition name="fade-transform" mode="out-in">
         <keep-alive :exclude="['post']" :max="10">
           <RouterView />
         </keep-alive>
       </Transition>
-    </div>
+    </main>
     <Footer @dropPanel="showPanel = true" />
     <Panel v-show="showPanel" @hidePanel="showPanel = false" />
     <ScrollTop />
@@ -75,10 +75,13 @@ export default {
   position: relative;
   padding-bottom: 100px;
 
-  .page {
+  .main {
     margin: 0 auto;
     max-width: $page-desktop;
     user-select: text;
+    @include sp-layout {
+      padding-top: 4vw;
+    }
   }
 }
 </style>

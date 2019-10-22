@@ -20,7 +20,12 @@
   .subtitle {
     font-family: GuDianMingChaoTi;
     letter-spacing: 4px;
-    animation: fadeInDown 0.5s ease-out;
+    @include pc-layout {
+      animation: fadeInDown 0.5s ease-out forwards;
+    }
+    @include sp-layout {
+      animation: fadeInDownSP 0.5s ease-out forwards;
+    }
   }
 
   .title {

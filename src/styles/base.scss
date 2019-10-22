@@ -19,8 +19,8 @@ body {
   font-family: $font-family-base;
   font-size: $font-size-base;
   font-weight: $font-weight-normal;
-  line-height: $line-height-base;
   color: $text-color;
+  line-height: $line-height-base;
   text-shadow: 0 0 1px $bg-dark-dim;
   user-select: none;
   scroll-behavior: smooth;
@@ -34,7 +34,12 @@ body {
 body,
 #app {
   min-height: 100vh;
-  background-color: $bg-white-dim;
+  @include pc-layout {
+    background-color: $bg-white-dim;
+  }
+  @include sp-layout {
+    background-color: $bg-sp-color;
+  }
 }
 
 img {
@@ -87,7 +92,7 @@ button {
 }
 
 .card {
-  border-radius: 0.03rem;
+  border-radius: 3px;
   background-color: $bg-white-deep;
   box-shadow: $card-shadow-primary;
   overflow: hidden;

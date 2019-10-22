@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <Transition name="fade-transform" mode="out-in">
-      <div class="main" v-if="posts.length">
+      <div class="content" v-if="posts.length">
         <article
           class="card cursor"
           data-aos="fade-up"
@@ -89,20 +89,14 @@ export default {
     ...mapState({
       totalCount: state => state.totalCount
     }),
-    currentCount() {
-      let count = 0
-      this.list.forEach((o, i) => {
-        if (i <= this.page) {
-          count += o.length
-        }
-      })
-      return count
+    maxPage() {
+      return Math.ceil(this.totalCount / this.pageSize)
     },
     isDisabledPrev() {
       return this.page <= 1
     },
     isDisabledNext() {
-      return this.currentCount >= this.totalCount
+      return this.page >= this.maxPage
     }
   },
   async created() {
@@ -110,7 +104,6 @@ export default {
       await this.$store.dispatch('queryArchivesCount')
     }
     await this.queryPosts()
-
     AOS.init({
       duration: 2000,
       easing: 'ease',
@@ -143,7 +136,7 @@ export default {
       this.scrollTop(() => {
         this.page = queryPage
         this.posts = posts
-        this.$set(this.list, queryPage, posts)
+        this.list[queryPage] = posts
       })
 
       // 获取文章热度

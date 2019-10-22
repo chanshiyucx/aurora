@@ -19,7 +19,7 @@
 }
 
 .flower-spinner .smaller-dot {
-  background-color: var(--dark-color);
+  background-color: $purple-dim;
   height: 100%;
   width: 100%;
   border-radius: 50%;
@@ -27,7 +27,7 @@
 }
 
 .flower-spinner .bigger-dot {
-  background-color: var(--dark-color);
+  background-color: $purple-dim;
   height: 100%;
   width: 100%;
   padding: 10%;
@@ -38,9 +38,8 @@
 @keyframes flower-spinner-bigger-dot-animation {
   0%,
   100% {
-    box-shadow: var(--dark-color) 0px 0px 0px, var(--dark-color) 0px 0px 0px, var(--dark-color) 0px 0px 0px,
-      var(--dark-color) 0px 0px 0px, var(--dark-color) 0px 0px 0px, var(--dark-color) 0px 0px 0px,
-      var(--dark-color) 0px 0px 0px, var(--dark-color) 0px 0px 0px;
+    box-shadow: $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px,
+      $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px;
   }
 
   50% {
@@ -49,37 +48,32 @@
 
   25%,
   75% {
-    box-shadow: var(--dark-color) 26px 0px 0px, var(--dark-color) -26px 0px 0px,
-      var(--dark-color) 0px 26px 0px, var(--dark-color) 0px -26px 0px, var(--dark-color) 19px -19px 0px,
-      var(--dark-color) 19px 19px 0px, var(--dark-color) -19px -19px 0px, var(--dark-color) -19px 19px 0px;
+    box-shadow: $purple-dim 26px 0px 0px, $purple-dim -26px 0px 0px, $purple-dim 0px 26px 0px, $purple-dim 0px -26px 0px,
+      $purple-dim 19px -19px 0px, $purple-dim 19px 19px 0px, $purple-dim -19px -19px 0px, $purple-dim -19px 19px 0px;
   }
 
   100% {
     transform: rotate(360deg);
-    box-shadow: var(--dark-color) 0px 0px 0px, var(--dark-color) 0px 0px 0px, var(--dark-color) 0px 0px 0px,
-      var(--dark-color) 0px 0px 0px, var(--dark-color) 0px 0px 0px, var(--dark-color) 0px 0px 0px,
-      var(--dark-color) 0px 0px 0px, var(--dark-color) 0px 0px 0px;
+    box-shadow: $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px,
+      $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px;
   }
 }
 
 @keyframes flower-spinner-smaller-dot-animation {
   0%,
   100% {
-    box-shadow: var(--dark-color) 0px 0px 0px, var(--dark-color) 0px 0px 0px, var(--dark-color) 0px 0px 0px,
-      var(--dark-color) 0px 0px 0px, var(--dark-color) 0px 0px 0px, var(--dark-color) 0px 0px 0px,
-      var(--dark-color) 0px 0px 0px, var(--dark-color) 0px 0px 0px;
+    box-shadow: $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px,
+      $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px;
   }
 
   25%,
   75% {
-    box-shadow: var(--dark-color) 14px 0px 0px, var(--dark-color) -14px 0px 0px,
-      var(--dark-color) 0px 14px 0px, var(--dark-color) 0px -14px 0px, var(--dark-color) 10px -10px 0px,
-      var(--dark-color) 10px 10px 0px, var(--dark-color) -10px -10px 0px, var(--dark-color) -10px 10px 0px;
+    box-shadow: $purple-dim 14px 0px 0px, $purple-dim -14px 0px 0px, $purple-dim 0px 14px 0px, $purple-dim 0px -14px 0px,
+      $purple-dim 10px -10px 0px, $purple-dim 10px 10px 0px, $purple-dim -10px -10px 0px, $purple-dim -10px 10px 0px;
   }
 
   100% {
-    box-shadow: var(--dark-color) 0px 0px 0px, var(--dark-color) 0px 0px 0px, var(--dark-color) 0px 0px 0px,
-      var(--dark-color) 0px 0px 0px, var(--dark-color) 0px 0px 0px, var(--dark-color) 0px 0px 0px,
-      var(--dark-color) 0px 0px 0px, var(--dark-color) 0px 0px 0px;
+    box-shadow: $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px,
+      $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px, $purple-dim 0px 0px 0px;
   }
 }

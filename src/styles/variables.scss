@@ -13,7 +13,7 @@ $black-dim: #333;
 $black-deep: #222;
 $purple: #d68fe9;
 $purple-dark: #b28fce;
-$purple-dim: #b854d4;
+$purple-dim: #986db2;
 
 // Scaffolding
 // Settings for some of the most global styles.
@@ -36,6 +36,11 @@ $panel-theme-bg-from-color: #fbc2eb;
 $panel-theme-bg-to-color: #a6c1ee;
 $panel-theme-border: #ffe4d8;
 
+// Text Clip
+$text-clip-start: #fb618d;
+$text-clip-center: #c7d35e;
+$text-clip-end: $purple;
+
 // Background
 $bg-white: rgba(255, 255, 255, 0.4);
 $bg-white-dim: rgba(255, 255, 255, 0.6);
@@ -44,14 +49,14 @@ $bg-dark: rgba(0, 0, 0, 0.1);
 $bg-dark-dim: rgba(0, 0, 0, 0.2);
 $bg-dark-deep: rgba(0, 0, 0, 0.3);
 $bg-aplayer: rgba(178, 143, 206, 0.66);
+$bg-sp-color: #f4f8fb;
 
 // Typography
 // Font, line-height, and elements colors.
 // --------------------------------------------------
 
 // Font families.
-$font-family-base: 'Noto Serif SC', -apple-system, Roboto, Helvetica Neue, sans-serif;
-$font-family-code: 'Fira Mono', $font-family-base;
+$font-family-base: 'Fira Mono', 'Noto Serif SC', -apple-system, Roboto, Helvetica Neue, sans-serif;
 
 // Font Weight
 $font-weight-lighter: 200;
@@ -80,7 +85,7 @@ $zindex-4: 1000;
 
 // Layout sizes
 // --------------------------------------------------
-$page-desktop: 900px;
+$page-desktop: 876px;
 
 // Card sizes
 // --------------------------------------------------

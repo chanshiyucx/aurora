@@ -1,23 +1,32 @@
 #home {
-  width: 100%;
-
-  .main {
+  .content {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    @include pc-layout {
+      justify-content: space-between;
+    }
+    @include sp-layout {
+      justify-content: space-around;
+    }
   }
 
   article {
     display: flex;
     flex-direction: column;
-    margin-bottom: 0.15rem;
-    width: 49.2%;
     will-change: transform;
     transition: all 0.3s ease 0s, transform 0.6s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
-
-    &:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.24);
+    @include pc-layout {
+      margin-bottom: 15px;
+      width: 49.2%;
+      &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.24);
+      }
+    }
+    @include sp-layout {
+      margin-bottom: 4vw;
+      width: 94vw;
+      box-shadow: 8px 14px 38px rgba(39, 44, 49, 0.06), 1px 3px 8px rgba(39, 44, 49, 0.03);
     }
 
     .post-header {
@@ -31,9 +40,9 @@
         position: absolute;
         left: 0;
         bottom: 0;
-        padding: 0 0.12rem;
+        padding: 0 12px;
         width: 100%;
-        height: 0.5rem;
+        height: 50px;
         background-color: rgba(255, 255, 255, 0.66);
         box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.12);
       }
@@ -41,7 +50,7 @@
       h3,
       span {
         color: #fff;
-        background: linear-gradient(to right, #f84f7f 10%, #c7d35e 40%, var(--primary-color) 70%);
+        background-image: linear-gradient(to right, $text-clip-start 10%, $text-clip-center 40%, $text-clip-end 70%);
         background-size: auto auto;
         background-clip: border-box;
         background-size: 200% auto;
@@ -53,42 +62,47 @@
 
       h3 {
         display: inline-block;
-        font-size: 0.18rem;
+        font-size: $font-size-larger;
         font-weight: normal;
       }
 
       span {
-        font-size: 0.12rem;
+        font-size: $font-size-small;
         text-transform: capitalize;
       }
     }
 
     .post-body {
-      padding: 0.12rem 0.14rem;
+      padding: 12px 14px;
+      text-align: justify;
 
       p {
         display: -webkit-box;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 3;
-        line-height: 1.6;
-        font-size: 0.14rem;
-        text-align: justify;
+        font-size: $font-size-base;
         text-overflow: ellipsis;
         overflow: hidden;
+
+        @include pc-layout {
+          -webkit-line-clamp: 3;
+        }
+        @include sp-layout {
+          -webkit-line-clamp: 4;
+        }
       }
     }
 
     .post-meta {
       display: flex;
-      padding: 0.12rem 0.14rem;
-      height: 0.5rem;
-      font-size: 0.14rem;
+      padding: 12px 14px;
+      height: 50px;
+      font-size: 14px;
       border-top: 1px solid rgba(0, 0, 0, 0.08);
 
       & > span {
         display: flex;
         align-items: center;
-        margin-right: 0.12rem;
+        margin-right: 12px;
 
         span {
           padding-right: 6px;
@@ -116,16 +130,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0.12rem 0 0.24rem;
-  }
-
-  @media screen and (max-width: 900px) {
-    .main {
-      justify-content: space-around;
-      article {
-        margin-bottom: 0.32rem;
-        width: 98%;
-      }
-    }
+    margin: 12px 0 24px;
   }
 }
