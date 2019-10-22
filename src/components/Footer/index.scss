@@ -30,6 +30,7 @@
         overflow: hidden;
         opacity: 1;
         animation: shake 50s ease-in-out 0s infinite;
+        z-index: $zindex-bottom;
 
         &.pio {
           margin-top: -6px;

@@ -104,3 +104,7 @@ $mobile-bg: url('https://chanshiyu.com/poi/2019/mobile.jpg');
 $aplayer-bg: url('https://chanshiyu.com/poi/2019/reimu.png');
 $aplayer-bg: url('https://chanshiyu.com/poi/2019/reimu.png');
 $backtop-bg: url('https://chanshiyu.com/poi/2019/back-top.png');
+
+// Transition
+// --------------------------------------------------
+$transition-base: all 0.3s ease 0s, transform 0.6s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;

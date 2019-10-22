@@ -13,8 +13,7 @@
   article {
     display: flex;
     flex-direction: column;
-    will-change: transform;
-    transition: all 0.3s ease 0s, transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
+    transition: $transition-base;
     @include pc-layout {
       margin-bottom: 15px;
       width: 49.2%;
