@@ -1,6 +1,3 @@
-// import 'highlight.js/styles/atelier-dune-dark.css'
-import '@/styles/atelier-dune-dark.css'
-
 import hljs from 'highlight.js/lib/highlight'
 import javascript from 'highlight.js/lib/languages/javascript'
 import xml from 'highlight.js/lib/languages/xml'

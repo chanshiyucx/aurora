@@ -24,9 +24,11 @@ body {
   text-shadow: 0 0 1px $bg-dark-dim;
   user-select: none;
   scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
   @include cursor;
   @include scrollBar;
 }
@@ -103,157 +105,156 @@ button {
   }
 }
 
-// /* 代码高亮 */
-// code {
-//   width: 100%;
-//   font-family: 'Fira Mono', $font;
-//   font-size: 0.15rem;
-//   font-weight: $font-weight-normal;
-//   text-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
-//   text-align: left;
-//   white-space: pre;
-//   letter-spacing: 0;
-//   word-spacing: normal;
-//   word-break: normal;
-//   word-wrap: normal;
-//   line-height: 1.5;
-//   tab-size: 4;
-//   hyphens: none;
-// }
+/* 代码高亮 */
+code {
+  width: 100%;
+  font-family: $font-family-base;
+  font-size: $font-weight-normal;
+  text-shadow: 0 0 1px $bg-dark-deep;
+  text-align: left;
+  white-space: pre;
+  letter-spacing: 0;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  tab-size: 4;
+  hyphens: none;
+}
 
-// pre {
-//   padding: 0.12rem 0.16rem;
-//   max-height: 6rem;
-//   line-height: 1.5;
-//   box-shadow: #aaa 0px 10px 8px -10px inset, #aaa 0px -10px 8px -10px inset;
-//   overflow: auto;
-//   .i-scroll;
-// }
+pre {
+  padding: $code-padding;
+  max-height: 600px;
+  line-height: 1.5;
+  box-shadow: #aaa 0px 10px 8px -10px inset, #aaa 0px -10px 8px -10px inset;
+  overflow: auto;
+  @include scrollBar;
+}
 
-// td.hljs-ln-numbers {
-//   padding-right: 0.16rem;
-//   text-align: center;
-// }
+td.hljs-ln-numbers {
+  padding-right: 16px;
+  text-align: center;
+}
 
-// /* Gitalk */
-// .markdown-body code {
-//   color: var(--primary-color);
-//   font-weight: 700;
-// }
-// #gitalk {
-//   .gt-comment-body,
-//   .gt-btn-text,
-//   textarea {
-//     font-family: $font;
-//   }
+/* Gitalk */
+.markdown-body code {
+  color: $purple;
+  font-weight: 700;
+}
+#gitalk {
+  .gt-comment-body,
+  .gt-btn-text,
+  textarea {
+    font-family: $font-family-base;
+  }
 
-//   .gt-container {
-//     text-align: left;
-//     a {
-//       color: var(--primary-color);
-//       border-bottom: none;
-//     }
-//     .gt-svg svg {
-//       fill: var(--primary-color);
-//     }
-//     .gt-comment-date,
-//     .gt-container .gt-comment-text {
-//       color: #666;
-//     }
-//     .gt-ico-text {
-//       color: var(--primary-color);
-//     }
-//     .gt-btn-login {
-//       margin-top: 0;
-//       border: none;
-//       background-color: var(--dark-color) !important;
-//       span {
-//         line-height: 1;
-//         color: #fff;
-//       }
-//       @media screen and (max-width: 479px) {
-//         margin-top: 9px !important;
-//       }
-//     }
-//   }
-//   .gt-meta {
-//     padding-top: 0;
-//     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-//     .gt-counts {
-//       float: left;
-//     }
-//     .gt-popup {
-//       margin-top: 0.1rem;
-//       .is--active::before {
-//         background: var(--primary-color);
-//       }
-//     }
-//   }
-//   .gt-header {
-//     textarea,
-//     .gt-header-preview {
-//       border: none;
-//       min-height: 1rem;
-//       max-height: 2rem;
-//       background-color: rgba(255, 255, 255, 0.66);
-//       background-image: url(https://raw.githubusercontent.com/chanshiyucx/poi/master/2019/reimu.png);
-//       background-size: 1.2rem;
-//       background-repeat: no-repeat;
-//       background-position: 99% bottom;
-//       overflow: scroll;
-//     }
-//     textarea {
-//       height: 120px !important;
-//     }
-//     .gt-header-controls-tip {
-//       float: left;
-//     }
-//     .gt-btn {
-//       border: none;
-//       background-color: rgba(255, 255, 255, 0.66);
-//     }
-//     .gt-btn-public {
-//       background-color: var(--dark-color);
-//       span {
-//         color: #fff;
-//       }
-//     }
-//     .gt-avatar-github {
-//       svg {
-//         fill: var(--dark-color);
-//       }
-//     }
-//   }
-//   .gt-comments {
-//     .gt-comment-content {
-//       border-radius: 3px;
-//       background-color: rgba(255, 255, 255, 0.66);
-//       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
-//       transition: $transition-base;
-//       &:hover {
-//         transform: translateY(-4px);
-//         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.24);
-//       }
-//     }
-//     .gt-btn-loadmore {
-//       border: none;
-//       background-color: var(--dark-color);
-//       span {
-//         color: #fff;
-//       }
-//     }
-//     .gt-comment-body {
-//       max-height: 5rem;
-//       overflow: auto;
-//       .i-scroll;
-//     }
-//   }
-//   textarea,
-//   .gt-btn-login,
-//   .gt-btn-preview,
-//   .gt-btn-loadmore,
-//   .gt-btn-public,
-//   .gt-avatar {
-//     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
-//   }
-// }
+  .gt-container {
+    text-align: left;
+    a {
+      color: $purple;
+      border-bottom: none;
+    }
+    .gt-svg svg {
+      fill: $purple;
+    }
+    .gt-comment-date,
+    .gt-container .gt-comment-text {
+      color: #666;
+    }
+    .gt-ico-text {
+      color: $purple;
+    }
+    .gt-btn-login {
+      margin-top: 0;
+      border: none;
+      background-color: $purple-dim !important;
+      span {
+        line-height: 1;
+        color: white;
+      }
+      @media screen and (max-width: 479px) {
+        margin-top: 9px !important;
+      }
+    }
+  }
+  .gt-meta {
+    padding-top: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    .gt-counts {
+      float: left;
+    }
+    .gt-popup {
+      margin-top: 10px;
+      .is--active::before {
+        background: $purple;
+      }
+    }
+  }
+  .gt-header {
+    textarea,
+    .gt-header-preview {
+      border: none;
+      min-height: 100px;
+      max-height: 200px;
+      background-color: $bg-white-dim;
+      background-image: $aplayer-bg;
+      background-size: 120px;
+      background-repeat: no-repeat;
+      background-position: 99% bottom;
+      overflow: scroll;
+    }
+    textarea {
+      height: 120px !important;
+    }
+    .gt-header-controls-tip {
+      float: left;
+    }
+    .gt-btn {
+      border: none;
+      background-color: $bg-white-dim;
+    }
+    .gt-btn-public {
+      background-color: $purple-dim;
+      span {
+        color: white;
+      }
+    }
+    .gt-avatar-github {
+      svg {
+        fill: $purple-dim;
+      }
+    }
+  }
+  .gt-comments {
+    .gt-comment-content {
+      border-radius: 3px;
+      background-color: $bg-white-dim;
+      box-shadow: $card-shadow-primary;
+      transition: $transition-base;
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: $card-shadow-hover;
+      }
+    }
+    .gt-btn-loadmore {
+      border: none;
+      background-color: $purple-dim;
+      span {
+        color: white;
+      }
+    }
+    .gt-comment-body {
+      max-height: 500px;
+      overflow: auto;
+      @include scrollBar;
+    }
+  }
+  textarea,
+  .gt-btn-login,
+  .gt-btn-preview,
+  .gt-btn-loadmore,
+  .gt-btn-public,
+  .gt-avatar {
+    box-shadow: $card-shadow-primary;
+  }
+}

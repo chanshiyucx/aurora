@@ -4,12 +4,12 @@
       <article v-if="post" class="card">
         <div class="post-header">
           <Cover :src="post.cover.src" :alt="post.cover.title" loadCover maskHeight="0.8rem" />
-          <div class="head">
-            <div class="title">
+          <div class="post-head">
+            <div class="post-title">
               <h1>{{ post.title }}</h1>
               <span>{{ post.cover.title }}</span>
             </div>
-            <div class="meta">
+            <div class="post-meta">
               <span>
                 <i class="icon icon-calendar"></i>
                 {{ post.created_at }}

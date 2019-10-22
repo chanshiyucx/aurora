@@ -8,7 +8,7 @@ import Zooming from 'zooming'
 import hljs from '@/assets/lib/highlight'
 
 const zooming = new Zooming({
-  bgOpacity: 0,
+  bgOpacity: 0.6,
   zIndex: 100
 })
 
