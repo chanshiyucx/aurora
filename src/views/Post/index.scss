@@ -151,21 +151,23 @@
         li {
           list-style: circle;
         }
-        ol,
-        ul {
-          margin-top: 12px;
-        }
       }
 
       p,
       ol,
       ul {
         code {
-          padding: 1px 4px;
+          padding: 2px 4px;
           color: $purple-deep;
+          font-size: $font-size-code;
+          word-wrap: break-word;
           border-radius: 3px;
           background-color: $bg-dark;
         }
+      }
+
+      strong {
+        font-weight: $font-weight-bold;
       }
 
       a {

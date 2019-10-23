@@ -11,3 +11,17 @@
   opacity: 0;
   transform: translateY(30px);
 }
+
+/* header-transform */
+.header-transform-leave-active,
+.header-transform-enter-active {
+  transition: all 0.5s;
+}
+.header-transform-enter {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+.header-transform-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
