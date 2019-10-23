@@ -1,7 +1,7 @@
 <template>
   <div id="post">
     <Transition name="fade-transform" mode="out-in">
-      <article v-if="post" class="card">
+      <article v-if="post">
         <div class="post-header">
           <Cover :src="post.cover.src" :alt="post.cover.title" loadCover maskHeight="0.8rem" />
           <div class="post-head">
@@ -51,8 +51,8 @@ export default {
   components: {
     MarkDown,
     Loading,
-    Cover,
-    Comment
+    Comment,
+    Cover
   },
   data() {
     return {

@@ -1,7 +1,7 @@
 <template>
   <div id="inspiration">
     <Transition name="fade-transform" mode="out-in">
-      <div class="card" v-if="inspiration.length">
+      <div class="page" v-if="inspiration.length">
         <Quote :quote="$config.inspirationOpts.qoute" />
         <div class="content">
           <Segment v-for="(item, i) in inspiration" :key="item.number" :title="item.date" :color="colors[i]">
@@ -27,9 +27,9 @@
 <script>
 import MarkDown from '@/components/MarkDown'
 import Loading from '@/components/Loading'
+import Pagination from '@/components/Pagination'
 import Quote from '@/components/Quote'
 import Segment from '@/components/Segment'
-import Pagination from '@/components/Pagination'
 import Comment from '@/components/Comment'
 import { shuffle } from '@/utils'
 
@@ -38,9 +38,9 @@ export default {
   components: {
     MarkDown,
     Loading,
+    Pagination,
     Quote,
     Segment,
-    Pagination,
     Comment
   },
   data() {
@@ -48,7 +48,7 @@ export default {
       loading: false,
       initComment: false,
       colors: shuffle(this.$config.themeColors),
-      count: 0,
+      totalCount: 0,
       page: 0,
       pageSize: 10,
       inspiration: [],
@@ -57,24 +57,18 @@ export default {
     }
   },
   computed: {
-    currentCount() {
-      let count = 0
-      this.list.forEach((o, i) => {
-        if (i <= this.page) {
-          count += o.length
-        }
-      })
-      return count
+    maxPage() {
+      return Math.ceil(this.totalCount / this.pageSize)
     },
     isDisabledPrev() {
       return this.page <= 1
     },
     isDisabledNext() {
-      return this.currentCount >= this.count
+      return this.page >= this.maxPage
     }
   },
   async created() {
-    this.count = await this.$store.dispatch('queryInspirationCount')
+    this.totalCount = await this.$store.dispatch('queryInspirationCount')
     await this.queryInspiration()
     this.initComment = true
   },
@@ -100,10 +94,9 @@ export default {
 
       this.scrollTop(() => {
         this.inspiration = inspiration
-        this.$set(this.list, queryPage, inspiration)
+        this.list[queryPage] = inspiration
       })
     },
-    // 滚动到顶部
     scrollTop(cb) {
       window.scrollTo({ top: 0, behavior: 'smooth' })
       setTimeout(cb, this.delayTime)
@@ -112,6 +105,6 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-@import './index.less';
+<style lang="scss" scoped>
+@import './index.scss';
 </style>

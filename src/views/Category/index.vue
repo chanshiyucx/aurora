@@ -1,10 +1,10 @@
 <template>
   <div id="category">
     <Transition name="fade-transform" mode="out-in">
-      <div class="card" v-if="category.length">
+      <div v-if="category.length">
         <Quote :quote="$config.categoryOpts.qoute" />
         <ul class="category">
-          <li class="card cursor" v-for="item in category" :key="item.id" @click="handleFilter(item)">
+          <li class="cursor" v-for="item in category" :key="item.id" @click="handleFilter(item)">
             <img class="bg" :src="item.cover" alt />
             <div class="meta">
               <div>
@@ -20,7 +20,8 @@
             <div class="clean">
               <span>Category:</span>
               <span class="clean-btn" @click="reset">
-                {{ milestone.title }} <i class="icon icon-cancel-outline"></i>
+                {{ milestone.title }}
+                <i class="icon icon-cancel-outline"></i>
               </span>
             </div>
             <ArchiveCard

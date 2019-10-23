@@ -93,18 +93,6 @@ button {
   }
 }
 
-.card {
-  overflow: hidden;
-  border-radius: 3px;
-  background-color: $bg-white-deep;
-  @include pc-layout {
-    box-shadow: $card-shadow-primary;
-  }
-  @include sp-layout {
-    box-shadow: $card-shadow-sp;
-  }
-}
-
 /* 代码高亮 */
 code {
   width: 100%;
@@ -151,7 +139,7 @@ td.hljs-ln-numbers {
   .gt-container {
     text-align: left;
     a {
-      color: $purple;
+      color: $link-color;
       border-bottom: none;
     }
     .gt-svg svg {
@@ -179,7 +167,7 @@ td.hljs-ln-numbers {
   }
   .gt-meta {
     padding-top: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    border-bottom: 1px solid $bg-white;
     .gt-counts {
       float: left;
     }
@@ -229,11 +217,11 @@ td.hljs-ln-numbers {
     .gt-comment-content {
       border-radius: 3px;
       background-color: $bg-white-dim;
-      box-shadow: $card-shadow-primary;
+      box-shadow: $card-shadow-base;
       transition: $transition-base;
       &:hover {
         transform: translateY(-4px);
-        box-shadow: $card-shadow-hover;
+        box-shadow: $card-shadow-base-hover;
       }
     }
     .gt-btn-loadmore {
@@ -255,6 +243,6 @@ td.hljs-ln-numbers {
   .gt-btn-loadmore,
   .gt-btn-public,
   .gt-avatar {
-    box-shadow: $card-shadow-primary;
+    box-shadow: $card-shadow-base;
   }
 }

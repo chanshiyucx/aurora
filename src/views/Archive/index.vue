@@ -1,7 +1,7 @@
 <template>
   <div id="archive">
     <Transition name="fade-transform" mode="out-in">
-      <div class="card" v-if="posts.length">
+      <div v-if="posts.length">
         <Quote :quote="$config.archiveOpts.qoute" />
         <ArchiveCard
           :posts="posts"

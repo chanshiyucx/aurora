@@ -1,0 +1,60 @@
+#book {
+  .page {
+    padding-top: 16px;
+    @include card-page;
+  }
+
+  .content {
+    display: grid;
+    grid-column-gap: 16px;
+    padding: 16px;
+    text-align: justify;
+
+    @include pc-layout {
+      grid-template-columns: 1fr 1fr;
+    }
+    @include sp-layout {
+      grid-template-columns: 1fr;
+    }
+
+    li {
+      list-style: none;
+      margin-bottom: 16px;
+      @include card-lignt;
+
+      .info {
+        display: flex;
+        justify-content: flex-start;
+        padding: 12px 12px 0;
+        line-height: 1.7;
+
+        img {
+          margin: 0 12px 0 0;
+          width: 120px;
+          height: 160px;
+          box-shadow: $card-shadow-light;
+        }
+
+        h3 {
+          font-size: $font-size-large;
+        }
+
+        a {
+          transition: color 0.3s ease-out;
+          &:hover {
+            color: $link-color;
+          }
+        }
+
+        .icon-star {
+          margin-right: 4px;
+          color: $purple;
+        }
+      }
+
+      .description {
+        padding: 12px;
+      }
+    }
+  }
+}

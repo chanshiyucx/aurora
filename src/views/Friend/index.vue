@@ -1,24 +1,23 @@
 <template>
   <div id="friend">
     <Transition name="fade-transform" mode="out-in">
-      <div class="card" v-if="friend.length">
+      <div class="page" v-if="friend.length">
         <Quote :quote="$config.friendOpts.qoute" />
         <ul class="content">
           <li v-for="(item, index) in friend" :key="item.name">
-            <div>
-              <a :href="item.link" rel="noopener noreferrer" target="_blank">
-                <Cover
-                  class="cover"
-                  :src="item.cover"
-                  :alt="item.name"
-                  :loadCover="index < LOAD_INX"
-                  @loadNext="loadNext"
-                />
-                <div class="info">
-                  <img :src="item.avatar" alt /> <span>{{ item.name }}</span>
-                </div>
-              </a>
-            </div>
+            <a :href="item.link" rel="noopener noreferrer" target="_blank">
+              <Cover
+                class="cover"
+                :src="item.cover"
+                :alt="item.name"
+                :loadCover="index < LOAD_INX"
+                @loadNext="loadNext"
+              />
+              <div class="info">
+                <img :src="item.avatar" alt />
+                <span>{{ item.name }}</span>
+              </div>
+            </a>
           </li>
         </ul>
       </div>
@@ -65,6 +64,6 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-@import './index.less';
+<style lang="scss" scoped>
+@import './index.scss';
 </style>

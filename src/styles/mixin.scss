@@ -57,3 +57,36 @@
   -webkit-background-clip: text;
   animation: textclip 3s linear infinite;
 }
+
+@mixin card {
+  border-radius: 3px;
+  background-color: $bg-white-deep;
+  @include pc-layout {
+    box-shadow: $card-shadow-base;
+  }
+  @include sp-layout {
+    box-shadow: $card-shadow-light;
+  }
+}
+
+@mixin card-lignt {
+  border-radius: 3px;
+  background-color: $bg-white-deep;
+  box-shadow: $card-shadow-light;
+  transition: $transition-base;
+  @include pc-layout {
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $card-shadow-light-hover;
+    }
+  }
+}
+
+@mixin card-page {
+  overflow: auto;
+  border-radius: 3px;
+  @include pc-layout {
+    background-color: $bg-white-deep;
+    box-shadow: $card-shadow-base;
+  }
+}

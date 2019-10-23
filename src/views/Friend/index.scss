@@ -1,0 +1,119 @@
+#friend {
+  .page {
+    padding-top: 16px;
+    @include card-page;
+  }
+
+  .content {
+    display: grid;
+    padding: 16px;
+
+    @include pc-layout {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    @include sp-layout {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    li {
+      list-style: none;
+      margin-bottom: 16px;
+
+      > a {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 3px;
+        transition: $transition-base;
+        box-shadow: $card-shadow-light;
+
+        @include pc-layout {
+          width: 196px;
+          height: 110px;
+        }
+        @include sp-layout {
+          width: 185px;
+          height: 104px;
+        }
+
+        @include pc-layout {
+          &:hover {
+            box-shadow: $card-shadow-light-hover;
+
+            .cover {
+              transform: scale(1.06);
+            }
+
+            .info {
+              transform: translateY(-100%);
+              span {
+                color: $link-color;
+              }
+            }
+          }
+        }
+
+        .cover {
+          width: 100%;
+          transition: transform 0.5s ease-out;
+        }
+
+        .info {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          top: 0;
+          left: 0;
+          overflow: hidden;
+          border-radius: 3px;
+          background-color: $bg-white;
+          transition: transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
+
+          @include pc-layout {
+            width: 196px;
+            height: 110px;
+          }
+          @include sp-layout {
+            width: 185px;
+            height: 104px;
+          }
+
+          img {
+            border-radius: 50%;
+            box-shadow: 0 0 10px #999;
+            z-index: $zindex-1;
+
+            @include pc-layout {
+              margin-bottom: -16px;
+              width: 50px;
+              height: 50px;
+            }
+            @include sp-layout {
+              margin-bottom: -20px;
+              width: 40px;
+              height: 40px;
+            }
+          }
+
+          span {
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 10px #999;
+            background-color: $bg-white-dim;
+            @include pc-layout {
+              padding: 20px 0 8px;
+              font-size: $font-size-large;
+            }
+            @include sp-layout {
+              padding: 24px 0 4px;
+              font-size: $font-size-base;
+            }
+          }
+        }
+      }
+    }
+  }
+}

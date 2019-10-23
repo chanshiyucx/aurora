@@ -14,12 +14,13 @@
     display: flex;
     flex-direction: column;
     transition: $transition-base;
+    @include card;
     @include pc-layout {
       margin-bottom: 15px;
       width: 49.2%;
       &:hover {
         transform: translateY(-6px);
-        box-shadow: $card-shadow-hover;
+        box-shadow: $card-shadow-base-hover;
       }
     }
     @include sp-layout {
@@ -71,6 +72,7 @@
       p {
         display: -webkit-box;
         -webkit-box-orient: vertical;
+        margin: 0;
         font-size: $font-size-base;
         text-overflow: ellipsis;
         overflow: hidden;

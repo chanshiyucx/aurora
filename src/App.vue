@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <vue-progress-bar></vue-progress-bar>
-    <Header />
+    <Transition name="header-transform" mode="out-in">
+      <Header v-show="showHeader" />
+    </Transition>
     <main class="main">
       <Transition name="fade-transform" mode="out-in">
         <keep-alive :exclude="['post']" :max="10">
@@ -32,7 +34,17 @@ export default {
   },
   data() {
     return {
+      showHeader: true,
       showPanel: false
+    }
+  },
+  watch: {
+    $route: {
+      immediate: true,
+      handler(val) {
+        if (!this.$isMobile) return
+        this.showHeader = val && val.name !== 'post'
+      }
     }
   },
   created() {
@@ -77,7 +89,7 @@ export default {
     padding-bottom: 100px;
   }
   @include sp-layout {
-    padding-bottom: 50px;
+    padding-bottom: 60px;
   }
 
   .main {

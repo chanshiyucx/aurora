@@ -53,6 +53,12 @@ $bg-aplayer: rgba(178, 143, 206, 0.66);
 $bg-sp-color: #f4f8fb;
 $bg-dark-line: rgba(0, 0, 0, 0.08);
 
+// Concat
+$concat-email-color: $purple-dark;
+$concat-github-color: #ffba84;
+$concat-zhihu-color: #2ea9df;
+$concat-music-color: #f596aa;
+
 // Typography
 // Font, line-height, and elements colors.
 // --------------------------------------------------
@@ -67,8 +73,10 @@ $font-weight-bolder: 700;
 
 // Font size
 $font-size-base: 14px;
-$font-size-small: $font-size-base - 2px;
+$font-size-icon: 24px;
+$font-size-code: $font-size-base - 1px;
 $font-size-normal: $font-size-base + 1px;
+$font-size-small: $font-size-base - 2px;
 $font-size-large: $font-size-base + 2px;
 $font-size-larger: $font-size-base + 4px;
 
@@ -96,14 +104,17 @@ $page-desktop: 876px;
 // --------------------------------------------------
 $card-padding-small: 8px 10px;
 $card-padding: 12px 14px;
+$card-padding-large: 14px 16px;
 $code-padding: 12px 14px;
 
-//  Card shadow
+// Shadow
 // --------------------------------------------------
 $card-shadow: 0 0 2px 0 $bg-dark, 0px 2px 2px 0 $bg-dark-dim;
-$card-shadow-primary: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
-$card-shadow-hover: 0 10px 20px $bg-dark-dim, 0 6px 6px $bg-dark-deep;
-$card-shadow-sp: 0 14px 38px rgba(0, 0, 0, 0.08), 0 3px 8px rgba(0, 0, 0, 0.06);
+$card-shadow-base: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24);
+$card-shadow-base-hover: 0 10px 20px $bg-dark-dim, 0 6px 6px $bg-dark-deep;
+$card-shadow-light: 0 14px 38px rgba(0, 0, 0, 0.08), 0 3px 8px rgba(0, 0, 0, 0.06);
+$card-shadow-light-hover: 0 14px 38px rgba(0, 0, 0, 0.14), 0 3px 8px rgba(0, 0, 0, 0.12);
+$block-shadow: #aaa 0px 10px 10px -10px inset, #aaa 0px -10px 10px -10px inset;
 
 // Image Assets
 // --------------------------------------------------
@@ -114,3 +125,11 @@ $backtop-bg: url('https://chanshiyu.com/poi/2019/back-top.png');
 // Transition
 // --------------------------------------------------
 $transition-base: all 0.3s ease 0s, transform 0.6s cubic-bezier(0.6, 0.2, 0.1, 1) 0s;
+
+// About
+// --------------------------------------------------
+$avatar-size-pc: 100px;
+$avatar-size-sp: 80px;
+
+$contact-size-pc: 54px;
+$contact-size-sp: 48px;
