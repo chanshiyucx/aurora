@@ -1,11 +1,15 @@
 .segment {
-  margin-top: 16px;
+  margin-bottom: 16px;
   padding: $card-padding-large;
   text-align: justify;
   overflow: unset;
   border-top: 2px solid currentColor;
   background-color: $bg-white;
   @include card-lignt;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   .label {
     display: inline-block;
