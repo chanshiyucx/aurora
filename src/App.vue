@@ -42,6 +42,7 @@ export default {
     $route: {
       immediate: true,
       handler(val) {
+        if (!this.$isMobile) return
         this.showHeader = val && val.name !== 'post'
       }
     }
@@ -88,7 +89,7 @@ export default {
     padding-bottom: 100px;
   }
   @include sp-layout {
-    padding-bottom: 50px;
+    padding-bottom: 60px;
   }
 
   .main {

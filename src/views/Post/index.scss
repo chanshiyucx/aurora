@@ -164,11 +164,26 @@
         margin-bottom: 25px;
       }
 
+      ol {
+        margin: 25px 16px 25px 62px;
+      }
+      ul {
+        margin: 25px 16px 25px 52px;
+      }
+
       ol,
       ul {
-        margin: 0 16px 25px 52px;
         li {
-          list-style: circle;
+          p {
+            margin-left: 0;
+          }
+
+          ol {
+            margin-left: 44px;
+          }
+          ul {
+            margin-left: 34px;
+          }
         }
       }
 
@@ -211,17 +226,13 @@
             transform: scaleX(1);
           }
         }
-
-        i {
-          color: $link-color;
-        }
       }
 
       blockquote {
         position: relative;
         padding: 36px 0;
         font-style: italic;
-        box-shadow: #999 0px 10px 8px -10px inset, #999 0px -10px 8px -10px inset;
+        box-shadow: $block-shadow;
 
         & > p {
           margin: 10px 46px;
@@ -251,6 +262,8 @@
       span[class*='img-box'] {
         display: block;
         margin-bottom: 25px;
+        text-align: center;
+
         &:last-child {
           margin-bottom: 0;
         }
@@ -259,10 +272,13 @@
           margin: 0 auto;
           max-width: 100%;
           border-radius: 3px;
-          box-shadow: 0 0 10px #999;
+          box-shadow: $card-shadow-sp;
           border: 6px solid transparent;
           background-color: white;
           transition: all 0.3s ease-out;
+          &:hover {
+            border-color: $purple-dark;
+          }
         }
         img[src*='full'] {
           margin-left: -16px;
@@ -272,29 +288,28 @@
           border-radius: unset;
         }
 
+        img[style*='cursor: grab'] {
+          border-color: transparent;
+          border-radius: unset;
+        }
+
         span {
           display: block;
           padding-top: 8px;
           font-style: italic;
-          text-align: center;
-        }
-
-        &:hover {
-          img {
-            border-color: $purple-deep;
-          }
         }
       }
 
       .table-wrapper {
+        margin: 0 16px 25px;
         max-width: 100%;
         overflow-x: auto;
 
         & > table {
           margin: 0 auto 16px;
           border-radius: 3px;
-          border-collapse: separate;
           border-spacing: 2px;
+          border-collapse: separate;
           border: 1px solid #dfdfdf;
           tr {
             height: 32px;
