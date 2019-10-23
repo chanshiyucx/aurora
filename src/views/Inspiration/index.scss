@@ -1,0 +1,17 @@
+#inspiration {
+  .page {
+    padding-top: 16px;
+    @include card-page;
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 12px 0 24px;
+  }
+}

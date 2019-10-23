@@ -116,11 +116,11 @@ export default {
     async queryPosts(type = 'next') {
       if (this.loading) return
       const queryPage = type === 'prev' ? this.page - 1 : this.page + 1
+      this.page = queryPage
       this.LOAD_INX = 4
 
       if (this.list[queryPage]) {
         this.scrollTop(() => {
-          this.page = queryPage
           this.posts = this.list[queryPage]
         })
         return
@@ -134,7 +134,6 @@ export default {
       this.loading = false
 
       this.scrollTop(() => {
-        this.page = queryPage
         this.posts = posts
         this.list[queryPage] = posts
       })
