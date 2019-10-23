@@ -7,7 +7,7 @@
           data-aos="fade-up"
           v-for="(post, index) in posts"
           :key="post.id"
-          @click="gotoPost(post.number)"
+          @click="gotoPost(post)"
           @mouseenter="showTips(post)"
         >
           <div class="post-header">
@@ -158,8 +158,8 @@ export default {
       this.LOAD_INX += 1
     },
     // 跳转文章页
-    gotoPost(number) {
-      this.$router.push({ name: 'post', params: { number } })
+    gotoPost(post) {
+      this.$router.push({ name: 'post', params: { number: post.number, post } })
     },
     // 看板娘
     showTips(post) {

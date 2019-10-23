@@ -21,16 +21,30 @@
       .post-head {
         position: absolute;
         bottom: 0;
-        padding: $card-padding;
         width: 100%;
-        height: 80px;
         background-color: $bg-white-dim;
         box-shadow: 0 -1px 2px $bg-dark;
+
+        @include pc-layout {
+          padding: $card-padding;
+          height: 80px;
+        }
+        @include sp-layout {
+          padding: $card-padding-small;
+          height: 60px;
+        }
 
         .post-title {
           display: flex;
           justify-content: space-between;
           align-items: center;
+
+          @include pc-layout {
+            height: 34px;
+          }
+          @include sp-layout {
+            height: 24px;
+          }
 
           h1,
           span {
@@ -44,8 +58,13 @@
 
         .post-meta {
           display: flex;
-          margin-top: 8px;
           @include clip;
+          @include pc-layout {
+            margin-top: 8px;
+          }
+          @include sp-layout {
+            margin-top: 4px;
+          }
 
           & > span {
             display: flex;

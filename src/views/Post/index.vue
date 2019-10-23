@@ -56,24 +56,31 @@ export default {
   },
   data() {
     return {
-      number: '',
       post: '',
       initComment: false
     }
   },
   async created() {
-    this.number = this.$route.params.number
-    await this.queryPost()
-    this.$nextTick(() => (this.initComment = true))
+    const { number, post } = this.$route.params
+    if (post) {
+      this.post = post
+    } else {
+      await this.queryPost(number)
+    }
+    this.$nextTick(() => {
+      this.queryHot()
+      this.initComment = true
+    })
   },
   methods: {
     // 获取文章详情
-    async queryPost() {
-      this.post = await this.$store.dispatch('queryPost', { number: this.number })
-      this.$nextTick(async () => {
-        const hot = await this.$store.dispatch('increaseHot', { post: this.post })
-        this.$set(this.post, 'times', hot)
-      })
+    async queryPost(number) {
+      this.post = await this.$store.dispatch('queryPost', { number })
+    },
+    // 获取并增加热度
+    async queryHot() {
+      const hot = await this.$store.dispatch('increaseHot', { post: this.post })
+      this.$set(this.post, 'times', hot)
     }
   }
 }
