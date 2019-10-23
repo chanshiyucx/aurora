@@ -1,7 +1,7 @@
 <template>
   <div id="book">
     <Transition name="fade-transform" mode="out-in">
-      <div class="card" v-if="book.length">
+      <div v-if="book.length">
         <Quote :quote="$config.bookOpts.qoute" />
         <ul class="content">
           <li v-for="item in book" :key="item.name">
@@ -14,9 +14,9 @@
                 <p>阅读进度：{{ item.progress }}</p>
                 <p>
                   读书笔记：
-                  <a v-if="item.postLink" :href="item.postLink" rel="noopener noreferrer" target="_blank">
-                    {{ item.postTitle }}
-                  </a>
+                  <a v-if="item.postLink" :href="item.postLink" rel="noopener noreferrer" target="_blank">{{
+                    item.postTitle
+                  }}</a>
                   <span v-else>暂无</span>
                 </p>
                 <p>

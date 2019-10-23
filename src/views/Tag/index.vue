@@ -1,7 +1,7 @@
 <template>
   <div id="tag">
     <Transition name="fade-transform" mode="out-in">
-      <div class="card" v-if="tag.length">
+      <div v-if="tag.length">
         <Quote :quote="$config.tagOpts.qoute" />
         <ul class="content">
           <li v-for="item in tag" :key="item.id" @click="handleFilter(item)">
@@ -13,7 +13,8 @@
             <div class="clean">
               <span>Tag:</span>
               <span class="clean-btn" @click="reset">
-                {{ label.name }} <i class="icon icon-cancel-outline"></i>
+                {{ label.name }}
+                <i class="icon icon-cancel-outline"></i>
               </span>
             </div>
             <ArchiveCard

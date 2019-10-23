@@ -1,0 +1,40 @@
+.segment {
+  margin-top: 16px;
+  padding: $card-padding-large;
+  text-align: justify;
+  overflow: unset;
+  border-top: 2px solid currentColor;
+  background-color: $bg-white;
+  @include card-lignt;
+
+  .label {
+    display: inline-block;
+    position: relative;
+    left: -32px;
+    margin-bottom: 10px;
+    padding: 0 14px 0 32px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 0 3px 3px 0;
+    background-color: currentColor;
+
+    span {
+      color: white;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 0;
+      height: 0;
+      background-color: transparent;
+      border-style: solid;
+      border-width: 0 16px 16px 0;
+      border-color: transparent;
+      border-right-color: currentColor;
+      filter: brightness(120%);
+    }
+  }
+}

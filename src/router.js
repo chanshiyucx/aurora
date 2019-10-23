@@ -15,7 +15,7 @@ export default new Router({
       path: '/post/:number',
       name: 'post',
       component: () => import('./views/Post')
-    }
+    },
     // {
     //   path: '/archive',
     //   name: 'archive',
@@ -46,10 +46,10 @@ export default new Router({
     //   name: 'friend',
     //   component: () => import('./views/Friend')
     // },
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   component: () => import('./views/About')
-    // }
+    {
+      path: '/about',
+      name: 'about',
+      component: () => import('./views/About')
+    }
   ]
 })

@@ -1,5 +1,5 @@
 <template>
-  <div class="segment card" :style="{ color }">
+  <div class="segment" :style="{ borderColor: color }">
     <div class="label" :style="{ color }">
       <span>{{ title }}</span>
     </div>
@@ -23,6 +23,6 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-@import url('./index.less');
+<style lang="scss" scope>
+@import './index.scss';
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div id="friend">
     <Transition name="fade-transform" mode="out-in">
-      <div class="card" v-if="friend.length">
+      <div v-if="friend.length">
         <Quote :quote="$config.friendOpts.qoute" />
         <ul class="content">
           <li v-for="(item, index) in friend" :key="item.name">
@@ -15,7 +15,8 @@
                   @loadNext="loadNext"
                 />
                 <div class="info">
-                  <img :src="item.avatar" alt /> <span>{{ item.name }}</span>
+                  <img :src="item.avatar" alt />
+                  <span>{{ item.name }}</span>
                 </div>
               </a>
             </div>

@@ -3,7 +3,7 @@
     <Transition name="fade-transform" mode="out-in">
       <div class="content" v-if="posts.length">
         <article
-          class="card cursor"
+          class="cursor"
           data-aos="fade-up"
           v-for="(post, index) in posts"
           :key="post.id"

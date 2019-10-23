@@ -1,6 +1,8 @@
 <template>
   <div class="quote">
-    <i class="icon icon-quote-left"></i> <span>{{ quote }}</span> <i class="icon icon-quote-right"></i>
+    <i class="icon icon-quote-left"></i>
+    <span>{{ quote }}</span>
+    <i class="icon icon-quote-right"></i>
   </div>
 </template>
 
@@ -16,6 +18,6 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-@import url('./index.less');
+<style lang="scss" scope>
+@import './index.scss';
 </style>

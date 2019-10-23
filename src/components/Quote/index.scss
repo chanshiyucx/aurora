@@ -4,23 +4,24 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-bottom: 0.16rem;
-  padding: 0.32rem 0;
-  font-size: 0.16rem;
+  margin-bottom: 16px;
+  padding: 32px 0;
+
   span {
     letter-spacing: 1px;
+    font-size: $font-size-large;
   }
+
   i {
-    color: #666;
     position: absolute;
-    font-size: 0.24rem;
+    font-size: $font-size-icon;
   }
   i:first-child {
     top: 0;
-    left: 0.16rem;
+    left: 16px;
   }
   i:last-child {
     bottom: 0;
-    right: 0.16rem;
+    right: 16px;
   }
 }

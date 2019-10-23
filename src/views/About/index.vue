@@ -1,16 +1,28 @@
 <template>
   <div id="about">
     <Transition name="fade-transform" mode="out-in">
-      <div class="card" v-if="about">
+      <div class="page" v-if="about">
         <Quote :quote="$config.aboutOpts.qoute" />
         <div class="content">
           <div class="header">
             <img :src="$config.aboutOpts.avatar" alt />
             <div class="info">
-              <span> <i class="icon icon-fort-awesome"></i> {{ $config.title }} </span>
-              <span> <i class="icon icon-pagelines"></i> {{ $config.subtitle }} </span>
-              <span> <i class="icon icon-graduation-cap"></i> {{ $config.aboutOpts.graduated }} </span>
-              <span> <i class="icon icon-tripadvisor"></i> {{ $config.aboutOpts.college }} </span>
+              <span>
+                <i class="icon icon-fort-awesome"></i>
+                {{ $config.title }}
+              </span>
+              <span>
+                <i class="icon icon-pagelines"></i>
+                {{ $config.subtitle }}
+              </span>
+              <span>
+                <i class="icon icon-graduation-cap"></i>
+                {{ $config.aboutOpts.graduated }}
+              </span>
+              <span>
+                <i class="icon icon-tripadvisor"></i>
+                {{ $config.aboutOpts.college }}
+              </span>
             </div>
           </div>
           <div class="contact">
@@ -39,9 +51,9 @@
 <script>
 import MarkDown from '@/components/MarkDown'
 import Loading from '@/components/Loading'
+import Comment from '@/components/Comment'
 import Quote from '@/components/Quote'
 import Segment from '@/components/Segment'
-import Comment from '@/components/Comment'
 import { shuffle } from '@/utils'
 
 export default {
@@ -49,9 +61,9 @@ export default {
   components: {
     MarkDown,
     Loading,
+    Comment,
     Quote,
-    Segment,
-    Comment
+    Segment
   },
   data() {
     return {
@@ -73,6 +85,6 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-@import './index.less';
+<style lang="scss" scoped>
+@import './index.scss';
 </style>
