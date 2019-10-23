@@ -36,11 +36,11 @@ export default new Router({
       name: 'inspiration',
       component: () => import('./views/Inspiration')
     },
-    // {
-    //   path: '/book',
-    //   name: 'book',
-    //   component: () => import('./views/Book')
-    // },
+    {
+      path: '/book',
+      name: 'book',
+      component: () => import('./views/Book')
+    },
     {
       path: '/friend',
       name: 'friend',

@@ -87,5 +87,12 @@ export const formatPage = (data, type) => {
     default:
       break
   }
+  // 移除首尾空格
+  section.forEach(item => {
+    Object.keys(item).forEach(k => {
+      item[k] = item[k].trim()
+    })
+  })
+
   return section
 }
