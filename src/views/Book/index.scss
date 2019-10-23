@@ -19,16 +19,8 @@
 
     li {
       list-style: none;
-      margin: 0 auto 16px;
-      width: 100%;
+      margin-bottom: 16px;
       @include card-lignt;
-
-      @include pc-layout {
-        grid-template-columns: 1fr;
-      }
-      @include sp-layout {
-        grid-template-columns: 1fr 1fr;
-      }
 
       .info {
         display: flex;
