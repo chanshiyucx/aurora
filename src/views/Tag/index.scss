@@ -1,0 +1,53 @@
+#tag {
+  .page {
+    padding-top: 16px;
+    @include card-page;
+    overflow: hidden;
+  }
+
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 16px;
+
+    li {
+      list-style: none;
+      @include pc-layout {
+        margin: 10px 12px;
+      }
+      @include sp-layout {
+        margin: 10px 6px;
+      }
+
+      span {
+        padding: 4px 10px 6px;
+        border-radius: 3px;
+        background-color: $bg-dark;
+        transition: background 0.3s ease-out;
+
+        &:hover {
+          background-color: $bg-dark-deep;
+        }
+      }
+    }
+  }
+
+  .clean {
+    padding-left: 22px;
+    text-align: left;
+
+    .clean-btn {
+      margin-left: 12px;
+      padding: 5px 10px;
+      border-radius: 3px;
+      background-color: $bg-dark;
+      transition: background 0.3s ease-out;
+      color: $link-color;
+
+      &:hover {
+        background-color: $bg-dark-dim;
+      }
+    }
+  }
+}

@@ -60,6 +60,7 @@
 <script>
 import Theme from './components/Theme'
 import Qrcode from './components/Qrcode'
+import { localSave, localRead } from '@/utils'
 
 const bg = {
   touhou: [
@@ -94,7 +95,7 @@ export default {
     return {
       theme: '',
       likeTimes: 0,
-      isLikeSite: localStorage.getItem('isLikeSite', true),
+      isLikeSite: localRead('isLikeSite', true),
       currentInx: 1,
       lockSwiper: false,
       zoomSrc: ''
@@ -131,12 +132,12 @@ export default {
       if (this.isLikeSite) return
       this.likeTimes = await this.$store.dispatch('queryLike')
       this.isLikeSite = true
-      localStorage.setItem('isLikeSite', true)
+      localSave('isLikeSite', true)
     },
     // 初始化背景主题
     initTheme() {
       if (this.$isMobile) return
-      const theme = localStorage.getItem('theme') || 'touhou'
+      const theme = localRead('theme') || 'touhou'
       this.setTheme(theme)
     },
     // 切换主题
@@ -147,7 +148,7 @@ export default {
     // 设置主题
     setTheme(theme) {
       this.theme = theme
-      localStorage.setItem('theme', theme)
+      localSave('theme', theme)
       window.$('#bg').backstretch(bg[theme], {
         duration: 10000,
         alignY: 0,

@@ -1,0 +1,109 @@
+#category {
+  .page {
+    padding-top: 16px;
+    @include card-page;
+    overflow: hidden;
+  }
+
+  .content {
+    display: grid;
+    grid-column-gap: 16px;
+    padding: 16px;
+
+    @include pc-layout {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    @include sp-layout {
+      grid-template-columns: 1fr;
+    }
+
+    li {
+      list-style: none;
+      position: relative;
+      margin-bottom: 16px;
+      height: 160px;
+      @include card-lignt;
+      overflow: hidden;
+
+      @include pc-layout {
+        &:hover {
+          transform: translateY(-4px);
+          .avatar {
+            animation-play-state: paused;
+            transform: rotateZ(360deg);
+          }
+        }
+      }
+
+      .bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .meta {
+        position: relative;
+        padding: 0 16px;
+        width: 100%;
+        height: 100%;
+        text-align: justify;
+        text-shadow: 0 0 1px $bg-dark-deep;
+        background-color: $bg-white-dim;
+
+        > div {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          height: 80%;
+        }
+
+        .avatar {
+          margin: 0;
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          border: 4px solid $bg-white-dim;
+          box-shadow: $card-shadow-base;
+          background-color: $bg-dark;
+          transition: transform 1s ease-out;
+        }
+
+        span {
+          padding: 0 12px;
+          height: 40px;
+          line-height: 40px;
+          border-radius: 3px;
+          background-color: $bg-white-deep;
+          box-shadow: $card-shadow-light;
+        }
+      }
+
+      p {
+        position: absolute;
+        bottom: 0;
+        padding: 12px 16px;
+      }
+    }
+  }
+
+  .clean {
+    padding-left: 22px;
+    text-align: left;
+
+    .clean-btn {
+      margin-left: 12px;
+      padding: 5px 10px;
+      border-radius: 3px;
+      background-color: $bg-dark;
+      transition: all 0.3s ease-out;
+      color: $link-color;
+
+      &:hover {
+        background-color: $bg-dark-dim;
+      }
+    }
+  }
+}

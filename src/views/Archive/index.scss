@@ -1,0 +1,6 @@
+#archive {
+  .page {
+    padding-top: 16px;
+    @include card-page;
+  }
+}

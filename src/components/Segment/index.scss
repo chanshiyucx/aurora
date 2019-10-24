@@ -3,7 +3,8 @@
   padding: $card-padding-large;
   text-align: justify;
   overflow: unset;
-  border-top: 2px solid currentColor;
+  border-top-width: 2px;
+  border-top-style: solid;
   background-color: $bg-white;
   @include card-lignt;
 

@@ -1,7 +1,7 @@
 <template>
   <div id="archive">
     <Transition name="fade-transform" mode="out-in">
-      <div v-if="posts.length">
+      <div class="page" v-if="posts.length">
         <Quote :quote="$config.archiveOpts.qoute" />
         <ArchiveCard
           :posts="posts"
@@ -53,20 +53,14 @@ export default {
     postTimes() {
       return this.posts.map(o => this.times[o.id])
     },
-    currentCount() {
-      let count = 0
-      this.list.forEach((o, i) => {
-        if (i <= this.page) {
-          count += o.length
-        }
-      })
-      return count
+    maxPage() {
+      return Math.ceil(this.totalCount / this.pageSize)
     },
     isDisabledPrev() {
       return this.page <= 1
     },
     isDisabledNext() {
-      return this.currentCount >= this.totalCount
+      return this.page >= this.maxPage
     }
   },
   async created() {
@@ -99,7 +93,7 @@ export default {
 
       this.scrollTop(() => {
         this.posts = posts
-        this.$set(this.list, queryPage, posts)
+        this.list[queryPage] = posts
       })
 
       // 获取文章热度
@@ -118,6 +112,6 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-@import './index.less';
+<style lang="scss" scoped>
+@import './index.scss';
 </style>
