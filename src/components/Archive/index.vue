@@ -10,10 +10,17 @@
       >
         <h3>{{ post.title }}</h3>
         <div class="post-meta">
-          <span> <i class="icon icon-calendar"></i> {{ post.created_at }} </span>
-          <span> <i class="icon icon-fire"></i> 热度{{ times[i] || 1 }}℃ </span>
           <span>
-            <i class="icon icon-bookmark-empty"></i> {{ post.milestone ? post.milestone.title : '未分类' }}
+            <i class="icon icon-calendar"></i>
+            {{ post.created_at }}
+          </span>
+          <span>
+            <i class="icon icon-fire"></i>
+            热度{{ times[i] || 1 }}℃
+          </span>
+          <span>
+            <i class="icon icon-bookmark-empty"></i>
+            {{ post.milestone ? post.milestone.title : '未分类' }}
           </span>
           <span>
             <i class="icon icon-tag"></i>
@@ -82,6 +89,6 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-@import './index.less';
+<style lang="scss" scoped>
+@import './index.scss';
 </style>

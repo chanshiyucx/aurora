@@ -1,25 +1,13 @@
 <template>
   <div id="category">
     <Transition name="fade-transform" mode="out-in">
-      <div v-if="category.length">
+      <div class="page" v-if="category.length">
         <Quote :quote="$config.categoryOpts.qoute" />
-        <ul class="category">
-          <li class="cursor" v-for="item in category" :key="item.id" @click="handleFilter(item)">
-            <img class="bg" :src="item.cover" alt />
-            <div class="meta">
-              <div>
-                <img class="avatar" :src="item.cover" alt />
-                <span>{{ item.title }} ({{ item.open_issues }})</span>
-              </div>
-              <p>{{ item.summary }}</p>
-            </div>
-          </li>
-        </ul>
         <Transition name="fade-transform" mode="out-in">
           <div v-if="posts.length">
             <div class="clean">
               <span>Category:</span>
-              <span class="clean-btn" @click="reset">
+              <span class="clean-btn cursor" @click="reset">
                 {{ milestone.title }}
                 <i class="icon icon-cancel-outline"></i>
               </span>
@@ -34,6 +22,18 @@
             />
           </div>
           <Loading v-else-if="milestone" />
+          <ul v-else class="content">
+            <li class="cursor" v-for="item in category" :key="item.id" @click="handleFilter(item)">
+              <img class="bg" :src="item.cover" alt />
+              <div class="meta">
+                <div>
+                  <img class="avatar" :src="item.cover" alt />
+                  <span>{{ item.title }} ({{ item.open_issues }})</span>
+                </div>
+                <p>{{ item.summary }}</p>
+              </div>
+            </li>
+          </ul>
         </Transition>
       </div>
       <Loading v-else />
@@ -63,33 +63,27 @@ export default {
       initComment: false,
       category: [],
       milestone: '',
-      count: 0,
+      totalCount: 0,
       page: 0,
       pageSize: 10,
       posts: [],
       list: [],
       times: {},
-      delayTime: this.$config.isMobile ? 500 : 0 + 800
+      delayTime: this.$config.isMobile ? 400 : 0 + 800
     }
   },
   computed: {
     postTimes() {
       return this.posts.map(o => this.times[o.id])
     },
-    currentCount() {
-      let count = 0
-      this.list.forEach((o, i) => {
-        if (i <= this.page) {
-          count += o.length
-        }
-      })
-      return count
+    maxPage() {
+      return Math.ceil(this.totalCount / this.pageSize)
     },
     isDisabledPrev() {
       return this.page <= 1
     },
     isDisabledNext() {
-      return this.currentCount >= this.count
+      return this.page >= this.maxPage
     }
   },
   async created() {
@@ -106,13 +100,13 @@ export default {
       if (this.milestone.number === category.number) return
       this.reset()
       this.milestone = category
-      this.count = await this.$store.dispatch('queryFilterArchivesCount', { milestone: category.title })
+      this.totalCount = await this.$store.dispatch('queryFilterArchivesCount', { milestone: category.title })
       this.filterPosts()
     },
     // 重置
     reset() {
       this.milestone = ''
-      this.count = 0
+      this.totalCount = 0
       this.page = 0
       this.list = []
       this.posts = []
@@ -141,7 +135,7 @@ export default {
       this.scrollTop(() => {
         this.loading = false
         this.posts = posts
-        this.$set(this.list, queryPage, posts)
+        this.list[queryPage] = posts
       })
 
       // 获取文章热度
@@ -153,13 +147,13 @@ export default {
     },
     // 滚动到顶部
     scrollTop(cb) {
-      window.scrollTo({ top: 315, behavior: 'smooth' })
+      window.scrollTo({ top: 0, behavior: 'smooth' })
       setTimeout(cb, this.delayTime)
     }
   }
 }
 </script>
 
-<style lang="less" scoped>
-@import './index.less';
+<style lang="scss" scoped>
+@import './index.scss';
 </style>

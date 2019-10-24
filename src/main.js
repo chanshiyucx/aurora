@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import AV from 'leancloud-storage'
 import isMobile from 'ismobilejs'
-import FontFaceObserver from 'fontfaceobserver'
 import VueProgressBar from 'vue-progressbar'
 import APlayer from '@moefe/vue-aplayer'
 
@@ -43,9 +42,6 @@ Vue.use(APlayer, { productionTip: false })
 // Init Leancloud
 window.AV = AV
 AV.init(config.leancloud)
-
-// Init Font
-new FontFaceObserver('Noto Serif SC', { weight: '400' })
 
 // Init Image
 const img = new Image()

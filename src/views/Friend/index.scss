@@ -17,12 +17,11 @@
 
     li {
       list-style: none;
-      margin-bottom: 16px;
 
       > a {
         position: relative;
         display: block;
-        margin: 0 auto;
+        margin: 0 auto 16px;
         overflow: hidden;
         border-radius: 3px;
         transition: $transition-base;

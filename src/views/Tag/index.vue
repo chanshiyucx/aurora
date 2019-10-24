@@ -1,18 +1,13 @@
 <template>
   <div id="tag">
     <Transition name="fade-transform" mode="out-in">
-      <div v-if="tag.length">
+      <div class="page" v-if="tag.length">
         <Quote :quote="$config.tagOpts.qoute" />
-        <ul class="content">
-          <li v-for="item in tag" :key="item.id" @click="handleFilter(item)">
-            <span class="cursor" :style="{ color: `#${item.color}` }">{{ item.name }}</span>
-          </li>
-        </ul>
         <Transition name="fade-transform" mode="out-in">
           <div v-if="posts.length">
             <div class="clean">
               <span>Tag:</span>
-              <span class="clean-btn" @click="reset">
+              <span class="clean-btn cursor" @click="reset">
                 {{ label.name }}
                 <i class="icon icon-cancel-outline"></i>
               </span>
@@ -27,6 +22,11 @@
             />
           </div>
           <Loading v-else-if="label" />
+          <ul v-else class="content">
+            <li v-for="item in tag" :key="item.id" @click="handleFilter(item)">
+              <span class="cursor" :style="{ color: `#${item.color}` }">{{ item.name }}</span>
+            </li>
+          </ul>
         </Transition>
       </div>
       <Loading v-else />
@@ -56,33 +56,27 @@ export default {
       initComment: false,
       tag: [],
       label: '',
-      count: 0,
+      totalCount: 0,
       page: 0,
       pageSize: 10,
       posts: [],
       list: [],
       times: {},
-      delayTime: this.$config.isMobile ? 500 : 0 + 800
+      delayTime: this.$config.isMobile ? 400 : 0 + 800
     }
   },
   computed: {
     postTimes() {
       return this.posts.map(o => this.times[o.id])
     },
-    currentCount() {
-      let count = 0
-      this.list.forEach((o, i) => {
-        if (i <= this.page) {
-          count += o.length
-        }
-      })
-      return count
+    maxPage() {
+      return Math.ceil(this.totalCount / this.pageSize)
     },
     isDisabledPrev() {
       return this.page <= 1
     },
     isDisabledNext() {
-      return this.currentCount >= this.count
+      return this.page >= this.maxPage
     }
   },
   async created() {
@@ -99,13 +93,13 @@ export default {
       if (this.label.name === label.name) return
       this.reset()
       this.label = label
-      this.count = await this.$store.dispatch('queryFilterArchivesCount', { label: label.name })
+      this.totalCount = await this.$store.dispatch('queryFilterArchivesCount', { label: label.name })
       this.filterPosts()
     },
     // 重置
     reset() {
       this.label = ''
-      this.count = 0
+      this.totalCount = 0
       this.page = 0
       this.list = []
       this.posts = []
@@ -134,7 +128,7 @@ export default {
       this.scrollTop(() => {
         this.loading = false
         this.posts = posts
-        this.$set(this.list, queryPage, posts)
+        this.list[queryPage] = posts
       })
 
       // 获取文章热度
@@ -146,13 +140,13 @@ export default {
     },
     // 滚动到顶部
     scrollTop(cb) {
-      window.scrollTo({ top: 230, behavior: 'smooth' })
+      window.scrollTo({ top: 0, behavior: 'smooth' })
       setTimeout(cb, this.delayTime)
     }
   }
 }
 </script>
 
-<style lang="less" scoped>
-@import './index.less';
+<style lang="scss" scoped>
+@import './index.scss';
 </style>
