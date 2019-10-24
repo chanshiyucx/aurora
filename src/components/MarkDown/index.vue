@@ -20,7 +20,7 @@ renderer.heading = function(text, level, raw, slugger) {
 }
 
 renderer.image = function(href, title, text) {
-  return `<span class="img-box cursor"><img class="img-zoomable" src="${href}" loading="lazy" alt="${text}" />${
+  return `<span class="img-box"><img class="img-zoomable cursor" src="${href}" loading="lazy" alt="${text}" />${
     text ? `<span>◭ ${text}</span>` : ''
   }</span>`
 }
