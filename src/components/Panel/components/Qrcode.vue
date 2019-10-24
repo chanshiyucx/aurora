@@ -29,14 +29,14 @@ export default {
     margin-bottom: 10px;
     font-size: $font-size-larger;
     font-weight: $font-weight-normal;
-    line-height: 32px;
+    line-height: 2;
   }
 
   img {
     width: 150px;
     height: 150px;
     border-radius: 3px;
-    box-shadow: 0 1px 4px $bg-dark-deep;
+    box-shadow: $card-shadow;
   }
 }
 </style>

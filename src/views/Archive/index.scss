@@ -1,6 +1,7 @@
 #archive {
   .page {
-    padding-top: 16px;
+    // FIX: pagination overflow
+    padding: 16px 0 1px;
     @include card-page;
   }
 }
