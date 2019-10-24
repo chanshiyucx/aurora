@@ -6,15 +6,11 @@
 
 ![蝉時雨](https://i.loli.net/2019/04/28/5cc5bbc4ae020.png)
 
-Aurora 是一个基于 Vue 开发的 SPA 单页面博客应用程序，使用 [Github Issues](https://developer.github.com/v3/issues/) 进行写作，借助 [Github Api](https://developer.github.com/v3/) 获取数据。博客评论系统采用开源项目 [Gitalk](https://github.com/gitalk/gitalk)，同时使用 [valine](https://valine.js.org/) 作为游客评论系统。该主题基于 Github 全家桶，脱离服务器与数据库，关注内容本身，操作简单，免费食用。
+Aurora 是一个基于 Vue 开发的 SPA 单页面博客应用程序，使用 [Github Issues](https://developer.github.com/v3/issues/) 进行写作，借助 [Github Api](https://developer.github.com/v3/) 获取数据。博客评论系统采用开源项目 [Gitalk](https://github.com/gitalk/gitalk)。主题基于 Github 全家桶，脱离服务器与数据库，关注内容本身，操作简单，免费食用。
 
 技术栈：Vue + Github Pages + Github Api + Gitalk
 
 在线演示：[蝉時雨](https://chanshiyu.com)
-
-## TODO
-
-- [ ] Scss 替换 Less
 
 ## Getting Started
 
@@ -70,6 +66,7 @@ Just enjoy it ฅ●ω●ฅ
 
 ## Timeline
 
+- 2019/10/24 Aurora 2.0
 - 2019/04/25 新增背景主题-千年幻想
 - 2019/03/08 新增 Valine 匿名评论功能
 
