@@ -82,7 +82,7 @@
 
           img {
             border-radius: 50%;
-            box-shadow: 0 0 10px #999;
+            box-shadow: 0 0 10px $grey-dark;
             z-index: $zindex-1;
 
             @include pc-layout {
@@ -100,7 +100,7 @@
           span {
             width: 100%;
             text-align: center;
-            box-shadow: 0 0 10px #999;
+            box-shadow: 0 0 10px $grey-dark;
             background-color: $bg-white-dim;
             @include pc-layout {
               padding: 20px 0 8px;

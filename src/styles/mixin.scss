@@ -83,7 +83,6 @@
 }
 
 @mixin card-page {
-  overflow: auto;
   border-radius: 3px;
   @include pc-layout {
     background-color: $bg-white-deep;

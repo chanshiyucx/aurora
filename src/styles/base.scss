@@ -130,10 +130,15 @@ td.hljs-ln-numbers {
   font-weight: 700;
 }
 #gitalk {
+  @include sp-layout {
+    padding: 0 16px;
+  }
+
   .gt-comment-body,
   .gt-btn-text,
   textarea {
     font-family: $font-family-base;
+    color: $text-color;
   }
 
   .gt-container {
@@ -143,14 +148,14 @@ td.hljs-ln-numbers {
       border-bottom: none;
     }
     .gt-svg svg {
-      fill: $purple;
+      fill: $purple-dim;
     }
     .gt-comment-date,
     .gt-container .gt-comment-text {
-      color: #666;
+      color: $grey-dim;
     }
     .gt-ico-text {
-      color: $purple;
+      color: $purple-deep;
     }
     .gt-btn-login {
       margin-top: 0;
@@ -212,16 +217,24 @@ td.hljs-ln-numbers {
         fill: $purple-dim;
       }
     }
+    .gt-btn-text {
+      color: $purple-dim;
+    }
   }
   .gt-comments {
     .gt-comment-content {
       border-radius: 3px;
       background-color: $bg-white-dim;
-      box-shadow: $card-shadow-base;
-      transition: $transition-base;
-      &:hover {
-        transform: translateY(-4px);
-        box-shadow: $card-shadow-base-hover;
+      @include pc-layout {
+        box-shadow: $card-shadow-base;
+        transition: $transition-base;
+        &:hover {
+          transform: translateY(-4px);
+          box-shadow: $card-shadow-base-hover;
+        }
+      }
+      @include sp-layout {
+        box-shadow: $card-shadow-light;
       }
     }
     .gt-btn-loadmore {
@@ -236,6 +249,9 @@ td.hljs-ln-numbers {
       overflow: auto;
       @include scrollBar;
     }
+    blockquote {
+      border-left-color: $purple;
+    }
   }
   textarea,
   .gt-btn-login,
@@ -243,6 +259,11 @@ td.hljs-ln-numbers {
   .gt-btn-loadmore,
   .gt-btn-public,
   .gt-avatar {
-    box-shadow: $card-shadow-base;
+    @include pc-layout {
+      box-shadow: $card-shadow-base;
+    }
+    @include sp-layout {
+      box-shadow: $card-shadow-light;
+    }
   }
 }
