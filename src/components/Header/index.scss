@@ -103,19 +103,15 @@
       align-items: center;
       width: 50px;
       transition: color 0.3s ease;
-      text-shadow: 0 1px $bg-dark-deep;
 
       @include pc-layout {
         font-size: $font-size-large;
+        &:hover {
+          color: $link-color;
+        }
       }
       @include sp-layout {
         font-size: $font-size-normal;
-        &:hover {
-          text-shadow: 0 1px $bg-white;
-        }
-      }
-      &:hover {
-        color: $link-color;
       }
     }
   }
