@@ -91,6 +91,11 @@
       padding: $card-padding;
       height: 50px;
       border-top: 1px solid $bg-dark-line;
+      word-break: keep-all;
+      @include sp-layout {
+        max-width: 94vw;
+        overflow: auto;
+      }
 
       & > span {
         display: flex;

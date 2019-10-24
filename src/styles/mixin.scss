@@ -59,6 +59,7 @@
 }
 
 @mixin card {
+  overflow: hidden;
   border-radius: 3px;
   background-color: $bg-white-deep;
   @include pc-layout {

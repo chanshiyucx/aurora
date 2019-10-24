@@ -4,7 +4,7 @@
       <h3>千年幻想</h3>
       <div class="preview cursor">
         <div>
-          <img src="https://raw.githubusercontent.com/chanshiyucx/poi/master/2019/touhou.png" alt="千年幻想" />
+          <img src="https://chanshiyu.com/poi/2019/touhou.png" alt="千年幻想" />
         </div>
       </div>
     </li>
@@ -12,7 +12,7 @@
       <h3>琉璃の空</h3>
       <div class="preview cursor">
         <div>
-          <img src="https://raw.githubusercontent.com/chanshiyucx/poi/master/2019/school.jpg" alt="玻璃の空" />
+          <img src="https://chanshiyu.com/poi/2019/school.jpg" alt="玻璃の空" />
         </div>
       </div>
     </li>
@@ -96,7 +96,7 @@ export default {
 
   .active {
     h3 {
-      color: $purple-dim;
+      color: $purple-deep;
     }
     .preview::before {
       border: $purple solid 5px;
