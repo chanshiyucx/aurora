@@ -112,25 +112,25 @@ export default {
     display: true,
     enableComment: true,
     qoute: '蝉鸣如雨，花宵道中',
-    avatar: require('./assets/images/avatar.jpg'),
+    avatar: '//cdn.jsdelivr.net/gh/chanshiyucx/poi/2019/avatar.jpg',
     graduated: 'University of Electronic Science and Technology of China (UESTC)',
     college: 'Communication&Information Engineering',
     // 联系方式，可自由添加
     contact: [
       {
-        icon: require('./assets/images/email.png'),
+        icon: '//cdn.jsdelivr.net/gh/chanshiyucx/poi/2019/email.png',
         link: 'http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=tNnR9Nfc1drH3N3NwZrX29k'
       },
       {
-        icon: require('./assets/images/github.png'),
+        icon: '//cdn.jsdelivr.net/gh/chanshiyucx/poi/2019/github.png',
         link: 'https://github.com/chanshiyucx'
       },
       {
-        icon: require('./assets/images/zhihu.png'),
+        icon: '//cdn.jsdelivr.net/gh/chanshiyucx/poi/2019/zhihu.png',
         link: 'https://www.zhihu.com/people/ichanshiyu/activities'
       },
       {
-        icon: require('./assets/images/music.png'),
+        icon: '//cdn.jsdelivr.net/gh/chanshiyucx/poi/2019/music.png',
         link: 'https://music.163.com/#/user/home?id=103060582'
       }
     ]
@@ -148,23 +148,23 @@ export default {
   qrcode: [
     {
       name: '支付宝',
-      img: require('./assets/images/zfb.png')
+      img: '//cdn.jsdelivr.net/gh/chanshiyucx/poi/2019/zfb.png'
     },
     {
       name: '微信',
-      img: require('./assets/images/wx.png')
+      img: '//cdn.jsdelivr.net/gh/chanshiyucx/poi/2019/wx.png'
     }
   ],
 
   /**
    * 加载动画
    */
-  loadingImg: require('./assets/images/loading.gif'),
+  loadingImg: '//cdn.jsdelivr.net/gh/chanshiyucx/poi/2019/loading.gif',
 
   /**
    * 文章默认图
    */
-  defaultCover: require('./assets/images/defaultCover.jpg'),
+  defaultCover: '//cdn.jsdelivr.net/gh/chanshiyucx/poi/2019/defaultCover.jpg',
 
   /**
    * 音乐播放器,
@@ -174,31 +174,31 @@ export default {
       name: 'うたかたの风と蝉时雨',
       artist: 'Little Planet',
       url: 'https://files.catbox.moe/wo7zjt.mp3',
-      cover: require('./assets/images/cover1.jpg')
+      cover: '//cdn.jsdelivr.net/gh/chanshiyucx/poi/2019/cover1.jpg'
     },
     {
       name: '春の凑に',
       artist: 'TUMENECO',
       url: 'https://files.catbox.moe/ducy49.mp3',
-      cover: require('./assets/images/cover2.jpg')
+      cover: '//cdn.jsdelivr.net/gh/chanshiyucx/poi/2019/cover2.jpg'
     },
     {
       name: '夏阳炎',
       artist: '天威梦方',
       url: 'https://files.catbox.moe/7migen.mp3',
-      cover: require('./assets/images/cover3.jpg')
+      cover: '//cdn.jsdelivr.net/gh/chanshiyucx/poi/2019/cover3.jpg'
     },
     {
       name: '秋风のとおり道',
       artist: '风神华伝',
       url: 'https://files.catbox.moe/b58fq6.mp3',
-      cover: require('./assets/images/cover4.jpg')
+      cover: '//cdn.jsdelivr.net/gh/chanshiyucx/poi/2019/cover4.jpg'
     },
     {
       name: '冬のわすれもの',
       artist: 'ハルノカゼ',
       url: 'https://files.catbox.moe/vwnawp.mp3',
-      cover: require('./assets/images/cover5.jpg')
+      cover: '//cdn.jsdelivr.net/gh/chanshiyucx/poi/2019/cover5.jpg'
     }
   ],
 

@@ -55,9 +55,10 @@ import { random } from '@/utils'
 import model from '@/assets/live2d/waifu.json'
 import tips from '@/assets/live2d/tips.json'
 import costume from '@/assets/live2d/costume.json'
-import sakura from '@/assets/images/sakura.png'
+import images from '@/assets/images'
 
 const { waifuClick, hoverTips, clickTips, hitokotos } = tips
+const { sakura } = images
 
 export default {
   name: 'Footer',

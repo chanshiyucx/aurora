@@ -4,7 +4,7 @@
       <h3>千年幻想</h3>
       <div class="preview cursor">
         <div>
-          <img src="https://cdn.jsdelivr.net/gh/chanshiyucx/poi/2019/touhou.png" alt="千年幻想" />
+          <img :src="touhou" alt="千年幻想" />
         </div>
       </div>
     </li>
@@ -12,7 +12,7 @@
       <h3>琉璃の空</h3>
       <div class="preview cursor">
         <div>
-          <img src="https://cdn.jsdelivr.net/gh/chanshiyucx/poi/2019/school.jpg" alt="玻璃の空" />
+          <img :src="school" alt="玻璃の空" />
         </div>
       </div>
     </li>
@@ -20,12 +20,22 @@
 </template>
 
 <script>
+import images from '@/assets/images'
+
+const { touhou, school } = images
+
 export default {
   name: 'Theme',
   props: {
     theme: {
       type: String,
       default: 'touhou'
+    }
+  },
+  data() {
+    return {
+      touhou,
+      school
     }
   },
   methods: {
