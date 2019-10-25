@@ -14,13 +14,29 @@ const zooming = new Zooming({
 
 const renderer = new marked.Renderer()
 
+let loadingId = 1
+
 renderer.heading = function(text, level, raw, slugger) {
   const icon = ['gift', 'pagelines', 'pilcrow'][level - 2]
   return `<h${level} id="h-${slugger.slug(raw)}"><i class="icon icon-${icon}"></i>${text}</h${level}>`
 }
 
 renderer.image = function(href, title, text) {
-  return `<span class="img-box"><img class="img-zoomable cursor" src="${href}" loading="lazy" alt="${text}" />${
+  const id = `loading-${loadingId}`
+  loadingId++
+
+  const img = new Image()
+  img.src = href
+  img.onload = () => {
+    const dom = document.getElementById(id)
+    dom.style.display = 'none'
+  }
+
+  return `<span class="img-box">
+  <span id="${id}" class="loading">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </span>
+  <img class="img-zoomable cursor" src="${href}" loading="lazy" alt="${text}" />${
     text ? `<span>◭ ${text}</span>` : ''
   }</span>`
 }
