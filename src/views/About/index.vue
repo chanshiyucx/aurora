@@ -57,7 +57,7 @@ import Segment from '@/components/Segment'
 import { shuffle } from '@/utils'
 
 export default {
-  name: 'friend',
+  name: 'about',
   components: {
     MarkDown,
     Loading,
