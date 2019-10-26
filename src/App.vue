@@ -42,8 +42,14 @@ export default {
     $route: {
       immediate: true,
       handler(val) {
-        if (!this.$isMobile) return
-        this.showHeader = val && val.name !== 'post'
+        if (this.$isMobile) {
+          this.showHeader = val && val.name !== 'post'
+        }
+        if (val.name === 'post') {
+          setTimeout(() => {
+            this.scrollTop()
+          }, 500)
+        }
       }
     }
   },
@@ -77,6 +83,10 @@ export default {
       const referrer = getLocation(document.referrer)
       const hostname = referrer.hostname || '直接访问'
       this.$store.dispatch('visitorStatistics', hostname)
+    },
+    // 滚动到顶部
+    scrollTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
 }
