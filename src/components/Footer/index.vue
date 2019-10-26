@@ -22,7 +22,7 @@
             <i class="icon icon-emo-devil"></i>
           </div>
         </div>
-        <APlayer :class="isMini && 'mini'" :audio="audio" fixed mini @update:mini="handleUpdate" />
+        <APlayer :class="isMini && 'mini'" :audio="audio" preload="none" fixed mini @update:mini="handleUpdate" />
       </div>
     </div>
     <div class="site-info">
