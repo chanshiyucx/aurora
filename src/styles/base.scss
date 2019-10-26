@@ -280,6 +280,9 @@ td.hljs-ln-numbers {
   overflow: hidden;
   perspective: 1000px;
   z-index: $zindex-4;
+  @include sp-layout {
+    display: none;
+  }
 
   .petal {
     margin: 1px;
