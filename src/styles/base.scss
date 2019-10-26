@@ -21,9 +21,9 @@ body {
   font-weight: $font-weight-normal;
   color: $text-color;
   line-height: $line-height-base;
-  text-shadow: 0 0 1px $bg-dark-dim;
   user-select: none;
   scroll-behavior: smooth;
+  text-shadow: 0 0 1px $bg-dark-dim;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
