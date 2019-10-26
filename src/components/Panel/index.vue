@@ -1,5 +1,5 @@
 <template>
-  <div id="panel">
+  <div id="panel" v-show="showPanel">
     <div class="mask" @click="hidePanel"></div>
     <div class="container">
       <div class="wrapper">
@@ -11,7 +11,7 @@
           <div class="header">
             <div class="inner">{{ panelTitle }}</div>
           </div>
-          <div class="body">
+          <div v-if="showPanel" class="body">
             <div class="swiper-wrapper">
               <ul ref="swiper" id="swiper" class="swiper animate" :style="containerStyle">
                 <li>
@@ -91,6 +91,12 @@ const bg = {
 export default {
   name: 'Panel',
   components: { Theme, Qrcode },
+  props: {
+    showPanel: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       theme: '',

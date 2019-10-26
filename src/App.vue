@@ -12,7 +12,7 @@
       </Transition>
     </main>
     <Footer @dropPanel="showPanel = true" />
-    <Panel v-show="showPanel" @hidePanel="showPanel = false" />
+    <Panel :showPanel="showPanel" @hidePanel="showPanel = false" />
     <ScrollTop />
   </div>
 </template>
