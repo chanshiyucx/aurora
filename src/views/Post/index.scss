@@ -54,6 +54,9 @@
 
           h1 {
             font-weight: $font-weight-normal;
+            @include sp-layout {
+              font-size: $font-size-larger;
+            }
           }
         }
 
