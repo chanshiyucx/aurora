@@ -47,12 +47,11 @@
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
     <link rel="dns-prefetch" href="//i0.hdslb.com" />
     <link rel="dns-prefetch" href="//chanshiyu.com" />
-
     <!-- 引入样式 -->
     <% for(var css of htmlWebpackPlugin.options.cdn.css) { %>
     <link rel="stylesheet" href="<%=css%>" />
     <% } %>
-    <script src="/live2d/live2d.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/chanshiyucx/poi/js/live2d.min.js"></script>
     <title>蝉時雨 | 蝉鸣如雨 花宵道中</title>
   </head>
   <body>
