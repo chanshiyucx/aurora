@@ -59,6 +59,7 @@ import images from '@/assets/images'
 
 const { waifuClick, hoverTips, clickTips, hitokotos } = tips
 const { sakura } = images
+const path = 'https://cdn.jsdelivr.net/gh/chanshiyucx/chanshiyucx.github.io/live2d/'
 
 export default {
   name: 'Footer',
@@ -105,7 +106,7 @@ export default {
       // 设置缩放比例
       model.layout.width = this.waifu === 'tia' ? 1.82 : 2
       window.waifuModel = model
-      window.loadlive2d('live2d', '/live2d/', '')
+      window.loadlive2d('live2d', path, '')
     },
     loopTips() {
       setTimeout(this.loopTips, 16 * 1000)
