@@ -1,6 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home'
+import Post from './views/Post'
+import Archive from './views/Archive'
+import Category from './views/Category'
+import Tag from './views/Tag'
+import Inspiration from './views/Inspiration'
+import Book from './views/Book'
+import Friend from './views/Friend'
+import About from './views/About'
 
 Vue.use(Router)
 
@@ -14,42 +22,42 @@ export default new Router({
     {
       path: '/post/:number',
       name: 'post',
-      component: () => import('./views/Post')
+      component: Post
     },
     {
       path: '/archive',
       name: 'archive',
-      component: () => import('./views/Archive')
+      component: Archive
     },
     {
       path: '/category',
       name: 'category',
-      component: () => import('./views/Category')
+      component: Category
     },
     {
       path: '/tag',
       name: 'tag',
-      component: () => import('./views/Tag')
+      component: Tag
     },
     {
       path: '/inspiration',
       name: 'inspiration',
-      component: () => import('./views/Inspiration')
+      component: Inspiration
     },
     {
       path: '/book',
       name: 'book',
-      component: () => import('./views/Book')
+      component: Book
     },
     {
       path: '/friend',
       name: 'friend',
-      component: () => import('./views/Friend')
+      component: Friend
     },
     {
       path: '/about',
       name: 'about',
-      component: () => import('./views/About')
+      component: About
     }
   ]
 })
