@@ -20,6 +20,18 @@ const checkStatus = response => {
   throw error
 }
 
+// github fetch
+const githubFetch = async (url, isQueryPage = false) => {
+  try {
+    const response = await fetch(url)
+    checkStatus(response)
+    const data = await response.json()
+    return isQueryPage ? data[0] : data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 // 构建 GraphQL
 const createCall = async document => {
   try {
@@ -50,82 +62,40 @@ export const queryFilterArchivesCount = ({ label, milestone }) =>
   createCall(documents.queryFilterArchivesCount({ username, repository, label, milestone }))
 
 // 获取文章列表
-export const queryPosts = async ({ page = 1, pageSize = 10, filter = '' }) => {
-  try {
-    const url = `${blog}/issues?${open}&page=${page}&per_page=${pageSize}${filter}`
-    const response = await fetch(url)
-    checkStatus(response)
-    const data = await response.json()
-    return data
-  } catch (err) {
-    console.log(err)
-  }
+export const queryPosts = ({ page = 1, pageSize = 10, filter = '' }) => {
+  const url = `${blog}/issues?${open}&page=${page}&per_page=${pageSize}${filter}`
+  return githubFetch(url)
 }
 
 // 获取单篇文章
-export const queryPost = async number => {
-  try {
-    const url = `${blog}/issues/${number}?${open}`
-    const response = await fetch(url)
-    checkStatus(response)
-    const data = await response.json()
-    return data
-  } catch (err) {
-    console.log(err)
-  }
+export const queryPost = number => {
+  const url = `${blog}/issues/${number}?${open}`
+  return githubFetch(url)
 }
 
 // 获取分类
-export const queryCategory = async () => {
-  try {
-    const url = `${blog}/milestones?access_token=${access_token}`
-    const response = await fetch(url)
-    checkStatus(response)
-    const data = await response.json()
-    return data
-  } catch (err) {
-    console.log(err)
-  }
+export const queryCategory = () => {
+  const url = `${blog}/milestones?access_token=${access_token}`
+  return githubFetch(url)
 }
 
 // 获取标签
-export const queryTag = async () => {
-  try {
-    const url = `${blog}/labels?access_token=${access_token}&page=1&per_page=100`
-    const response = await fetch(url)
-    checkStatus(response)
-    const data = await response.json()
-    return data
-  } catch (err) {
-    console.log(err)
-  }
+export const queryTag = () => {
+  const url = `${blog}/labels?access_token=${access_token}&page=1&per_page=100`
+  return githubFetch(url)
 }
 
 // 获取灵感
-export const queryInspiration = async ({ page = 1, pageSize = 10 }) => {
-  try {
-    const url = `${blog}/issues?${closed}&labels=inspiration&page=${page}&per_page=${pageSize}`
-    const response = await fetch(url)
-    checkStatus(response)
-    const data = await response.json()
-    return data
-  } catch (err) {
-    console.log(err)
-  }
+export const queryInspiration = ({ page = 1, pageSize = 10 }) => {
+  const url = `${blog}/issues?${closed}&labels=inspiration&page=${page}&per_page=${pageSize}`
+  return githubFetch(url)
 }
 
 // 获取书单 & 友链 & 关于
-export const queryPage = async type => {
-  try {
-    const upperType = type.replace(/^\S/, s => s.toUpperCase())
-    const url = `${blog}/issues?${closed}&labels=${upperType}`
-    const response = await fetch(url)
-    checkStatus(response)
-    const data = await response.json()
-    return data[0]
-  } catch (err) {
-    console.log(err)
-  }
+export const queryPage = type => {
+  const upperType = type.replace(/^\S/, s => s.toUpperCase())
+  const url = `${blog}/issues?${closed}&labels=${upperType}`
+  return githubFetch(url, true)
 }
 
 // 文章热度
