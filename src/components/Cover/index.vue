@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <img :src="defaultCover" alt="defaultCover" />
-    <img class="cover fadeIn" v-show="loadCover" :src="src" :alt="alt" @load="loadNext" />
+    <img class="cover fadeIn" v-show="imgSrc" :src="imgSrc" :alt="alt" />
   </div>
 </template>
 
@@ -24,12 +24,28 @@ export default {
   },
   data() {
     return {
-      defaultCover: this.$config.defaultCover
+      defaultCover: this.$config.defaultCover,
+      imgSrc: ''
+    }
+  },
+  watch: {
+    loadCover: {
+      immediate: true,
+      handler(val) {
+        if (val) {
+          this.loadImg()
+        }
+      }
     }
   },
   methods: {
-    loadNext() {
-      this.$emit('loadNext')
+    loadImg() {
+      const img = new Image()
+      img.onload = () => {
+        this.imgSrc = this.src
+        this.$emit('loadNext')
+      }
+      img.src = this.src
     }
   }
 }
