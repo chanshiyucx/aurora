@@ -101,7 +101,7 @@ export default {
     return {
       theme: '',
       likeTimes: 0,
-      isLikeSite: localRead('isLikeSite', true),
+      isLikeSite: localRead('isLikeSite', false),
       currentInx: 1,
       lockSwiper: false,
       zoomSrc: ''
@@ -143,7 +143,7 @@ export default {
     // 初始化背景主题
     initTheme() {
       if (this.$isMobile) return
-      const theme = localRead('theme') || 'touhou'
+      const theme = localRead('theme', 'touhou')
       this.setTheme(theme)
     },
     // 切换主题
