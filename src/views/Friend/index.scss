@@ -4,6 +4,31 @@
     @include card-page;
   }
 
+  .me {
+    display: flex;
+    flex-direction: column;
+    line-height: $line-height-block;
+
+    @include pc-layout {
+      margin: 0 32px 10px;
+    }
+    @include sp-layout {
+      margin: 0 16px 6px;
+    }
+
+    span:first-child {
+      margin-bottom: 6px;
+    }
+
+    span:last-child {
+      margin-top: 6px;
+    }
+
+    a {
+      @include link;
+    }
+  }
+
   .content {
     display: grid;
     padding: 16px;
