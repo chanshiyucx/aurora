@@ -38,11 +38,11 @@
 }
 
 @mixin cursor {
-  cursor: url('../assets/cursor/cursor.png'), auto;
+  cursor: url('../assets/cursor/cursor.png'), auto !important;
 }
 
 @mixin cursor-link {
-  cursor: url('../assets/cursor/cursor_link.png'), auto;
+  cursor: url('../assets/cursor/cursor_link.png'), auto !important;
 }
 
 @mixin clip {
