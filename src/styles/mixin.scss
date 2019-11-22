@@ -85,7 +85,7 @@
 @mixin card-page {
   border-radius: 3px;
   @include pc-layout {
-    background-color: $bg-white-deep;
+    background-color: $bg-white-dim;
     box-shadow: $card-shadow-base;
   }
 }
