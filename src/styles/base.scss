@@ -201,6 +201,7 @@ td.hljs-ln-numbers {
     }
     textarea {
       height: 120px !important;
+      @include scrollBar;
     }
     .gt-header-controls-tip {
       float: left;
