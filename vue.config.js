@@ -1,6 +1,6 @@
 module.exports = {
   productionSourceMap: false,
-  publicPath: process.env.NODE_ENV === 'production' ? `//cdn.jsdelivr.net/gh/chanshiyucx/chanshiyucx.github.io/` : '/',
+  publicPath: '/',
   chainWebpack(config) {
     const cdn = {
       css: ['//fonts.googleapis.com/css?family=Fira+Mono|Noto+Serif+SC&display=swap'],
