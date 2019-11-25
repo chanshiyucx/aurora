@@ -8,13 +8,7 @@
       <div class="tool">
         <div class="menu" v-if="showWaifu">
           <ul>
-            <li
-              class="cursor"
-              v-for="item in menu"
-              :key="item.type"
-              @click="handleClick(item.type)"
-              @mouseenter="handleHover(item.type)"
-            >
+            <li class="cursor" v-for="item in menu" :key="item.type" @click="handleClick(item.type)" @mouseenter="handleHover(item.type)">
               <i :class="['icon', `icon-${item.icon}`]"></i>
             </li>
           </ul>
@@ -38,14 +32,7 @@
         {{ $config.subtitle }}
       </p>
     </div>
-    <img
-      v-if="!$isMobile"
-      class="sakura cursor"
-      :src="sakura"
-      @click="dropPanel"
-      @mouseenter="handleHover('panel')"
-      alt="sakura"
-    />
+    <img v-if="!$isMobile" class="sakura cursor" :src="sakura" @click="dropPanel" @mouseenter="handleHover('panel')" alt="sakura" />
   </footer>
 </template>
 
@@ -59,7 +46,7 @@ import images from '@/assets/images'
 
 const { waifuClick, hoverTips, clickTips, hitokotos } = tips
 const { sakura } = images
-const path = 'https://cdn.jsdelivr.net/gh/chanshiyucx/chanshiyucx.github.io/live2d/'
+const path = '/live2d/'
 
 export default {
   name: 'Footer',
@@ -127,9 +114,7 @@ export default {
     handleHover(type) {
       let tips
       if (type === 'switch') {
-        tips = `要召唤<span style="color: #b854d4">${
-          this.waifu === 'pio' ? ' 欧内酱 Tia ' : ' 一抹多 Pio '
-        } </span>么(◍˃̶ᗜ˂̶◍)✩`
+        tips = `要召唤<span style="color: #b854d4">${this.waifu === 'pio' ? ' 欧内酱 Tia ' : ' 一抹多 Pio '} </span>么(◍˃̶ᗜ˂̶◍)✩`
       } else {
         tips = hoverTips[type]
       }
