@@ -67,3 +67,17 @@ export const localSave = (key, value) => {
 export const localRead = (key, defaultValue = '') => {
   return localStorage.getItem(key) || defaultValue
 }
+
+/**
+ * 文件 cdn 加速
+ * @param {*} url
+ */
+const isMe = location.host.includes('chanshiyu.com')
+const GithubPrefix = 'raw.githubusercontent.com/chanshiyucx/yoi/master'
+const JSDriverPrefix = 'cdn.jsdelivr.net/gh/chanshiyucx/yoi@latest'
+export const fileCDN = url => {
+  if (isMe && url.includes(GithubPrefix)) {
+    return url.replace(GithubPrefix, JSDriverPrefix)
+  }
+  return url
+}

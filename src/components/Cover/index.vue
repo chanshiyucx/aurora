@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import { fileCDN } from '@/utils'
+
 export default {
   name: 'MagicImg',
   props: {
@@ -40,12 +42,14 @@ export default {
   },
   methods: {
     loadImg() {
+      const cdnUrl = fileCDN(this.src)
+
       const img = new Image()
       img.onload = () => {
-        this.imgSrc = this.src
+        this.imgSrc = cdnUrl
         this.$emit('loadNext')
       }
-      img.src = this.src
+      img.src = cdnUrl
     }
   }
 }

@@ -6,6 +6,7 @@
 import marked from 'marked'
 import Zooming from 'zooming'
 import hljs from '@/assets/lib/highlight'
+import { fileCDN } from '@/utils'
 
 const zooming = new Zooming({
   bgOpacity: 0.6,
@@ -22,6 +23,7 @@ renderer.heading = function(text, level, raw, slugger) {
 }
 
 renderer.image = function(href, title, text) {
+  href = fileCDN(href)
   const id = `loading-${loadingId}`
   loadingId++
 
@@ -36,9 +38,7 @@ renderer.image = function(href, title, text) {
   <span id="${id}" class="loading">
     <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
   </span>
-  <img class="img-zoomable cursor" src="${href}" loading="lazy" alt="${text}" />${
-    text ? `<span>◭ ${text}</span>` : ''
-  }</span>`
+  <img class="img-zoomable cursor" src="${href}" loading="lazy" alt="${text}" />${text ? `<span>◭ ${text}</span>` : ''}</span>`
 }
 
 renderer.link = function(href, title, text) {
