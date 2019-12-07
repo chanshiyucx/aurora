@@ -8,13 +8,23 @@
           <span>★ Bio：蝉时雨</span>
           <span>★ Motto：蝉鸣如雨，花宵道中</span>
           <span>★ URL：https://chanshiyu.com</span>
-          <span>★ Avatar：<a href="https://cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/avatar.jpg" target="_blank">点击获取</a></span>
+          <span
+            >★ Avatar：<a href="https://cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/avatar.jpg" target="_blank"
+              >点击获取</a
+            ></span
+          >
           <span>※ 以下友链按博主互访次数排序，并根据个人对博客内容喜好加权，博主将不定期更新排序并过滤阵亡名单。</span>
         </div>
         <ul class="content">
           <li v-for="(item, index) in friend" :key="item.name">
             <a :href="item.link" rel="noopener noreferrer" target="_blank">
-              <Cover class="cover" :src="item.cover" :alt="item.name" :loadCover="index < LOAD_INX" @loadNext="loadNext" />
+              <Cover
+                class="cover"
+                :src="item.cover"
+                :alt="item.name"
+                :loadCover="index < LOAD_INX"
+                @loadNext="loadNext"
+              />
               <div class="info">
                 <img :src="item.avatar" alt />
                 <span>{{ item.name }}</span>
