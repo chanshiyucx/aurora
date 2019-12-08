@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <img :src="defaultCover" alt="defaultCover" />
-    <img class="cover fadeIn" v-show="imgSrc" :src="imgSrc" :alt="alt" />
+    <img :class="['cover', visible && 'fadeIn']" :src="imgSrc" />
   </div>
 </template>
 
@@ -27,7 +27,8 @@ export default {
   data() {
     return {
       defaultCover: this.$config.defaultCover,
-      imgSrc: ''
+      imgSrc: '',
+      visible: false
     }
   },
   watch: {
@@ -48,6 +49,9 @@ export default {
       img.onload = () => {
         this.imgSrc = cdnUrl
         this.$emit('loadNext')
+        setTimeout(() => {
+          this.visible = true
+        }, 300)
       }
       img.src = cdnUrl
     }
@@ -63,10 +67,11 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
+    opacity: 0;
   }
 
   .fadeIn {
-    animation: coverDown 0.4s ease-out;
+    animation: coverIn 0.8s ease-out forwards;
   }
 }
 </style>

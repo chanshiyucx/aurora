@@ -88,14 +88,12 @@
 }
 
 /** 封面图动画 */
-@keyframes coverDown {
+@keyframes coverIn {
   0% {
     opacity: 0.6;
-    transform: translateY(-6px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0px);
   }
 }
 

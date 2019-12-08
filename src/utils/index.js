@@ -69,7 +69,7 @@ export const localRead = (key, defaultValue = '') => {
 }
 
 /**
- * 文件 cdn 加速
+ * 图片 cdn 加速
  * @param {*} url
  */
 const isMe = location.host.includes('chanshiyu.com')
@@ -80,4 +80,35 @@ export const fileCDN = url => {
     return url.replace(GithubPrefix, JSDriverPrefix)
   }
   return url
+}
+
+/**
+ * 图片尺寸处理
+ * @param {*} url
+ */
+export const handleImg = href => {
+  const urlParams = new URLSearchParams(href.split('?')[1])
+  const vw = urlParams.get('vw')
+  const vh = urlParams.get('vh')
+  const clientWidth = document.querySelector('main').clientWidth
+
+  // 是否预设尺寸
+  let style = ''
+  let width = vw
+  let height = vh
+  let isFull = false
+  if (width) {
+    if (width > clientWidth) {
+      width = clientWidth
+      isFull = true
+    }
+    style += `width: ${width}px;`
+
+    // 在设置宽度的情况下判断高度
+    if (height) {
+      height = (height * width) / vw
+      style += `height: ${height}px;`
+    }
+  }
+  return { style, isFull }
 }
