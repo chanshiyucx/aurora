@@ -49,9 +49,7 @@ export default {
       img.onload = () => {
         this.imgSrc = cdnUrl
         this.$emit('loadNext')
-        setTimeout(() => {
-          this.visible = true
-        }, 300)
+        setTimeout(() => (this.visible = true), 300)
       }
       img.src = cdnUrl
     }
