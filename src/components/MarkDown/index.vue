@@ -38,9 +38,13 @@ renderer.image = function(href, title, text) {
   const { style, isFull } = handleImg(href)
 
   return `<span class="img-box ${isFull ? 'full' : ''}" >
-  <span class="bg" style="${style}"></span>
+  <span class="bg" style="${style}">
+    <span class="loading">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    </span>
+  </span>
   <img id="${id}" class="img-zoomable cursor" style="${style}"  loading="lazy" alt="${text}" />${
-    text ? `<span>◭ ${text}</span>` : ''
+    text ? `<span class="title">◭ ${text}</span>` : ''
   }</span>`
 }
 
