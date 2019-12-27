@@ -6,11 +6,9 @@
 
 ![蝉時雨](https://i.loli.net/2019/04/28/5cc5bbc4ae020.png)
 
-Aurora 是一个基于 Vue 开发的 SPA 单页面博客应用程序，使用 [Github Issues](https://developer.github.com/v3/issues/) 进行写作，借助 [Github Api](https://developer.github.com/v3/) 获取内容，通过 `Github Pages` 部署在线访问。
+Aurora 是一个基于 Vue 开发的 SPA 单页面博客应用程序，使用 [Github Issues](https://developer.github.com/v3/issues/) 进行写作，借助 [Github Api](https://developer.github.com/v3/) 获取内容，通过 `Github Pages` 部署在线访问。博客评论系统采用开源项目 [Gitalk](https://github.com/gitalk/gitalk)。主题基于 Github 全家桶，脱离服务器与数据库，关注内容本身，操作简单，免费食用。
 
-博客评论系统采用开源项目 [Gitalk](https://github.com/gitalk/gitalk)。主题基于 Github 全家桶，脱离服务器与数据库，关注内容本身，操作简单，免费食用。
-
-技术栈：Vue + Github Pages + Github Issues + Github Api + Gitalk
+技术栈：Vue + Github Pages + Github Issues + Github Api + Gitalk。
 
 在线演示：[蝉時雨](https://chanshiyu.com)
 
@@ -31,7 +29,7 @@ npm install
 
 修改配置文件 `src/config.js`，每个配置项都有详细说明。
 
-完整详细的主题食用方法参考 [Aurora 食用指南](https://github.com/chanshiyucx/blog/issues/41)。
+完整详细的主题食用方法参考 [Aurora 食用指南](https://chanshiyu.com/#/post/41)。
 
 ### Preview
 
