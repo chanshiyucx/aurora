@@ -14,6 +14,7 @@
     display: flex;
     flex-direction: column;
     transition: $transition-base;
+    will-change: transform;
     overflow: hidden;
     @include card;
     @include pc-layout {
@@ -42,9 +43,11 @@
         padding: 0 12px;
         width: 100%;
         height: 50px;
-        backdrop-filter: blur(2px);
         background-color: $bg-white-dim;
         box-shadow: 0 -1px 2px $bg-dark;
+        @include pc-layout {
+          backdrop-filter: blur(2px);
+        }
       }
 
       h3,

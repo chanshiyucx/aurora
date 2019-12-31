@@ -47,10 +47,10 @@ npm start
 
 本地预览检查能正常访问后，即可以打包发布上线。
 
-Aurora 2.0 添加一键部署功能，只需要编辑 `build.sh`，配置自己的仓库和域名，之后命令行执行 `./build.sh`，即可自动打包并上传到指定仓库，将该仓库开启 `Github Pages` 功能即可在线访问。
+Aurora 2.0 添加一键部署功能，只需要编辑 `deploy.sh`，配置自己的仓库和域名，之后命令行执行 `./deploy.sh`，即可自动打包并上传到指定仓库，将该仓库开启 `Github Pages` 功能即可在线访问。
 
 ```shell
-./build.sh
+./deploy.sh
 ```
 
 Just enjoy it ฅ●ω●ฅ
