@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import AV from 'leancloud-storage'
-import isMobile from 'ismobilejs'
 import VueProgressBar from 'vue-progressbar'
 import APlayer from '@moefe/vue-aplayer'
+import isMobile from 'ismobilejs'
+import AV from 'leancloud-storage'
 
 // Let's go!
 import App from './App.vue'
