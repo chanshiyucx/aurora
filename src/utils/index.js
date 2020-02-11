@@ -1,5 +1,5 @@
 /**
- * @description 生成范围内随机整数
+ * 生成范围内随机整数
  */
 export const random = (a, b) => parseInt(Math.random() * (b - a + 1) + a, 10)
 
@@ -53,16 +53,14 @@ export const parseTime = (time, format = '{y}-{m}-{d} {h}:{i}:{s}') => {
 }
 
 /**
- * @param {string} key
- * @param {string} value
+ * 写入缓存
  */
 export const localSave = (key, value) => {
   localStorage.setItem(key, value)
 }
 
 /**
- * @param {string} key
- * @param {string} defaultValue
+ * 读取缓存
  */
 export const localRead = (key, defaultValue = '') => {
   return localStorage.getItem(key) || defaultValue
@@ -70,7 +68,6 @@ export const localRead = (key, defaultValue = '') => {
 
 /**
  * 图片 cdn 加速
- * @param {*} url
  */
 const isMe = location.host.includes('chanshiyu.com')
 const GithubPrefix = 'raw.githubusercontent.com/chanshiyucx/yoi/master'
@@ -84,7 +81,6 @@ export const fileCDN = url => {
 
 /**
  * 图片尺寸处理
- * @param {*} url
  */
 export const handleImg = href => {
   const urlParams = new URLSearchParams(href.split('?')[1])
