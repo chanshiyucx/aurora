@@ -46,9 +46,7 @@ export default {
           this.showHeader = val && val.name !== 'post'
         }
         if (val.name === 'post') {
-          setTimeout(() => {
-            this.scrollTop()
-          }, 500)
+          setTimeout(this.scrollTop, 500)
         }
       }
     }

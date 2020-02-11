@@ -54,7 +54,7 @@ new Vue({
 }).$mount('#app')
 
 // (o=^•ェ•)o
-const labelStyle = 'color:#FFF;line-height:22px;background:#D68FE9;'
+const labelStyle = 'line-height:22px;color:#FFF;background:#D68FE9;'
 const siteUrl = 'https://github.com/chanshiyucx/aurora'
 const bg = 'https://cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/reimu.png'
 console.info(`%c ${config.title} %c`, `${labelStyle}`, '', window.location.origin)
@@ -63,11 +63,11 @@ console.info('~❀~ 发现控制台报错请务必联系博主 ~❀~')
 console.log(
   '%c ',
   `
-  background:url(${bg}) no-repeat center;
-  background-size:200px;
   margin:5px 0;
   padding:0 0 162px 200px;
-  border-radius:10px;
   overflow:hidden;
+  border-radius:10px;
+  background:url(${bg}) no-repeat center;
+  background-size:200px;
   `
 )
