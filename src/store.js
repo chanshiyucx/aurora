@@ -33,7 +33,7 @@ export default new Vuex.Store({
       state.tips = tips
       state.tipsUpdateAt = new Date()
     },
-    // 设置文章数量
+    // 设置文章总数
     setTotalCount(state, { totalCount }) {
       state.totalCount = totalCount
     }
@@ -75,7 +75,7 @@ export default new Vuex.Store({
     async queryHot(context, { ids }) {
       return await queryHot(ids)
     },
-    // 增加热度
+    // 增加文章热度
     async increaseHot(context, { post }) {
       return await increaseHot(post)
     },
@@ -100,10 +100,7 @@ export default new Vuex.Store({
     },
     // 获取灵感
     async queryInspiration(context, { page, pageSize }) {
-      let data = await queryInspiration({
-        page,
-        pageSize
-      })
+      let data = await queryInspiration({ page, pageSize })
       data = formatInspiration(data)
       return data
     },
