@@ -87,6 +87,7 @@
 
   p {
     margin: 0 16px 25px;
+    word-break: break-all;
     &:last-child {
       margin-bottom: 0;
     }
