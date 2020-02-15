@@ -104,6 +104,7 @@ export default {
       await this.$store.dispatch('queryArchivesCount')
     }
     await this.queryPosts()
+
     AOS.init({
       duration: 2000,
       easing: 'ease',
