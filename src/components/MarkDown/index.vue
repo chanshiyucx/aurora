@@ -48,13 +48,6 @@ renderer.image = function(href, title, text) {
   }</span>`
 }
 
-renderer.link = function(href, title, text) {
-  if (text.includes('icon')) {
-    return `<a href="${href}" target="_blank">${text}</a>`
-  }
-  return `<a href="${href}" target="_blank"><i class="icon icon-link"></i>${text}</a>`
-}
-
 // Table 包裹元素，使之可以横向滚动
 renderer.table = function(header, body) {
   if (body) body = `<tbody>${body}</tbody>`

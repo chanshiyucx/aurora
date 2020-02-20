@@ -66,6 +66,28 @@
       transform-origin: bottom left;
       transform: scaleX(1);
     }
+
+    &::before {
+      opacity: 1;
+      transform: scale(1) translateY(-100%);
+    }
+  }
+
+  &:before {
+    content: '\e809  'attr(href);
+    position: absolute;
+    padding: 0px 4px;
+    width: max-content;
+    pointer-events: none;
+    font-family: 'Fontello';
+    font-size: $font-size-small;
+    box-shadow: $card-shadow-light;
+    border-radius: 3px;
+    background-color: white;
+    opacity: 0;
+    transform: scale(0.7) translateY(-75%);
+    transform-origin: left center;
+    transition: all 0.3s ease 0s;
   }
 }
 
