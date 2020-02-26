@@ -13,7 +13,7 @@
               >点击获取</a
             ></span
           >
-          <span>※ 以下友链按博主互访次数排序，并根据个人对博客内容喜好加权，博主将不定期更新排序并过滤阵亡名单。</span>
+          <span>※ 以下友链按博主互访频率排序，并根据个人对博客内容喜好加权，博主将不定期更新排序并过滤阵亡名单。</span>
         </div>
         <ul class="content">
           <li v-for="(item, index) in friend" :key="item.name">
