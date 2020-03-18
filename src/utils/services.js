@@ -8,8 +8,7 @@ const GITHUB_API = 'https://api.github.com/repos'
 const { username, repository, token } = config
 const blog = `${GITHUB_API}/${username}/${repository}`
 const access_token = `token ${token.join('')}`
-// const isDev = /^(192\.168|localhost)/.test(window.location.host)
-const isDev = false
+const isDev = /^(192\.168|localhost)/.test(window.location.host)
 
 // 状态检测
 const checkStatus = response => {
