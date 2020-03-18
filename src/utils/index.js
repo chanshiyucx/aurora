@@ -13,9 +13,9 @@ export const shuffle = array => {
     i = Math.floor(Math.random() * m--)
     ;[array[m], array[i]] = [array[i], array[m]]
   }
-
   return array
 }
+
 /**
  * url 转换
  */

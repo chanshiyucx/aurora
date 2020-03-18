@@ -21,6 +21,7 @@
                 </p>
                 <p>
                   <span>推荐指数：</span>
+                  <span></span>
                   <i class="icon icon-star" v-for="i in parseInt(item.rating)" :key="`star-${i}`"></i>
                 </p>
               </div>
