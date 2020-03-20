@@ -49,30 +49,21 @@ export const formatPage = (data, type) => {
 
   switch (type) {
     case 'book':
-      section = section.map(o => {
-        const content = o.split('\r\n').filter(o => o.length)
-        return {
-          name: content[0],
-          author: content[1].split('author:')[1],
-          published: content[2].split('published:')[1],
-          progress: content[3].split('progress:')[1],
-          rating: content[4].split('rating:')[1],
-          postTitle: content[5].split('postTitle:')[1],
-          postLink: content[6].split('postLink:')[1],
-          cover: content[7].split('cover:')[1],
-          description: content[9].split('description:')[1]
-        }
-      })
-      break
     case 'friend':
       section = section.map(o => {
         const content = o.split('\r\n').filter(o => o.length)
-        return {
-          name: content[0],
-          link: content[1].split('link:')[1],
-          cover: content[2].split('cover:')[1],
-          avatar: content[3].split('avatar:')[1]
-        }
+        const result = {}
+        content.forEach((row, index) => {
+          if (index === 0) {
+            result.name = row
+          } else {
+            const inx = row.indexOf(':')
+            const key = row.slice(0, inx)
+            const value = row.slice(inx + 1)
+            result[key] = value
+          }
+        })
+        return result
       })
       break
     case 'about':
