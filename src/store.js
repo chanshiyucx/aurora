@@ -56,14 +56,12 @@ export default new Vuex.Store({
     // 获取分类 & 标签筛选文章数量
     async queryFilterArchivesCount(context, payload) {
       const data = await queryFilterArchivesCount(payload)
-      const count = data.search.issueCount
-      return count
+      return data.search.issueCount
     },
     // 获取灵感总数
     async queryInspirationCount() {
       const data = await queryInspirationCount()
-      const count = data.repository.issues.totalCount
-      return count
+      return data.repository.issues.totalCount
     },
     // 获取归档
     async queryPosts(context, payload) {
@@ -82,38 +80,32 @@ export default new Vuex.Store({
     // 获取文章详情
     async queryPost(context, { number }) {
       let post = await queryPost(number)
-      post = formatPost(post)
-      return post
+      return formatPost(post)
     },
     // 获取分类
     async queryCategory() {
       let data = await queryCategory()
-      data = formatCategory(data)
-      return data
+      return formatCategory(data)
     },
     // 获取标签
     async queryTag() {
       let data = await queryTag()
       const filterLabel = ['Inspiration', 'Friend', 'Book', 'About']
-      data = data.filter(o => !filterLabel.includes(o.name))
-      return data
+      return data.filter(o => !filterLabel.includes(o.name))
     },
     // 获取灵感
     async queryInspiration(context, { page, pageSize }) {
       let data = await queryInspiration({ page, pageSize })
-      data = formatInspiration(data)
-      return data
+      return formatInspiration(data)
     },
     // 获取书单 & 友链 & 关于
     async queryPage(context, { type }) {
       let data = await queryPage(type)
-      data = formatPage(data, type)
-      return data
+      return formatPage(data, type)
     },
     // 获取点赞数
     async queryLike(context, payload) {
-      const data = await queryLike(payload)
-      return data
+      return await queryLike(payload)
     },
     // 统计访问来源
     async visitorStatistics(context, payload) {
