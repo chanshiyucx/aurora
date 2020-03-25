@@ -85,6 +85,10 @@
         @include sp-layout {
           -webkit-line-clamp: 4;
         }
+
+        a::before {
+          display: none;
+        }
       }
     }
 
