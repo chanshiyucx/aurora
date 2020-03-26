@@ -33,7 +33,7 @@ export default {
     repo: 'comment', // 评论仓库地址
     owner: 'chanshiyucx',
     admin: ['chanshiyucx'],
-    distractionFreeMode: false // 是否开始无干扰模式【背景遮罩】
+    distractionFreeMode: false, // 是否开始无干扰模式【背景遮罩】
   },
 
   /**
@@ -41,7 +41,7 @@ export default {
    */
   leancloud: {
     appId: 'LjOwR4ELEqbauKvtQbwq5TUw-MdYXbMMI',
-    appKey: 'BOSFJ49ohbGctgn4zvJE9VN6'
+    appKey: 'BOSFJ49ohbGctgn4zvJE9VN6',
   },
 
   /**
@@ -56,7 +56,7 @@ export default {
   archiveOpts: {
     display: true, // 是否显示该页面
     enableComment: false, // 是否开启评论功能
-    qoute: '華枝春滿 天心月圓' // 页面顶部一言
+    qoute: '華枝春滿 天心月圓', // 页面顶部一言
   },
 
   /**
@@ -65,7 +65,7 @@ export default {
   categoryOpts: {
     display: true,
     enableComment: false,
-    qoute: '桜華月想 暮色蒼然'
+    qoute: '桜華月想 暮色蒼然',
   },
 
   /**
@@ -74,7 +74,7 @@ export default {
   tagOpts: {
     display: true,
     enableComment: false,
-    qoute: '灯笼流丽，百鬼夜行'
+    qoute: '灯笼流丽，百鬼夜行',
   },
 
   /**
@@ -83,7 +83,7 @@ export default {
   inspirationOpts: {
     display: true,
     enableComment: true,
-    qoute: '詠奏妖華，明鏡止水'
+    qoute: '詠奏妖華，明鏡止水',
   },
 
   /**
@@ -92,7 +92,7 @@ export default {
   bookOpts: {
     display: true,
     enableComment: true,
-    qoute: '追想風景 彼岸帰航'
+    qoute: '追想風景 彼岸帰航',
   },
 
   /**
@@ -101,7 +101,7 @@ export default {
   friendOpts: {
     display: true,
     enableComment: true,
-    qoute: '青青子衿，悠悠我心'
+    qoute: '青青子衿，悠悠我心',
   },
 
   /**
@@ -117,21 +117,25 @@ export default {
     contact: [
       {
         icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/email.png',
-        link: 'http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=tNnR9Nfc1drH3N3NwZrX29k'
+        link: 'http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=tNnR9Nfc1drH3N3NwZrX29k',
       },
       {
         icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/github.png',
-        link: 'https://github.com/chanshiyucx'
+        link: 'https://github.com/chanshiyucx',
       },
       {
-        icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/zhihu.png',
-        link: 'https://www.zhihu.com/people/ichanshiyu/activities'
+        icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/telegram.png',
+        link: 'https://t.me/chan_shi_yu',
       },
       {
         icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/music.png',
-        link: 'https://music.163.com/#/user/home?id=103060582'
-      }
-    ]
+        link: 'https://music.163.com/#/user/home?id=103060582',
+      },
+      {
+        icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/zhihu.png',
+        link: 'https://www.zhihu.com/people/ichanshiyu/activities',
+      },
+    ],
   },
 
   /**
@@ -156,12 +160,12 @@ export default {
   qrcode: [
     {
       name: '支付宝',
-      img: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/zfb.png'
+      img: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/zfb.png',
     },
     {
       name: '微信',
-      img: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/wx.png'
-    }
+      img: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/wx.png',
+    },
   ],
 
   /**
@@ -172,32 +176,32 @@ export default {
       name: 'うたかたの风と蝉时雨',
       artist: 'Little Planet',
       url: 'https://files.catbox.moe/wo7zjt.mp3',
-      cover: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/cover1.jpg'
+      cover: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/cover1.jpg',
     },
     {
       name: '春の凑に',
       artist: 'TUMENECO',
       url: 'https://files.catbox.moe/ducy49.mp3',
-      cover: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/cover2.jpg'
+      cover: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/cover2.jpg',
     },
     {
       name: '夏阳炎',
       artist: '天威梦方',
       url: 'https://files.catbox.moe/7migen.mp3',
-      cover: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/cover3.jpg'
+      cover: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/cover3.jpg',
     },
     {
       name: '秋风のとおり道',
       artist: '风神华伝',
       url: 'https://files.catbox.moe/b58fq6.mp3',
-      cover: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/cover4.jpg'
+      cover: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/cover4.jpg',
     },
     {
       name: '冬のわすれもの',
       artist: 'ハルノカゼ',
       url: 'https://files.catbox.moe/vwnawp.mp3',
-      cover: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/cover5.jpg'
-    }
+      cover: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/cover5.jpg',
+    },
   ],
 
   /**
@@ -216,6 +220,6 @@ export default {
     '#FB966E', // 洗朱
     '#BC9F77', // 白茶
     '#867835', // 黄海松茶
-    '#B9887D' // 水がき
-  ]
+    '#B9887D', // 水がき
+  ],
 }

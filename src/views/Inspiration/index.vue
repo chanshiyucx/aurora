@@ -34,14 +34,14 @@ import Comment from '@/components/Comment'
 import { shuffle } from '@/utils'
 
 export default {
-  name: 'inspiration',
+  name: 'Inspiration',
   components: {
     MarkDown,
     Loading,
     Pagination,
     Quote,
     Segment,
-    Comment
+    Comment,
   },
   data() {
     return {
@@ -53,7 +53,7 @@ export default {
       pageSize: 10,
       inspiration: [],
       list: [],
-      delayTime: this.$config.isMobile ? 400 : 0 + 1000
+      delayTime: this.$config.isMobile ? 400 : 0 + 1000,
     }
   },
   computed: {
@@ -65,7 +65,7 @@ export default {
     },
     isDisabledNext() {
       return this.page >= this.maxPage
-    }
+    },
   },
   async created() {
     this.totalCount = await this.$store.dispatch('queryInspirationCount')
@@ -88,7 +88,7 @@ export default {
       this.loading = true
       const inspiration = await this.$store.dispatch('queryInspiration', {
         page: queryPage,
-        pageSize: this.pageSize
+        pageSize: this.pageSize,
       })
       this.loading = false
 
@@ -100,8 +100,8 @@ export default {
     scrollTop(cb) {
       window.scrollTo({ top: 0, behavior: 'smooth' })
       setTimeout(cb, this.delayTime)
-    }
-  }
+    },
+  },
 }
 </script>
 

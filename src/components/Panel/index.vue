@@ -73,7 +73,7 @@ const bg = {
     'https://i0.hdslb.com/bfs/album/c0fe6af5b941ed3cbc7f630c7d4948d540e345fb.jpg',
     'https://i0.hdslb.com/bfs/album/56a474ae130d758e344e6d9ae76c364a2c485aa0.jpg',
     'https://i0.hdslb.com/bfs/album/4af73871d861579965adfe8c0edb6f2ce35488fc.jpg',
-    'https://i0.hdslb.com/bfs/album/0a9bc710e9566436b17e2c58495a9390a27567a7.jpg'
+    'https://i0.hdslb.com/bfs/album/0a9bc710e9566436b17e2c58495a9390a27567a7.jpg',
   ],
   school: [
     'https://i0.hdslb.com/bfs/album/375bfad6dda18280f8e05c92db17b4a588d65aee.jpg',
@@ -84,8 +84,8 @@ const bg = {
     'https://i0.hdslb.com/bfs/album/e20b2368e5439e2d0b0aadb4bffd3bd8471e0a81.jpg',
     'https://i0.hdslb.com/bfs/album/e9996999c86d9057caa554f6ac96747210551af7.jpg',
     'https://i0.hdslb.com/bfs/album/8400b3e997d555a88c3748a1456f317b0e7823b5.jpg',
-    'https://i0.hdslb.com/bfs/album/aa6dae662a96c50b48dfae96197a0bcbafb7e784.jpg'
-  ]
+    'https://i0.hdslb.com/bfs/album/aa6dae662a96c50b48dfae96197a0bcbafb7e784.jpg',
+  ],
 }
 
 export default {
@@ -94,8 +94,8 @@ export default {
   props: {
     showPanel: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
@@ -104,7 +104,7 @@ export default {
       isLikeSite: localRead('isLikeSite', false),
       currentInx: 1,
       lockSwiper: false,
-      zoomSrc: ''
+      zoomSrc: '',
     }
   },
   computed: {
@@ -117,12 +117,12 @@ export default {
     },
     containerStyle() {
       return {
-        transform: `translate3d(${this.distance}px, 0, 0)`
+        transform: `translate3d(${this.distance}px, 0, 0)`,
       }
     },
     likeBtnText() {
       return this.isLikeSite ? "谢谢点赞 (●'◡'●)" : '点赞一下 (<ゝω・)☆'
-    }
+    },
   },
   mounted() {
     this.queryLike()
@@ -159,7 +159,7 @@ export default {
         duration: 10000,
         alignY: 0,
         transition: 'fade',
-        transitionDuration: 1000
+        transitionDuration: 1000,
       })
     },
     // 关闭面板
@@ -192,8 +192,8 @@ export default {
     // 设置缩放二维码
     setZoomSrc(src = '') {
       this.zoomSrc = src
-    }
-  }
+    },
+  },
 }
 </script>
 

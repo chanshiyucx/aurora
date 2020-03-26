@@ -74,15 +74,15 @@ export default {
         { icon: 't-shirt', type: 'dressup' },
         { icon: 'camera', type: 'takephoto' },
         { icon: 'comment', type: 'talk' },
-        { icon: 'cancel-outline', type: 'close' }
+        { icon: 'cancel-outline', type: 'close' },
       ],
       audio: this.$config.APlayer,
-      isMini: true
+      isMini: true,
     }
   },
   computed: mapState({
-    tips: state => state.tips,
-    tipsUpdateAt: state => state.tipsUpdateAt
+    tips: (state) => state.tips,
+    tipsUpdateAt: (state) => state.tipsUpdateAt,
   }),
   mounted() {
     if (!this.$isMobile) {
@@ -171,8 +171,8 @@ export default {
     },
     dropPanel() {
       this.$emit('dropPanel')
-    }
-  }
+    },
+  },
 }
 </script>
 

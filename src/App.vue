@@ -30,12 +30,12 @@ export default {
     Header,
     Footer,
     Panel,
-    ScrollTop
+    ScrollTop,
   },
   data() {
     return {
       showHeader: true,
-      showPanel: false
+      showPanel: false,
     }
   },
   watch: {
@@ -48,8 +48,8 @@ export default {
         if (val.name === 'post') {
           setTimeout(this.scrollTop, 500)
         }
-      }
-    }
+      },
+    },
   },
   created() {
     this.initSite()
@@ -85,8 +85,8 @@ export default {
     // 滚动到顶部
     scrollTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-  }
+    },
+  },
 }
 </script>
 

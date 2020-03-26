@@ -45,35 +45,35 @@ import Pagination from '@/components/Pagination'
 import { shuffle } from '@/utils'
 
 export default {
-  name: 'Archive',
+  name: 'ArchiveCard',
   components: {
-    Pagination
+    Pagination,
   },
   props: {
     posts: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     times: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isDisabledPrev: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isDisabledNext: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
-      colors: shuffle(this.$config.themeColors)
+      colors: shuffle(this.$config.themeColors),
     }
   },
   methods: {
@@ -84,8 +84,8 @@ export default {
     // 跳转文章页
     gotoPost(number) {
       this.$router.push({ name: 'post', params: { number } })
-    }
-  }
+    },
+  },
 }
 </script>
 

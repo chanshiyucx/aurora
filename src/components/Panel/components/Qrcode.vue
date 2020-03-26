@@ -13,8 +13,8 @@ export default {
   methods: {
     zoom(src) {
       this.$emit('zoom', src)
-    }
-  }
+    },
+  },
 }
 </script>
 

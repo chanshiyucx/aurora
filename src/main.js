@@ -28,11 +28,11 @@ const options = {
   transition: {
     speed: '0.2s',
     opacity: '0.5s',
-    termination: 300
+    termination: 300,
   },
   autoRevert: true,
   location: 'top',
-  inverse: false
+  inverse: false,
 }
 Vue.use(VueProgressBar, options)
 
@@ -50,7 +50,7 @@ img.src = config.defaultCover
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount('#app')
 
 // (o=^•ェ•)o

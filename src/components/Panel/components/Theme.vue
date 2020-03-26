@@ -29,20 +29,20 @@ export default {
   props: {
     theme: {
       type: String,
-      default: 'touhou'
-    }
+      default: 'touhou',
+    },
   },
   data() {
     return {
       touhou,
-      school
+      school,
     }
   },
   methods: {
     switchTheme(theme) {
       this.$emit('switchTheme', theme)
-    }
-  }
+    },
+  },
 }
 </script>
 

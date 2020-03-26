@@ -17,13 +17,13 @@ export default {
       topDistance: -950,
       clientHeight: 0,
       scrollTimer: '',
-      lastScrollAt: new Date()
+      lastScrollAt: new Date(),
     }
   },
   computed: {
     backTopStyle() {
       return { top: `${this.topDistance}px` }
-    }
+    },
   },
   mounted() {
     if (!this.$isMobile) {
@@ -64,8 +64,8 @@ export default {
         this.clientHeight = clientHeight
         this.showBackTop = showBackTop
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

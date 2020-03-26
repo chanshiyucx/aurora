@@ -43,16 +43,16 @@ import Quote from '@/components/Quote'
 import Comment from '@/components/Comment'
 
 export default {
-  name: 'book',
+  name: 'Book',
   components: {
     Loading,
     Quote,
-    Comment
+    Comment,
   },
   data() {
     return {
       book: [],
-      initComment: false
+      initComment: false,
     }
   },
   async created() {
@@ -62,8 +62,8 @@ export default {
   methods: {
     async queryBooks() {
       this.book = await this.$store.dispatch('queryPage', { type: 'book' })
-    }
-  }
+    },
+  },
 }
 </script>
 

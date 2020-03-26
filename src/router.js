@@ -17,47 +17,47 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
     },
     {
       path: '/post/:number',
       name: 'post',
-      component: Post
+      component: Post,
     },
     {
       path: '/archive',
       name: 'archive',
-      component: Archive
+      component: Archive,
     },
     {
       path: '/category',
       name: 'category',
-      component: Category
+      component: Category,
     },
     {
       path: '/tag',
       name: 'tag',
-      component: Tag
+      component: Tag,
     },
     {
       path: '/inspiration',
       name: 'inspiration',
-      component: Inspiration
+      component: Inspiration,
     },
     {
       path: '/book',
       name: 'book',
-      component: Book
+      component: Book,
     },
     {
       path: '/friend',
       name: 'friend',
-      component: Friend
+      component: Friend,
     },
     {
       path: '/about',
       name: 'about',
-      component: About
-    }
-  ]
+      component: About,
+    },
+  ],
 })

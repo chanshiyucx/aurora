@@ -33,9 +33,9 @@ body {
   @include scrollBar;
 }
 
-body,
 #app {
   min-height: 100vh;
+  overflow-x: hidden;
   @include pc-layout {
     background-color: $bg-white-dim;
   }
@@ -48,7 +48,6 @@ img {
   display: block;
   margin: auto;
   max-width: 100%;
-  height: auto;
 }
 
 a {

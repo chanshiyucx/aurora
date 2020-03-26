@@ -39,16 +39,16 @@
 <script>
 import Loading from '@/components/Loading'
 import Quote from '@/components/Quote'
-import ArchiveCard from '@/components/Archive'
+import ArchiveCard from '@/components/ArchiveCard'
 import Comment from '@/components/Comment'
 
 export default {
-  name: 'tag',
+  name: 'Tag',
   components: {
     Loading,
     Quote,
     ArchiveCard,
-    Comment
+    Comment,
   },
   data() {
     return {
@@ -62,12 +62,12 @@ export default {
       posts: [],
       list: [],
       times: {},
-      delayTime: this.$config.isMobile ? 400 : 0 + 800
+      delayTime: this.$config.isMobile ? 400 : 0 + 800,
     }
   },
   computed: {
     postTimes() {
-      return this.posts.map(o => this.times[o.id])
+      return this.posts.map((o) => this.times[o.id])
     },
     maxPage() {
       return Math.ceil(this.totalCount / this.pageSize)
@@ -77,7 +77,7 @@ export default {
     },
     isDisabledNext() {
       return this.page >= this.maxPage
-    }
+    },
   },
   async created() {
     await this.queryTag()
@@ -122,7 +122,7 @@ export default {
       const posts = await this.$store.dispatch('queryPosts', {
         page: queryPage,
         pageSize: this.pageSize,
-        filter
+        filter,
       })
 
       this.scrollTop(() => {
@@ -133,7 +133,7 @@ export default {
 
       // 获取文章热度
       this.$nextTick(async () => {
-        const ids = posts.map(o => o.id)
+        const ids = posts.map((o) => o.id)
         const hot = await this.$store.dispatch('queryHot', { ids })
         this.times = { ...this.times, ...hot }
       })
@@ -142,8 +142,8 @@ export default {
     scrollTop(cb) {
       window.scrollTo({ top: 0, behavior: 'smooth' })
       setTimeout(cb, this.delayTime)
-    }
-  }
+    },
+  },
 }
 </script>
 

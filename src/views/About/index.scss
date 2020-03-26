@@ -97,14 +97,20 @@
           }
           &:nth-child(3) {
             &:hover {
-              background-color: $concat-zhihu-color;
-              box-shadow: 0 0 10px $concat-zhihu-color;
+              background-color: $concat-telegram-color;
+              box-shadow: 0 0 10px $concat-telegram-color;
             }
           }
           &:nth-child(4) {
             &:hover {
               background-color: $concat-music-color;
               box-shadow: 0 0 10px $concat-music-color;
+            }
+          }
+          &:nth-child(5) {
+            &:hover {
+              background-color: $concat-zhihu-color;
+              box-shadow: 0 0 10px $concat-zhihu-color;
             }
           }
         }

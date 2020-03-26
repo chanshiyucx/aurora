@@ -22,7 +22,7 @@ export default function linenumber(hljs) {
     css.innerHTML = format('.{0}{border-collapse:collapse}' + '.{1}:before{content:attr({2})}', [
       TABLE_NAME,
       NUMBER_LINE_NAME,
-      DATA_ATTR_NAME
+      DATA_ATTR_NAME,
     ])
     d.getElementsByTagName('head')[0].appendChild(css)
   }
@@ -43,7 +43,7 @@ export default function linenumber(hljs) {
 
   function lineNumbersBlock(element, options) {
     if (typeof element !== 'object') return
-    async(function() {
+    async(function () {
       element.innerHTML = lineNumbersInternal(element, options)
     })
   }
@@ -60,7 +60,7 @@ export default function linenumber(hljs) {
   function lineNumbersInternal(element, options) {
     // define options or set default
     options = options || {
-      singleLine: false
+      singleLine: false,
     }
 
     // convert options
@@ -99,7 +99,7 @@ export default function linenumber(hljs) {
             DATA_ATTR_NAME,
             CODE_BLOCK_NAME,
             i + 1,
-            lines[i].length > 0 ? lines[i] : ' '
+            lines[i].length > 0 ? lines[i] : ' ',
           ]
         )
       }
@@ -170,7 +170,7 @@ export default function linenumber(hljs) {
    * @param {array} args
    */
   function format(format, args) {
-    return format.replace(/\{(\d+)\}/g, function(m, n) {
+    return format.replace(/\{(\d+)\}/g, function (m, n) {
       return args[n] ? args[n] : m
     })
   }

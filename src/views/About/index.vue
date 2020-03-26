@@ -57,19 +57,19 @@ import Segment from '@/components/Segment'
 import { shuffle } from '@/utils'
 
 export default {
-  name: 'about',
+  name: 'About',
   components: {
     MarkDown,
     Loading,
     Comment,
     Quote,
-    Segment
+    Segment,
   },
   data() {
     return {
       colors: shuffle(this.$config.themeColors),
       about: '',
-      initComment: false
+      initComment: false,
     }
   },
   async created() {
@@ -80,8 +80,8 @@ export default {
     // 获取关于详情
     async queryAbout() {
       this.about = await this.$store.dispatch('queryPage', { type: 'about' })
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -10,8 +10,8 @@ export default {
   props: {
     title: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   mounted() {
     this.renderGitalk()
@@ -20,10 +20,10 @@ export default {
     renderGitalk() {
       const gitalk = new Gitalk({
         ...this.$config.gitalk,
-        title: this.title
+        title: this.title,
       })
       gitalk.render('gitalk')
-    }
-  }
+    },
+  },
 }
 </script>

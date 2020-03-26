@@ -17,34 +17,34 @@ import Spinner from '../Spinner'
 export default {
   name: 'Pagination',
   components: {
-    Spinner
+    Spinner,
   },
   props: {
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isDisabledPrev: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isDisabledNext: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     hide() {
       return this.isDisabledPrev && this.isDisabledNext
-    }
+    },
   },
   methods: {
     handlePage(type) {
       if (type === 'prev' && this.isDisabledPrev) return
       if (type === 'next' && this.isDisabledNext) return
       this.$emit('handlePage', type)
-    }
-  }
+    },
+  },
 }
 </script>
 

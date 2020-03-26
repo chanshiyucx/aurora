@@ -13,22 +13,22 @@ export default {
   props: {
     src: {
       type: String,
-      default: ''
+      default: '',
     },
     alt: {
       type: String,
-      default: ''
+      default: '',
     },
     loadCover: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
       defaultCover: this.$config.defaultCover,
       imgSrc: '',
-      visible: false
+      visible: false,
     }
   },
   watch: {
@@ -38,8 +38,8 @@ export default {
         if (val) {
           this.loadImg()
         }
-      }
-    }
+      },
+    },
   },
   methods: {
     loadImg() {
@@ -52,8 +52,8 @@ export default {
         this.$nextTick(() => (this.visible = true))
       }
       img.src = cdnUrl
-    }
-  }
+    },
+  },
 }
 </script>
 

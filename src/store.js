@@ -13,7 +13,7 @@ import {
   queryHot,
   increaseHot,
   queryLike,
-  visitorStatistics
+  visitorStatistics,
 } from './utils/services'
 import { formatPost, formatCategory, formatInspiration, formatPage } from './utils/format'
 
@@ -25,7 +25,7 @@ export default new Vuex.Store({
   state: {
     tips: '',
     tipsUpdateAt: '',
-    totalCount: 0
+    totalCount: 0,
   },
   mutations: {
     // 设置一言
@@ -36,7 +36,7 @@ export default new Vuex.Store({
     // 设置文章总数
     setTotalCount(state, { totalCount }) {
       state.totalCount = totalCount
-    }
+    },
   },
   actions: {
     // 显示一言
@@ -91,7 +91,7 @@ export default new Vuex.Store({
     async queryTag() {
       let data = await queryTag()
       const filterLabel = ['Inspiration', 'Friend', 'Book', 'About']
-      return data.filter(o => !filterLabel.includes(o.name))
+      return data.filter((o) => !filterLabel.includes(o.name))
     },
     // 获取灵感
     async queryInspiration(context, { page, pageSize }) {
@@ -110,6 +110,6 @@ export default new Vuex.Store({
     // 统计访问来源
     async visitorStatistics(context, payload) {
       await visitorStatistics(payload)
-    }
-  }
+    },
+  },
 })

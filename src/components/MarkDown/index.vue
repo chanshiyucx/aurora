@@ -12,17 +12,17 @@ let IMGID = 0
 
 const zooming = new Zooming({
   bgOpacity: 0.8,
-  zIndex: 100
+  zIndex: 100,
 })
 
 const renderer = new marked.Renderer()
 
-renderer.heading = function(text, level, raw, slugger) {
+renderer.heading = function (text, level, raw, slugger) {
   const icon = ['gift', 'pagelines', 'pilcrow'][level - 2]
   return `<h${level} id="h-${slugger.slug(raw)}"><i class="icon icon-${icon}"></i>${text}</h${level}>`
 }
 
-renderer.image = function(href, title, text) {
+renderer.image = function (href, title, text) {
   href = fileCDN(href)
 
   IMGID++
@@ -49,14 +49,14 @@ renderer.image = function(href, title, text) {
 }
 
 // Table 包裹元素，使之可以横向滚动
-renderer.table = function(header, body) {
+renderer.table = function (header, body) {
   if (body) body = `<tbody>${body}</tbody>`
   return `<div class="table-wrapper">\n<table>\n<thead>\n${header}</thead>\n${body}</table>\n</div>\n`
 }
 
 marked.setOptions({
   renderer,
-  highlight: code => hljs.highlightAuto(code).value
+  highlight: (code) => hljs.highlightAuto(code).value,
 })
 
 export default {
@@ -64,17 +64,17 @@ export default {
   props: {
     content: {
       type: String,
-      default: ''
+      default: '',
     },
     target: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   data() {
     return {
       html: '',
-      lg: ''
+      lg: '',
     }
   },
   created() {
@@ -83,7 +83,7 @@ export default {
   watch: {
     content() {
       this.marked()
-    }
+    },
   },
   methods: {
     marked() {
@@ -95,11 +95,11 @@ export default {
         hljs.initLineNumbersOnLoad({ target: this.target })
         zooming.listen('.img-zoomable')
       })
-    }
+    },
   },
   beforeDestroy() {
     zooming.close()
-  }
+  },
 }
 </script>
 

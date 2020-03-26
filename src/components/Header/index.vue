@@ -26,15 +26,15 @@ export default {
         { path: '/book', display: bookOpts.display, icon: 'pencil', title: '书单' },
         { path: '/inspiration', display: inspirationOpts.display, icon: 'comment', title: '灵感' },
         { path: '/friend', display: friendOpts.display, icon: 'heart', title: '友链' },
-        { path: '/about', display: aboutOpts.display, icon: 'universal-access', title: '关于' }
-      ]
+        { path: '/about', display: aboutOpts.display, icon: 'universal-access', title: '关于' },
+      ],
     }
   },
   computed: {
     displayMenu() {
-      return this.menu.filter(o => o.display)
-    }
-  }
+      return this.menu.filter((o) => o.display)
+    },
+  },
 }
 </script>
 

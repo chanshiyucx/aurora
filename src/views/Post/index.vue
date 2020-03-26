@@ -47,17 +47,17 @@ import Comment from '@/components/Comment'
 import Cover from '@/components/Cover'
 
 export default {
-  name: 'post',
+  name: 'Post',
   components: {
     MarkDown,
     Loading,
     Comment,
-    Cover
+    Cover,
   },
   data() {
     return {
       post: '',
-      initComment: false
+      initComment: false,
     }
   },
   async created() {
@@ -81,8 +81,8 @@ export default {
     async queryHot() {
       const hot = await this.$store.dispatch('increaseHot', { post: this.post })
       this.$set(this.post, 'times', hot)
-    }
-  }
+    },
+  },
 }
 </script>
 
