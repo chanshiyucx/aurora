@@ -132,8 +132,8 @@ export default {
         link: 'https://music.163.com/#/user/home?id=103060582',
       },
       {
-        icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/zhihu.png',
-        link: 'https://www.zhihu.com/people/ichanshiyu/activities',
+        icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/rsshub.png',
+        link: 'https://rsshub.app/github/issue/chanshiyucx/blog',
       },
     ],
   },

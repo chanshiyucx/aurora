@@ -9,7 +9,7 @@
 import { fileCDN } from '@/utils'
 
 export default {
-  name: 'MagicImg',
+  name: 'Cover',
   props: {
     src: {
       type: String,
@@ -46,7 +46,7 @@ export default {
       const cdnUrl = fileCDN(this.src)
 
       const img = new Image()
-      img.onload = () => {
+      img.onload = img.onerror = () => {
         this.imgSrc = cdnUrl
         this.$emit('loadNext')
         this.$nextTick(() => (this.visible = true))
