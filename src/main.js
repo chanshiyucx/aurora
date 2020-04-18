@@ -23,7 +23,7 @@ Vue.prototype.$isMobile = isMobile().phone
 
 // Init Progress Bar
 const options = {
-  color: '#d68fe9',
+  color: '#b28fce',
   thickness: '4px',
   transition: {
     speed: '0.2s',
@@ -55,10 +55,10 @@ new Vue({
 
 // (o=^•ェ•)o
 const labelStyle = 'line-height:22px;color:#FFF;background:#D68FE9;'
-const siteUrl = 'https://github.com/chanshiyucx/aurora'
+const themeUrl = 'https://github.com/chanshiyucx/aurora'
 const bg = 'https://cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/reimu.png'
 console.info(`%c ${config.title} %c`, `${labelStyle}`, '', window.location.origin)
-console.info('%c Theme %c', `${labelStyle}`, '', siteUrl)
+console.info('%c Theme %c', `${labelStyle}`, '', themeUrl)
 console.info('~❀~ 发现控制台报错请务必联系博主 ~❀~')
 console.log(
   '%c ',

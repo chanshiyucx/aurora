@@ -23,14 +23,17 @@ body {
   line-height: $line-height-base;
   user-select: none;
   scroll-behavior: smooth;
-  text-shadow: 0 0 1px $bg-dark-dim;
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   @include cursor;
   @include scrollBar;
+  @include pc-layout {
+    // 该属性值在移动设备上会造成比较明显的性能问题
+    // 详见 https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-rendering
+    text-rendering: optimizeLegibility;
+  }
 }
 
 #app {
@@ -58,7 +61,6 @@ a {
 }
 
 button {
-  border: none;
   outline: none;
 }
 
@@ -73,7 +75,6 @@ input,
 textarea,
 button {
   appearance: none;
-  -webkit-appearance: none;
   border: none;
   border-radius: 0;
 }
@@ -148,10 +149,6 @@ td.hljs-ln-numbers {
     }
     .gt-svg svg {
       fill: $purple-dim;
-    }
-    .gt-comment-date,
-    .gt-container .gt-comment-text {
-      color: $grey-dim;
     }
     .gt-ico-text {
       color: $purple-deep;
@@ -230,11 +227,11 @@ td.hljs-ln-numbers {
       border-radius: 3px;
       background-color: $bg-white-dim;
       @include pc-layout {
-        box-shadow: $card-shadow-base;
+        box-shadow: $card-shadow;
         transition: $transition-base;
         &:hover {
           transform: translateY(-4px);
-          box-shadow: $card-shadow-base-hover;
+          box-shadow: $card-shadow-hover;
         }
       }
       @include sp-layout {
@@ -264,7 +261,7 @@ td.hljs-ln-numbers {
   .gt-btn-public,
   .gt-avatar {
     @include pc-layout {
-      box-shadow: $card-shadow-base;
+      box-shadow: $card-shadow;
     }
     @include sp-layout {
       box-shadow: $card-shadow-light;

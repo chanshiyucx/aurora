@@ -108,7 +108,7 @@
   border-radius: 3px;
   background-color: $bg-white-deep;
   @include pc-layout {
-    box-shadow: $card-shadow-base;
+    box-shadow: $card-shadow;
   }
   @include sp-layout {
     box-shadow: $card-shadow-light;
@@ -132,6 +132,6 @@
   border-radius: 3px;
   @include pc-layout {
     background-color: $bg-white-dim;
-    box-shadow: $card-shadow-base;
+    box-shadow: $card-shadow;
   }
 }

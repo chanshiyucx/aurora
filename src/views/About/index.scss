@@ -31,7 +31,7 @@
           height: $avatar-size-pc;
           min-width: $avatar-size-pc;
           min-height: $avatar-size-pc;
-          box-shadow: $card-shadow-base;
+          box-shadow: $card-shadow;
 
           &:hover {
             animation-play-state: paused;
