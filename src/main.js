@@ -9,6 +9,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import config from './config'
+import images from './assets/images'
 
 // Layout and Font
 import 'aos/dist/aos.css'
@@ -30,8 +31,8 @@ const options = {
     opacity: '0.5s',
     termination: 300,
   },
-  autoRevert: true,
   location: 'top',
+  autoRevert: true,
   inverse: false,
 }
 Vue.use(VueProgressBar, options)
@@ -43,10 +44,6 @@ Vue.use(APlayer, { productionTip: false })
 window.AV = AV
 AV.init(config.leancloud)
 
-// Init Cover
-const img = new Image()
-img.src = config.defaultCover
-
 new Vue({
   router,
   store,
@@ -56,7 +53,6 @@ new Vue({
 // (o=^•ェ•)o
 const labelStyle = 'line-height:22px;color:#FFF;background:#D68FE9;'
 const themeUrl = 'https://github.com/chanshiyucx/aurora'
-const bg = 'https://cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/reimu.png'
 console.info(`%c ${config.title} %c`, `${labelStyle}`, '', window.location.origin)
 console.info('%c Theme %c', `${labelStyle}`, '', themeUrl)
 console.info('~❀~ 发现控制台报错请务必联系博主 ~❀~')
@@ -67,7 +63,7 @@ console.log(
   padding:0 0 162px 200px;
   overflow:hidden;
   border-radius:10px;
-  background:url(${bg}) no-repeat center;
+  background:url(${images.reimu}) no-repeat center;
   background-size:200px;
   `
 )

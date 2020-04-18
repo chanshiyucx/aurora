@@ -22,7 +22,7 @@
 <script>
 import images from '@/assets/images'
 
-const { touhou, school } = images
+const { preview } = images
 
 export default {
   name: 'Theme',
@@ -34,8 +34,8 @@ export default {
   },
   data() {
     return {
-      touhou,
-      school,
+      touhou: preview.touhou,
+      school: preview.school,
     }
   },
   methods: {
@@ -65,6 +65,7 @@ export default {
     border-radius: 3px;
 
     > div {
+      display: flex;
       width: 212px;
       height: 110px;
       overflow: hidden;
@@ -91,12 +92,10 @@ export default {
 
   .touhou {
     img {
-      margin: 10px;
       width: 192px;
       height: 90px;
     }
   }
-
   .school {
     img {
       width: 212px;
