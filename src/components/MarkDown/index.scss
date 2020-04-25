@@ -223,9 +223,10 @@
     margin: 0 16px 25px;
     max-width: 100%;
     overflow-x: auto;
+    @include scrollBar;
 
     & > table {
-      margin: 0 auto 16px;
+      margin: 0 auto;
       border-radius: 3px;
       border-spacing: 2px;
       border-collapse: separate;
