@@ -139,12 +139,6 @@
       "src": "fontawesome"
     },
     {
-      "uid": "4a74a0f87d4089efe7aba1825bff4193",
-      "css": "copyright",
-      "code": 61945,
-      "src": "fontawesome"
-    },
-    {
       "uid": "6c6165b9b97c471cc4c6366f9cf84537",
       "css": "venus-double",
       "code": 61990,
@@ -161,6 +155,12 @@
       "css": "fort-awesome",
       "code": 62086,
       "src": "fontawesome"
+    },
+    {
+      "uid": "1a27e6346cdf0480c9c22351378bebbb",
+      "css": "clipboard",
+      "code": 59410,
+      "src": "typicons"
     }
   ]
 }

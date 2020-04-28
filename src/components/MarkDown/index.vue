@@ -5,15 +5,18 @@
 <script>
 import marked from 'marked'
 import Zooming from 'zooming'
+import ClipboardJS from 'clipboard'
 import hljs from '@/assets/lib/highlight'
 import { fileCDN, handleImg } from '@/utils'
-
-let IMGID = 0
 
 const zooming = new Zooming({
   bgOpacity: 0.8,
   zIndex: 100,
 })
+
+let IMG_ID = 0
+let CODE_ID = 0
+const CODE_COPY_LIST = []
 
 const renderer = new marked.Renderer()
 
@@ -23,19 +26,21 @@ renderer.heading = function (text, level, raw, slugger) {
 }
 
 renderer.image = function (href, title, text) {
-  href = fileCDN(href)
+  IMG_ID++
+  const id = `img-${IMG_ID}`
+  const cdnHref = fileCDN(href)
 
-  IMGID++
-  const id = `img-${IMGID}`
   const img = new Image()
-  img.src = href
-  img.onload = () => {
+  img.src = cdnHref
+  const compelete = (isSuccess) => {
     const dom = document.getElementById(id)
-    dom.src = href
+    dom.src = isSuccess ? cdnHref : href
     dom.style.opacity = 1
   }
+  img.onload = () => compelete(true)
+  img.onerror = () => compelete(false)
 
-  const { style, isFull } = handleImg(href)
+  const { style, isFull } = handleImg(cdnHref)
 
   return `<span class="img-box ${isFull ? 'full' : ''}">
   <span class="bg" style="${style}">
@@ -48,10 +53,33 @@ renderer.image = function (href, title, text) {
   }</span>`
 }
 
-// Table 包裹元素，使之可以横向滚动
 renderer.table = function (header, body) {
   if (body) body = `<tbody>${body}</tbody>`
   return `<div class="table-wrapper">\n<table>\n<thead>\n${header}</thead>\n${body}</table>\n</div>\n`
+}
+
+renderer.code = function code(_code, infostring, escaped) {
+  CODE_ID++
+  const id = `code-${CODE_ID}`
+  CODE_COPY_LIST.push({ id, code: _code })
+
+  const lang = (infostring || '').match(/\S*/)[0]
+
+  if (this.options.highlight) {
+    const out = this.options.highlight(_code, lang)
+    if (out != null && out !== _code) {
+      escaped = true
+      _code = out
+    }
+  }
+
+  if (!lang) {
+    return `<pre><code>${_code}</code><i id="${id}" class="icon icon-clipboard code-copy"></i></pre>`
+  }
+
+  return `<pre><code class="${
+    this.options.langPrefix + lang
+  }">${_code}</code><i id="${id}" class="icon icon-clipboard code-copy"></i></pre>\n`
 }
 
 marked.setOptions({
@@ -87,6 +115,7 @@ export default {
   },
   methods: {
     marked() {
+      this.CODE_COPY_LIST = []
       this.html = marked(this.content)
 
       // 对于只是纯解析文字不需要代码高亮和灯箱
@@ -94,6 +123,17 @@ export default {
       this.$nextTick(() => {
         hljs.initLineNumbersOnLoad({ target: this.target })
         zooming.listen('.img-zoomable')
+        this.bindCodeCopy()
+      })
+    },
+    bindCodeCopy() {
+      console.log('bindCodeCopy', CODE_COPY_LIST)
+      CODE_COPY_LIST.forEach((o) => {
+        new ClipboardJS('#' + o.id, {
+          text(trigger) {
+            return o.code
+          },
+        })
       })
     },
   },

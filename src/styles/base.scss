@@ -67,7 +67,8 @@ button {
 a,
 button,
 .waifu,
-.cursor {
+.cursor,
+.code-copy {
   @include cursor-link;
 }
 
@@ -94,6 +95,18 @@ button {
 }
 
 /* 代码高亮 */
+
+pre {
+  padding: $code-padding;
+  line-height: 1.5;
+  box-shadow: #aaa 0px 10px 8px -10px inset, #aaa 0px -10px 8px -10px inset;
+  > code {
+    display: block;
+    overflow: auto;
+    @include scrollBar;
+  }
+}
+
 code {
   width: 100%;
   font-family: $font-family-base;
@@ -108,15 +121,6 @@ code {
   line-height: 1.5;
   tab-size: 4;
   hyphens: none;
-}
-
-pre {
-  padding: $code-padding;
-  max-height: 600px;
-  line-height: 1.5;
-  box-shadow: #aaa 0px 10px 8px -10px inset, #aaa 0px -10px 8px -10px inset;
-  overflow: auto;
-  @include scrollBar;
 }
 
 td.hljs-ln-numbers {

@@ -98,6 +98,47 @@
     margin-bottom: 25px;
   }
 
+  pre {
+    position: relative;
+    padding: 36px 0 0 12px;
+
+    &::before {
+      content: ' ';
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      height: 12px;
+      width: 12px;
+      background: $code-color-red;
+      border-radius: 50%;
+      box-shadow: 20px 0 $code-color-yello, 40px 0 $code-color-green;
+    }
+
+    &:hover {
+      .code-copy {
+        opacity: 1;
+      }
+    }
+
+    .code-copy {
+      opacity: 0;
+      position: absolute;
+      top: 4px;
+      right: 0;
+      height: 36px;
+      width: 36px;
+      font-size: $font-size-large;
+      line-height: 32px;
+      text-align: center;
+      color: #888;
+      transition: all ease 0.3s;
+      &:hover {
+        color: $purple;
+        transform: translateY(-3px);
+      }
+    }
+  }
+
   ol {
     margin: 25px 16px 25px 62px;
   }
@@ -208,7 +249,7 @@
       opacity: 0;
       border-radius: 3px;
       overflow: hidden;
-      box-shadow: 0 14px 38px rgba(0, 0, 0, 0.08);
+      box-shadow: $card-shadow;
       transition: all 0.3s ease-out, opacity 0.8s ease-out;
     }
 

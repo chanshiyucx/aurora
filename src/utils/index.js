@@ -67,7 +67,7 @@ export const localRead = (key, defaultValue = '') => {
 }
 
 /**
- * 图片 cdn 加速
+ * 图片 cdn 加速，只对时雨个人使用
  */
 const isMe = location.host.includes('chanshiyu.com')
 const GithubPrefix = 'raw.githubusercontent.com/chanshiyucx/yoi/master'
