@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueProgressBar from 'vue-progressbar'
 import APlayer from '@moefe/vue-aplayer'
-import isMobile from 'ismobilejs'
 import AV from 'leancloud-storage'
 
 // Let's go!
@@ -20,7 +19,7 @@ import '@/styles/index.scss'
 // Global variable
 Vue.config.productionTip = false
 Vue.prototype.$config = config
-Vue.prototype.$isMobile = isMobile().phone
+Vue.prototype.$isMobile = Vue.observable({ value: document.body.clientWidth < 876 })
 
 // Init Progress Bar
 const options = {

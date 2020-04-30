@@ -73,6 +73,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    isMobile: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -101,9 +105,17 @@ export default {
       return this.isLikeSite ? "谢谢点赞 (●'◡'●)" : '点赞一下 (<ゝω・)☆'
     },
   },
+  watch: {
+    '$isMobile.value': {
+      immediate: true,
+      handler(val) {
+        if (val) return
+        this.initTheme()
+      },
+    },
+  },
   mounted() {
     this.queryLike()
-    this.initTheme()
   },
   methods: {
     // 点赞数
@@ -119,7 +131,7 @@ export default {
     },
     // 初始化背景主题
     initTheme() {
-      if (this.$isMobile) return
+      if (this.theme) return
       const theme = localRead('theme', 'touhou')
       this.setTheme(theme)
     },

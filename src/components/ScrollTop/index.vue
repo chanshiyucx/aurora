@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="!$isMobile"
+    v-if="!$isMobile.value"
     @click="scrollTop"
     :style="backTopStyle"
     :class="['back-to-top', 'cursor', showBackTop && !lock && 'anime']"
@@ -16,7 +16,7 @@ export default {
       lock: true,
       topDistance: -950,
       clientHeight: 0,
-      scrollTimer: '',
+      lastScrollTimer: '',
       lastScrollAt: new Date(),
     }
   },
@@ -26,7 +26,7 @@ export default {
     },
   },
   mounted() {
-    if (!this.$isMobile) {
+    if (!this.$isMobile.value) {
       window.addEventListener('scroll', this.handleScroll)
     }
   },
@@ -42,8 +42,8 @@ export default {
       this.lastScrollAt = now
       this.handleTop()
 
-      clearTimeout(this.scrollTimer)
-      this.scrollTimer = setTimeout(this.handleTop, 300)
+      clearTimeout(this.lastScrollTimer)
+      this.lastScrollTimer = setTimeout(this.handleTop, 300)
     },
     // 处理滚动事件
     handleTop() {

@@ -1,6 +1,6 @@
 <template>
   <footer id="footer">
-    <div class="prpr" v-if="!$isMobile">
+    <div class="prpr" v-if="!$isMobile.value">
       <div v-if="showWaifu" class="waifu">
         <div v-show="tips && isMini" :class="['tips', this.waifu === 'tia' && 'tia']" v-html="tips"></div>
         <canvas @click="handleClickWaifu" id="live2d" width="280" height="250" />
@@ -39,7 +39,7 @@
       </p>
     </div>
     <img
-      v-if="!$isMobile"
+      v-if="!$isMobile.value"
       class="sakura cursor"
       :src="sakura"
       @click="dropPanel"
@@ -85,7 +85,7 @@ export default {
     tipsUpdateAt: (state) => state.tipsUpdateAt,
   }),
   mounted() {
-    if (!this.$isMobile) {
+    if (!this.$isMobile.value) {
       this.dressup()
       this.loopTips()
     }

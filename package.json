@@ -17,7 +17,6 @@
     "core-js": "^3.6.5",
     "gitalk": "^1.6.2",
     "highlight.js": "^9.18.1",
-    "ismobilejs": "^1.1.1",
     "leancloud-storage": "^4.5.3",
     "marked": "^0.8.2",
     "timeago.js": "^4.0.2",

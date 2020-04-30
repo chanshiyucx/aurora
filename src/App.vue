@@ -36,17 +36,29 @@ export default {
     return {
       showHeader: true,
       showPanel: false,
+      lastResizeTimer: '',
+      lastResizeAt: new Date(),
     }
   },
   watch: {
     $route: {
       immediate: true,
       handler(val) {
-        if (this.$isMobile) {
+        if (this.$isMobile.value) {
           this.showHeader = val && val.name !== 'post'
         }
         if (val.name === 'post') {
           setTimeout(this.scrollTop, 500)
+        }
+      },
+    },
+    '$isMobile.value': {
+      immediate: true,
+      handler(val) {
+        if (val) {
+          this.showHeader = this.$route && this.$route.name !== 'post'
+        } else {
+          this.showHeader = true
         }
       },
     },
@@ -58,8 +70,24 @@ export default {
   },
   mounted() {
     this.$Progress.finish()
+    window.addEventListener('resize', this.handleResize)
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.handleResize)
   },
   methods: {
+    // 窗口监听
+    handleResize() {
+      const now = new Date()
+      if (now - this.lastResizeAt <= 150) return
+      this.lastResizeAt = now
+      this.$isMobile.value = document.body.clientWidth < 876
+
+      clearTimeout(this.lastResizeTimer)
+      this.lastResizeTimer = setTimeout(() => {
+        this.$isMobile.value = document.body.clientWidth < 876
+      }, 300)
+    },
     // 初始化站点信息
     initSite() {
       const { title, subtitle } = this.$config

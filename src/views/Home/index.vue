@@ -149,7 +149,7 @@ export default {
     // 滚动到顶部
     scrollTop(cb) {
       window.scrollTo({ top: 0, behavior: 'smooth' })
-      const delayTime = this.$isMobile ? 400 : 0
+      const delayTime = this.$isMobile.value ? 400 : 0
       setTimeout(cb, 800 + delayTime)
       setTimeout(AOS.refresh, 1200 + delayTime)
     },
