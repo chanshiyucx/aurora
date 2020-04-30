@@ -100,7 +100,7 @@
 
   pre {
     position: relative;
-    padding: 36px 0 0 12px;
+    padding: 36px 0 0;
 
     &::before {
       content: ' ';
@@ -118,6 +118,11 @@
       .code-copy {
         opacity: 1;
       }
+    }
+
+    code {
+      padding-bottom: 10px;
+      padding-left: 12px;
     }
 
     .code-copy {

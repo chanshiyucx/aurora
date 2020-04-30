@@ -102,7 +102,7 @@ export default {
   data() {
     return {
       html: '',
-      lg: '',
+      clipboards: [],
     }
   },
   created() {
@@ -127,18 +127,24 @@ export default {
       })
     },
     bindCodeCopy() {
-      console.log('bindCodeCopy', CODE_COPY_LIST)
       CODE_COPY_LIST.forEach((o) => {
-        new ClipboardJS('#' + o.id, {
+        const clipboard = new ClipboardJS('#' + o.id, {
           text(trigger) {
             return o.code
           },
         })
+        this.clipboards.push(clipboard)
+      })
+    },
+    unBindCodeCopy() {
+      this.clipboards.forEach((o) => {
+        o.destroy()
       })
     },
   },
   beforeDestroy() {
     zooming.close()
+    this.unBindCodeCopy()
   },
 }
 </script>
