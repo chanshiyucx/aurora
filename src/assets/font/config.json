@@ -161,6 +161,18 @@
       "css": "clipboard",
       "code": 59410,
       "src": "typicons"
+    },
+    {
+      "uid": "d4ebe676479ff9cb41c7797f003aa54d",
+      "css": "left-open-outline",
+      "code": 59411,
+      "src": "typicons"
+    },
+    {
+      "uid": "813cb2527308990d4870591d9d76f8cd",
+      "css": "right-open-outline",
+      "code": 59412,
+      "src": "typicons"
     }
   ]
 }
