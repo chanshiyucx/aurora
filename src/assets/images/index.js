@@ -7,8 +7,6 @@ export default {
   },
   bg: {
     touhou: [
-      'https://i0.hdslb.com/bfs/album/59215b7db60415636d0527ac931a996f9a6d970f.jpg',
-      'https://i0.hdslb.com/bfs/album/f66b6ee0d85043db921a1568a932f201d58c12ce.jpg',
       'https://i0.hdslb.com/bfs/album/fb0126be1fb4c7d3aeeedff1fa187087afda711a.jpg',
       'https://i0.hdslb.com/bfs/album/1b5ebba9c9302efb003656b2339f0a97dbb5214a.jpg',
       'https://i0.hdslb.com/bfs/album/92457e0c09028873328dabc188a2e3585e20affe.jpg',
@@ -17,6 +15,8 @@ export default {
       'https://i0.hdslb.com/bfs/album/56a474ae130d758e344e6d9ae76c364a2c485aa0.jpg',
       'https://i0.hdslb.com/bfs/album/4af73871d861579965adfe8c0edb6f2ce35488fc.jpg',
       'https://i0.hdslb.com/bfs/album/0a9bc710e9566436b17e2c58495a9390a27567a7.jpg',
+      'https://i0.hdslb.com/bfs/album/59215b7db60415636d0527ac931a996f9a6d970f.jpg',
+      'https://i0.hdslb.com/bfs/album/f66b6ee0d85043db921a1568a932f201d58c12ce.jpg',
     ],
     school: [
       'https://i0.hdslb.com/bfs/album/375bfad6dda18280f8e05c92db17b4a588d65aee.jpg',
