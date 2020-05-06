@@ -43,6 +43,9 @@ Vue.use(APlayer, { productionTip: false })
 window.AV = AV
 AV.init(config.leancloud)
 
+// Init Cover
+new Image().src = config.defaultCover
+
 new Vue({
   router,
   store,

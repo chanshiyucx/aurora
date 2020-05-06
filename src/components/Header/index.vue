@@ -16,7 +16,6 @@ export default {
   name: 'Header',
   data() {
     const { archiveOpts, categoryOpts, tagOpts, inspirationOpts, bookOpts, friendOpts, aboutOpts } = this.$config
-
     return {
       menu: [
         { path: '/', display: true, icon: 'shop', title: '首页' },

@@ -95,6 +95,10 @@
         background-position: bottom;
         background-repeat: no-repeat;
       }
+
+      .router-link-exact-active {
+        color: $purple;
+      }
     }
 
     a {
