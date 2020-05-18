@@ -1,4 +1,4 @@
-import hljs from 'highlight.js/lib/highlight'
+import hljs from 'highlight.js/lib/core'
 import javascript from 'highlight.js/lib/languages/javascript'
 import xml from 'highlight.js/lib/languages/xml'
 import less from 'highlight.js/lib/languages/less'
