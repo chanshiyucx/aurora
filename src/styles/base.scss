@@ -95,11 +95,10 @@ button {
 }
 
 /* 代码高亮 */
-
 pre {
   padding: $code-padding;
   line-height: 1.5;
-  box-shadow: #aaa 0px 10px 8px -10px inset, #aaa 0px -10px 8px -10px inset;
+  box-shadow: $block-shadow;
   > code {
     display: block;
     overflow: auto;
@@ -252,6 +251,10 @@ td.hljs-ln-numbers {
     .gt-comment-body {
       max-height: 500px;
       overflow: auto;
+      pre {
+        background-color: unset;
+        box-shadow: 0 0 10px $bg-dark-dim inset;
+      }
       @include scrollBar;
     }
     blockquote {
