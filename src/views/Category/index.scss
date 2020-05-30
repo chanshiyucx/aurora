@@ -22,7 +22,7 @@
       position: relative;
       margin-bottom: 16px;
       height: 160px;
-      @include card-lignt;
+      @include card-light;
       overflow: hidden;
 
       @include pc-layout {
