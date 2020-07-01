@@ -7,37 +7,38 @@
           data-aos="fade-up"
           v-for="(post, index) in posts"
           :key="post.id"
-          @click="gotoPost(post)"
           @mouseenter="showTips(post)"
         >
-          <div class="post-header">
-            <Cover :src="post.cover.src" :alt="post.cover.title" :loadCover="index < LOAD_INX" @loadNext="loadNext" />
-            <div class="post-head">
-              <h3>{{ post.title }}</h3>
-              <span>{{ post.cover.title }}</span>
+          <router-link :to="{ name: 'post', params: { number: post.number, post } }">
+            <div class="post-header">
+              <Cover :src="post.cover.src" :alt="post.cover.title" :loadCover="index < LOAD_INX" @loadNext="loadNext" />
+              <div class="post-head">
+                <h3>{{ post.title }}</h3>
+                <span>{{ post.cover.title }}</span>
+              </div>
             </div>
-          </div>
-          <div class="post-body">
-            <MarkDown :content="post.description" />
-          </div>
-          <div class="post-meta">
-            <span>
-              <i class="icon icon-calendar"></i>
-              {{ post.created_at }}
-            </span>
-            <span>
-              <i class="icon icon-fire"></i>
-              热度{{ times[post.id] || 1 }}℃
-            </span>
-            <span>
-              <i class="icon icon-bookmark-empty"></i>
-              {{ post.milestone ? post.milestone.title : '未分类' }}
-            </span>
-            <span>
-              <i class="icon icon-tag"></i>
-              <span v-for="label in post.labels.slice(0, 2)" :key="label.id">{{ label.name }}</span>
-            </span>
-          </div>
+            <div class="post-body">
+              <MarkDown :content="post.description" />
+            </div>
+            <div class="post-meta">
+              <span>
+                <i class="icon icon-calendar"></i>
+                {{ post.created_at }}
+              </span>
+              <span>
+                <i class="icon icon-fire"></i>
+                热度{{ times[post.id] || 1 }}℃
+              </span>
+              <span>
+                <i class="icon icon-bookmark-empty"></i>
+                {{ post.milestone ? post.milestone.title : '未分类' }}
+              </span>
+              <span>
+                <i class="icon icon-tag"></i>
+                <span v-for="label in post.labels.slice(0, 2)" :key="label.id">{{ label.name }}</span>
+              </span>
+            </div>
+          </router-link>
         </article>
       </div>
     </Transition>
@@ -156,10 +157,6 @@ export default {
     // 按顺序加载封面图
     loadNext() {
       this.LOAD_INX += 1
-    },
-    // 跳转文章页
-    gotoPost(post) {
-      this.$router.push({ name: 'post', params: { number: post.number, post } })
     },
     // 看板娘
     showTips(post) {
