@@ -80,19 +80,19 @@
   left: 0;
   width: 100px;
   height: 150px;
-  transform: translateZ(12px);
+  transform: translateZ(12.5px);
   border-radius: 0 2px 2px 0;
   box-shadow: 5px 5px 20px #666;
 }
 
 .book::before {
-  position: absolute;
   content: ' ';
+  position: absolute;
   left: 0;
-  top: 3px;
+  top: 2px;
   width: 23px;
-  height: 144px;
-  transform: translateX(84px) rotateY(90deg);
+  height: 146px;
+  transform: translateX(84.5px) rotateY(90deg);
   background: linear-gradient(
     90deg,
     #fff 0%,
@@ -126,7 +126,7 @@
   left: 0;
   width: 100px;
   height: 150px;
-  transform: translateZ(-12px);
-  background-color: #444;
+  transform: translateZ(-12.5px);
+  background-color: #555;
   border-radius: 0 2px 2px 0;
 }
