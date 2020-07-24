@@ -6,7 +6,11 @@
         <ul class="content">
           <li v-for="item in book" :key="item.name">
             <div class="info">
-              <img :src="item.cover" alt />
+              <a class="book-container" :href="item.link" target="_blank" rel="noreferrer noopener">
+                <div class="book">
+                  <img :src="item.cover" :alt="item.name" />
+                </div>
+              </a>
               <div>
                 <h3>{{ item.name }}</h3>
                 <p>作者：{{ item.author }}</p>
@@ -14,9 +18,9 @@
                 <p>阅读进度：{{ item.progress }}</p>
                 <p>
                   <span>读书笔记：</span>
-                  <a v-if="item.postLink" :href="item.postLink" rel="noopener noreferrer" target="_blank">{{
-                    item.postTitle
-                  }}</a>
+                  <a v-if="item.postLink" :href="item.postLink" target="_blank" rel="noopener noreferrer">
+                    {{ item.postTitle }}
+                  </a>
                   <span v-else>暂无</span>
                 </p>
                 <p>
