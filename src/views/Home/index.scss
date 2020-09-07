@@ -28,22 +28,21 @@
         left: -100%;
         width: 150px;
         height: 100%;
+        transform: skewX(-30deg);
+        transition: left 1s ease 0s;
+        will-change: transform;
+        z-index: $zindex-1;
         background: -webkit-linear-gradient(
           left,
           rgba(255, 255, 255, 0) 0,
           rgba(255, 255, 255, 0.5) 50%,
           rgba(255, 255, 255, 0) 100%
         );
-        transform: skewX(-30deg);
-        transition: left 1s ease 0s;
-        will-change: transform;
-        z-index: $zindex-1;
       }
 
       &:hover {
         transform: translateY(-6px);
         box-shadow: $card-shadow-hover;
-
         &::before {
           left: 150%;
         }
@@ -63,7 +62,7 @@
         align-items: center;
         position: absolute;
         left: 0;
-        bottom: 0;
+        bottom: -1px;
         padding: 0 12px;
         width: 100%;
         height: 50px;
