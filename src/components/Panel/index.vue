@@ -91,9 +91,7 @@ export default {
       return [0, -600, -1200, -1800][this.currentInx]
     },
     containerStyle() {
-      return {
-        transform: `translate3d(${this.distance}px, 0, 0)`,
-      }
+      return { transform: `translate3d(${this.distance}px, 0, 0)` }
     },
     likeBtnText() {
       return this.isLikeSite ? "谢谢点赞 (●'◡'●)" : '点赞一下 (<ゝω・)☆'
