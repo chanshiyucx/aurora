@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <vue-progress-bar></vue-progress-bar>
+    <vue-progress-bar />
     <Transition name="header-transform" mode="out-in">
       <Header v-show="showHeader" />
     </Transition>
@@ -11,8 +11,8 @@
         </keep-alive>
       </Transition>
     </main>
-    <Footer @dropPanel="showPanel = true" />
-    <Panel :showPanel="showPanel" @hidePanel="showPanel = false" />
+    <Footer />
+    <Panel />
     <ScrollTop />
   </div>
 </template>
@@ -22,7 +22,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Panel from '@/components/Panel'
 import ScrollTop from '@/components/ScrollTop'
-import { getLocation } from '@/utils'
+import { getLocation, isMobile } from '@/utils'
 
 export default {
   name: 'App',
@@ -35,7 +35,6 @@ export default {
   data() {
     return {
       showHeader: true,
-      showPanel: false,
       lastResizeTimer: '',
       lastResizeAt: new Date(),
     }
@@ -45,7 +44,7 @@ export default {
       immediate: true,
       handler(val) {
         if (this.$isMobile.value) {
-          this.showHeader = val && val.name !== 'post'
+          this.showHeader = val.name !== 'post'
         }
         if (val.name === 'post') {
           setTimeout(this.scrollTop, 500)
@@ -64,7 +63,6 @@ export default {
     },
   },
   created() {
-    this.initSite()
     this.initProgress()
     this.visitorStatistics()
   },
@@ -81,17 +79,12 @@ export default {
       const now = new Date()
       if (now - this.lastResizeAt <= 150) return
       this.lastResizeAt = now
-      this.$isMobile.value = document.body.clientWidth < 876
+      this.$isMobile.value = isMobile()
 
       clearTimeout(this.lastResizeTimer)
       this.lastResizeTimer = setTimeout(() => {
-        this.$isMobile.value = document.body.clientWidth < 876
+        this.$isMobile.value = isMobile()
       }, 300)
-    },
-    // 初始化站点信息
-    initSite() {
-      const { title, subtitle } = this.$config
-      document.title = `${title} | ${subtitle}`
     },
     // 注册顶部进度条
     initProgress() {

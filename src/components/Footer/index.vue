@@ -1,5 +1,5 @@
 <template>
-  <footer id="footer">
+  <footer>
     <div class="prpr" v-if="!$isMobile.value">
       <div v-if="showWaifu" class="waifu">
         <div v-show="tips && isMini" :class="['tips', this.waifu === 'tia' && 'tia']" v-html="tips"></div>
@@ -170,7 +170,7 @@ export default {
       this.isMini = isMini
     },
     dropPanel() {
-      this.$emit('dropPanel')
+      this.$store.commit('setShowPanel', true)
     },
   },
 }

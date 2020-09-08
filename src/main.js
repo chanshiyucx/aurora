@@ -9,6 +9,7 @@ import router from './router'
 import store from './store'
 import config from './config'
 import images from './assets/images'
+import { isMobile } from './utils'
 
 // Layout and Font
 import 'aos/dist/aos.css'
@@ -19,7 +20,7 @@ import '@/styles/index.scss'
 // Global variable
 Vue.config.productionTip = false
 Vue.prototype.$config = config
-Vue.prototype.$isMobile = Vue.observable({ value: document.body.clientWidth < 876 })
+Vue.prototype.$isMobile = Vue.observable({ value: isMobile() })
 
 // Init Progress Bar
 const options = {
@@ -39,6 +40,10 @@ Vue.use(VueProgressBar, options)
 // Init Player
 Vue.use(APlayer, { productionTip: false })
 
+// Init Site Title
+const { title, subtitle } = config
+document.title = `${title} | ${subtitle}`
+
 // Init Leancloud
 window.AV = AV
 AV.init(config.leancloud)
@@ -54,9 +59,9 @@ new Vue({
 
 // (o=^•ェ•)o
 const labelStyle = 'line-height:22px;color:#FFF;background:#D68FE9;'
-const themeUrl = 'https://github.com/chanshiyucx/aurora'
+const themeRepo = 'https://github.com/chanshiyucx/aurora'
 console.info(`%c ${config.title} %c`, labelStyle, '', window.location.origin)
-console.info('%c Theme %c', labelStyle, '', themeUrl)
+console.info('%c Theme %c', labelStyle, '', themeRepo)
 console.info('~❀~ 发现控制台报错请务必联系博主 ~❀~')
 console.log(
   '%c ',
