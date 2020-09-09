@@ -16,7 +16,7 @@
           </span>
           <span>
             <i class="icon icon-fire"></i>
-            热度{{ times[i] || 1 }}℃
+            热度{{ times[post.id] || 1 }}℃
           </span>
           <span>
             <i class="icon icon-bookmark-empty"></i>
@@ -55,8 +55,8 @@ export default {
       default: () => [],
     },
     times: {
-      type: Array,
-      default: () => [],
+      type: Object,
+      default: () => {},
     },
     loading: {
       type: Boolean,

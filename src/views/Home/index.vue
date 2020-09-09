@@ -1,8 +1,7 @@
 <template>
   <div id="home">
     <Transition name="fade-transform" mode="out-in">
-      <Loading v-if="!list.length" />
-      <div v-else>
+      <div v-if="posts.length">
         <div class="content">
           <article
             class="cursor"
@@ -42,7 +41,7 @@
             </div>
           </article>
         </div>
-        <div class="btn-group">
+        <div class="btn-group" v-if="!isDisabledPrev || !isDisabledNext">
           <Pagination
             :loading="loading"
             :isDisabledPrev="isDisabledPrev"
@@ -51,6 +50,7 @@
           />
         </div>
       </div>
+      <Loading v-else />
     </Transition>
   </div>
 </template>
@@ -134,7 +134,7 @@ export default {
 
       this.scrollTop(() => {
         this.posts = posts
-        this.$set(this.list, queryPage, posts)
+        this.list[queryPage] = posts
       })
 
       // 获取文章热度
@@ -145,7 +145,7 @@ export default {
     // 滚动到顶部
     scrollTop(cb) {
       window.scrollTo({ top: 0, behavior: 'smooth' })
-      const delayTime = this.$isMobile.value ? 400 : 0
+      const delayTime = this.$isMobile.value ? 200 : 0
       setTimeout(cb, 800 + delayTime)
       setTimeout(AOS.refresh, 1200 + delayTime)
     },
