@@ -71,14 +71,14 @@
     }
     &::before {
       top: 0;
-      left: 0;
-      width: 6px;
+      left: -1px;
+      width: 7px;
       height: 2px;
     }
     &::after {
       top: 0;
-      right: 0;
-      width: 6px;
+      right: -1px;
+      width: 7px;
       height: 2px;
     }
   }
