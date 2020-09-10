@@ -1,6 +1,7 @@
 #book {
   .page {
     padding-top: 16px;
+    overflow: hidden;
     @include card-page;
   }
 

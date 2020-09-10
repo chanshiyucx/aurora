@@ -53,7 +53,6 @@ export default {
       pageSize: 10,
       inspiration: [],
       list: [],
-      delayTime: this.$config.isMobile ? 400 : 0 + 1000,
     }
   },
   computed: {
@@ -99,7 +98,8 @@ export default {
     },
     scrollTop(cb) {
       window.scrollTo({ top: 0, behavior: 'smooth' })
-      setTimeout(cb, this.delayTime)
+      const delayTime = this.$config.isMobile ? 800 : 600
+      setTimeout(cb, delayTime)
     },
   },
 }

@@ -1,7 +1,6 @@
 #inspiration {
   .page {
-    // FIX: pagination overflow
-    padding: 16px 0 1px;
+    padding: 16px 0;
     @include card-page;
   }
 
@@ -19,6 +18,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 12px 0 24px;
+    margin: 12px 0;
   }
 }

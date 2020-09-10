@@ -14,13 +14,18 @@
   .label {
     display: inline-block;
     position: relative;
-    left: -32px;
     margin-bottom: 10px;
     padding: 0 14px 0 32px;
     height: 32px;
     line-height: 32px;
     border-radius: 0 3px 3px 0;
     background-color: currentColor;
+    @include pc-layout {
+      left: -32px;
+    }
+    @include sp-layout {
+      left: -16px;
+    }
 
     span {
       color: white;
