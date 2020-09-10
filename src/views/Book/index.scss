@@ -23,6 +23,12 @@
       margin-bottom: 16px;
       @include card-light;
 
+      &:hover {
+        .book {
+          transform: rotateY(0deg);
+        }
+      }
+
       .info {
         display: flex;
         justify-content: flex-start;
@@ -68,11 +74,7 @@
   transform-style: preserve-3d;
   transform: rotateY(-30deg);
   transition: 1s ease;
-  animation: 1s ease 0s 1 bookRotate;
-}
-
-.book:hover {
-  transform: rotateY(0deg);
+  animation: bookRotate 1s ease 0s 0s;
 }
 
 .book > :first-child {
