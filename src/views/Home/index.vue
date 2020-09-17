@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <Transition name="fade-transform" mode="out-in">
-       <div v-if="posts.length">
+      <div v-if="posts.length">
         <div class="content">
         <article
           class="cursor"
@@ -42,7 +42,6 @@
           </router-link>
         </article>
       </div>
-
       <div class="btn-group" v-if="!isDisabledPrev || !isDisabledNext">
         <Pagination
           :loading="loading"
