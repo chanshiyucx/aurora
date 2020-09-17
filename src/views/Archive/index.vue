@@ -5,7 +5,7 @@
         <Quote :quote="$config.archiveOpts.qoute" />
         <ArchiveCard
           :posts="posts"
-          :times="postTimes"
+          :times="times"
           :loading="loading"
           :isDisabledPrev="isDisabledPrev"
           :isDisabledNext="isDisabledNext"
@@ -43,16 +43,12 @@ export default {
       posts: [],
       list: [],
       times: {},
-      delayTime: this.$config.isMobile ? 400 : 0 + 600,
     }
   },
   computed: {
     ...mapState({
       totalCount: (state) => state.totalCount,
     }),
-    postTimes() {
-      return this.posts.map((o) => this.times[o.id])
-    },
     maxPage() {
       return Math.ceil(this.totalCount / this.pageSize)
     },
@@ -97,16 +93,15 @@ export default {
       })
 
       // 获取文章热度
-      this.$nextTick(async () => {
-        const ids = posts.map((o) => o.id)
-        const hot = await this.$store.dispatch('queryHot', { ids })
-        this.times = { ...this.times, ...hot }
-      })
+      const ids = posts.map((o) => o.id)
+      const hot = await this.$store.dispatch('queryHot', { ids })
+      this.times = { ...this.times, ...hot }
     },
     // 滚动到顶部
     scrollTop(cb) {
       window.scrollTo({ top: 0, behavior: 'smooth' })
-      setTimeout(cb, this.delayTime)
+      const delayTime = this.$isMobile.value ? 800 : 600
+      setTimeout(cb, delayTime)
     },
   },
 }

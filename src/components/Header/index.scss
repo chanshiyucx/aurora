@@ -1,4 +1,4 @@
-#header {
+header {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,13 +56,12 @@
   }
 
   nav {
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
     overflow: hidden;
     @include pc-layout {
+      margin-top: 10px;
       padding: 0 32px;
       height: 60px;
       background-color: $bg-dark;
@@ -79,22 +78,7 @@
       transform: translateY(40px);
       text-shadow: 0 0 1px $bg-dark-dim;
       box-shadow: 0 -1px 2px $bg-dark;
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        margin: -4px;
-        filter: blur(4px);
-        z-index: $zindex-bottom;
-        background-image: $mobile-bg;
-        background-size: cover;
-        background-position: bottom;
-        background-repeat: no-repeat;
-      }
+      backdrop-filter: blur(4px) ;
 
       .router-link-exact-active {
         color: $purple;

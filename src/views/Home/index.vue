@@ -55,13 +55,14 @@
           @handlePage="queryPosts"
         />
       </div>
+      <Loading v-else />
     </Transition>
   </div>
 </template>
 
 <script>
-import AOS from 'aos'
 import { mapState } from 'vuex'
+import AOS from 'aos'
 import MarkDown from '@/components/MarkDown'
 import Loading from '@/components/Loading'
 import Pagination from '@/components/Pagination'
@@ -109,7 +110,8 @@ export default {
     AOS.init({
       duration: 2000,
       easing: 'ease',
-      debounceDelay: 200,
+      debounceDelay: 50,
+      throttleDelay: 100,
       offset: 50,
     })
   },
@@ -141,16 +143,14 @@ export default {
       })
 
       // 获取文章热度
-      this.$nextTick(async () => {
-        const ids = posts.map((o) => o.id)
-        const hot = await this.$store.dispatch('queryHot', { ids })
-        this.times = { ...this.times, ...hot }
-      })
+      const ids = posts.map((o) => o.id)
+      const hot = await this.$store.dispatch('queryHot', { ids })
+      this.times = { ...this.times, ...hot }
     },
     // 滚动到顶部
     scrollTop(cb) {
       window.scrollTo({ top: 0, behavior: 'smooth' })
-      const delayTime = this.$isMobile.value ? 400 : 0
+      const delayTime = this.$isMobile.value ? 200 : 0
       setTimeout(cb, 800 + delayTime)
       setTimeout(AOS.refresh, 1200 + delayTime)
     },

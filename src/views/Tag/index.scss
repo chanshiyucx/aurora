@@ -1,8 +1,8 @@
 #tag {
   .page {
-    padding-top: 16px;
-    @include card-page;
+    padding: 16px 0;
     overflow: hidden;
+    @include card-page;
   }
 
   .content {

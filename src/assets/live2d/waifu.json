@@ -11,6 +11,7 @@
     "body_x": [-0.3, -0.25],
     "body_y": [0.3, -0.9]
   },
+  "textures": [],
   "motions": {
     "idle": [
       { "file": "mtn/Breath1.mtn" },

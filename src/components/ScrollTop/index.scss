@@ -1,21 +1,23 @@
-.back-to-top {
+.wrapper {
   position: fixed;
   top: 0;
   right: 20px;
   width: 70px;
   height: 900px;
   z-index: $zindex-3;
-  background-image: $backtop-bg;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-  transition: top 0.5s ease-out;
-  will-change: top;
+  will-change: transform;
+  transition: transform .3s ease-out;
   @include sp-layout {
     display: none;
   }
 }
 
-.anime {
+.back-to-top {
+  width: 100%;
+  height: 100%;
+  background-image: $backtop-bg;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
   animation: float 3s linear infinite;
 }

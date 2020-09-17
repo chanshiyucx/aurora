@@ -1,10 +1,7 @@
 <template>
-  <div
-    v-if="!$isMobile.value"
-    @click="scrollTop"
-    :style="backTopStyle"
-    :class="['back-to-top', 'cursor', showBackTop && !lock && 'anime']"
-  ></div>
+  <div class="wrapper" :style="backTopStyle">
+    <div v-if="!$isMobile.value" @click="scrollTop" :class="['back-to-top', 'cursor']"></div>
+  </div>
 </template>
 
 <script>
@@ -13,7 +10,6 @@ export default {
   data() {
     return {
       showBackTop: false,
-      lock: true,
       topDistance: -950,
       clientHeight: 0,
       lastScrollTimer: '',
@@ -22,7 +18,7 @@ export default {
   },
   computed: {
     backTopStyle() {
-      return { top: `${this.topDistance}px` }
+      return { transform: `translateY(${this.topDistance}px)` }
     },
   },
   mounted() {
@@ -56,10 +52,6 @@ export default {
       // 判断位置，控制滚动到顶部
       const showBackTop = pageYOffset >= 200
       if (showBackTop !== this.showBackTop || this.clientHeight !== clientHeight) {
-        // 1s 后启用动画
-        this.lock = true
-        setTimeout(() => (this.lock = !showBackTop), 1000)
-
         this.topDistance = -950 + (showBackTop ? clientHeight : 0)
         this.clientHeight = clientHeight
         this.showBackTop = showBackTop

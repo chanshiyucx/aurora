@@ -2,6 +2,7 @@
   .content {
     display: flex;
     flex-wrap: wrap;
+    perspective: 1200;
     @include pc-layout {
       justify-content: space-between;
     }
@@ -20,7 +21,6 @@
     @include pc-layout {
       margin-bottom: 15px;
       width: 49.2%;
-
       &::before {
         content: '';
         position: absolute;
@@ -28,22 +28,20 @@
         left: -100%;
         width: 150px;
         height: 100%;
-        background: -webkit-linear-gradient(
-          left,
+        transform: skewX(-30deg);
+        transition: left 1s ease 0s;
+        z-index: $zindex-1;
+        background: linear-gradient(
+          to right,
           rgba(255, 255, 255, 0) 0,
           rgba(255, 255, 255, 0.5) 50%,
           rgba(255, 255, 255, 0) 100%
         );
-        transform: skewX(-30deg);
-        transition: left 1s ease 0s;
-        will-change: transform;
-        z-index: $zindex-1;
       }
 
       &:hover {
         transform: translateY(-6px);
         box-shadow: $card-shadow-hover;
-
         &::before {
           left: 150%;
         }
@@ -56,19 +54,19 @@
     .post-header {
       position: relative;
       overflow: hidden;
-
       .post-head {
         display: flex;
         justify-content: space-between;
         align-items: center;
         position: absolute;
         left: 0;
-        bottom: 0;
+        bottom: -1px;
         padding: 0 12px;
         width: 100%;
         height: 50px;
         background-color: $bg-white-deep;
-        box-shadow: 0 -1px 2px $bg-dark;
+        backdrop-filter: blur(5px) saturate(150%) brightness(1.1);
+        box-shadow: 0 -3px 5px $bg-dark;
       }
 
       h3,
@@ -77,7 +75,6 @@
       }
 
       h3 {
-        display: inline-block;
         font-size: $font-size-larger;
         font-weight: $font-weight-normal;
       }

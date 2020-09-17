@@ -11,7 +11,7 @@
           <div class="header">
             <div class="inner">{{ panelTitle }}</div>
           </div>
-          <div v-if="showPanel" class="body">
+          <div class="body" v-if="showPanel">
             <div class="swiper-wrapper">
               <ul ref="swiper" id="swiper" class="swiper animate" :style="containerStyle">
                 <li>
@@ -58,6 +58,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Theme from './components/Theme'
 import Qrcode from './components/Qrcode'
 import { localSave, localRead } from '@/utils'
@@ -68,16 +69,6 @@ const { bg } = images
 export default {
   name: 'Panel',
   components: { Theme, Qrcode },
-  props: {
-    showPanel: {
-      type: Boolean,
-      default: false,
-    },
-    isMobile: {
-      type: Boolean,
-      default: false,
-    },
-  },
   data() {
     return {
       theme: '',
@@ -89,6 +80,9 @@ export default {
     }
   },
   computed: {
+    ...mapState({
+      showPanel: (state) => state.showPanel,
+    }),
     panelTitle() {
       const inx = (this.currentInx + 1) % 2
       return ['背景主题', '赛钱箱'][inx]
@@ -97,9 +91,7 @@ export default {
       return [0, -600, -1200, -1800][this.currentInx]
     },
     containerStyle() {
-      return {
-        transform: `translate3d(${this.distance}px, 0, 0)`,
-      }
+      return { transform: `translate3d(${this.distance}px, 0, 0)` }
     },
     likeBtnText() {
       return this.isLikeSite ? "谢谢点赞 (●'◡'●)" : '点赞一下 (<ゝω・)☆'
@@ -153,7 +145,7 @@ export default {
     },
     // 关闭面板
     hidePanel() {
-      this.$emit('hidePanel')
+      this.$store.commit('setShowPanel', false)
       this.$nextTick(() => {
         this.currentInx = 1
       })

@@ -87,6 +87,16 @@
   }
 }
 
+/* 3D书单 */
+@keyframes bookRotate {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(-30deg);
+  }
+}
+
 /** 封面图动画 */
 @keyframes coverIn {
   0% {

@@ -1,7 +1,7 @@
 <template>
-  <footer id="footer">
+  <footer>
     <div class="prpr" v-if="!$isMobile.value">
-      <div v-if="showWaifu" class="waifu">
+      <div class="waifu" v-if="showWaifu">
         <div v-show="tips && isMini" :class="['tips', this.waifu === 'tia' && 'tia']" v-html="tips"></div>
         <canvas @click="handleClickWaifu" id="live2d" width="280" height="250" />
       </div>
@@ -34,8 +34,7 @@
       <p>
         Theme -
         <a rel="noopener noreferrer" target="_blank" href="https://github.com/chanshiyucx/aurora">Aurora</a>
-        |
-        {{ $config.subtitle }}
+        | {{ $config.subtitle }}
       </p>
     </div>
     <img
@@ -68,7 +67,6 @@ export default {
       sakura,
       showWaifu: true,
       waifu: 'tia',
-      textures: '',
       menu: [
         { icon: 'venus-double', type: 'switch' },
         { icon: 't-shirt', type: 'dressup' },
@@ -95,11 +93,10 @@ export default {
       if (switchWaifu) this.waifu = this.waifu === 'tia' ? 'pio' : 'tia'
       // 获取装扮
       const waifuCostume = costume[this.waifu]
-      let textures = this.textures
-      while (textures === this.textures) {
+      let textures
+      while (!textures || textures === model.textures[0]) {
         textures = waifuCostume[random(0, waifuCostume.length - 1)]
       }
-      this.textures = textures
       // 获取模型
       model.model = `moc/${this.waifu}.moc`
       model.textures = [textures]
@@ -150,11 +147,9 @@ export default {
           this.$store.dispatch('showTips', { tips: clickTips.takePhoto })
           break
         case 'talk':
-          {
-            const inx = random(0, hitokotos.length - 1)
-            const tips = hitokotos[inx].hitokoto
-            this.$store.dispatch('showTips', { tips })
-          }
+          const inx = random(0, hitokotos.length - 1)
+          const tips = hitokotos[inx].hitokoto
+          this.$store.dispatch('showTips', { tips })
           break
         case 'close':
           this.$store.dispatch('showTips', { tips: clickTips.close })
@@ -170,7 +165,7 @@ export default {
       this.isMini = isMini
     },
     dropPanel() {
-      this.$emit('dropPanel')
+      this.$store.commit('setShowPanel', true)
     },
   },
 }

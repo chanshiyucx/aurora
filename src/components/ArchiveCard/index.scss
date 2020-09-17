@@ -31,6 +31,11 @@
         padding: $card-padding;
         height: 50px;
         border-top: 1px solid $bg-dark;
+        word-break: keep-all;
+        @include sp-layout {
+          max-width: 94vw;
+          overflow: auto;
+        }
 
         & > span {
           display: flex;
@@ -63,6 +68,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
   }
 }

@@ -1,6 +1,7 @@
 #book {
   .page {
     padding-top: 16px;
+    overflow: hidden;
     @include card-page;
   }
 
@@ -22,28 +23,28 @@
       margin-bottom: 16px;
       @include card-light;
 
+      &:hover {
+        .book {
+          transform: rotateY(0deg);
+        }
+      }
+
       .info {
         display: flex;
         justify-content: flex-start;
-        padding: 12px 12px 0;
+        padding: 16px 12px 0;
         line-height: 1.7;
 
-        img {
-          margin: 0 12px 0 0;
-          width: 120px;
-          height: 160px;
-          box-shadow: $card-shadow-light;
+        > div {
+          margin-left: 14px;
         }
 
         h3 {
           font-size: $font-size-large;
         }
 
-        a {
-          transition: color 0.3s ease-out;
-          &:hover {
-            color: $link-color;
-          }
+        p a {
+          @include link;
         }
 
         .icon-star {
@@ -57,4 +58,78 @@
       }
     }
   }
+}
+
+.book-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 600px;
+}
+
+.book {
+  position: relative;
+  width: 100px;
+  height: 150px;
+  transform-style: preserve-3d;
+  transform: rotateY(-30deg);
+  transition: 1s ease;
+  animation: bookRotate 1s ease 0s 0s;
+}
+
+.book > :first-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 150px;
+  transform: translateZ(12.5px);
+  border-radius: 0 2px 2px 0;
+  box-shadow: 5px 5px 20px #666;
+}
+
+.book::before {
+  content: ' ';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 23px;
+  height: 146px;
+  transform: translateX(84.5px) rotateY(90deg);
+  background: linear-gradient(
+    90deg,
+    #fff 0%,
+    #f9f9f9 5%,
+    #fff 10%,
+    #f9f9f9 15%,
+    #fff 20%,
+    #f9f9f9 25%,
+    #fff 30%,
+    #f9f9f9 35%,
+    #fff 40%,
+    #f9f9f9 45%,
+    #fff 50%,
+    #f9f9f9 55%,
+    #fff 60%,
+    #f9f9f9 65%,
+    #fff 70%,
+    #f9f9f9 75%,
+    #fff 80%,
+    #f9f9f9 85%,
+    #fff 90%,
+    #f9f9f9 95%,
+    #fff 100%
+  );
+}
+
+.book::after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 150px;
+  transform: translateZ(-12.5px);
+  background-color: #555;
+  border-radius: 0 2px 2px 0;
 }

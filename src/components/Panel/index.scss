@@ -9,22 +9,20 @@
     display: none;
   }
 
-  .mask {
+  .mask, .container {
     position: absolute;
     top: 0px;
     left: 0px;
     width: 100vw;
     height: 100vh;
+  }
+
+  .mask {
     background-color: $bg-white;
   }
 
   .container {
     pointer-events: none;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100vw;
-    height: 100vh;
     perspective: 600px;
     transform: translateY(-100%);
     will-change: transform;
@@ -73,8 +71,8 @@
         content: '';
         display: block;
         position: absolute;
-        left: -4.5px;
-        bottom: -4.5px;
+        left: -4px;
+        bottom: -4px;
         width: 10px;
         height: 10px;
         background-color: $panel-color;
@@ -114,7 +112,7 @@
         font-size: 20px;
         line-height: 50px;
         color: $panel-color;
-        letter-spacing: 0.1em;
+        letter-spacing: 1px;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
