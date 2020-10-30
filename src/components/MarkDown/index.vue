@@ -84,7 +84,7 @@ const rendererCode = renderer.code
 renderer.code = function code(_code, infostring, escaped) {
   // katex 支持， https://github.com/markedjs/marked/issues/1538#issuecomment-526189561
   if (!lang) {
-    const math = mathsExpression(code)
+    const math = mathsExpression(_code)
     if (math) {
       return math
     }
