@@ -31,7 +31,7 @@ export default {
   },
   computed: {
     displayMenu() {
-      return this.menu.filter(o => o.display)
+      return this.menu.filter((o) => o.display)
     },
   },
 }

@@ -6,8 +6,19 @@
 import marked from 'marked'
 import Zooming from 'zooming'
 import ClipboardJS from 'clipboard'
+import katex from 'katex'
 import hljs from '@/assets/lib/highlight'
 import { fileCDN, handleImg } from '@/utils'
+
+function mathsExpression(expr) {
+  if (expr.match(/^\$\$[\s\S]*\$\$$/)) {
+    expr = expr.substr(2, expr.length - 4)
+    return katex.renderToString(expr, { displayMode: true })
+  } else if (expr.match(/^\$[\s\S]*\$$/)) {
+    expr = expr.substr(1, expr.length - 2)
+    return katex.renderToString(expr, { isplayMode: false })
+  }
+}
 
 const zooming = new Zooming({
   bgOpacity: 0.8,
@@ -58,7 +69,27 @@ renderer.table = function (header, body) {
   return `<div class="table-wrapper">\n<table>\n<thead>\n${header}</thead>\n${body}</table>\n</div>\n`
 }
 
+const rendererCodespan = renderer.codespan
+renderer.codespan = function (text) {
+  const math = mathsExpression(text)
+
+  if (math) {
+    return math
+  }
+
+  return rendererCodespan(text)
+}
+
+const rendererCode = renderer.code
 renderer.code = function code(_code, infostring, escaped) {
+  // katex 支持， https://github.com/markedjs/marked/issues/1538#issuecomment-526189561
+  if (!lang) {
+    const math = mathsExpression(code)
+    if (math) {
+      return math
+    }
+  }
+
   CODE_ID++
   const id = `code-${CODE_ID}`
   CODE_COPY_LIST.push({ id, code: _code })

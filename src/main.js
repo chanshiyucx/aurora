@@ -14,6 +14,7 @@ import { isMobile } from './utils'
 // Layout and Font
 import 'aos/dist/aos.css'
 import 'gitalk/dist/gitalk.css'
+import 'katex/dist/katex.css'
 import '@/assets/font/fontello.scss'
 import '@/styles/index.scss'
 
