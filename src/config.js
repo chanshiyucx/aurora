@@ -34,6 +34,7 @@ export default {
     owner: 'chanshiyucx',
     admin: ['chanshiyucx'],
     distractionFreeMode: false, // 是否开始无干扰模式【背景遮罩】
+    proxy: 'https://bokegitalkcors.herokuapp.com/https://github.com/login/oauth/access_token',
   },
 
   /**
