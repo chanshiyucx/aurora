@@ -19,7 +19,7 @@
     "highlight.js": "^10.2.0",
     "katex": "^0.12.0",
     "leancloud-storage": "^4.6.1",
-    "marked": "^1.1.1",
+    "marked": "^2.0.0",
     "timeago.js": "^4.0.2",
     "vue": "^2.6.12",
     "vue-progressbar": "^0.7.5",
