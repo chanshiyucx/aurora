@@ -125,17 +125,21 @@ export default {
         link: 'https://github.com/chanshiyucx',
       },
       {
-        icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/telegram.png',
-        link: 'https://t.me/chan_shi_yu',
-      },
-      {
         icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/music.png',
         link: 'https://music.163.com/#/user/home?id=103060582',
       },
       {
-        icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/rsshub.png',
-        link: 'https://rsshub.app/github/issue/chanshiyucx/blog',
+        icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/telegram.png',
+        link: 'https://t.me/chan_shi_yu',
       },
+      {
+        icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/twitter.png',
+        link: 'https://twitter.com/shiyucx',
+      },
+      // {
+      //   icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/rsshub.png',
+      //   link: 'https://rsshub.app/github/issue/chanshiyucx/blog',
+      // },
     ],
   },
 
