@@ -134,7 +134,7 @@ export default {
       },
       {
         icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/twitter.png',
-        link: 'https://twitter.com/shiyucx',
+        link: 'https://twitter.com/chanshiyucx',
       },
       // {
       //   icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/rsshub.png',
