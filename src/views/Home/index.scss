@@ -51,6 +51,12 @@
       margin: 0 3vw 4vw;
     }
 
+    > a {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
     .post-header {
       position: relative;
       overflow: hidden;
@@ -89,6 +95,7 @@
     }
 
     .post-body {
+      flex:1;
       padding: $card-padding;
       text-align: justify;
 
