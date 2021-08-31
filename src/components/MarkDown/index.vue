@@ -82,6 +82,7 @@ renderer.codespan = function (text) {
 
 const rendererCode = renderer.code
 renderer.code = function code(_code, infostring, escaped) {
+  const lang = (infostring || '').match(/\S*/)[0]
   // katex 支持， https://github.com/markedjs/marked/issues/1538#issuecomment-526189561
   if (!lang) {
     const math = mathsExpression(_code)
@@ -93,8 +94,6 @@ renderer.code = function code(_code, infostring, escaped) {
   CODE_ID++
   const id = `code-${CODE_ID}`
   CODE_COPY_LIST.push({ id, code: _code })
-
-  const lang = (infostring || '').match(/\S*/)[0]
 
   if (this.options.highlight) {
     const out = this.options.highlight(_code, lang)
