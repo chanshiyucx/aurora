@@ -2,7 +2,7 @@
   "name": "aurora",
   "version": "2.0.0",
   "description": "An awesome blog theme",
-  "author": "蝉時雨 <me@chanshiyu.com>",
+  "author": "鹿鸣人 <me@iamsonglu.cn>",
   "license": "MIT",
   "scripts": {
     "start": "npm run serve",

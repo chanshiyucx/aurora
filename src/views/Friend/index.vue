@@ -5,11 +5,11 @@
         <Quote :quote="$config.friendOpts.qoute" />
         <div class="me">
           <span>欢迎各位大佬交换友链 (づ￣ 3￣)づ</span>
-          <span>★ Bio：蝉时雨</span>
-          <span>★ Motto：蝉鸣如雨，花宵道中</span>
-          <span>★ URL：https://chanshiyu.com</span>
+          <span>★ Bio：鹿鸣人</span>
+          <span>★ Motto：呦呦鹿鸣，食野之苹</span>
+          <span>★ URL：https://iamsonglu.cn</span>
           <span
-            >★ Avatar：<a href="https://cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/avatar.jpg" target="_blank"
+            >★ Avatar：<a href="https://cdn.jsdelivr.net/gh/iamsonglu/blogimg/blog/avatar_sl.jpg" target="_blank"
               >点击获取</a
             ></span
           >
