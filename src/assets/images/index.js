@@ -1,9 +1,9 @@
 export default {
-  sakura: 'https://cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/sakura.png',
-  reimu: 'https://cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/reimu.png',
+  sakura: 'https://cdn.jsdelivr.net/gh/iamsonglu/blogimg/blogs/sun1.png',
+  reimu: 'https://cdn.jsdelivr.net/gh/iamsonglu/blogimg/blogs/reimu5.png',//不清楚用在哪个地方
   preview: {
-    touhou: 'https://cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/touhou.png',
-    school: 'https://cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/school.jpg',
+    touhou: 'https://cdn.jsdelivr.net/gh/iamsonglu/blogimg/blogs/touhou.png',//尺寸不是400*187，图片会压缩
+    school: 'https://cdn.jsdelivr.net/gh/iamsonglu/blogimg/blogs/school_sl.jpg',
   },
   bg: {
     touhou: [

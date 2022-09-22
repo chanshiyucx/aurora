@@ -14,26 +14,28 @@ export default {
   /**
    * 站点标题
    */
-  title: '蝉時雨',
-  subtitle: '蝉鸣如雨 花宵道中',
+  title: '鹿鸣人',
+  subtitle: '呦呦鹿鸣 食野之苹',
 
   /**
    * Github Issues 配置
    */
-  username: 'chanshiyucx', // github 用户名
+  username: 'iamsonglu', // github 用户名
   repository: 'blog', // 文章仓库地址
-  token: ['ghp_Vokc7d30ejgebjP', 'lTKwl2ScB1KMVnZ146OT2 '],
-  // token: ['0ad1a0539c5b96fd18fa', 'aaafba9c7d1362a5746c'], // token 从中间任意位置拆开成两部分，避免 github 代码检测失效
+  
+  token: ['ghp_ECezr5v8BicQXo0B', 'WS16nuirRZYcQT3QAtYt '],
+  // token: ['0ad1a0539c5b96fd18fa', 'aaafba9c7d1362a5746c']
+  // token 从中间任意位置拆开成两部分，避免 github 代码检测失效
 
   /**
    * Gitalk 配置，文档详见：https://github.com/gitalk/gitalk
    */
   gitalk: {
-    clientID: '864b1c2cbc4e4aad9ed8',
-    clientSecret: '6ca16373efa03347e11a96ff92e355c5cea189bb',
+    clientID: '73cb7d56a480069af667',
+    clientSecret: '5c344a98ac20ff12cbe555855ac6e79d94b597b5',
     repo: 'comment', // 评论仓库地址
-    owner: 'chanshiyucx',
-    admin: ['chanshiyucx'],
+    owner: 'iamsonglu',
+    admin: ['iamsonglu'],
     distractionFreeMode: false, // 是否开始无干扰模式【背景遮罩】
     proxy: 'https://bokegitalkcors.herokuapp.com/https://github.com/login/oauth/access_token',
   },
@@ -42,8 +44,8 @@ export default {
    * leancloud 配置 【注意切换为国际版】
    */
   leancloud: {
-    appId: 'LjOwR4ELEqbauKvtQbwq5TUw-MdYXbMMI',
-    appKey: 'BOSFJ49ohbGctgn4zvJE9VN6',
+    appId: 'of6DT79PpzLIV4U6GSQpwGHX-MdYXbMMI',
+    appKey: '1c1l8GCvD4YPHLNabmBtz7Eg',
   },
 
   /**
@@ -58,7 +60,7 @@ export default {
   archiveOpts: {
     display: true, // 是否显示该页面
     enableComment: false, // 是否开启评论功能
-    qoute: '華枝春滿 天心月圓', // 页面顶部一言
+    qoute: '秩秩斯幹，幽幽南山', // 页面顶部一言
   },
 
   /**
@@ -67,7 +69,7 @@ export default {
   categoryOpts: {
     display: true,
     enableComment: false,
-    qoute: '桜華月想 暮色蒼然',
+    qoute: '山有嘉卉，侯栗侯梅',
   },
 
   /**
@@ -76,7 +78,7 @@ export default {
   tagOpts: {
     display: true,
     enableComment: false,
-    qoute: '灯笼流丽，百鬼夜行',
+    qoute: '雝雝鸣鴈，旭日始旦',
   },
 
   /**
@@ -85,7 +87,7 @@ export default {
   inspirationOpts: {
     display: true,
     enableComment: true,
-    qoute: '詠奏妖華，明鏡止水',
+    qoute: '雨雪瀌瀌，见晛日消',
   },
 
   /**
@@ -94,7 +96,7 @@ export default {
   bookOpts: {
     display: true,
     enableComment: true,
-    qoute: '追想風景 彼岸帰航',
+    qoute: '春日载阳，有鸣仓庚',
   },
 
   /**
@@ -112,31 +114,34 @@ export default {
   aboutOpts: {
     display: true,
     enableComment: true,
-    qoute: '蝉鸣如雨，花宵道中',
-    avatar: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/iavatar.jpg',
-    graduated: 'University of Electronic Science and Technology of China (UESTC)',
-    college: 'Communication&Information Engineering',
+    qoute: '呦呦鹿鸣，食野之苹',
+    avatar: '//cdn.jsdelivr.net/gh/iamsonglu/blogimg/blogs/iavatar_sl.jpg',
+    graduated: 'Jilin University of Finance and Economics',
+    intrduction: '业余程序爱好者，生命不止，折腾不息',
     contact: [
       {
-        icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/email.png',
-        link: 'http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=tNnR9Nfc1drH3N3NwZrX29k',
+        icon: '//cdn.jsdelivr.net/gh/iamsonglu/blogimg/blogs/email.png',
+        link: 'http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=z7ygoaijurymj6mgt6KupqPhrKCi',
+        
       },
       {
-        icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/github.png',
-        link: 'https://github.com/chanshiyucx',
+        icon: '//cdn.jsdelivr.net/gh/iamsonglu/blogimg/blogs/github.png',
+        link: 'https://github.com/iamsonglu',
       },
+     /*
       {
-        icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/music.png',
+        icon: '//cdn.jsdelivr.net/gh/iamsonglu/blogimg/blog/music.png',
         link: 'https://music.163.com/#/user/home?id=103060582',
       },
+      
       {
-        icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/telegram.png',
+        icon: '//cdn.jsdelivr.net/gh/iamsonglu/blogimg/blog/telegram.png',
         link: 'https://t.me/chan_shi_yu',
       },
       {
         icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/twitter.png',
         link: 'https://twitter.com/chanshiyucx',
-      },
+      },*/
       // {
       //   icon: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/rsshub.png',
       //   link: 'https://rsshub.app/github/issue/chanshiyucx/blog',
@@ -153,12 +158,12 @@ export default {
   /**
    * 加载动画
    */
-  loadingImg: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/loading.gif',
+  loadingImg: '//cdn.jsdelivr.net/gh/iamsonglu/blogimg/blogs/loading_pink.gif',
 
   /**
-   * 文章默认图
+   * 文章默认图,jpej格式不行，只要是1920*1080的图片，修改尺寸后就是1200*675
    */
-  defaultCover: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/bg/defaultCover.jpg',
+  defaultCover: '//cdn.jsdelivr.net/gh/iamsonglu/blogimg/bd/defaultCover_2.jpg',
 
   /**
    * 赛钱箱
@@ -166,11 +171,11 @@ export default {
   qrcode: [
     {
       name: '支付宝',
-      img: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/zfb.png',
+      img: '//cdn.jsdelivr.net/gh/iamsonglu/blogimg/blogs/zfb_sl.png',
     },
     {
       name: '微信',
-      img: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/wx.png',
+      img: '//cdn.jsdelivr.net/gh/iamsonglu/blogimg/blogs/wx_sl.png',
     },
   ],
 
@@ -182,31 +187,31 @@ export default {
       name: 'うたかたの风と蝉时雨',
       artist: 'Little Planet',
       url: 'https://files.catbox.moe/wo7zjt.mp3',
-      cover: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/cover1.jpg',
+      cover: '//cdn.jsdelivr.net/gh/iamsonglu/blogimg/blogs/cover1.jpg',
     },
     {
       name: '春の凑に',
       artist: 'TUMENECO',
       url: 'https://files.catbox.moe/ducy49.mp3',
-      cover: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/cover2.jpg',
+      cover: '//cdn.jsdelivr.net/gh/iamsonglu/blogimg/blogs/cover2.jpg',
     },
     {
       name: '夏阳炎',
       artist: '天威梦方',
       url: 'https://files.catbox.moe/7migen.mp3',
-      cover: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/cover3.jpg',
+      cover: '//cdn.jsdelivr.net/gh/iamsonglu/blogimg/blogs/cover3.jpg',
     },
     {
       name: '秋风のとおり道',
       artist: '风神华伝',
       url: 'https://files.catbox.moe/b58fq6.mp3',
-      cover: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/cover4.jpg',
+      cover: '//cdn.jsdelivr.net/gh/iamsonglu/blogimg/blogs/cover4.jpg',
     },
     {
       name: '冬のわすれもの',
       artist: 'ハルノカゼ',
       url: 'https://files.catbox.moe/vwnawp.mp3',
-      cover: '//cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/cover5.jpg',
+      cover: '//cdn.jsdelivr.net/gh/iamsonglu/blogimg/blogs/cover5.jpg',
     },
   ],
 

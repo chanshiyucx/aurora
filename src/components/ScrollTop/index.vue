@@ -1,3 +1,4 @@
+
 <template>
   <div class="wrapper" :style="backTopStyle">
     <div v-if="!$isMobile.value" @click="scrollTop" :class="['back-to-top', 'cursor']"></div>
